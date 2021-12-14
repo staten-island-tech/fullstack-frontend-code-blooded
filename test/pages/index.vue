@@ -1,5 +1,8 @@
 <template>
-  <Tutorial/>
+  <div>
+    <!-- <Tutorial /> -->
+    <Card />
+  </div>
 </template>
 
 <script>
