@@ -1,8 +1,9 @@
 <template>
   <div id="app">
+    <Modal v-show="isModalVisible" @close="closeModal"/>
     <div class="btn">
       <button class="help">?</button>
-      <button class="sign-in">sign in</button>
+      <button type="button" class="sign-in" @click="showModal">sign in</button>
     </div>
     <div class="options">
       <h1 class="logo">code-blooded</h1>
@@ -15,7 +16,27 @@
 </template>
 
 <script>
-export default {}
+  import Modal from 'components/Modal.vue';
+
+  export default {
+    name: 'App',
+    components: {
+      Modal,
+    },
+    data() {
+      return {
+        isModalVisible: false,
+      };
+    },
+    methods: {
+      showModal() {
+        this.isModalVisible = true;
+      },
+      closeModal() {
+        this.isModalVisible = false;
+      }
+    }
+  };
 </script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Tomorrow:wght@400;600;900&display=swap');
