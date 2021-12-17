@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>testing</h1>
-    <div class="card" v-for="colors in color" :key="colors">
+    <div v-for="colors in color" :key="colors" class="card">
       <h1>{{ colors }}</h1>
     </div>
   </div>
