@@ -1,5 +1,6 @@
 <template>
     <div class="main">
+        <searchFriends></searchFriends>
         <button>?</button>
         <div class="container">
             <ul class="list">
@@ -55,4 +56,5 @@
         border-radius: 1.5rem;
         margin-top: 2rem;
     }
+        
 </style>
