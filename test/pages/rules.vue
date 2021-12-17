@@ -5,9 +5,25 @@
         <section class="rules-container"> Welcome один brought by Coded-Blooded! 
            This web app allows you to play UNO, the popular real-time card game designed by Merle Robbins in 1971
            <a href="https://en.wikipedia.org/wiki/Uno_(card_game)#:~:text=History%20The%20game%20was%20originally%20developed%20in%201971,local%20businesses%20began%20to%20sell%20it%20as%20well.">(Wikipedia)</a>. 
-           The game is a race to be the first person to play the very last card in your hand. and the computer will handle all the details of dealing cards and keeping score.
+           The game is a race to be the first person to play the very last card in your hand. In this online variant, this is as simple selecting and clicking confirm for the card you want to place down. 
 
-If you haven't played before, don't worry! We'll explain the rules below.</section>
+If you haven't played before, or need a refresher on what each card does, don't worry! We'll explain the rules below.
+
+<br>
+There is a total of 108 cards in a deck of UNO cards:
+<br>
+ <ul>
+   <li>4 "wild cards"</li>
+   <li>4 "wild draw four cards </li>
+   <li>25 plain number cards for each color (red, yellow, green, blue)
+     <ul>
+       For each color of the plain number cards, there consists of
+     </ul>
+   </li>
+ </ul>
+ four each of "Wild" and "Wild Draw Four", and 25 each of four colors (red, yellow, green, blue).
+Each color consists of one zero, two each of 1 through 9, and two each of "Skip", "Draw Two", and "Reverse". 
+These last three types are known as "action cards".</section>
       </div>
   </div>
 </template>
