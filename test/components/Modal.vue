@@ -47,3 +47,15 @@
     },
   };
 </script>
+<style scoped>
+  .modal-backdrop{
+    background-color: tomato;
+    width:50vw;
+    height:70vh;
+    z-index:20;
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+  }
+</style>
