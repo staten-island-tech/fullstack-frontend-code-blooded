@@ -1,11 +1,11 @@
 <template>
   <div id="app">
-    <Modal v-show="isModalVisible" @close="closeModal"/>
     <div class="btn">
       <button class="help">?</button>
       <button type="button" class="sign-in" @click="showModal">sign in</button>
     </div>
     <Options v-show="isModalNotVisible"/>
+    <Modal v-show="isModalVisible" @close="closeModal"/>
     <span class="apcsp">apcsp project</span>
   </div>
 </template>
