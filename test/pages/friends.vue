@@ -1,6 +1,6 @@
 <template>
     <div class="main">
-        <searchFriends></searchFriends>
+        <searchFriends v-if="show"></searchFriends>
         <button>?</button>
         <div class="container">
             <ul class="list">
@@ -10,12 +10,20 @@
                 <li class="norm">HTML</li>
                 <li class="norm">Vue</li>
             </ul>
-            <button class="edit">Edit Friends</button>
+            <button v-if="!show" class="btnf" @click="show = true">Edit Friends</button>
         </div>
         
     </div>
 </template>
-
+<script>
+export default {
+    data() {
+    return {
+      show: false
+    }
+  }
+}
+</script>
 <style scoped>
     .main{
         height: 100vh;
@@ -49,7 +57,7 @@
         margin-bottom: 2rem;
         color: #FD367E;
     }
-    .edit{
+    .btnf{
         font-size: 2.5rem;
         background-color: #FD367E;
         font-weight: bolder;
