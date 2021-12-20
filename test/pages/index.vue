@@ -24,6 +24,7 @@
       return {
         isModalVisible: false,
         isModalNotVisible:true,
+        isJoinVisible:false,
       };
     },
     methods: {
@@ -34,7 +35,8 @@
       closeModal() {
         this.isModalVisible = false;
         this.isModalNotVisible = true;
-      }
+      },
+      
     }
   };
 </script>
@@ -86,7 +88,6 @@
     width:32%;
     font-size:3rem;
     margin-top:1rem;
-
   }
   input{
     border-color: var(--fourth-color);
