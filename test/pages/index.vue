@@ -4,7 +4,7 @@
       <button class="help">?</button>
       <button type="button" class="sign-in" @click="showModal">sign in</button>
     </div>
-    <Options v-show="isModalNotVisible"/>
+    <Comp v-show="isModalNotVisible"/>
     <Modal v-show="isModalVisible" @close="closeModal"/>
     <span class="apcsp">apcsp project</span>
   </div>
@@ -12,13 +12,13 @@
 
 <script>
   import Modal from '@/components/Modal.vue';
-  import Options from '@/components/Options.vue'
+  import Comp from '@/components/Comp.vue'
 
   export default {
     name: 'App',
     components: {
       Modal,
-      Options,
+      Comp,
     },
     data() {
       return {
@@ -36,7 +36,6 @@
         this.isModalVisible = false;
         this.isModalNotVisible = true;
       },
-      
     }
   };
 </script>
