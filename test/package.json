@@ -25,5 +25,12 @@
     "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-vue": "^7.12.1",
     "prettier": "^2.3.2"
-  }
+  },
+  "configurations":[
+    {
+      "request": "launch",
+      "name": "Launch Chrome against localhost",
+      "type": "dart"
+    }
+  ]
 }
