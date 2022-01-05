@@ -4,17 +4,20 @@
       <button class="help"><a href="rules">?</a></button>
       <button type="button" class="sign-in" @click="showModal">sign in</button>
     </div>
+    <Join v-show="isJoinVisible"/>
     <div class="options" >
       <h1 class="logo">code-blooded</h1>
       <input type="text" placeholder="enter a name" name="username" required>
       <button class="start">start a game</button>
-      <button class="join" ><a class="join" href="join">join a game</a></button>
+      <button class="join" @click="showModal">Show Join Code</button>
     </div>
     <span class="apcsp">apcsp project</span>
   </div>
 </template>
 
 <script>
+import Join from '@/components/Join.vue';
+// <a class="join" href="join">join a game</a>
   // import Modal from '@/components/Modal.vue';
   // import Options from '@/components/Options.vue'
   //   <Options v-show="isModalNotVisible"/>
@@ -24,22 +27,22 @@
     components: {
       // Modal,
       // Options,
+      Join
     },
     data() {
       return {
-        isModalVisible: false,
-        isModalNotVisible:true,
-        isJoinVisible:false,
+        isJoinVisible: false,
+        isJoinNotVisible:true,
       };
     },
     methods: {
       showModal() {
-        this.isModalVisible = true;
-        this.isModalNotVisible = false;
+        this.isJoinVisible = true;
+        this.isJoinNotVisible = false;
       },
       closeModal() {
-        this.isModalVisible = false;
-        this.isModalNotVisible = true;
+        this.isJoinVisible = false;
+        this.isJoinNotVisible = true;
       },
     }
   };
