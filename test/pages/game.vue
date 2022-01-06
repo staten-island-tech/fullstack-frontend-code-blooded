@@ -1,52 +1,8 @@
 <template>
-  <div id="app">
-    <div class="btn">
-      <button class="help"><a href="rules">?</a></button>
-      <button type="button" class="sign-in">sign in</button>
+    <div class="code-page">
+<button class="help"><a href="rules">?</a></button>
     </div>
-    <Join v-show="isJoinVisible"/>
-    <div class="options" >
-      <h1 class="logo">code-blooded</h1>
-      <input type="text" placeholder="enter a name" name="username" required>
-      <button class="start"><a href="game">start a game</a></button>
-      <button class="join" @click="showModal">Show Join Code</button>
-    </div>
-    <span class="apcsp">apcsp project</span>
-  </div>
 </template>
-
-<script>
-import Join from '@/components/Join.vue';
-// <a class="join" href="join">join a game</a>
-  // import Modal from '@/components/Modal.vue';
-  // import Options from '@/components/Options.vue'
-  //   <Options v-show="isModalNotVisible"/>
-  //   <Modal v-show="isModalVisible" @close="closeModal"/>
-  export default {
-    name: 'App',
-    components: {
-      // Modal,
-      // Options,
-      Join
-    },
-    data() {
-      return {
-        isJoinVisible: false,
-        isJoinNotVisible:true,
-      };
-    },
-    methods: {
-      showModal() {
-        this.isJoinVisible = true;
-        this.isJoinNotVisible = false;
-      },
-      closeModal() {
-        this.isJoinVisible = false;
-        this.isJoinNotVisible = true;
-      },
-    }
-  };
-</script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Tomorrow:wght@400;600;900&display=swap');
 :root{
@@ -59,7 +15,7 @@ import Join from '@/components/Join.vue';
   --medium-weight:600;
   --thin-weight:400;
 }
-  #app{
+  .code-page{
     background-color: var(--background-color);
     max-width: 100%;
     height: 100vh;
