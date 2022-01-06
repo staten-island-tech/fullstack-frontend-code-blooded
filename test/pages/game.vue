@@ -1,6 +1,32 @@
 <template>
-    <div class="code-page">
-<button class="help"><a href="rules">?</a></button>
+    <div class="code-page"> 
+        <button class="help"><a href="rules">?</a></button>
+        <div class="options">
+            <div class="code">
+                <div class="sample"> 
+                    <h1 class="code-header">CODE:</h1>
+                    <input id="game-input" name="gameId" type="tel" placeholder="Game PIN" data-functional-selector="game-pin-input" autocomplete="off" dir="auto" value="" aria-expanded="false">
+                </div>
+                <p class="comment">share this with friends for them to join</p>
+                <h2 class="whoJoined">Friends who have joined</h2>
+                <div class="friend-list">
+                    <ul class="list">
+                        <li class="friend1 friend">javascript, the host, is playing</li>
+                        <li class="friend2 friend">vue, the invitee, is playing</li>
+                        <li class="friend3 friend">css, the invitee, is playing</li>
+                        <li class="friend4 friend">html, the invitee, is playing</li>
+                    </ul>
+                </div>
+                <div class="buttons">
+                    <button class="start">START GAME</button>
+                    <button class="delete">DELETE GAME</button>
+                </div>
+
+            </div>
+            <div class="chat">
+
+            </div>
+        </div>
     </div>
 </template>
 <style>
@@ -46,8 +72,16 @@
     margin:0 auto;
     align-items: center;
   }
+  .sample{
+      display: flex;
+      flex-direction: row;
+  }
+  .button{
+      display: flex;
+      flex-direction: column;
+  }
   .start,
-  .join,
+  .delete,
   input{
     border-radius: 26px;
     width:32%;
@@ -74,36 +108,26 @@
     border-color: var(--fourth-color);
     padding:.5rem;
   }
-  .join{
+  .delete{
     background-color: var(--secondary-color);
     color:var(--fourth-color);
     font-size:3rem;
     border-color: var(--secondary-color);
       padding:.5rem;
   }
-  .sign-in{
-    background-color: var(--font-color);
-    color:var(--background-color);
-    border-radius: 25px;
-    height:3rem;
-    width:9rem;
-    position:absolute;
-    right:2rem;
-    top:2rem;
-    font-family: 'Tomorrow', sans-serif;
-    font-weight: var(--heavy-weight);
-     font-size:1.5rem;
-  }
-  .logo{
+  .code-header{
     color:var(--font-color);
-    font-size: 6rem;
+    font-size: 4rem;
   margin-bottom:1rem;
   }
-  .apcsp{
-    background-color: var(--third-color);
-    bottom:0;
-    position:absolute;
-    padding:1rem;
-     border-radius: 5px 30px 5px 5px;
+    .whoJoined{
+        color:var(--font-color);
+    font-size: 2rem;
+    }
+  .friend-list{
+      border-bottom:var(--fourth-color);
+  }
+  li{
+      list-style: none;
   }
 </style>
