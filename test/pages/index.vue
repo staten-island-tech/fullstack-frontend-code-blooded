@@ -123,7 +123,7 @@ import Join from '@/components/Join.vue';
     color:var(--fourth-color);
     font-size:3rem;
     border-color: var(--secondary-color);
-      padding:.5rem;
+    padding:.5rem;
   }
   .sign-in{
     background-color: var(--font-color);

@@ -24,7 +24,8 @@
 
             </div>
             <div class="chat">
-
+              <p class="friend chat">game created</p>
+              <input id="writeMessage" type="text" placeholder="write a message">
             </div>
         </div>
     </div>
@@ -63,6 +64,12 @@
     font-size: 2rem;
     position:absolute;
   }
+  .comment{
+    color:var(--third-color);
+    font-family: 'Tomorrow', sans-serif;
+    font-weight: var(--heavy-weight);
+    font-size:1.5rem;
+  }
   .options{
     display:flex;
     flex-direction: column;
@@ -76,15 +83,14 @@
       display: flex;
       flex-direction: row;
   }
-  .button{
+  .buttons{
       display: flex;
       flex-direction: column;
   }
   .start,
-  .delete,
-  input{
-    border-radius: 26px;
-    width:32%;
+  .delete{
+    border-radius: 35px;
+    width:70%;
     font-size:3rem;
     margin-top:1rem;
   }
@@ -93,6 +99,10 @@
     border-width: .3rem;
     color:var(--font-color);
     font-size:3.5rem;
+    border-radius: 26px;
+    width:40%;
+    font-size:3rem;
+    margin-top:1rem;
     background-color:var(--background-color);
   }
   ::placeholder {
@@ -103,7 +113,7 @@
 }
   .start{
     background-color: var(--fourth-color);
-    color:var(--secondary-color);
+    color:var(--background-color);
     font-size:3rem;
     border-color: var(--fourth-color);
     padding:.5rem;
@@ -118,16 +128,49 @@
   .code-header{
     color:var(--font-color);
     font-size: 4rem;
-  margin-bottom:1rem;
+    margin-bottom:1rem;
+    letter-spacing: 5px;
   }
-    .whoJoined{
-        color:var(--font-color);
+  .whoJoined{
+    color:var(--font-color);
     font-size: 2rem;
-    }
-  .friend-list{
-      border-bottom:var(--fourth-color);
+    letter-spacing: 3px;
   }
+  .friend-list{
+    border-bottom: 1px solid var(--fourth-color);
+    font-size: 1.5rem;
+    margin-bottom:1rem;
+    letter-spacing: 1px;
+    color:var(--font-color);
+    font-weight: var(--medium-weight);
+  }
+  /* .friend1{
+
+  }
+  .friend2{
+
+  }
+  .friend3{
+
+  }
+  .friend4{
+
+  } */
   li{
       list-style: none;
   }
+
+  /* CHAT CSS */
+  #writeMessage{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid var(--third-color);
+  border-radius: 20px;
+}
+input[type="text"]::placeholder{
+  color:var(--third-color)
+}
+
 </style>
