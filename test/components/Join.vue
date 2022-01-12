@@ -3,10 +3,10 @@
 <div class="options">
       <h1 class="logo">code-blooded</h1>
       <input type="text" placeholder="enter a name" name="username" required>
-      <button class="start">start a game</button>
+      <button class="start"><a href="game">start a game</a></button>
       <div class="join-contain">
           <input type="text" placeholder="enter code" name="join-code" required>
-        <button class="join">join</button>
+        <button class="join"><a href="game">join</a></button>
       </div>
     </div>
     </div>
@@ -21,3 +21,8 @@
     },
   };
 </script>
+<style scoped>
+  .optionapp{
+    z-index:20;
+  }
+</style>

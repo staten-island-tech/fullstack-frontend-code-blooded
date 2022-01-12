@@ -23,7 +23,7 @@
                 </div>
 
             </div>
-            <div class="chat">
+            <div class="chat hide">
               <p class="friend chat">game created</p>
               <input id="writeMessage" type="text" placeholder="write a message">
             </div>
@@ -42,12 +42,17 @@
   --medium-weight:600;
   --thin-weight:400;
 }
+.hide{
+  display:none;
+}
   .code-page{
     background-color: var(--background-color);
     max-width: 100%;
     height: 100vh;
     font-family: 'Tomorrow', sans-serif;
     margin:0 auto;
+    display:flex;
+    flex-direction: row;
   }
   button{
     font-family: 'Tomorrow', sans-serif;
@@ -63,6 +68,15 @@
     height:3rem;
     font-size: 2rem;
     position:absolute;
+  }
+  .options{
+    display:flex;
+    flex-direction: row;
+  }
+  .chat{
+    border:5px solid var(--secondary-color);
+    padding:2rem;
+    border-radius: 30px;
   }
   .comment{
     color:var(--third-color);

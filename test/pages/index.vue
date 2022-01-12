@@ -5,11 +5,12 @@
       <button type="button" class="sign-in">sign in</button>
     </div>
     <Join v-show="isJoinVisible"/>
-    <div class="options" >
+    <div v-show="isJoinNotVisible" class="options" >
       <h1 class="logo">code-blooded</h1>
       <input type="text" placeholder="enter a name" name="username" required>
       <button class="start"><a href="game">start a game</a></button>
-      <button class="join" @click="showModal">Show Join Code</button>
+      <button class="join" @click="showModal">show join code</button>
+      <!-- <Options v-show="isJoinNotVisible"/> -->
     </div>
     <span class="apcsp">apcsp project</span>
   </div>
@@ -81,14 +82,17 @@ import Join from '@/components/Join.vue';
     font-size: 2rem;
     position:absolute;
   }
-  .options{
+  .options,
+  .join-contain{
     display:flex;
-    flex-direction: column;
-    width:90vw;
-    height:90vh;
     justify-content: center;
     margin:0 auto;
     align-items: center;
+  }
+  .options{
+    width:90vw;
+    height:90vh;
+    flex-direction: column;
   }
   .start,
   .join,
@@ -149,5 +153,10 @@ import Join from '@/components/Join.vue';
     position:absolute;
     padding:1rem;
      border-radius: 5px 30px 5px 5px;
+  }
+  .join-contain{
+    margin:0 auto;
+    justify-content: center;
+    align-items: center;
   }
 </style>
