@@ -6,7 +6,7 @@
       <button class="start"><a href="game">start a game</a></button>
       <div class="join-contain">
         <input type="text" placeholder="enter code" name="join-code" required>
-        <button class="join invitee"><a href="invitee">join</a></button>
+        <button class="join invitee"><a class="join" href="invitee">join</a></button>
       </div>
     </div>
     </div>

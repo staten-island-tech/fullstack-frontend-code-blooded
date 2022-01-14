@@ -18,7 +18,7 @@
                     </ul>
                 </div>
                 <div class="buttons">
-                    <button class="delete">leave game</button>
+                    <button class="delete"><a href="/" class="delete">leave game</a></button>
                 </div>
 
             </div>

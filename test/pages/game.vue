@@ -18,8 +18,8 @@
                     </ul>
                 </div>
                 <div class="buttons">
-                    <button class="start">START GAME</button>
-                    <button class="delete">DELETE GAME</button>
+                    <button class="start"><a href="actualGame" class="start">START GAME</a></button>
+                    <button class="delete"><a class="delete" href="welcomeback">DELETE GAME</a></button>
                 </div>
 
             </div>
