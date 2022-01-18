@@ -63,7 +63,7 @@
   }
   .options{
     width:35vw;
-    height:60vh;
+    height:70vh;
     flex-direction: column;
     border:5px solid var(--fourth-color);
     border-radius: 26px;
