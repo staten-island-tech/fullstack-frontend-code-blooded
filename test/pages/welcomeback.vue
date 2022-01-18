@@ -5,7 +5,7 @@
     </div>
     <div class="options" >
       <h2 class="logo">welcome back!</h2>
-      <button class="join"><a class="join">find friends</a></button>
+      <button class="join" href="friends"><a class="join" href="friends">find friends</a></button>
       <button class="start" href="game"><a href="game">start a game</a></button>
        <div class="join-contain">
         <input type="text" placeholder="enter code" name="join-code" required>
@@ -67,6 +67,13 @@
     flex-direction: column;
     border:5px solid var(--fourth-color);
     border-radius: 26px;
+    margin-top:auto;
+    margin-bottom:auto;
+  }
+  .options::after{
+    content: "";
+    clear: both;
+    display: table;
   }
   .start,
   .join,
