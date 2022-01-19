@@ -8,9 +8,8 @@
     <div v-show="isJoinNotVisible" class="options" >
       <h1 class="logo">code-blooded</h1>
       <input type="text" placeholder="enter a name" name="username" required>
-      <button class="start" href="game"><a href="game">start a game</a></button>
+      <button class="start" @click="goGame"><a href="game">start a game</a></button>
       <button class="join" @click="showModal">show join code</button>
-      <!-- <Options v-show="isJoinNotVisible"/> -->
     </div>
     <span class="apcsp">apcsp project</span>
   </div>
@@ -18,16 +17,12 @@
 
 <script>
 import Join from '@/components/Join.vue';
-// <a class="join" href="join">join a game</a>
   // import Modal from '@/components/Modal.vue';
-  // import Options from '@/components/Options.vue'
-  //   <Options v-show="isModalNotVisible"/>
   //   <Modal v-show="isModalVisible" @close="closeModal"/>
   export default {
     name: 'App',
     components: {
       // Modal,
-      // Options,
       Join
     },
     data() {
@@ -40,6 +35,9 @@ import Join from '@/components/Join.vue';
       showModal() {
         this.isJoinVisible = true;
         this.isJoinNotVisible = false;
+      },
+      goGame(){
+        this.$router.push('/game');
       },
       closeModal() {
         this.isJoinVisible = false;

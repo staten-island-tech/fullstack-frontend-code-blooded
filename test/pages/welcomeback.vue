@@ -3,19 +3,33 @@
     <div class="btn">
       <button class="help"><a href="rules">?</a></button>
     </div>
-    <div class="options" >
+    <div class="options1" >
       <h2 class="logo">welcome back!</h2>
-      <button class="join" href="friends"><a class="join" href="friends">find friends</a></button>
-      <button class="start" href="game"><a href="game">start a game</a></button>
+      <button class="join1" @click="goFriends"><a class="join" href="friends">find friends</a></button>
+      <button class="start1" @click="goGame"><a href="game">start a game</a></button>
        <div class="join-contain">
         <input type="text" placeholder="enter code" name="join-code" required>
-        <button class="join invitee"><a class="join" href="invitee">join</a></button>
+        <button class="join invitee" @click="goInivitee"><a class="join" href="invitee">join</a></button>
       </div>
     </div>
     <span class="apcsp">apcsp project</span>
   </div>
 </template>
-
+<script>
+export default{
+  methods: {
+      goInivitee() {
+        this.$router.push('/invitee');
+      },
+      goGame(){
+        this.$router.push('/game');
+      },
+      goFriends(){
+        this.$router.push('/friends');
+      },
+    }
+}
+</script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Tomorrow:wght@400;600;900&display=swap');
 /* VARIABLES */
@@ -54,14 +68,14 @@
     position:absolute;
   }
   /* FLEX BOX FOR BUTTONS */
-  .options,
+  .options1,
   .join-contain{
     display:flex;
     justify-content: center;
     margin:0 auto;
     align-items: center;
   }
-  .options{
+  .options1{
     width:35vw;
     height:70vh;
     flex-direction: column;
@@ -70,13 +84,13 @@
     margin-top:auto;
     margin-bottom:auto;
   }
-  .options::after{
+  .options1::after{
     content: "";
     clear: both;
     display: table;
   }
-  .start,
-  .join,
+  .start1,
+  .join1,
   input{
     border-radius: 26px;
     width:62%;
@@ -96,14 +110,14 @@
   font-family: 'Tomorrow', sans-serif;
   font-weight: var(--thin-weight);
 }
-  .start{
+  .start1{
     background-color: var(--fourth-color);
     color:var(--secondary-color);
     font-size:3rem;
     border-color: var(--fourth-color);
     padding:.5rem;
   }
-  .join{
+  .join1{
     background-color: var(--secondary-color);
     color:var(--fourth-color);
     font-size:3rem;
