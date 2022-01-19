@@ -18,8 +18,8 @@
                     </ul>
                 </div>
                 <div class="buttons">
-                    <button class="start"><a href="actualGame" class="start">START GAME</a></button>
-                    <button class="delete"><a class="delete" href="welcomeback">DELETE GAME</a></button>
+                    <button class="start" @click="goActualGame"><a href="actualGame" class="start">START GAME</a></button>
+                    <button class="delete" @click="goWelcomeBack"><a class="delete" href="welcomeback">DELETE GAME</a></button>
                 </div>
 
             </div>
@@ -30,6 +30,19 @@
         </div>
     </div>
 </template>
+<script>
+export default{
+  methods: {
+      goActualGame() {
+        this.$router.push('/actualGame');
+      },
+      goWelcomeBack(){
+        this.$router.push('/welcomeBack');
+      },
+    }
+}
+</script>
+
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Tomorrow:wght@400;600;900&display=swap');
 :root{

@@ -17,6 +17,18 @@
 </div>
 
 </template>
+<script>
+export default{
+  methods: {
+      goActualGame() {
+        this.$router.push('/actualGame');
+      },
+      goWelcomeBack(){
+        this.$router.push('/welcomeBack');
+      },
+    }
+}
+</script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Tomorrow:wght@400;600;900&display=swap');
 :root{

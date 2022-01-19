@@ -18,7 +18,7 @@
                     </ul>
                 </div>
                 <div class="buttons">
-                    <button class="delete"><a href="/" class="delete">leave game</a></button>
+                    <button class="delete" @click="goIndex"><a href="/" class="delete">leave game</a></button>
                 </div>
 
             </div>
@@ -29,6 +29,15 @@
         </div>
     </div>
 </template>
+<script>
+export default{
+  methods: {
+      goIndex() {
+        this.$router.push('/');
+      },
+    }
+}
+</script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Tomorrow:wght@400;600;900&display=swap');
 :root{
