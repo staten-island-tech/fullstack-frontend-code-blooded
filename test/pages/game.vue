@@ -1,7 +1,7 @@
 <template>
     <div class="code-page"> 
         <button class="help"><a href="rules">?</a></button>
-        <div class="options">
+        <div class="options3">
             <div class="code">
                 <div class="sample"> 
                     <h1 class="code-header">CODE:</h1>
@@ -18,8 +18,8 @@
                     </ul>
                 </div>
                 <div class="buttons">
-                    <button class="start" @click="goActualGame"><a href="actualGame" class="start">START GAME</a></button>
-                    <button class="delete" @click="goWelcomeBack"><a class="delete" href="welcomeback">DELETE GAME</a></button>
+                    <button class="start3" @click="goActualGame"><a href="actualGame" class="start">START GAME</a></button>
+                    <button class="delete3" @click="goWelcomeBack"><a class="delete3" href="welcomeback">DELETE GAME</a></button>
                 </div>
 
             </div>
@@ -43,9 +43,9 @@ export default{
 }
 </script>
 
-<style>
+<style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Tomorrow:wght@400;600;900&display=swap');
-:root{
+*{
   --background-color:#0E1555;
   --secondary-color:#4E1184;
   --third-color:#932B77;
@@ -82,7 +82,7 @@ export default{
     font-size: 2rem;
     position:absolute;
   }
-  .options{
+  .options3{
     display:flex;
     flex-direction: row;
   }
@@ -97,7 +97,7 @@ export default{
     font-weight: var(--heavy-weight);
     font-size:1.5rem;
   }
-  .options{
+  .options3{
     display:flex;
     flex-direction: column;
     width:90vw;
@@ -114,8 +114,8 @@ export default{
       display: flex;
       flex-direction: column;
   }
-  .start,
-  .delete{
+  .start3,
+  .delete3{
     border-radius: 35px;
     width:70%;
     font-size:3rem;
@@ -128,7 +128,7 @@ export default{
     font-size:3.5rem;
     border-radius: 26px;
     width:40%;
-    font-size:3rem;
+    font-size:2rem;
     margin-top:1rem;
     background-color:var(--background-color);
   }
@@ -138,14 +138,14 @@ export default{
   font-family: 'Tomorrow', sans-serif;
   font-weight: var(--thin-weight);
 }
-  .start{
+  .start3{
     background-color: var(--fourth-color);
     color:var(--background-color);
     font-size:3rem;
     border-color: var(--fourth-color);
     padding:.5rem;
   }
-  .delete{
+  .delete3{
     background-color: var(--secondary-color);
     color:var(--fourth-color);
     font-size:3rem;

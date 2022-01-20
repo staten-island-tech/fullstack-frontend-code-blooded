@@ -9,7 +9,7 @@
       <button class="start1" @click="goGame"><a href="game">start a game</a></button>
        <div class="join-contain">
         <input type="text" placeholder="enter code" name="join-code" required>
-        <button class="join invitee" @click="goInivitee"><a class="join" href="invitee">join</a></button>
+        <button class="join1 invitee" @click="goInivitee"><a class="join" href="invitee">join</a></button>
       </div>
     </div>
     <span class="apcsp">apcsp project</span>
@@ -30,10 +30,10 @@ export default{
     }
 }
 </script>
-<style>
+<style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Tomorrow:wght@400;600;900&display=swap');
 /* VARIABLES */
-:root{
+*{
   --background-color:#0E1555;
   --secondary-color:#4E1184;
   --third-color:#932B77;

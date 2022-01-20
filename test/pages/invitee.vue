@@ -1,7 +1,7 @@
 <template>
     <div class="code-page"> 
         <button class="help"><a href="rules">?</a></button>
-        <div class="options">
+        <div class="options2">
             <div class="code">
                 <div class="sample"> 
                     <h1 class="code-header">CODE:</h1>
@@ -18,7 +18,7 @@
                     </ul>
                 </div>
                 <div class="buttons">
-                    <button class="delete" @click="goIndex"><a href="/" class="delete">leave game</a></button>
+                    <button class="leave" @click="goIndex"><a href="/" class="leave">leave game</a></button>
                 </div>
 
             </div>
@@ -38,9 +38,9 @@ export default{
     }
 }
 </script>
-<style>
+<style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Tomorrow:wght@400;600;900&display=swap');
-:root{
+*{
   --background-color:#0E1555;
   --secondary-color:#4E1184;
   --third-color:#932B77;
@@ -93,7 +93,7 @@ export default{
     font-weight: var(--heavy-weight);
     font-size:1.5rem;
   }
-  .options{
+  .options2{
     display:flex;
     flex-direction: column;
     width:90vw;
@@ -111,7 +111,7 @@ export default{
       flex-direction: column;
   }
   .start,
-  .delete{
+  .leave{
     border-radius: 35px;
     width:70%;
     font-size:3rem;
@@ -141,7 +141,7 @@ export default{
     border-color: var(--fourth-color);
     padding:.5rem;
   }
-  .delete{
+  .leave{
     background-color: var(--secondary-color);
     color:var(--fourth-color);
     font-size:3rem;
