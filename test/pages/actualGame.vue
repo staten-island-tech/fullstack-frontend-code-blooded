@@ -1,12 +1,14 @@
 <template>
     <div id="app">
-        <h1>NOTHING HERE YET</h1>
+        <h1>HAPPY BIRTHDAY LISA!</h1>
+        <img src="https://media1.tenor.com/images/b47f7d30c6d5dd5d0c432fbb9c12ac67/tenor.gif?itemid=17762280" alt="">
+        <button><a href="/">back to work</a></button>
     </div>
 </template>
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Tomorrow:wght@400;600;900&display=swap');
 /* VARIABLES */
-    :root{
+    *{
      --background-color:#0E1555;
      --secondary-color:#4E1184;
      --third-color:#932B77;
@@ -18,7 +20,8 @@
     }
 /* Common CSS */
   #app{
-    background-color:#0E1555;
+    background-color:var(--fourth-color);
+    color:var(--font-color);
     max-width: 100vw;
     height: 100vh;
     font-family: 'Tomorrow', sans-serif;

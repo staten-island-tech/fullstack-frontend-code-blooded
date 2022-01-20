@@ -5,7 +5,7 @@
       <input type="text" placeholder="enter a name" name="username" required>
       <button class="start" @click="goGame"><a href="game">start a game</a></button>
       <div class="join-contain">
-        <input type="text" placeholder="enter code" name="join-code" required>
+        <input id="join-code" type="text" placeholder="enter code" name="join-code" required>
         <button class="join invitee" @click="goInvitee">join</button>
       </div>
     </div>
@@ -30,5 +30,9 @@
 <style scoped>
   .optionapp{
     z-index:20;
+  }
+  #join-code{
+    font-size:2.5rem;
+    padding:.2rem;
   }
 </style>
