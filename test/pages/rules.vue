@@ -34,6 +34,11 @@
             </ul>
           </ul>
         </ul>
+        <div>
+          <p>Example Wild Card:</p>
+          <img src="" alt="">
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum vel cum architecto rem, deserunt animi dolorem accusamus aspernatur illo placeat enim nam id at, exercitationem nesciunt, fugiat omnis iste corporis.</p>
+        </div>
 
         <!-- Reverse – If going clockwise, switch to counterclockwise or vice versa. It can only be played on a card that matches by color, or on another Reverse card. If turned up at the beginning of play, the dealer goes first, and the player to the dealer’s right is next (normally it would be the player to the dealer’s left).
 Skip – When a player places this card, the next player has to skip their turn. It can only be played on a card that matches by color, or on another Skip card. If turned up at the beginning of play, the first player (to the dealer’s left) loses his/her turn. The next player to that player’s right starts the game instead.
