@@ -2,15 +2,18 @@
   <div id="app">
     <div class="btn">
       <button class="help"><a href="rules">?</a></button>
+      <button type="button" class="sign-out">sign out</button>
     </div>
-    <div class="options1" >
+    <div id="box">
+      <div class="options1" >
       <h2 class="logo">welcome back!</h2>
-      <button class="join1" @click="goFriends"><a class="join" href="friends">find friends</a></button>
+      <button class="join1" @click="goFriends">find friends</button>
       <button class="start1" @click="goGame"><a href="game">start a game</a></button>
        <div class="join-contain">
         <input type="text" placeholder="enter code" name="join-code" required>
-        <button class="join1 invitee" @click="goInivitee"><a class="join" href="invitee">join</a></button>
+        <button class="join1 invitee" @click="goInivitee">join</button>
       </div>
+    </div>
     </div>
     <span class="apcsp">apcsp project</span>
   </div>
@@ -46,10 +49,18 @@ export default{
 /* Common CSS */
   #app{
     background-color: var(--background-color);
-    max-width: 100%;
+    max-width: 100vw;
     height: 100vh;
     font-family: 'Tomorrow', sans-serif;
     margin:0 auto;
+  }
+  #box{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    position:relative;
+    width:100%;
+    height:100%;
   }
   button{
     font-family: 'Tomorrow', sans-serif;
@@ -72,7 +83,7 @@ export default{
   .join-contain{
     display:flex;
     justify-content: center;
-    margin:0 auto;
+    margin:auto;
     align-items: center;
   }
   .options1{
@@ -81,8 +92,8 @@ export default{
     flex-direction: column;
     border:5px solid var(--fourth-color);
     border-radius: 26px;
-    margin-top:auto;
-    margin-bottom:auto;
+    position:absolute;
+
   }
   .options1::after{
     content: "";
@@ -93,7 +104,6 @@ export default{
   .join1,
   input{
     border-radius: 26px;
-    width:62%;
     font-size:3rem;
     margin-top:1rem;
   }
@@ -101,7 +111,8 @@ export default{
     border-color: var(--fourth-color);
     border-width: .3rem;
     color:var(--font-color);
-    font-size:3.5rem;
+    font-size:2.5rem;
+    width:62%;
     background-color:var(--background-color);
   }
   ::placeholder {
@@ -111,6 +122,7 @@ export default{
   font-weight: var(--thin-weight);
 }
   .start1{
+    width:62%;
     background-color: var(--fourth-color);
     color:var(--secondary-color);
     font-size:3rem;
@@ -123,9 +135,13 @@ export default{
     font-size:3rem;
     border-color: var(--secondary-color);
     padding:.5rem;
+    width:62%;
+  }
+  .invitee{
+    width:40%;
   }
   /* SIGN IN BUTTON */
-  .sign-in{
+  .sign-out{
     background-color: var(--font-color);
     color:var(--background-color);
     border-radius: 25px;
@@ -142,7 +158,7 @@ export default{
   .logo{
     color:var(--font-color);
     font-size: 4.5rem;
-  margin-bottom:1rem;
+    margin-bottom:1rem;
   }
   /* BOTTOM LOGO THINGY */
   .apcsp{
