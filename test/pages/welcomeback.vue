@@ -2,6 +2,7 @@
   <div id="app">
     <div class="btn">
       <button class="help"><a href="rules">?</a></button>
+      <button type="button" class="sign-out">sign out</button>
     </div>
     <div class="options1" >
       <h2 class="logo">welcome back!</h2>
@@ -93,7 +94,6 @@ export default{
   .join1,
   input{
     border-radius: 26px;
-    width:62%;
     font-size:3rem;
     margin-top:1rem;
   }
@@ -101,7 +101,8 @@ export default{
     border-color: var(--fourth-color);
     border-width: .3rem;
     color:var(--font-color);
-    font-size:3.5rem;
+    font-size:2.5rem;
+    width:62%;
     background-color:var(--background-color);
   }
   ::placeholder {
@@ -111,6 +112,7 @@ export default{
   font-weight: var(--thin-weight);
 }
   .start1{
+    width:62%;
     background-color: var(--fourth-color);
     color:var(--secondary-color);
     font-size:3rem;
@@ -123,9 +125,13 @@ export default{
     font-size:3rem;
     border-color: var(--secondary-color);
     padding:.5rem;
+    width:62%;
+  }
+  .invitee{
+    width:40%;
   }
   /* SIGN IN BUTTON */
-  .sign-in{
+  .sign-out{
     background-color: var(--font-color);
     color:var(--background-color);
     border-radius: 25px;
@@ -142,7 +148,7 @@ export default{
   .logo{
     color:var(--font-color);
     font-size: 4.5rem;
-  margin-bottom:1rem;
+    margin-bottom:1rem;
   }
   /* BOTTOM LOGO THINGY */
   .apcsp{
