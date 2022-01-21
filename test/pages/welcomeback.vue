@@ -4,14 +4,16 @@
       <button class="help"><a href="rules">?</a></button>
       <button type="button" class="sign-out">sign out</button>
     </div>
-    <div class="options1" >
+    <div id="box">
+      <div class="options1" >
       <h2 class="logo">welcome back!</h2>
-      <button class="join1" @click="goFriends"><a class="join" href="friends">find friends</a></button>
+      <button class="join1" @click="goFriends">find friends</button>
       <button class="start1" @click="goGame"><a href="game">start a game</a></button>
        <div class="join-contain">
         <input type="text" placeholder="enter code" name="join-code" required>
-        <button class="join1 invitee" @click="goInivitee"><a class="join" href="invitee">join</a></button>
+        <button class="join1 invitee" @click="goInivitee">join</button>
       </div>
+    </div>
     </div>
     <span class="apcsp">apcsp project</span>
   </div>
@@ -47,10 +49,18 @@ export default{
 /* Common CSS */
   #app{
     background-color: var(--background-color);
-    max-width: 100%;
+    max-width: 100vw;
     height: 100vh;
     font-family: 'Tomorrow', sans-serif;
     margin:0 auto;
+  }
+  #box{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    position:relative;
+    width:100%;
+    height:100%;
   }
   button{
     font-family: 'Tomorrow', sans-serif;
@@ -73,7 +83,7 @@ export default{
   .join-contain{
     display:flex;
     justify-content: center;
-    margin:0 auto;
+    margin:auto;
     align-items: center;
   }
   .options1{
@@ -82,8 +92,8 @@ export default{
     flex-direction: column;
     border:5px solid var(--fourth-color);
     border-radius: 26px;
-    margin-top:auto;
-    margin-bottom:auto;
+    position:absolute;
+
   }
   .options1::after{
     content: "";
