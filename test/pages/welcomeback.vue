@@ -124,7 +124,7 @@ export default{
   .start1{
     width:62%;
     background-color: var(--fourth-color);
-    color:var(--secondary-color);
+    color:var(--background-color);
     font-size:3rem;
     border-color: var(--fourth-color);
     padding:.5rem;

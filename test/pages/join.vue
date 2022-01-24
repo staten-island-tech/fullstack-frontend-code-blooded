@@ -95,7 +95,7 @@ export default{
 }
   .start{
     background-color: var(--fourth-color);
-    color:var(--secondary-color);
+    color:var(--background-color);
     font-size:3rem;
     border-color: var(--fourth-color);
     padding:.5rem;
