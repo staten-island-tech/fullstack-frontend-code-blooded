@@ -2,7 +2,8 @@
     <div class="code-page"> 
         <button class="help"><a href="rules">?</a></button>
         <div class="options2">
-            <div class="code">
+            <div class="row">
+              <div class="code">
                 <div class="sample"> 
                     <h1 class="code-header">CODE:</h1>
                     <input id="game-input" name="gameId" type="tel" placeholder="Game PIN" data-functional-selector="game-pin-input" autocomplete="off" dir="auto" value="" aria-expanded="false">
@@ -22,9 +23,10 @@
                 </div>
 
             </div>
-            <div class="chat hide">
+            <div class="chat">
               <p class="friend chat">game created</p>
               <input id="writeMessage" type="text" placeholder="write a message">
+            </div>
             </div>
         </div>
     </div>
@@ -78,7 +80,7 @@ export default{
     font-size: 2rem;
     position:absolute;
   }
-  .options{
+  .row{
     display:flex;
     flex-direction: row;
   }
@@ -86,6 +88,8 @@ export default{
     border:5px solid var(--secondary-color);
     padding:2rem;
     border-radius: 30px;
+    /* width:40%; */
+    margin-left:1rem;
   }
   .comment{
     color:var(--third-color);
