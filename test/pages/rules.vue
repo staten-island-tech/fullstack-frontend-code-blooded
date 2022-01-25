@@ -34,19 +34,15 @@
             </ul>
           </ul>
         </ul>
-        <div>
-          <p>Example Wild Card:</p>
-          <img src="" alt="">
-          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum vel cum architecto rem, deserunt animi dolorem accusamus aspernatur illo placeat enim nam id at, exercitationem nesciunt, fugiat omnis iste corporis.</p>
+        <div class="card-examples">
+          <h3 class="card-name">Example Wild Card:</h3>
+          <img src="@/imgs/WildCard.png" alt="hello">
+          <p class="card-description">When you play this card, you may change the color being played to any color (including the current color) to continue to play. 
+            You may play the Wild Card even if you have another playable card in hand. 
+            If this card is turned up at the beginning of play, the person to the left of the dealer chooses the color to behin play and plays the first card.</p>
         </div>
 
-        <!-- Reverse – If going clockwise, switch to counterclockwise or vice versa. It can only be played on a card that matches by color, or on another Reverse card. If turned up at the beginning of play, the dealer goes first, and the player to the dealer’s right is next (normally it would be the player to the dealer’s left).
-Skip – When a player places this card, the next player has to skip their turn. It can only be played on a card that matches by color, or on another Skip card. If turned up at the beginning of play, the first player (to the dealer’s left) loses his/her turn. The next player to that player’s right starts the game instead.
-
-Draw Two – When a person places this card, the next player will have to pick up two cards and forfeit his/her turn. It can only be played on a card that matches by color, or on another Draw Two. If turned up at the beginning of play, the first player draws two cards and gets skipped.
-Wild – This card represents all four colors, and can be placed on any card. The player has to state which color it will represent for the next player. It can be played regardless of whether another card is available. If turned up at the beginning of play, the first player chooses what color to continue play.
-Wild Draw Four – This acts just like the wild card except that the next player also has to draw four cards as well as forfeit his/her turn. With this card, you must have no other alternative cards to play that matches the color of the card previously played. If you play this card illegally, you may be challenged by the other player to show your hand to him/her. If guilty, you need to draw 4 cards. If not, the challenger needs to draw 6 cards instead. If turned up at the beginning of play, return this card to the Draw pile, shuffle, and turn up a new one.
-
+        
 stack cards of same number
 stack action cards of same color
  -->
@@ -75,7 +71,7 @@ export default {}
   flex-direction: column;
   align-items: center;
   background-color: var(--background-color);
-  height: 100vh;
+  height: auto;
   margin: 0;
   padding: 0;
 }
@@ -97,4 +93,20 @@ export default {}
   color: var(--font-color);
   padding: 3rem;
 }
+.card-examples{
+  background-color: blue;
+  margin-top: 5rem;
+  padding: 2rem;
+  width: 26rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.card-name{
+  background-color: red;
+  margin: 1rem;
+  margin-bottom: 2rem;
+  padding: .5rem;
+}
+.card-description
 </style>
