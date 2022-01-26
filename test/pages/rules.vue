@@ -108,5 +108,7 @@ export default {}
   margin-bottom: 2rem;
   padding: .5rem;
 }
-.card-description
+/* .card-description{
+
+} */
 </style>

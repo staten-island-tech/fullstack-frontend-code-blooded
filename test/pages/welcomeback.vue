@@ -8,7 +8,7 @@
       <div class="options1" >
       <h2 class="logo">welcome back!</h2>
       <button class="join1" @click="goFriends">find friends</button>
-      <button class="start1" @click="goGame"><a href="game">start a game</a></button>
+      <button class="start1" @click="goGame">start a game</button>
        <div class="join-contain">
         <input type="text" placeholder="enter code" name="join-code" required>
         <button class="join1 invitee" @click="goInivitee">join</button>

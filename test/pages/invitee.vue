@@ -19,7 +19,7 @@
                     </ul>
                 </div>
                 <div class="buttons">
-                    <button class="leave" @click="goIndex"><a href="/" class="leave">leave game</a></button>
+                    <button class="leave" @click="goIndex">leave game</button>
                 </div>
 
             </div>

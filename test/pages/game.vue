@@ -18,8 +18,8 @@
                     </ul>
                 </div>
                 <div class="buttons">
-                    <button class="start3" @click="goActualGame"><a href="actualGame" class="start">START GAME</a></button>
-                    <button class="delete3" @click="goWelcomeBack"><a class="delete3" href="welcomeback">DELETE GAME</a></button>
+                    <button class="start3" @click="goActualGame">START GAME</button>
+                    <button class="delete3" @click="goWelcomeBack">DELETE GAME</button>
                 </div>
 
             </div>
@@ -117,8 +117,8 @@ export default{
   .start3,
   .delete3{
     border-radius: 35px;
-    width:70%;
-    font-size:3rem;
+    width:100%;
+    font-size:1rem;
     margin-top:1rem;
   }
   input{

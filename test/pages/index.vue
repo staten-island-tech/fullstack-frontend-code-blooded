@@ -7,8 +7,8 @@
     <Join v-show="isJoinVisible"/>
     <div v-show="isJoinNotVisible" class="options" >
       <h1 class="logo">code-blooded</h1>
-      <input type="text" placeholder="enter a name" name="username" required>
-      <button class="start" @click="goGame"><a href="game">start a game</a></button>
+      <input class="input" type="text" placeholder="enter a name" name="username" required>
+      <button class="start" @click="goGame">start a game</button>
       <button class="join" @click="showModal">show join code</button>
     </div>
     <span class="apcsp">apcsp project</span>
@@ -110,6 +110,7 @@ import Join from '@/components/Join.vue';
     color:var(--font-color);
     font-size:3.5rem;
     background-color:var(--background-color);
+    text-align: center;
   }
   ::placeholder {
   padding:0.5rem;
