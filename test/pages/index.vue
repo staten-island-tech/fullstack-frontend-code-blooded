@@ -7,7 +7,7 @@
     <Join v-show="isJoinVisible"/>
     <div v-show="isJoinNotVisible" class="options" >
       <h1 class="logo">code-blooded</h1>
-      <input class="input" type="text" placeholder="enter a name" name="username" required>
+      <input ref="userName" class="input" type="text" placeholder="enter a name" name="username" required>
       <button class="start" @click="goGame">start a game</button>
       <button class="join" @click="showModal">show join code</button>
     </div>
@@ -29,15 +29,18 @@ import Join from '@/components/Join.vue';
       return {
         isJoinVisible: false,
         isJoinNotVisible:true,
+        username: null,
       };
     },
     methods: {
       showModal() {
         this.isJoinVisible = true;
         this.isJoinNotVisible = false;
+        this.username = this.$refs.userName.value;
       },
       goGame(){
         this.$router.push('/game');
+        this.username = this.$refs.userName.value;
       },
       closeModal() {
         this.isJoinVisible = false;
