@@ -1,8 +1,9 @@
 <template>
     <div id="app">
-        <h1>HAPPY BIRTHDAY LISA!</h1>
+        <h1>HAPPY BIRTHDAY Tia!</h1>
         <img src="https://media1.tenor.com/images/b47f7d30c6d5dd5d0c432fbb9c12ac67/tenor.gif?itemid=17762280" alt="">
         <button><a href="/">back to work</a></button>
+        <a href="win">DEMO</a>
     </div>
 </template>
 <style scoped>
