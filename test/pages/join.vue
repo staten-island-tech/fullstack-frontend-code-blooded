@@ -1,57 +1,36 @@
 <template>
-  <div id="app">
+<div class="join">
     <div class="btn">
       <button class="help"><a href="rules">?</a></button>
-      <button type="button" class="sign-in">sign in</button>
+      <button type="button" class="sign-in" @click="showModal">sign in</button>
     </div>
-    <Join v-show="isJoinVisible"/>
-    <div v-show="isJoinNotVisible" class="options" >
+    <div class="options">
       <h1 class="logo">code-blooded</h1>
-      <input ref="userName" class="input" type="text" placeholder="enter a name" name="username" required>
-      <button class="start" @click="goGame">start a game</button>
-      <button class="join" @click="showModal">show join code</button>
+      <input type="text" placeholder="enter a name" name="username" required>
+      <button class="start">start a game</button>
+      <div class="join-contain">
+          <input type="text" placeholder="enter code" name="join-code" required>
+        <button class="join">join</button>
+      </div>
     </div>
     <span class="apcsp">apcsp project</span>
-  </div>
-</template>
+</div>
 
+</template>
 <script>
-import Join from '@/components/Join.vue';
-  // import Modal from '@/components/Modal.vue';
-  //   <Modal v-show="isModalVisible" @close="closeModal"/>
-  export default {
-    name: 'App',
-    components: {
-      // Modal,
-      Join
-    },
-    data() {
-      return {
-        isJoinVisible: false,
-        isJoinNotVisible:true,
-        username: null,
-      };
-    },
-    methods: {
-      showModal() {
-        this.isJoinVisible = true;
-        this.isJoinNotVisible = false;
-        this.username = this.$refs.userName.value;
+export default{
+  methods: {
+      goActualGame() {
+        this.$router.push('/actualGame');
       },
-      goGame(){
-        this.$router.push('/game');
-        this.username = this.$refs.userName.value;
-      },
-      closeModal() {
-        this.isJoinVisible = false;
-        this.isJoinNotVisible = true;
+      goWelcomeBack(){
+        this.$router.push('/welcomeBack');
       },
     }
-  };
+}
 </script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Tomorrow:wght@400;600;900&display=swap');
-/* VARIABLES */
 :root{
   --background-color:#0E1555;
   --secondary-color:#4E1184;
@@ -62,7 +41,6 @@ import Join from '@/components/Join.vue';
   --medium-weight:600;
   --thin-weight:400;
 }
-/* Common CSS */
   #app{
     background-color: var(--background-color);
     max-width: 100%;
@@ -77,7 +55,6 @@ import Join from '@/components/Join.vue';
   a{
     text-decoration: none;
   }
-  /* ? Button */
   .help{
     background-color: gray;
     font-weight: var(--heavy-weight);
@@ -86,18 +63,14 @@ import Join from '@/components/Join.vue';
     font-size: 2rem;
     position:absolute;
   }
-  /* FLEX BOX FOR BUTTONS */
-  .options,
-  .join-contain{
+  .options{
     display:flex;
+    flex-direction: column;
+    width:90vw;
+    height:90vh;
     justify-content: center;
     margin:0 auto;
     align-items: center;
-  }
-  .options{
-    width:90vw;
-    height:90vh;
-    flex-direction: column;
   }
   .start,
   .join,
@@ -113,7 +86,6 @@ import Join from '@/components/Join.vue';
     color:var(--font-color);
     font-size:3.5rem;
     background-color:var(--background-color);
-    text-align: center;
   }
   ::placeholder {
   padding:0.5rem;
@@ -133,9 +105,8 @@ import Join from '@/components/Join.vue';
     color:var(--fourth-color);
     font-size:3rem;
     border-color: var(--secondary-color);
-    padding:.5rem;
+      padding:.5rem;
   }
-  /* SIGN IN BUTTON */
   .sign-in{
     background-color: var(--font-color);
     color:var(--background-color);
@@ -149,13 +120,11 @@ import Join from '@/components/Join.vue';
     font-weight: var(--heavy-weight);
      font-size:1.5rem;
   }
-  /* CODE BLOODED HEADER */
   .logo{
     color:var(--font-color);
     font-size: 6rem;
   margin-bottom:1rem;
   }
-  /* BOTTOM LOGO THINGY */
   .apcsp{
     background-color: var(--third-color);
     bottom:0;
@@ -163,12 +132,4 @@ import Join from '@/components/Join.vue';
     padding:1rem;
      border-radius: 5px 30px 5px 5px;
   }
-  /* Join Components */
-  .join-contain{
-    margin:0 auto;
-    justify-content: center;
-    align-items: center;
-    width:49%;
-  }
-
 </style>

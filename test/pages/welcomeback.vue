@@ -2,57 +2,41 @@
   <div id="app">
     <div class="btn">
       <button class="help"><a href="rules">?</a></button>
-      <button type="button" class="sign-in">sign in</button>
+      <button type="button" class="sign-out">sign out</button>
     </div>
-    <Join v-show="isJoinVisible"/>
-    <div v-show="isJoinNotVisible" class="options" >
-      <h1 class="logo">code-blooded</h1>
-      <input ref="userName" class="input" type="text" placeholder="enter a name" name="username" required>
-      <button class="start" @click="goGame">start a game</button>
-      <button class="join" @click="showModal">show join code</button>
+    <div id="box">
+      <div class="options1" >
+      <h2 class="logo">welcome back!</h2>
+      <button class="join1" @click="goFriends">find friends</button>
+      <button class="start1" @click="goGame">start a game</button>
+       <div class="join-contain">
+        <input type="text" placeholder="enter code" name="join-code" required>
+        <button class="join1 invitee" @click="goInivitee">join</button>
+      </div>
+    </div>
     </div>
     <span class="apcsp">apcsp project</span>
   </div>
 </template>
-
 <script>
-import Join from '@/components/Join.vue';
-  // import Modal from '@/components/Modal.vue';
-  //   <Modal v-show="isModalVisible" @close="closeModal"/>
-  export default {
-    name: 'App',
-    components: {
-      // Modal,
-      Join
-    },
-    data() {
-      return {
-        isJoinVisible: false,
-        isJoinNotVisible:true,
-        username: null,
-      };
-    },
-    methods: {
-      showModal() {
-        this.isJoinVisible = true;
-        this.isJoinNotVisible = false;
-        this.username = this.$refs.userName.value;
+export default{
+  methods: {
+      goInivitee() {
+        this.$router.push('/invitee');
       },
       goGame(){
         this.$router.push('/game');
-        this.username = this.$refs.userName.value;
       },
-      closeModal() {
-        this.isJoinVisible = false;
-        this.isJoinNotVisible = true;
+      goFriends(){
+        this.$router.push('/friends');
       },
     }
-  };
+}
 </script>
-<style>
+<style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Tomorrow:wght@400;600;900&display=swap');
 /* VARIABLES */
-:root{
+*{
   --background-color:#0E1555;
   --secondary-color:#4E1184;
   --third-color:#932B77;
@@ -65,10 +49,18 @@ import Join from '@/components/Join.vue';
 /* Common CSS */
   #app{
     background-color: var(--background-color);
-    max-width: 100%;
+    max-width: 100vw;
     height: 100vh;
     font-family: 'Tomorrow', sans-serif;
     margin:0 auto;
+  }
+  #box{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    position:relative;
+    width:100%;
+    height:100%;
   }
   button{
     font-family: 'Tomorrow', sans-serif;
@@ -87,23 +79,31 @@ import Join from '@/components/Join.vue';
     position:absolute;
   }
   /* FLEX BOX FOR BUTTONS */
-  .options,
+  .options1,
   .join-contain{
     display:flex;
     justify-content: center;
-    margin:0 auto;
+    margin:auto;
     align-items: center;
   }
-  .options{
-    width:90vw;
-    height:90vh;
+  .options1{
+    width:35vw;
+    height:70vh;
     flex-direction: column;
+    border:5px solid var(--fourth-color);
+    border-radius: 26px;
+    position:absolute;
+
   }
-  .start,
-  .join,
+  .options1::after{
+    content: "";
+    clear: both;
+    display: table;
+  }
+  .start1,
+  .join1,
   input{
     border-radius: 26px;
-    width:32%;
     font-size:3rem;
     margin-top:1rem;
   }
@@ -111,9 +111,9 @@ import Join from '@/components/Join.vue';
     border-color: var(--fourth-color);
     border-width: .3rem;
     color:var(--font-color);
-    font-size:3.5rem;
+    font-size:2.5rem;
+    width:62%;
     background-color:var(--background-color);
-    text-align: center;
   }
   ::placeholder {
   padding:0.5rem;
@@ -121,22 +121,27 @@ import Join from '@/components/Join.vue';
   font-family: 'Tomorrow', sans-serif;
   font-weight: var(--thin-weight);
 }
-  .start{
+  .start1{
+    width:62%;
     background-color: var(--fourth-color);
     color:var(--background-color);
     font-size:3rem;
     border-color: var(--fourth-color);
     padding:.5rem;
   }
-  .join{
+  .join1{
     background-color: var(--secondary-color);
     color:var(--fourth-color);
     font-size:3rem;
     border-color: var(--secondary-color);
     padding:.5rem;
+    width:62%;
+  }
+  .invitee{
+    width:40%;
   }
   /* SIGN IN BUTTON */
-  .sign-in{
+  .sign-out{
     background-color: var(--font-color);
     color:var(--background-color);
     border-radius: 25px;
@@ -152,8 +157,8 @@ import Join from '@/components/Join.vue';
   /* CODE BLOODED HEADER */
   .logo{
     color:var(--font-color);
-    font-size: 6rem;
-  margin-bottom:1rem;
+    font-size: 4.5rem;
+    margin-bottom:1rem;
   }
   /* BOTTOM LOGO THINGY */
   .apcsp{
@@ -168,7 +173,7 @@ import Join from '@/components/Join.vue';
     margin:0 auto;
     justify-content: center;
     align-items: center;
-    width:49%;
+    width:62%;
   }
 
 </style>
