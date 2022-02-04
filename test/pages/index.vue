@@ -1,6 +1,8 @@
+// main page
 <template>
   <div id="app">
     <div class="btn">
+      <!-- top rules button and sign in -->
       <button class="help"><a href="rules">?</a></button>
       <button type="button" class="sign-in">sign in</button>
     </div>
