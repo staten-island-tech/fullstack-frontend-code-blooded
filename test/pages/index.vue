@@ -71,13 +71,18 @@ export default {
   --medium-weight: 600;
   --thin-weight: 400;
 }
+
+.mdc-typography {
+  margin: 0;
+}
 /* Common CSS */
 #app {
   background-color: var(--background-color);
   max-width: 100%;
   height: 100vh;
   font-family: 'Tomorrow', sans-serif;
-  margin: 0 auto;
+  margin: 0;
+  padding: 0;
 }
 button {
   font-family: 'Tomorrow', sans-serif;
