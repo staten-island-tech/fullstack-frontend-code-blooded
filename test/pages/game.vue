@@ -5,7 +5,7 @@
             <div class="code">
                 <div class="sample"> 
                     <h1 class="code-header">CODE:</h1>
-                    <input id="game-input" name="gameId" type="tel" placeholder="Game PIN" data-functional-selector="game-pin-input" autocomplete="off" dir="auto" value="" aria-expanded="false">
+                    <span id="game-input">{{pin}}</span>
                 </div>
                 <p class="comment">share this with friends for them to join</p>
                 <h2 class="whoJoined">Friends who have joined</h2>
@@ -32,6 +32,18 @@
 </template>
 <script>
 export default{
+  data(){
+    return{
+      pin:'0000',
+    }
+  },
+  computed:{
+      generatePin () {
+    const min = 0
+    const max = 9999
+    return this.pin ===("0" + (Math.floor(Math.random() * (max - min + 1)) + min)).substr(-4);
+  }
+    },
   methods: {
       goActualGame() {
         this.$router.push('/actualGame');
@@ -39,7 +51,8 @@ export default{
       goWelcomeBack(){
         this.$router.push('/welcomeBack');
       },
-    }
+    },
+    
 }
 </script>
 
