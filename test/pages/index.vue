@@ -38,7 +38,7 @@ export default {
     return {
       isJoinVisible: false,
       isJoinNotVisible: true,
-      username: null,
+      username: '',
     }
   },
   methods: {
@@ -48,8 +48,13 @@ export default {
       this.username = this.$refs.userName.value
     },
     goGame() {
-      this.$router.push('/game')
-      this.username = this.$refs.userName.value
+      if (this.username.length > 0) {
+        this.$router.push('/game')
+        this.username = this.$refs.userName.value
+        console.log(this.username)
+      } else {
+        alert('Please input a username')
+      }
     },
     closeModal() {
       this.isJoinVisible = false
