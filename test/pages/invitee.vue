@@ -23,8 +23,9 @@
                 </div>
 
             </div>
-            <div class="chat">
+            <div id="chat" class="chat">
               <p class="friend chat">game created</p>
+              <span class="space"> </span>
               <input id="writeMessage" type="text" placeholder="write a message">
             </div>
             </div>
@@ -83,12 +84,18 @@ export default{
   .row{
     display:flex;
     flex-direction: row;
+    align-items: center;
+  }
+  #chat{
+    height:75vh;
+    display:flex;
+    flex-direction:column;
   }
   .chat{
     border:5px solid var(--secondary-color);
     padding:2rem;
     border-radius: 30px;
-    /* width:40%; */
+    width:40%;
     margin-left:1rem;
   }
   .comment{
@@ -125,12 +132,17 @@ export default{
     border-color: var(--fourth-color);
     border-width: .3rem;
     color:var(--font-color);
-    font-size:3.5rem;
+    font-size:1.5rem;
     border-radius: 26px;
     width:40%;
     font-size:3rem;
     margin-top:1rem;
     background-color:var(--background-color);
+  }
+  .space { flex-grow: 1; }
+  #writeMessage{
+    align-self:flex-end;
+    margin-top: auto; 
   }
   ::placeholder {
   padding:0.5rem;

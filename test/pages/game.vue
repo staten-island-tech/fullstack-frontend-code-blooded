@@ -5,7 +5,7 @@
             <div class="code">
                 <div class="sample"> 
                     <h1 class="code-header">CODE:</h1>
-                    <input id="game-input" name="gameId" type="tel" placeholder="Game PIN" data-functional-selector="game-pin-input" autocomplete="off" dir="auto" value="" aria-expanded="false">
+                    <span id="game-input">{{pin}}</span>
                 </div>
                 <p class="comment">share this with friends for them to join</p>
                 <h2 class="whoJoined">Friends who have joined</h2>
@@ -32,6 +32,11 @@
 </template>
 <script>
 export default{
+  data(){
+    return{
+      pin:1111,
+    }
+  },
   methods: {
       goActualGame() {
         this.$router.push('/actualGame');
@@ -39,7 +44,8 @@ export default{
       goWelcomeBack(){
         this.$router.push('/welcomeBack');
       },
-    }
+    },
+    
 }
 </script>
 
@@ -121,7 +127,7 @@ export default{
     font-size:1rem;
     margin-top:1rem;
   }
-  input{
+ #game-input{
     border-color: var(--fourth-color);
     border-width: .3rem;
     color:var(--font-color);
@@ -131,13 +137,12 @@ export default{
     font-size:2rem;
     margin-top:1rem;
     background-color:var(--background-color);
+    padding:0.5rem;
+    color:var(--font-color);
+    font-family: 'Tomorrow', sans-serif;
+    font-weight: var(--thin-weight);
   }
-  ::placeholder {
-  padding:0.5rem;
-  color:var(--font-color);
-  font-family: 'Tomorrow', sans-serif;
-  font-weight: var(--thin-weight);
-}
+
   .start3{
     background-color: var(--fourth-color);
     color:var(--background-color);
