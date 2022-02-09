@@ -34,16 +34,9 @@
 export default{
   data(){
     return{
-      pin:'0000',
+      pin:1111,
     }
   },
-  computed:{
-      generatePin () {
-    const min = 0
-    const max = 9999
-    return this.pin ===("0" + (Math.floor(Math.random() * (max - min + 1)) + min)).substr(-4);
-  }
-    },
   methods: {
       goActualGame() {
         this.$router.push('/actualGame');
@@ -134,7 +127,7 @@ export default{
     font-size:1rem;
     margin-top:1rem;
   }
-  input{
+ #game-input{
     border-color: var(--fourth-color);
     border-width: .3rem;
     color:var(--font-color);
@@ -144,13 +137,12 @@ export default{
     font-size:2rem;
     margin-top:1rem;
     background-color:var(--background-color);
+    padding:0.5rem;
+    color:var(--font-color);
+    font-family: 'Tomorrow', sans-serif;
+    font-weight: var(--thin-weight);
   }
-  ::placeholder {
-  padding:0.5rem;
-  color:var(--font-color);
-  font-family: 'Tomorrow', sans-serif;
-  font-weight: var(--thin-weight);
-}
+
   .start3{
     background-color: var(--fourth-color);
     color:var(--background-color);
