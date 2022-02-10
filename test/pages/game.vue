@@ -23,8 +23,9 @@
                 </div>
 
             </div>
-            <div class="chat hide">
+            <div id="chat" class="chat">
               <p class="friend chat">game created</p>
+              <span class="space"> </span>
               <input id="writeMessage" type="text" placeholder="write a message">
             </div>
         </div>
@@ -92,10 +93,18 @@ export default{
     display:flex;
     flex-direction: row;
   }
+   #chat{
+    height:75vh;
+    display:flex;
+    flex-direction:column;
+    color: var(--font-color);
+  }
   .chat{
     border:5px solid var(--secondary-color);
     padding:2rem;
     border-radius: 30px;
+    width:40%;
+    margin-left:1rem;
   }
   .comment{
     color:var(--third-color);

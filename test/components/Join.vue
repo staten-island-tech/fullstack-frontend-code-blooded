@@ -3,7 +3,7 @@
 <div class="options">
       <h1 class="logo">code-blooded</h1>
       <input type="text" placeholder="enter a name" name="username" required>
-      <button class="start" @click="goGame"><a href="game">start a game</a></button>
+      <button class="start" @click="goGame">start a game</button>
       <div class="join-contain">
         <input id="join-code" type="text" placeholder="enter code" name="join-code" required>
         <button class="join invitee" @click="goInvitee">join</button>
