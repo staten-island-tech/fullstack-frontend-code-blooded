@@ -8,10 +8,11 @@
       </button>
       <div class="join-contain">
         <input
-          id="join-code"
+          ref="joinCode"
+          class="joinInput"
           type="text"
           placeholder="enter code"
-          name="join-code"
+          name="joinCode"
           required
         />
         <button class="join invitee" @click="goInvitee">join</button>
@@ -22,7 +23,12 @@
 <script>
 export default {
   name: 'Options',
-  props: ['username'],
+  props: { username: String },
+  data() {
+    return {
+      joinCode: '',
+    }
+  },
   methods: {
     close() {
       this.$emit('close')
@@ -31,7 +37,7 @@ export default {
       this.$router.push('/game')
     },
     goInvitee() {
-      this.$router.push('/invitee')
+      // this.$router.push('/invitee')
       console.log(this.username)
     },
   },
@@ -41,7 +47,7 @@ export default {
 .optionapp {
   z-index: 20;
 }
-#join-code {
+.joinInput {
   font-size: 2.5rem;
   padding: 0.2rem;
 }
