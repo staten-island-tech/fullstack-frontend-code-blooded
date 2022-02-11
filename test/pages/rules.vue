@@ -55,8 +55,8 @@ stack action cards of same color
 export default {}
 </script>
 
-<style>
-:root {
+<style scoped>
+*{
   --background-color: #0e1555;
   --secondary-color: #4e1184;
   --third-color: #932b77;
