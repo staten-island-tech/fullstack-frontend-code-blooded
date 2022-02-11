@@ -2,7 +2,7 @@
   <div class="guestLogin">
     <!-- options to join/start game -->
     <div v-if="!joined" class="login-parent-container">
-      <div class="name-container">
+      <div class="login-child-container">
         <!-- input your username here -->
         <input type="text" class="user-name" v-model="currentUser" />
         <!-- click this to start a new game -->
@@ -90,7 +90,7 @@ export default {
   height: 50%;
   background-color: red;
 }
-.login-parent-container {
+.login-child-container {
   display: flex;
   justify-content: center;
   align-items: center;
