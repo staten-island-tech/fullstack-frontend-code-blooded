@@ -97,4 +97,9 @@ export default {
   flex-direction: column;
   background-color: antiquewhite;
 }
+input {
+  background-color: transparent;
+  height: 50px;
+  width: 100%;
+}
 </style>
