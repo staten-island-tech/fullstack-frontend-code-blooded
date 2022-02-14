@@ -6,14 +6,14 @@
         <!-- input your username here -->
         <input type="text" class="user-name" v-model="currentUser" />
         <!-- click this to start a new game -->
-        <button class="startGame" v-on:click="create">start a game</button>
+        <button class="startButton" v-on:click="create">start a game</button>
         <!-- click this to join an existing game -->
         <div class="join-existing-parent">
           <div v-if="joinClicked" class="join-existing">
             <h1>textext</h1>
             <input type="text" class="join-code" v-model="joinCode" />
           </div>
-          <button class="join-button" v-on:click="join">Join</button>
+          <button class="joinButton" v-on:click="join">Join</button>
         </div>
       </div>
     </div>
@@ -85,10 +85,17 @@ export default {
 </script>
 
 <style>
+.login-parent-container {
+  padding: 15px;
+}
+
 .join-existing {
   width: 50%;
   height: 50%;
   background-color: red;
+}
+.join-existing-parent {
+  width: 100%;
 }
 .login-child-container {
   display: flex;
@@ -97,9 +104,24 @@ export default {
   flex-direction: column;
   background-color: antiquewhite;
 }
-input {
-  background-color: transparent;
-  height: 50px;
+input,
+button {
+  height: 65px;
   width: 100%;
+  border-radius: 25px;
+}
+
+.user-name {
+  background-color: transparent;
+  border-color: var(--fourth-color);
+  border-width: 4px;
+}
+.startButton {
+  background-color: var(--fourth-color);
+  border: none;
+}
+.joinButton {
+  background-color: var(--secondary-color);
+  border: none;
 }
 </style>
