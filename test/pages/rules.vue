@@ -129,6 +129,7 @@ methods:{
   --secondary-color: #4e1184;
   --third-color: #d07eb8;
   --fourth-color: #fd367e;
+  --fifth-color: black;
   --card-title: #fff;
   --font-color: #fff;
   --heavy-weight: 900;
@@ -183,7 +184,7 @@ methods:{
   align-items: center;
 }
 .card-name{
-  background-color: red;
+  background-color: var(--fifth-color);
   margin: 1rem;
   margin-bottom: 2rem;
   padding: .5rem;
@@ -195,7 +196,7 @@ methods:{
 }
 
 .card-description{
-  background-color: rgb(41, 38, 38);
+  background-color: var(--fifth-color);
   margin-top: 2rem;
   padding: 1rem 0.5rem;
   color: white;
