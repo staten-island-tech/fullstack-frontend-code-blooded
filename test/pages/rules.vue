@@ -131,6 +131,7 @@ methods:{
   --fourth-color: #fd367e;
   --fifth-color: black;
   --card-title: #fff;
+  --card-background:rgb(117, 117, 189);
   --font-color: #fff;
   --heavy-weight: 900;
   --medium-weight: 600;
@@ -175,7 +176,7 @@ methods:{
   
 }
 .card-examples{
-  background-color: rgb(117, 117, 189);
+  background-color: var(--card-background);
   margin-top: 5rem;
   padding: 2rem;
   width: 24rem;
