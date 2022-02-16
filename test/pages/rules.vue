@@ -40,7 +40,7 @@
         <div class="card-container">
           <div v-for="card in cards" :key="card.id" class="card-examples">
             <div class="card-name">{{card.cardName}}</div>
-            <img :src="card.cardImage" alt="no">
+            <img class="card-img" :src="card.cardImage" alt="no">
             <p class="card-description">{{card.cardDescription}}</p>
           </div>
         </div>
@@ -183,6 +183,25 @@ methods:{
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+/* .card-img::hover{
+translate:
+} */
+.card-img:hover::after {
+  left: 120%;
+  transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+.card-img::after {
+  background: white;
+  content: "";
+  height: 150px;
+  left: -60px;
+  opacity: 0.2;
+  position: absolute;
+  top: -45px;
+  transform: rotate(30deg);
+  transition: all 0.25s cubic-bezier(0, 0, 1, 1);
+  width: 50px;
 }
 .card-name{
   background-color: var(--fifth-color);
