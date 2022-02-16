@@ -90,6 +90,7 @@ export default{
     height:75vh;
     display:flex;
     flex-direction:column;
+    color: var(--font-color);
   }
   .chat{
     border:5px solid var(--secondary-color);
