@@ -129,7 +129,7 @@ methods:{
   --secondary-color: #4e1184;
   --third-color: #d07eb8;
   --fourth-color: #fd367e;
-  --fifth-color: black;
+  --fifth-color: rgb(41, 38, 38);;
   --card-title: #fff;
   --card-background:rgb(117, 117, 189);
   --font-color: #fff;
