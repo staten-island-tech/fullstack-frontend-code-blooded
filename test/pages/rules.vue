@@ -40,7 +40,9 @@
         <div class="card-container">
           <div v-for="card in cards" :key="card.id" class="card-examples">
             <div class="card-name">{{card.cardName}}</div>
-            <img class="card-img" :src="card.cardImage" alt="no">
+            <div class="img-box">
+              <img class="card-img" :src="card.cardImage" alt="no">
+            </div>
             <p class="card-description">{{card.cardDescription}}</p>
           </div>
         </div>
@@ -187,12 +189,27 @@ methods:{
 /* .card-img::hover{
 translate:
 } */
+
+.card-img,
+.card-img:link,
+.card-img:visited {
+  transition: 0.3s;
+}
+
+.card-img:hover{
+  box-shadow: 0 10px 0.5rem rgba(0, 0, 0, 0.9);
+}
 .card-img:hover::after {
   left: 120%;
   transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
 }
+.card-img:active{
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.9);
+  background-color: color(dark);
+}
+
 .card-img::after {
-  background: white;
+  background: orange;
   content: "";
   height: 150px;
   left: -60px;
@@ -203,6 +220,41 @@ translate:
   transition: all 0.25s cubic-bezier(0, 0, 1, 1);
   width: 50px;
 }
+/* ignore */
+.img-box,
+.img-box:link,
+.img-box:visited {
+  transition: 0.3s;
+}
+
+.img-box:hover{
+    transform: scale(2);
+  box-shadow: 0 10px 0.5rem rgba(0, 0, 0, 0.9);
+}
+.img-box:hover::after {
+  left: 120%;
+  transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+.img-box:active{
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.9);
+  background-color: color(dark);
+}
+
+.img-box::after {
+  background: orange;
+  content: "";
+  height: 150px;
+  left: -60px;
+  opacity: 0.2;
+  position: absolute;
+  top: -45px;
+  transform: rotate(30deg);
+  transition: all 0.25s cubic-bezier(0, 0, 1, 1);
+  width: 50px;
+}
+
+
+/*  */
 .card-name{
   background-color: var(--fifth-color);
   margin: 1rem;
