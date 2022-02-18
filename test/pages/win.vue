@@ -7,7 +7,7 @@
     <div id="box">
       <div class="winScreen" >
       <div class="winBox">
-          <h2 class="logo">welcome back!</h2>
+          <h2 class="logo">congradulations</h2>
       </div>
       <button class="start1" @click="goGame">rematch</button>
       <button class="join1" @click="goGame">start new game</button>
@@ -76,7 +76,7 @@ export default{
     position:absolute;
   }
   /* FLEX BOX FOR BUTTONS */
-  .winScreen,
+  /* .winScreen,
   .join-contain{
     display:flex;
     justify-content: center;
@@ -105,7 +105,7 @@ export default{
     content: "";
     clear: both;
     display: table;
-  }
+  } */
   .start1,
   .join1,
   input{

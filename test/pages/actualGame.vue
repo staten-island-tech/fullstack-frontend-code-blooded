@@ -28,4 +28,7 @@
     vertical-align: baseline;
     box-sizing: border-box;
   }
+  .mdc-typography {
+  margin: 0;
+}
 </style>
