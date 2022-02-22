@@ -1,21 +1,21 @@
 <template>
 <div class="container">
-<div class="login">
-<div class="buttons">
-<button>Login</button>
-<button>Sign up</button>
-</div>
+    <div class="login">
+        <div class="buttons">
+            <button>Login</button>
+            <button>Sign up</button>
+        </div>
 <h1>Welcome!</h1>
 <p>Keep track of your progress and connect with friends.</p>
-<form>
-    <input type="text" name="username" placeholder="username/email">
-    <br>
-    <input type="text" name="password" placeholder="password">
-</form>
+    <form>
+        <input type="text" name="username" placeholder="username/email">
+        <br>
+        <input type="text" name="password" placeholder="password">
+    </form>
 <button class="play">Let's Play!</button>
-<br>
+        <br>
 <a href="https://www.google.com/webhp?authuser=1">forgot password?</a>
-</div>
+    </div>
 </div>
 </template>
 
