@@ -15,6 +15,9 @@
      --heavy-weight:900;
      --medium-weight:600;
      --thin-weight:400;
+    }  
+    .mdc-typography {
+      margin: 0;
     }
 /* Common CSS */
   #app{
