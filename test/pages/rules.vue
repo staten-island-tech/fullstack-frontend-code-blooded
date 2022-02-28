@@ -123,7 +123,7 @@ methods:{
 }
 </script>
 
-<style>
+<style scoped>
 :root {
   --background-color: #0e1555;
   --secondary-color: #4e1184;

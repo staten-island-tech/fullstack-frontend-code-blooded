@@ -1,6 +1,11 @@
 <template>
-    <div id="app">
-        <h1>NOTHING HERE YET</h1>
+    <div id="container">
+      <div class="player player1">
+        <h1 class="username">Username</h1>
+        <h2 class="cardLeft">Cards in hand</h2>
+      </div>
+      <div class="player player2"></div>
+      <div class="player player3"></div>
     </div>
 </template>
 <style scoped>
@@ -17,7 +22,7 @@
      --thin-weight:400;
     }
 /* Common CSS */
-  #app{
+  #container{
     background-color:#0E1555;
     max-width: 100vw;
     height: 100vh;
@@ -28,6 +33,21 @@
     vertical-align: baseline;
     box-sizing: border-box;
   }
+
+  .player{
+    background-color: white;
+    width: 27vw;
+    height: 5vh;
+  }
+
+
+
+
+
+
+
+
+
   .mdc-typography {
   margin: 0;
 }
