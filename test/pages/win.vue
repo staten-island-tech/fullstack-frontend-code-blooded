@@ -7,11 +7,13 @@
     <div id="box">
       <div class="winScreen" >
       <div class="winBox">
-          <h2 class="logo">congradulations</h2>
+          <h2 class="logo">congratulations</h2>
       </div>
-      <button class="start1" @click="goGame">rematch</button>
-      <button class="join1" @click="goGame">start new game</button>
-      <button class="join1" @click="goHome">home</button>
+      <div class="buttons-box">
+        <button class="start1" @click="goGame">rematch</button>
+        <button class="join1" @click="goGame">start new game</button>
+        <button class="join1" @click="goHome">home</button>
+      </div>
     </div>
     </div>
     <span class="apcsp">apcsp project</span>
@@ -75,6 +77,13 @@ export default{
     font-size: 2rem;
     position:absolute;
   }
+    .buttons-box{
+    display:flex;
+    justify-content: center;
+    margin:auto;
+    align-items: center;
+    flex-direction: column;
+  }
   /* FLEX BOX FOR BUTTONS */
   /* .winScreen,
   .join-contain{
@@ -107,28 +116,14 @@ export default{
     display: table;
   } */
   .start1,
-  .join1,
-  input{
-    border-radius: 26px;
-    font-size:3rem;
+  .join1{
+    border-radius: 40px;
+    font-size:2rem;
     margin-top:1rem;
+    text-transform: uppercase;
   }
-  input{
-    border-color: var(--fourth-color);
-    border-width: .3rem;
-    color:var(--font-color);
-    font-size:2.5rem;
-    width:62%;
-    background-color:var(--background-color);
-  }
-  ::placeholder {
-  padding:0.5rem;
-  color:var(--font-color);
-  font-family: 'Tomorrow', sans-serif;
-  font-weight: var(--thin-weight);
-}
   .start1{
-    width:62%;
+    width:82%;
     background-color: var(--fourth-color);
     color:var(--background-color);
     font-size:3rem;
@@ -141,10 +136,7 @@ export default{
     font-size:3rem;
     border-color: var(--secondary-color);
     padding:.5rem;
-    width:62%;
-  }
-  .invitee{
-    width:40%;
+    width:82%;
   }
   /* SIGN IN BUTTON */
   .sign-out{
