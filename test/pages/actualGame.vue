@@ -1,13 +1,20 @@
 <template>
     <div id="container">
-      <div class="player player1">
-        <h1 class="username">Username</h1>
-        <h2 class="cardLeft">Cards in hand</h2>
-      </div>
-      <div class="player player2"></div>
-      <div class="player player3"></div>
+      <div v-for="player in players" :key=player.id class="players">
+          <h1 class="username">{{player.playerName}}</h1>
+          <h2 class="cardLeft">{{player.cardData}}</h2>
+        </div>
+        <!-- <div class="player2"></div>
+        <div class="player3"></div> -->
       <a href="win">demo</a>
     </div>
+
+
+              <!-- <div v-for="card in cards" :key="card.id" class="card-examples">
+            <div class="card-name">{{card.cardName}}</div>
+            <img :src="card.cardImage" alt="no">
+            <p class="card-description">{{card.cardDescription}}</p>
+          </div> -->
 </template>
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Tomorrow:wght@400;600;900&display=swap');
@@ -35,10 +42,12 @@
     box-sizing: border-box;
   }
 
-  .player{
+  .players{
     background-color: white;
-    width: 27vw;
+    width: 25vw;
     height: 7.5vh;
+    display: flex;
+
   }
 
 
@@ -52,4 +61,37 @@
   .mdc-typography {
   margin: 0;
 }
+
 </style>
+
+
+
+
+<script>
+export default {
+  name: 'actualGame',
+
+data(){
+  return{
+    playerData:[
+      {
+        playerName: "placeholder",
+        cardData:"x numbers in hand",
+        id:1
+      },
+      {
+        playerName: "placeholder",
+        cardData:"x numbers in hand",
+        id:2
+      },
+      {
+        playerName: "placeholder",
+        cardData:"x numbers in hand",
+        id:3,
+      },      
+    ]
+
+
+  }
+},
+}
