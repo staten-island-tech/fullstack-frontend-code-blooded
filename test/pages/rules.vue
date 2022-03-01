@@ -124,7 +124,7 @@ methods:{
 </script>
 
 <style scoped>
-:root {
+*{
   --background-color: #0e1555;
   --secondary-color: #4e1184;
   --third-color: #d07eb8;
