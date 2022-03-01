@@ -6,6 +6,7 @@
       </div>
       <div class="player player2"></div>
       <div class="player player3"></div>
+      <a href="win">demo</a>
     </div>
 </template>
 <style scoped>
@@ -20,9 +21,6 @@
      --heavy-weight:900;
      --medium-weight:600;
      --thin-weight:400;
-    }  
-    .mdc-typography {
-      margin: 0;
     }
 /* Common CSS */
   #container{
@@ -40,7 +38,7 @@
   .player{
     background-color: white;
     width: 27vw;
-    height: 5vh;
+    height: 7.5vh;
   }
 
 
