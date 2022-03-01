@@ -137,6 +137,9 @@ methods:{
   --medium-weight: 600;
   --thin-weight: 400;
 }
+.mdc-typography {
+  margin: 0;
+}
 .container {
   display: flex;
   flex-direction: column;
