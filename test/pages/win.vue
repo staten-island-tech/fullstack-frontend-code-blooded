@@ -4,10 +4,29 @@
       <button class="help"><a href="rules">?</a></button>
       <button type="button" class="sign-out">sign out</button>
     </div>
+    <ul class="confettiBox">
+      <li class="confetti"></li>
+      <li class="confetti"></li>
+      <li class="confetti"></li>
+      <li class="confetti"></li>
+      <li class="confetti"></li>
+      <li class="confetti"></li>
+      <li class="confetti"></li>
+      <li class="confetti"></li>
+      <li class="confetti"></li>
+      <li class="confetti"></li>
+      <li class="confetti"></li>
+      <li class="confetti"></li>
+      <li class="confetti"></li>
+      <li class="confetti"></li>
+      <li class="confetti"></li>
+      <li class="confetti"></li>
+    </ul>
     <div id="box">
       <div class="winScreen" >
       <div class="winBox">
           <h2 class="logo">congratulations</h2>
+          <h2 class="logo winTime">win time: </h2>
       </div>
       <div class="buttons-box">
         <button class="start1" @click="goGame">rematch</button>
@@ -51,8 +70,14 @@ export default{
     max-width: 100vw;
     height: 100vh;
     font-family: 'Tomorrow', sans-serif;
-    margin:0 auto;
+    margin: 0 auto;
   }
+  .mdc-typography {
+margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+}
   #box{
     display:flex;
     align-items: center;
@@ -84,37 +109,18 @@ export default{
     align-items: center;
     flex-direction: column;
   }
-  /* FLEX BOX FOR BUTTONS */
-  /* .winScreen,
-  .join-contain{
-    display:flex;
-    justify-content: center;
-    margin:auto;
-    align-items: center;
-  }
-  .winScreen{
-    width:70vw;
-    height:60vh;
-    flex-direction: column;
-    border:5px solid var(--win-color);
-    border-radius: 26px;
-    position:absolute;
-    box-sizing: border-box;
-  }
-  .winBox{
+    .winBox{
     width:70vw;
     height:40vh;
-    flex-direction: column;
     border:5px solid var(--win-color);
     border-radius: 26px;
-    position:absolute;
     box-sizing: border-box;
+    margin:0 auto;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
   }
-  .winScreen::after{
-    content: "";
-    clear: both;
-    display: table;
-  } */
   .start1,
   .join1{
     border-radius: 40px;
@@ -123,7 +129,7 @@ export default{
     text-transform: uppercase;
   }
   .start1{
-    width:82%;
+    width:70%;
     background-color: var(--fourth-color);
     color:var(--background-color);
     font-size:3rem;
@@ -136,7 +142,7 @@ export default{
     font-size:3rem;
     border-color: var(--secondary-color);
     padding:.5rem;
-    width:82%;
+    width:70%;
   }
   /* SIGN IN BUTTON */
   .sign-out{
@@ -173,5 +179,73 @@ export default{
     align-items: center;
     width:62%;
   }
+/* confetti */
+.confetti {
+          width: 13px;
+          height: 20px;
+          background-color: #f2d74e;
+          position: absolute;
+          left: 50%;
+          animation: confetti 4s ease-in-out -2s infinite;
+          transform-origin: left top;
+        }
+        .confettiBox{
+          list-style: none;
+        }
+        .confetti:nth-child(1) {
+          background-color: #f2d74e; left: 10%; animation-delay: 0;
+        }
+        .confetti:nth-child(2) {
+          background-color: #95c3de; left: 15%; animation-delay: -5s;
+        }
+        .confetti:nth-child(3) {
+          background-color: #ff9a91; left: 20%; animation-delay: -3s;
+        }
+        .confetti:nth-child(4) {
+          background-color: #f2d74e; left: 25%; animation-delay: -2.5s;
+        }
+        .confetti:nth-child(5) {
+          background-color: #95c3de; left: 30%; animation-delay: -4s;
+        }
+        .confetti:nth-child(6) {
+          background-color: #ff9a91; left: 45%; animation-delay: -6s;
+        }
+        .confetti:nth-child(7) {
+          background-color: #f2d74e; left: 50%; animation-delay: -1.7s;
+        }
+        .confetti:nth-child(8) {
+          background-color: #95c3de; left: 55%; animation-delay: -1.5s;
+        }
+        .confetti:nth-child(9) {
+          background-color: #ff9a91; left: 60%; animation-delay: -7s;
+        }
+        .confetti:nth-child(10) {
+          background-color: #f2d74e; left: 65%; animation-delay: -2.5s;
+        }
+        .confetti:nth-child(11) {
+          background-color: #95c3de; left: 70%; animation-delay: -8s;
+        }
+        .confetti:nth-child(12) {
+          background-color: #ff9a91; left: 75%; animation-delay: -3.5s;
+        }
+        .confetti:nth-child(13) {
+          background-color: #f2d74e; left: 80%; animation-delay: -4.5s;
+        }
+        .confetti:nth-child(14) {
+          background-color: #95c3de; left: 85%; animation-delay: -1s;
+        }
+        .confetti:nth-child(15) {
+          background-color: #ff9a91; left: 90%; animation-delay: -4s;
+        }
+        .confetti:nth-child(16) {
+          background-color: #f2d74e; left: 98%; animation-delay: -3.5s;
+        }
 
+        @keyframes confetti {
+          0% { transform: rotateZ(15deg) rotateY(0deg) translate(0,0); }
+          25% { transform: rotateZ(5deg) rotateY(360deg) translate(-5vw,20vh); }
+          50% { transform: rotateZ(15deg) rotateY(720deg) translate(5vw,60vh); }
+          75% { transform: rotateZ(5deg) rotateY(1080deg) translate(-10vw,80vh); }
+          100% { transform: rotateZ(15deg) rotateY(1440deg) translate(10vw,97vh); }
+        }
 </style>
