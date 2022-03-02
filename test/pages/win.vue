@@ -70,8 +70,14 @@ export default{
     max-width: 100vw;
     height: 100vh;
     font-family: 'Tomorrow', sans-serif;
-    margin:0 auto;
+    margin: 0 auto;
   }
+  .mdc-typography {
+margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+}
   #box{
     display:flex;
     align-items: center;
@@ -115,37 +121,6 @@ export default{
     align-items: center;
     flex-direction: column;
   }
-  /* FLEX BOX FOR BUTTONS */
-  /* .winScreen,
-  .join-contain{
-    display:flex;
-    justify-content: center;
-    margin:auto;
-    align-items: center;
-  }
-  .winScreen{
-    width:70vw;
-    height:60vh;
-    flex-direction: column;
-    border:5px solid var(--win-color);
-    border-radius: 26px;
-    position:absolute;
-    box-sizing: border-box;
-  }
-  .winBox{
-    width:70vw;
-    height:40vh;
-    flex-direction: column;
-    border:5px solid var(--win-color);
-    border-radius: 26px;
-    position:absolute;
-    box-sizing: border-box;
-  }
-  .winScreen::after{
-    content: "";
-    clear: both;
-    display: table;
-  } */
   .start1,
   .join1{
     border-radius: 40px;
@@ -271,6 +246,6 @@ export default{
           25% { transform: rotateZ(5deg) rotateY(360deg) translate(-5vw,20vh); }
           50% { transform: rotateZ(15deg) rotateY(720deg) translate(5vw,60vh); }
           75% { transform: rotateZ(5deg) rotateY(1080deg) translate(-10vw,80vh); }
-          100% { transform: rotateZ(15deg) rotateY(1440deg) translate(10vw,100vh); }
+          100% { transform: rotateZ(15deg) rotateY(1440deg) translate(10vw,97vh); }
         }
 </style>
