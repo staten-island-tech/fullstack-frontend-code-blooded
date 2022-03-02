@@ -1,13 +1,15 @@
 <template>
     <div id="container">
-      <div class="player-container">
-        <div v-for="player in playerData" :key=player.id class="players">
-          <div class="player-box">
-            <h1 class="username">{{player.playerName}}hello</h1>
-            <h2 class="cardLeft">{{player.cardData}}</h2>
+      <section class="gamepage">
+        <div class="player-container">
+          <div v-for="player in playerData" :key=player.id class="players">
+            <div class="player-box">
+              <h1 class="username">{{player.playerName}}hello</h1>
+              <h2 class="cardLeft">{{player.cardData}}</h2>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
         <!-- <div class="player2"></div>
         <div class="player3"></div> -->
       <a href="win">demo</a>
@@ -77,11 +79,14 @@ data(){
     box-sizing: border-box;
   }
 
+
+
 .player-container{
   height: 40vh;
   width: 80vw;
   display: flex;
   flex-direction: row;
+  justify-content: space-evenly;
 }
 
 
