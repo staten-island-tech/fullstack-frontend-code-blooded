@@ -4,10 +4,14 @@
       <button class="help"><a href="rules">?</a></button>
       <button type="button" class="sign-out">sign out</button>
     </div>
+    <div class="confetti">
+      
+    </div>
     <div id="box">
       <div class="winScreen" >
       <div class="winBox">
           <h2 class="logo">congratulations</h2>
+          <h2 class="logo winTime">win time: </h2>
       </div>
       <div class="buttons-box">
         <button class="start1" @click="goGame">rematch</button>
@@ -84,6 +88,18 @@ export default{
     align-items: center;
     flex-direction: column;
   }
+    .winBox{
+    width:70vw;
+    height:40vh;
+    border:5px solid var(--win-color);
+    border-radius: 26px;
+    box-sizing: border-box;
+    margin:0 auto;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
   /* FLEX BOX FOR BUTTONS */
   /* .winScreen,
   .join-contain{
@@ -123,7 +139,7 @@ export default{
     text-transform: uppercase;
   }
   .start1{
-    width:82%;
+    width:70%;
     background-color: var(--fourth-color);
     color:var(--background-color);
     font-size:3rem;
@@ -136,7 +152,7 @@ export default{
     font-size:3rem;
     border-color: var(--secondary-color);
     padding:.5rem;
-    width:82%;
+    width:70%;
   }
   /* SIGN IN BUTTON */
   .sign-out{
@@ -173,5 +189,52 @@ export default{
     align-items: center;
     width:62%;
   }
+/* confetti */
+.confetti {
+          width: 15px;
+          height: 15px;
+          background-color: #f2d74e;
+          position: absolute;
+          left: 50%;
+          animation: confetti 5s ease-in-out -2s infinite;
+          transform-origin: left top;
+        }
+        .confetti:nth-child(1) {
+          background-color: #f2d74e; left: 10%; animation-delay: 0;
+        }
+        .confetti:nth-child(2) {
+          background-color: #95c3de; left: 20%; animation-delay: -5s;
+        }
+        .confetti:nth-child(3) {
+          background-color: #ff9a91; left: 30%; animation-delay: -3s;
+        }
+        .confetti:nth-child(4) {
+          background-color: #f2d74e; left: 40%; animation-delay: -2.5s;
+        }
+        .confetti:nth-child(5) {
+          background-color: #95c3de; left: 50%; animation-delay: -4s;
+        }
+        .confetti:nth-child(6) {
+          background-color: #ff9a91; left: 60%; animation-delay: -6s;
+        }
+        .confetti:nth-child(7) {
+          background-color: #f2d74e; left: 70%; animation-delay: -1.5s;
+        }
+        .confetti:nth-child(8) {
+          background-color: #95c3de; left: 80%; animation-delay: -2s;
+        }
+        .confetti:nth-child(9) {
+          background-color: #ff9a91; left: 90%; animation-delay: -3.5s;
+        }
+        .confetti:nth-child(10) {
+          background-color: #f2d74e; left: 100%; animation-delay: -2.5s;
+        }
 
+        @keyframes confetti {
+          0% { transform: rotateZ(15deg) rotateY(0deg) translate(0,0); }
+          25% { transform: rotateZ(5deg) rotateY(360deg) translate(-5vw,20vh); }
+          50% { transform: rotateZ(15deg) rotateY(720deg) translate(5vw,60vh); }
+          75% { transform: rotateZ(5deg) rotateY(1080deg) translate(-10vw,80vh); }
+          100% { transform: rotateZ(15deg) rotateY(1440deg) translate(10vw,110vh); }
+        }
 </style>
