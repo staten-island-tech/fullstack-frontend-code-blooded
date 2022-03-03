@@ -86,19 +86,25 @@ data(){
   width: 80vw;
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  transform: translate(10vw);
+  margin-top: 5rem;
 }
-
 
   .player-box{
     background-color: white;
     width: 25vw;
-    height: 25vh;
-    display: flex;
-    flex-direction: row;
+    height: 27vh;
     border: solid;
-    justify-content: space-around;
+    border-radius: 3rem;
 
+  }
+
+  .username{
+    background-color: orange;
+    width: 15rem;
+    position: relative;
+    border-radius: 2rem;
   }
 
 
