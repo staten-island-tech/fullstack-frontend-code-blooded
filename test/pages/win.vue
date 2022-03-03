@@ -73,7 +73,7 @@ export default{
     margin: 0 auto;
   }
   .mdc-typography {
-margin: 0;
+    margin: 0;
     padding: 0;
     border: 0;
     outline: 0;
@@ -245,7 +245,7 @@ margin: 0;
           0% { transform: rotateZ(15deg) rotateY(0deg) translate(0,0); }
           25% { transform: rotateZ(5deg) rotateY(360deg) translate(-5vw,20vh); }
           50% { transform: rotateZ(15deg) rotateY(720deg) translate(5vw,60vh); }
-          75% { transform: rotateZ(5deg) rotateY(1080deg) translate(-10vw,80vh); }
-          100% { transform: rotateZ(15deg) rotateY(1440deg) translate(10vw,97vh); }
+          75% { transform: rotateZ(5deg) rotateY(1080deg) translate(-7vw,80vh); }
+          100% { transform: rotateZ(15deg) rotateY(1440deg) translate(7vw,97vh); }
         }
 </style>
