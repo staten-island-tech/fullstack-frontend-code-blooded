@@ -1,36 +1,61 @@
 <template>
   <div class="guestLogin">
-    <!-- options to join/start game -->
+    <!-- options to join/start game on the home screen -->
     <div v-if="!joined" class="login-parent-container">
+      <h1 class="logo">code-blooded</h1>
       <div class="login-child-container">
         <!-- input your username here -->
-        <input type="text" class="user-name" v-model="currentUser" />
+        <input v-model="currentUser" type="text" class="user-name" />
         <!-- click this to start a new game -->
-        <button class="startButton" v-on:click="create">start a game</button>
+        <button class="startButton" @click="create">start a game</button>
         <!-- click this to join an existing game -->
         <div class="join-existing-parent">
           <div v-if="joinClicked" class="join-existing">
             <h1>textext</h1>
-            <input type="text" class="join-code" v-model="joinCode" />
+            <input type="text" class="join-code" />
           </div>
-          <button class="joinButton" v-on:click="join">Join</button>
+          <button class="joinButton" @click="join">Join</button>
         </div>
       </div>
     </div>
-    <!-- chat message display list -->
-    <div v-if="joined" class="chat">
-      <div class="list-container">
-        <div v-for="message in messages" :key="message.id">
-          <b>{{ message.user }}</b> :{{ message.text }}
+
+    <div v-if="joined" class="joined-screen">
+      <!-- things to the left of chat ie code, friends list, start/delete game -->
+      <div class="starter-info">
+        <h1>Code:</h1>
+        <div
+          v-for="message in messages"
+          :key="message.user"
+          class="participant-list"
+        >
+          <ul>
+            {{
+              message.user
+            }}
+          </ul>
+        </div>
+        <div class="time-options"></div>
+        <div class="start-delete">
+          <button class="start-game">start game</button>
+          <button class="delete-game">delete game</button>
         </div>
       </div>
-      <div class="text-input-container">
-        <textarea
-          v-model="text"
-          class="text-message"
-          v-on:keyup.enter="sendMessage"
-        >
-        </textarea>
+
+      <!-- chat message display list -->
+      <div class="chatbox">
+        <div class="list-container">
+          <div v-for="message in messages" :key="message.id">
+            <b>{{ message.user }}</b> :{{ message.text }}
+          </div>
+        </div>
+        <div class="text-input-container">
+          <textarea
+            v-model="text"
+            class="text-message"
+            @keyup.enter="sendMessage"
+          >
+          </textarea>
+        </div>
       </div>
     </div>
   </div>
@@ -49,6 +74,7 @@ export default {
       joinClicked: false,
       messages: [],
       joinCode: '',
+      players: [],
     }
   },
   methods: {
@@ -102,7 +128,6 @@ export default {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: antiquewhite;
 }
 input,
 button {
@@ -115,13 +140,23 @@ button {
   background-color: transparent;
   border-color: var(--fourth-color);
   border-width: 4px;
+  color: white;
 }
-.startButton {
+.startButton,
+.start-game {
   background-color: var(--fourth-color);
   border: none;
 }
-.joinButton {
+.joinButton,
+.delete-game {
   background-color: var(--secondary-color);
   border: none;
+}
+
+.joined-screen {
+  display: flex;
+  background-color: thistle;
+  justify-content: space-around;
+  width: 100vw;
 }
 </style>

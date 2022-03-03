@@ -8,7 +8,7 @@
     </div>
     <div class="main-parent">
       <div class="main-in">
-        <h1 class="logo">code-blooded</h1>
+        <!-- <h1 class="logo">code-blooded</h1> -->
         <GuestLogin></GuestLogin>
       </div>
     </div>
