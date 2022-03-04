@@ -115,6 +115,7 @@ data(){
     border: solid;
     border-radius: 3rem;
     border-width: 0.4rem;
+        color: var(--font-color);
 
   }
 
@@ -124,7 +125,6 @@ data(){
     position: relative;
     bottom: 2rem;
     border-radius: 1.5rem;
-    color: var(--font-color);
     font-weight: var(--medium-weight);
     text-transform: uppercase;
     overflow: hidden;
