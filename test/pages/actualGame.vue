@@ -94,6 +94,7 @@ data(){
   flex-direction: row;
   justify-content: space-evenly;
   margin-top: 5rem;
+  text-align: center;
 }
 
   .player-box{
@@ -102,6 +103,7 @@ data(){
     height: 27vh;
     border: solid;
     border-radius: 3rem;
+    border-width: 0.4rem;
 
   }
 
@@ -115,9 +117,6 @@ data(){
     font-weight: var(--medium-weight);
     text-transform: uppercase;
     overflow: hidden;
-    text-align: center;
-    
-    
   }
 
 
