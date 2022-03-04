@@ -56,7 +56,7 @@ data(){
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Tomorrow:wght@400;600;900&display=swap');
 /* VARIABLES */
-    :root{
+    *{
      --background-color:#0E1555;
      --secondary-color:#4E1184;
      --third-color:#932B77;
@@ -68,7 +68,7 @@ data(){
     }
 /* Common CSS */
   #container{
-    background-color:#0E1555;
+    background-color:var(--background-color);
     max-width: 100vw;
     height: 100vh;
     font-family: 'Tomorrow', sans-serif;
@@ -78,7 +78,9 @@ data(){
     vertical-align: baseline;
     box-sizing: border-box;
   }
-
+  .mdc-typography {
+  margin: 0;
+}
 
 
 .player-container{
@@ -109,9 +111,7 @@ data(){
 
 
 
-  .mdc-typography {
-  margin: 0;
-}
+
 
 </style>
 
