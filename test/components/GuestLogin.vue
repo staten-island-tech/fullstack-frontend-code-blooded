@@ -23,14 +23,11 @@
       <!-- things to the left of chat ie code, friends list, start/delete game -->
       <div class="starter-info">
         <h1>Code:</h1>
-        <div
-          v-for="message in messages"
-          :key="message.user"
-          class="participant-list"
-        >
+        <div v-for="player in players" :key="player" class="participant-list">
+          <h1>Friends who have joined</h1>
           <ul>
             {{
-              message.user
+              player
             }}
           </ul>
         </div>
@@ -50,7 +47,7 @@
         </div>
         <div class="text-input-container">
           <textarea
-            v-model="text"
+            v-model="chatText"
             class="text-message"
             @keyup.enter="sendMessage"
           >
@@ -70,7 +67,7 @@ export default {
     return {
       joined: false,
       currentUser: '',
-      text: '',
+      chatText: '',
       joinClicked: false,
       messages: [],
       joinCode: '',
@@ -86,20 +83,22 @@ export default {
       //   this.socketInstance.on('message:received', (data) => {
       //     this.messages = this.messages.concat(data)
       //   })
+      this.players = this.players.concat(this.currentUser)
     },
     join() {
       this.joinClicked = true
       console.log('clicked')
+      this.players = this.players.concat(this.currentUser)
     },
     sendMessage() {
-      console.log(this.text)
+      console.log(this.chatText)
       this.addMessage()
-      this.text = ''
+      this.chatText = ''
     },
     addMessage() {
       const message = {
         id: new Date().getTime(),
-        text: this.text,
+        text: this.chatText,
         user: this.currentUser,
       }
       this.messages = this.messages.concat(message)
