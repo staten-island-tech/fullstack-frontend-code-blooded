@@ -3,7 +3,8 @@
       <section class="gamepage">
         <div class="player-container">
           <div v-for="player in playerData" :key=player.id class="players">
-            <div class="player-box">
+            <div class="player-box" :style="{border:player.playerColor}">
+
               <h1 class="username">{{player.playerName}}hello</h1>
               <h2 class="cardLeft">{{player.cardData}}</h2>
             </div>
@@ -33,7 +34,8 @@ data(){
       {
         playerName: "placeholder",
         cardData:"x numbers in hand",
-        id:1
+        id:1,
+        playerColor:"orange",
       },
       {
         playerName: "placeholder",
@@ -92,7 +94,7 @@ data(){
 }
 
   .player-box{
-    background-color: white;
+    background-color: var(--background-color);
     width: 25vw;
     height: 27vh;
     border: solid;
@@ -101,10 +103,12 @@ data(){
   }
 
   .username{
-    background-color: orange;
+    background-color: pink;
     width: 15rem;
+    padding: 1rem;
     position: relative;
-    border-radius: 2rem;
+    bottom: 1.5rem;
+    border-radius: 1.5rem;
   }
 
 
