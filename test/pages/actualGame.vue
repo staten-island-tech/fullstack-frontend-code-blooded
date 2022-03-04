@@ -10,6 +10,17 @@
             </div>
           </div>
         </div>
+        <div class="cardStack">
+          <div class="cardHand">
+
+          </div>
+          <div class="gameActions">
+
+          </div>
+          <div class="table">
+            
+          </div>
+        </div>
       </section>
         <!-- <div class="player2"></div>
         <div class="player3"></div> -->
