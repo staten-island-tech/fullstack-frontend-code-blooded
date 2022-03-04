@@ -3,9 +3,9 @@
       <section class="gamepage">
         <div class="player-container">
           <div v-for="player in playerData" :key=player.id class="players">
-            <div class="player-box" :style="{border:player.playerColor}">
+            <div class="player-box" :style="{borderColor: player.playerColor}">
 
-              <h1 class="username">{{player.playerName}}hello</h1>
+              <h1 class="username" :style="{backgroundColor: player.playerColor}">{{player.playerName}}</h1>
               <h2 class="cardLeft">{{player.cardData}}</h2>
             </div>
           </div>
@@ -35,17 +35,19 @@ data(){
         playerName: "placeholder",
         cardData:"x numbers in hand",
         id:1,
-        playerColor:"orange",
+        playerColor:"#71D097",
       },
       {
         playerName: "placeholder",
         cardData:"x numbers in hand",
-        id:2
+        id:2,
+        playerColor: "#49C8FF"
       },
       {
         playerName: "placeholder",
         cardData:"x numbers in hand",
         id:3,
+        playerColor: "#EE914D"
       },      
     ]
 
@@ -87,11 +89,10 @@ data(){
 
 .player-container{
   height: 40vh;
-  width: 80vw;
+  width: 100vw;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  transform: translate(10vw);
+  justify-content: space-evenly;
   margin-top: 5rem;
 }
 
@@ -105,12 +106,18 @@ data(){
   }
 
   .username{
-    background-color: pink;
-    width: 15rem;
+    width: 10vw;
     padding: 1rem;
     position: relative;
-    bottom: 1.5rem;
+    bottom: 2rem;
     border-radius: 1.5rem;
+    color: var(--font-color);
+    font-weight: var(--medium-weight);
+    text-transform: uppercase;
+    overflow: hidden;
+    text-align: center;
+    
+    
   }
 
 
