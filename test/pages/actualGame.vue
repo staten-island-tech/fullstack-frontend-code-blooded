@@ -19,21 +19,14 @@
             <button class="pass">pass</button>
           </div>
           <div class="table">
-
+            <button class="exitGame" @click="goIndex">END GAME</button>
           </div>
         </div>
+        
       </section>
-        <!-- <div class="player2"></div>
-        <div class="player3"></div> -->
-      <a href="win">demo</a>
+      
     </div>
 
-
-              <!-- <div v-for="card in cards" :key="card.id" class="card-examples">
-            <div class="card-name">{{card.cardName}}</div>
-            <img :src="card.cardImage" alt="no">
-            <p class="card-description">{{card.cardDescription}}</p>
-          </div> -->
 </template>
 
 <script>
@@ -66,6 +59,11 @@ data(){
 
   }
 },
+  methods: {
+      goIndex() {
+        this.$router.push('/');
+      },
+    }
 }
 </script>
 
