@@ -12,6 +12,11 @@
         </div>
         <div class="cardStack">
           <div class="cardHand">
+            <h2 class="deck-numbers"></h2>
+            <div class="//icon"></div>
+            <h1 class="time"></h1>
+            <h2 class="next-player"></h2>
+            <div class="cards"></div>
             
           </div>
           <div class="gameActions">
@@ -127,6 +132,12 @@ data(){
     font-weight: var(--medium-weight);
     text-transform: uppercase;
     overflow: hidden;
+  }
+
+  .cardLeft{
+    font-weight: var(--medium-weight); 
+    transform: translate(0rem, 2.5rem);
+    font-size: 2rem;
   }
   /* Bottom */
   .cardStack{
