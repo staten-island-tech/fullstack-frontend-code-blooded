@@ -12,10 +12,11 @@
         </div>
         <div class="cardStack">
           <div class="cardHand">
-
+            
           </div>
           <div class="gameActions">
-
+            <button class="drawACard">draw a card</button>
+            <button class="pass">pass</button>
           </div>
           <div class="table">
 
@@ -97,7 +98,7 @@ data(){
   margin: 0;
 }
 
-
+/* top part of page */
 .player-container{
   height: 40vh;
   width: 100vw;
@@ -129,8 +130,49 @@ data(){
     text-transform: uppercase;
     overflow: hidden;
   }
-
-
+  /* Bottom */
+  .cardStack{
+    display:flex;
+    justify-content: center;
+    text-align: center;
+    width:100vw;
+    height:60vh;
+  }
+/* Bottom*/
+.cardHand{
+    display:flex;
+    flex-direction:column;
+    text-transform: uppercase;
+    width:33.33vw;
+  }
+/* Bottom Middle */
+  .gameActions{
+    display:flex;
+    flex-direction:column;
+    text-transform: uppercase;
+    width:33.33vw;
+  }
+  .drawACard,
+  .pass{
+    width:70%;
+    margin:0 auto;
+    font-family: 'Tomorrow', sans-serif;
+    font-weight:var(--medium-weight);
+    border-radius: 35px;
+    margin-top:1rem;
+    background-color: var(--fourth-color);
+    color:var(--font-color);
+    font-size:3rem;
+    border-color: var(--fourth-color);
+    padding:.5rem;
+  }
+/* Bottom Right */
+.table{
+    display:flex;
+    flex-direction:column;
+    text-transform: uppercase;
+    width:33.33vw;
+  }
 
 
 
