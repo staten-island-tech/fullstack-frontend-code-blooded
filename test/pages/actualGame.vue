@@ -143,35 +143,43 @@ data(){
     display:flex;
     flex-direction:column;
     text-transform: uppercase;
-    width:33.33vw;
+    width:40vw;
   }
 /* Bottom Middle */
   .gameActions{
     display:flex;
     flex-direction:column;
-    text-transform: uppercase;
-    width:33.33vw;
+    
+    width:27vw;
   }
   .drawACard,
   .pass{
-    width:70%;
+    width:75%;
     margin:0 auto;
     font-family: 'Tomorrow', sans-serif;
     font-weight:var(--medium-weight);
-    border-radius: 35px;
+    border-radius: 20px;
     margin-top:1rem;
-    background-color: var(--fourth-color);
     color:var(--font-color);
-    font-size:3rem;
-    border-color: var(--fourth-color);
+    font-size:2rem;
     padding:.5rem;
+    text-transform: uppercase;
+  }
+  .drawACard{
+    margin-top:60%;
+    background-color: var(--fourth-color);
+    border-color: var(--fourth-color);
+  }
+  .pass{
+    background-color: rgba(147, 43, 119, 1);
+     border-color: rgba(147, 43, 119, 1);
   }
 /* Bottom Right */
 .table{
     display:flex;
     flex-direction:column;
     text-transform: uppercase;
-    width:33.33vw;
+    width:33vw;
   }
 
 
