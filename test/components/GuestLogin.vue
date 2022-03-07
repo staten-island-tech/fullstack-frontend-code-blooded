@@ -59,7 +59,7 @@
 </template>
 
 <script>
-// import io from 'socket.io-client'
+import io from 'socket.io-client'
 
 export default {
   name: 'GuestLogin',
@@ -79,10 +79,10 @@ export default {
       console.log(this.currentUser)
       this.joined = true
       // connecting localhost
-      //   this.socketInstance = io('http://localhost:3000')
-      //   this.socketInstance.on('message:received', (data) => {
-      //     this.messages = this.messages.concat(data)
-      //   })
+      this.socketInstance = io('http://localhost:3000')
+      this.socketInstance.on('message:received', (data) => {
+        this.messages = this.messages.concat(data)
+      })
       this.players = this.players.concat(this.currentUser)
     },
     join() {
@@ -103,7 +103,7 @@ export default {
       }
       this.messages = this.messages.concat(message)
 
-      //   this.socketInstance.emit('message', message)
+      this.socketInstance.emit('message', message)
     },
   },
 }
