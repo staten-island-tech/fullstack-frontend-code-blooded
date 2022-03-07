@@ -6,7 +6,7 @@
             <div class="player-box" :style="{borderColor: player.playerColor}">
 
               <h1 class="username" :style="{backgroundColor: player.playerColor}">{{player.playerName}}</h1>
-              <h2 class="cardLeft">{{player.cardData}}</h2>
+              <h2 class="cardLeft">{{player.cardData}} cards in hand</h2>
             </div>
           </div>
         </div>
@@ -18,7 +18,7 @@
 
           </div>
           <div class="table">
-            
+
           </div>
         </div>
       </section>
@@ -44,19 +44,19 @@ data(){
     playerData:[
       {
         playerName: "placeholder",
-        cardData:"x numbers in hand",
+        cardData:0,
         id:1,
         playerColor:"#71D097",
       },
       {
         playerName: "placeholder",
-        cardData:"x numbers in hand",
+        cardData:0,
         id:2,
         playerColor: "#49C8FF"
       },
       {
         playerName: "placeholder",
-        cardData:"x numbers in hand",
+        cardData:0,
         id:3,
         playerColor: "#EE914D"
       },      
