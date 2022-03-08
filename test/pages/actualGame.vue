@@ -12,10 +12,15 @@
         </div>
         <div class="cardStack">
           <div class="cardHand">
-            <h2 class="deck-numbers"></h2>
-            <div class="//icon"></div>
-            <h1 class="time"></h1>
-            <h2 class="next-player"></h2>
+            <h2 class="deck-numbers">deck: 93 | used: 18</h2>
+            <div class="box">
+              <div class="icon">//</div>
+              <div class="time-player">
+                <h1 class="time">vue has "" seconds left</h1>
+                <h2 class="next-player">"" is up next</h2>
+              </div>
+            </div>
+
             <div class="cards"></div>
             
           </div>
@@ -153,13 +158,26 @@ data(){
     flex-direction:column;
     text-transform: uppercase;
     width:40vw;
+    background-color: white;
   }
+  .box{
+    display: flex;
+    flex-direction: row;
+    background-color: red;
+  }
+
+  .icon{
+    background-color: orange;
+  }
+
+  
 /* Bottom Middle */
   .gameActions{
     display:flex;
     flex-direction:column;
     
     width:27vw;
+    /* background-color: red; */
   }
   .drawACard,
   .pass{
@@ -189,6 +207,7 @@ data(){
     flex-direction:column;
     text-transform: uppercase;
     width:33vw;
+    /* background-color: yellow; */
   }
 
 
