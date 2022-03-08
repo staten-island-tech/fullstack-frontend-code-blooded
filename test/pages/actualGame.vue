@@ -24,6 +24,9 @@
             <button class="pass">pass</button>
           </div>
           <div class="table">
+            <div class="cardOnTable">
+              <h2 class="tableLabel">table</h2>
+            </div>
             <button class="exitGame" @click="goIndex">END GAME</button>
           </div>
         </div>
@@ -190,6 +193,21 @@ data(){
     flex-direction:column;
     text-transform: uppercase;
     width:33vw;
+  }
+  .cardOnTable{
+    width:90%;
+    height:70%;
+    border-radius: 2rem;
+    border:solid .4rem;
+    border-color:var(--fourth-color);
+    color:var(--fourth-color);
+    font-family: 'Tomorrow', sans-serif;
+  }
+  .tableLabel{
+    font-weight:600;
+    font-size:2rem;
+    margin-top:1rem;
+    letter-spacing:.1rem;
   }
 .exitGame{
   background-color: var(--fifth-color);
