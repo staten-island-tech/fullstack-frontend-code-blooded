@@ -68,6 +68,11 @@ data(){
         playerColor: "#EE914D"
       },      
     ]
+    cardList[
+      {
+        
+      }
+    ]
 
 
   }
