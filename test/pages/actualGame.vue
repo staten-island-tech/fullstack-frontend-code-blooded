@@ -13,16 +13,16 @@
         <div class="cardStack">
           <div class="cardHand">
             <h2 class="deck-numbers">deck: 93 | used: 18</h2>
-            <div class="box">
+            <div class="middleBox">
               <div class="icon">//</div>
               <div class="time-player">
                 <h1 class="time">vue has "" seconds left</h1>
                 <h2 class="next-player">"" is up next</h2>
               </div>
             </div>
+            <div class="cardsBox">
 
-            <div class="cards"></div>
-            
+            </div>
           </div>
           <div class="gameActions">
             <button class="drawACard">draw a card</button>
@@ -156,25 +156,32 @@ data(){
     width:100vw;
     height:60vh;
   }
-/* Bottom*/
+/* Bottom Top*/
 .cardHand{
     display:flex;
     flex-direction:column;
     text-transform: uppercase;
     width:40vw;
     background-color: white;
-  }
-  .box{
+  } 
+  .middleBox{
     display: flex;
-    flex-direction: row;
     background-color: red;
+    width:100%;
+    height:20%;
   }
 
   .icon{
     background-color: orange;
   }
-
-  
+  .cardsBox{
+    width:100%;
+    height:60%;
+  }
+  .deck-numbers{
+    eight:100%;
+    hieght:20%;
+  }
 /* Bottom Middle */
   .gameActions{
     display:flex;
