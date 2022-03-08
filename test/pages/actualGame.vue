@@ -80,6 +80,7 @@ data(){
      --secondary-color:#4E1184;
      --third-color:#932B77;
      --fourth-color:#FD367E;
+     --fifth-color:#880000;
      --font-color:#ffff;
      --heavy-weight:900;
      --medium-weight:600;
@@ -190,7 +191,20 @@ data(){
     text-transform: uppercase;
     width:33vw;
   }
-
+.exitGame{
+  background-color: var(--fifth-color);
+  color: var(--font-color);
+  border-color: var(--fifth-color);
+  font-family: 'Tomorrow', sans-serif;
+    font-weight:var(--medium-weight);
+    border-radius: 15px;
+  font-size:1.7rem;
+    padding:.5rem;
+    text-transform: uppercase;
+    bottom:0;
+    right:0;
+    position:absolute;
+}
 
 
 
