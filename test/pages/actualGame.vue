@@ -70,6 +70,7 @@ data(){
     ]
 
 
+
   }
 },
   methods: {
@@ -168,20 +169,29 @@ data(){
     display: flex;
     background-color: red;
     width:100%;
-    height:20%;
+    height:10rem;
+    /* justify-content: space-around; */
   }
 
   .icon{
-    background-color: orange;
+    background-color: #207B00;
+    width: 10rem;
+    align-items: center;
+    font-size: 5rem;
+  }
+
+  .time-player{
+    /* margin-left: 10rem; */
+    background-color: gray;
   }
   .cardsBox{
     width:100%;
     height:60%;
   }
-  .deck-numbers{
+  /* .deck-numbers{
     eight:100%;
     hieght:20%;
-  }
+  } */
 /* Bottom Middle */
   .gameActions{
     display:flex;
