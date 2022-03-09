@@ -250,13 +250,6 @@ data(){
     position:absolute;
 }
 
-
-
-
-
-
-
-
 </style>
 
 
