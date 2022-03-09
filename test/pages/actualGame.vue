@@ -169,29 +169,31 @@ data(){
     display: flex;
     background-color: red;
     width:100%;
-    height:10rem;
-    /* justify-content: space-around; */
+    height:20%;
   }
-
   .icon{
     background-color: #207B00;
-    width: 10rem;
+    width: 13%;
     align-items: center;
-    font-size: 5rem;
+    color: var(--font-color);
+    font-weight: var(--medium-weight);
+    border-radius:50%;
+    justify-content: center;
+    text-align: center;
+    font-size: 3rem;
+    display: flex;
+    justify-content: center;
+    text-align: center;
   }
 
-  .time-player{
-    /* margin-left: 10rem; */
-    background-color: gray;
-  }
   .cardsBox{
     width:100%;
     height:60%;
   }
-  /* .deck-numbers{
-    eight:100%;
-    hieght:20%;
-  } */
+  .deck-numbers{
+    width:100%;
+    height:20%;
+  }
 /* Bottom Middle */
   .gameActions{
     display:flex;
