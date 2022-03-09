@@ -67,7 +67,503 @@ data(){
         id:3,
         playerColor: "#EE914D"
       },      
+    ],
+
+    allCards:[
+      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },
+      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },      {
+        cardName: "Wild Card",
+        cardColor:"wild",
+        cardAction:"color change",
+        cardNumber:10,
+        //10 means all numbers. use in if else as an or statement
+        cardImg: require('./imgs/WildCard.png'),
+      },   
     ]
+
 
 
 
@@ -169,31 +665,29 @@ data(){
     display: flex;
     background-color: red;
     width:100%;
-    height:20%;
-  }
-  .icon{
-    background-color: #207B00;
-    width: 13%;
-    align-items: center;
-    color: var(--font-color);
-    font-weight: var(--medium-weight);
-    border-radius:50%;
-    justify-content: center;
-    text-align: center;
-    font-size: 3rem;
-    display: flex;
-    justify-content: center;
-    text-align: center;
+    height:10rem;
+    /* justify-content: space-around; */
   }
 
+  .icon{
+    background-color: #207B00;
+    width: 10rem;
+    align-items: center;
+    font-size: 5rem;
+  }
+
+  .time-player{
+    /* margin-left: 10rem; */
+    background-color: gray;
+  }
   .cardsBox{
     width:100%;
     height:60%;
   }
-  .deck-numbers{
-    width:100%;
-    height:20%;
-  }
+  /* .deck-numbers{
+    eight:100%;
+    hieght:20%;
+  } */
 /* Bottom Middle */
   .gameActions{
     display:flex;
@@ -261,6 +755,13 @@ data(){
     right:0;
     position:absolute;
 }
+
+
+
+
+
+
+
 
 </style>
 
