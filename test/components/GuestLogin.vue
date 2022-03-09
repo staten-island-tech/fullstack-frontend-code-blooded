@@ -23,11 +23,15 @@
       <!-- things to the left of chat ie code, friends list, start/delete game -->
       <div class="starter-info">
         <h1>Code:</h1>
-        <div v-for="player in players" :key="player" class="participant-list">
-          <h1>Friends who have joined</h1>
+        <h1>Friends who have joined</h1>
+        <div
+          v-for="message in messages"
+          :key="message.user"
+          class="participant-list"
+        >
           <ul>
             {{
-              player
+              message.user
             }}
           </ul>
         </div>
@@ -60,7 +64,6 @@
 
 <script>
 import io from 'socket.io-client'
-
 export default {
   name: 'GuestLogin',
   data() {
@@ -72,6 +75,7 @@ export default {
       messages: [],
       joinCode: '',
       players: [],
+      user: [],
     }
   },
   methods: {
@@ -83,7 +87,14 @@ export default {
       this.socketInstance.on('message:received', (data) => {
         this.messages = this.messages.concat(data)
       })
-      this.players = this.players.concat(this.currentUser)
+
+      const user = {
+        user: this.currentUser,
+      }
+      this.socketInstance.on('user:received', (data) => {
+        this.players = this.players.concat(this.currentUser)
+      })
+      this.socketInstance.emit('user', user)
     },
     join() {
       this.joinClicked = true
