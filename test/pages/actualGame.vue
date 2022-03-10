@@ -167,8 +167,9 @@ data(){
     display:flex;
     justify-content: center;
     text-align: center;
-    width:100vw;
+    width:95vw;
     height:60vh;
+    margin:0 auto; 
   }
 /* Bottom Top*/
 .cardHand{
@@ -176,14 +177,11 @@ data(){
     flex-direction:column;
     text-transform: uppercase;
     width:40vw;
-    background-color: white;
   } 
   .middleBox{
     display: flex;
-    background-color: red;
     width:100%;
     height:10rem;
-    /* justify-content: space-around; */
   }
 
   .icon{
@@ -193,10 +191,6 @@ data(){
     font-size: 5rem;
   }
 
-  .time-player{
-    /* margin-left: 10rem; */
-    background-color: gray;
-  }
   .cardsBox{
     width:100%;
     height:60%;
@@ -275,13 +269,6 @@ data(){
     right:0;
     position:absolute;
 }
-
-
-
-
-
-
-
 
 </style>
 
