@@ -201,11 +201,14 @@ data(){
     width:100%;
     height:60%;
   }
-  /* .deck-numbers{
-    eight:100%;
-    hieght:20%;
-  } */
-/* Bottom Middle */
+
+  .deck-numbers{
+    width:100%;
+    height:20%;
+    left: 0;
+  } 
+
+/* Bottom Middle*/
   .gameActions{
     display:flex;
     flex-direction:column;
