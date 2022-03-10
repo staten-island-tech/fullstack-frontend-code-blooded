@@ -5,7 +5,13 @@
       <h1 class="logo">code-blooded</h1>
       <div class="login-child-container">
         <!-- input your username here -->
-        <input v-model="currentUser" type="text" class="user-name" />
+        <input
+          v-model="currentUser"
+          type="text"
+          maxlength="10"
+          class="user-name"
+          required
+        />
         <!-- click this to start a new game -->
         <button class="startButton" @click="create">start a game</button>
         <!-- click this to join an existing game -->
@@ -24,14 +30,10 @@
       <div class="starter-info">
         <h1>Code:</h1>
         <h1>Friends who have joined</h1>
-        <div
-          v-for="message in messages"
-          :key="message.user"
-          class="participant-list"
-        >
+        <div v-for="player in players" :key="player" class="participant-list">
           <ul>
             {{
-              message.user
+              player
             }}
           </ul>
         </div>
@@ -75,7 +77,6 @@ export default {
       messages: [],
       joinCode: '',
       players: [],
-      user: [],
     }
   },
   methods: {
@@ -88,18 +89,27 @@ export default {
         this.messages = this.messages.concat(data)
       })
 
-      const user = {
-        user: this.currentUser,
-      }
-      this.socketInstance.on('user:received', (data) => {
-        this.players = this.players.concat(this.currentUser)
+      this.socketInstance.on('player:received', (data) => {
+        this.players = this.players.concat(data)
       })
-      this.socketInstance.emit('user', user)
+
+      if (this.currentUser.length < 1) {
+        this.joined = false
+        alert('please enter a username')
+      }
+      this.addUser()
     },
+
     join() {
       this.joinClicked = true
       console.log('clicked')
-      this.players = this.players.concat(this.currentUser)
+      this.addUser()
+    },
+    addUser() {
+      const player = this.currentUser
+      this.players = this.players.concat(player)
+      console.log(this.players)
+      this.socketInstance.emit('player', player)
     },
     sendMessage() {
       console.log(this.chatText)

@@ -17,8 +17,8 @@ io.on("connection", (socket) => {
   socket.on("message", (data) => {
     socket.broadcast.emit("message:received", data);
   });
-  socket.on("user", (data) => {
-    socket.broadcast.emit("user:received", data);
+  socket.on("player", (data) => {
+    socket.broadcast.emit("player:received", data);
   });
 
   socket.on("disconnect", () => {
