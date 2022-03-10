@@ -16,8 +16,11 @@
             <div class="middleBox">
               <div class="icon">//</div>
               <div class="time-player">
-                <h1 class="time">vue has "" seconds left</h1>
-                <h2 class="next-player">"" is up next</h2>
+                <div class="timeRow">
+                  <h1 class="time" :style="{color: playerColor}">{{playerName}} </h1>
+                  <h1 class="time"> has {{playerTime}} seconds left</h1>
+                </div>
+                <h2 class="next-player" :style="{color: nextColor}">{{playerNext}} is up next</h2>
               </div>
             </div>
             <div class="cardsBox">
@@ -48,6 +51,11 @@ export default {
 
 data(){
   return{
+    playerName:"Vue",
+    playerColor:"#71D097",
+    playerTime:22,
+    playerNext:"HTML",
+    nextColor:"#49C8FF",
     playerData:[
       {
         playerName: "placeholder",
@@ -177,18 +185,25 @@ data(){
     flex-direction:column;
     text-transform: uppercase;
     width:40vw;
+    color:var(--font-color);
   } 
   .middleBox{
     display: flex;
     width:100%;
     height:10rem;
   }
+  .timeRow{
+    display: flex;
 
+  }
   .icon{
     background-color: #207B00;
-    width: 10rem;
+    width: 5vw;
+    height:10vh;;
     align-items: center;
     font-size: 5rem;
+    border-radius: 50%;
+    padding:.5rem;
   }
 
   .cardsBox{
