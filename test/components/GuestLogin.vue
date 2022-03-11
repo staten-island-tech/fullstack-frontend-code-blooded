@@ -106,7 +106,9 @@ export default {
       this.addUser()
     },
     addUser() {
-      const player = this.currentUser
+      const player = {
+        player: this.currentUser,
+      }
       this.players = this.players.concat(player)
       console.log(this.players)
       this.socketInstance.emit('player', player)
