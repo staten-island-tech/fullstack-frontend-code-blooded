@@ -81,7 +81,7 @@ data(){
       {
         cardName: " +4 Wild Card",
         cardColor:"wild",
-        cardAction:"+4colorChange",
+        cardAction:"plus4colorChange",
         cardNumber:10,
         // 10 means all numbers. use in if else as an or statement
         cardImg: require('./imgs/plus4WildCard.png'),
