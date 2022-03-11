@@ -71,7 +71,7 @@ data(){
       },
       {
         cardName: "Wild Draw 4 Card",
-        cardImage: require('./imgs/+4WildCard.png'),
+        cardImage: require('./imgs/plus4WildCard.png'),
         cardDescription:`This card allows you to call the next color played and requires the next player to pick 4 cards from the DRAW pile and forfeit his/her turn.
             Note: Should the person next to play have Draw 2 Cards or Wild Draw 4 cards on hand, they may choose 
             to play them in response and pass the incremented penalty to the next player.`,
