@@ -20,7 +20,10 @@
                   <h1 class="time" :style="{color: playerColor}">{{playerName}} </h1>
                   <h1 class="time"> has {{playerTime}} seconds left</h1>
                 </div>
-                <h2 class="next-player" :style="{color: nextColor}">{{playerNext}} is up next</h2>
+                <div class="timeRow">
+                  <h2 class="time" :style="{color: nextColor}">{{playerNext}}</h2>
+                  <h2 class="time"> is up next</h2>
+                </div>
               </div>
             </div>
             <div class="cardsBox">
