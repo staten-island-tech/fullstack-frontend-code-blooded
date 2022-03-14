@@ -24,7 +24,7 @@
               </div>
             </div>
             <div class="cardsBox">
-
+                {{allCards.cardImg}}
             </div>
           </div>
           <div class="gameActions">
@@ -46,13 +46,13 @@
 </template>
 
 <script>
-import allCards from './pages/allCards.js'
+import allCards from './allCards.js'
 export default {
   name: 'actualGame',
 
 data(){
   return{
-    allCards: allCards,
+    allCards,
     playerName:"Vue",
     playerColor:"#71D097",
     playerTime:22,
