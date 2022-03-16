@@ -16,33 +16,30 @@ const allCards = [
     cardImg: require('./imgs/plus4WildCard.png'),
   },
   {
-    cardName: 'Reverse Card',
-    cardColor: 'wild',
-    cardAction: 'color change',
-    cardNumber: 10,
+    cardName: 'Red Reverse Card',
+    cardColor: 'red',
+    cardAction: 'reverse',
+    // 10 means all numbers. use in if else as an or statement
+    cardImg: require('./imgs/R-Reverse.png'),
+  },
+  {
+    cardName: 'Blue Reverse Card',
+    cardColor: 'blue',
+    cardAction: 'reverse',
     // 10 means all numbers. use in if else as an or statement
     cardImg: require('./imgs/WildCard.png'),
   },
   {
-    cardName: 'Reverse Card',
-    cardColor: 'wild',
-    cardAction: 'color change',
-    cardNumber: 10,
+    cardName: 'Yellow Reverse Card',
+    cardColor: 'yellow',
+    cardAction: 'reverse',
     // 10 means all numbers. use in if else as an or statement
     cardImg: require('./imgs/WildCard.png'),
   },
   {
-    cardName: 'Reverse Card',
-    cardColor: 'wild',
-    cardAction: 'color change',
-    cardNumber: 10,
-    // 10 means all numbers. use in if else as an or statement
-    cardImg: require('./imgs/WildCard.png'),
-  },
-  {
-    cardName: 'Wild Card',
-    cardColor: 'wild',
-    cardAction: 'color change',
+    cardName: 'Green Reverse Card',
+    cardColor: 'green',
+    cardAction: 'reverse',
     cardNumber: 10,
     // 10 means all numbers. use in if else as an or statement
     cardImg: require('./imgs/WildCard.png'),
