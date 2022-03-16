@@ -157,7 +157,28 @@ import Join from '@/components/Join.vue';
     color:var(--font-color);
     font-size: 6rem;
   margin-bottom:1rem;
+  background-image: linear-gradient(
+    -225deg,
+    #41327a 0%,
+    #44107a 29%,
+    #ff1361 67%,
+    #fff800 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+   background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 2s linear infinite;
+  display: inline-block;
   }
+  @keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}
   /* BOTTOM LOGO THINGY */
   .apcsp{
     background-color: var(--third-color);
