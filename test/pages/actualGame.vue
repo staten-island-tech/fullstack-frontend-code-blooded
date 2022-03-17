@@ -14,15 +14,15 @@
           <div class="cardHand">
             <h2 class="deck-numbers">deck: 93 | used: 18</h2>
             <div class="middleBox">
-              <div class="icon">//</div>
+              <div class="icon"><h3 class="slash">//</h3></div>
               <div class="time-player">
                 <div class="timeRow">
-                  <h1 class="time" :style="{color: playerColor}">{{playerName}} </h1>
-                  <h1 class="time"> has {{playerTime}} seconds left</h1>
+                  <h1 class="time sizeLarge" :style="{color: playerColor}">{{playerName}} </h1>
+                  <h1 class="time sizeLarge"> has {{playerTime}} seconds left</h1>
                 </div>
                 <div class="timeRow">
-                  <h2 class="time" :style="{color: nextColor}">{{playerNext}}</h2>
-                  <h2 class="time"> is up next</h2>
+                  <h2 class="time sizeSmall" :style="{color: nextColor}">{{playerNext}}</h2>
+                  <h2 class="time sizeSmall"> is up next</h2>
                 </div>
               </div>
             </div>
@@ -179,6 +179,7 @@ data(){
     text-transform: uppercase;
     width:40vw;
     color:var(--font-color);
+    margin:0 auto;
   } 
   .middleBox{
     display: flex;
@@ -187,18 +188,29 @@ data(){
   }
   .timeRow{
     display: flex;
-
+  }
+  .sizeLarge{
+    font-size: 2rem;
+  }
+  .sizeSmall{
+    font-size: 1.5rem;
   }
   .icon{
     background-color: #207B00;
-    width: 5vw;
-    height:10vh;;
+    width: 3.5vw;
+    height:8vh;;
     align-items: center;
-    font-size: 5rem;
+    justify-content: center;
+    font-size: 2.5rem;
     border-radius: 50%;
     padding:.5rem;
+    
   }
-
+  .slash{
+    position:relative;
+    bottom:2.7rem;
+    /* position: absolute; */
+  }
   .cardsBox{
     width:100%;
     height:60%;
