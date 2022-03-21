@@ -4,7 +4,7 @@ const allCards = [
     cardColor: 'wild',
     cardAction: 'color change',
     cardNumber: 10,
-    // 10 means all numbers. use in if else as an or statement
+    // 10 means all numbers. use in if else as an or statement    
     cardImg: require('./imgs/WildCard.png'),
   },
   {
@@ -19,94 +19,73 @@ const allCards = [
     cardName: 'Red Reverse Card',
     cardColor: 'red',
     cardAction: 'reverse',
-    // 10 means all numbers. use in if else as an or statement
     cardImg: require('./imgs/R-Reverse.png'),
   },
   {
     cardName: 'Blue Reverse Card',
     cardColor: 'blue',
     cardAction: 'reverse',
-    // 10 means all numbers. use in if else as an or statement
-    cardImg: require('./imgs/WildCard.png'),
+    cardImg: require('./imgs/B-Reverse.png'),
   },
   {
     cardName: 'Yellow Reverse Card',
     cardColor: 'yellow',
     cardAction: 'reverse',
-    // 10 means all numbers. use in if else as an or statement
-    cardImg: require('./imgs/WildCard.png'),
+    cardImg: require('./imgs/Y-Reverse.png'),
   },
   {
     cardName: 'Green Reverse Card',
     cardColor: 'green',
     cardAction: 'reverse',
-    cardNumber: 10,
-    // 10 means all numbers. use in if else as an or statement
-    cardImg: require('./imgs/WildCard.png'),
+    cardImg: require('./imgs/G-Reverse.png'),
   },
   {
-    cardName: 'Wild Card',
-    cardColor: 'wild',
-    cardAction: 'color change',
-    cardNumber: 10,
-    // 10 means all numbers. use in if else as an or statement
-    cardImg: require('./imgs/WildCard.png'),
+    cardName: 'Red Skip Card',
+    cardColor: 'red',
+    cardAction: 'skip',
+    cardImg: require('./imgs/R-Skip.png'),
   },
   {
-    cardName: 'Wild Card',
-    cardColor: 'wild',
-    cardAction: 'color change',
-    cardNumber: 10,
-    // 10 means all numbers. use in if else as an or statement
-    cardImg: require('./imgs/WildCard.png'),
+    cardName: 'Blue Skip Card',
+    cardColor: 'blue',
+    cardAction: 'skip',
+    cardImg: require('./imgs/B-Skip.png'),
   },
   {
-    cardName: 'Wild Card',
-    cardColor: 'wild',
+    cardName: 'Yellow Skip Card',
+    cardColor: 'yellow',
     cardAction: 'color change',
-    cardNumber: 10,
-    // 10 means all numbers. use in if else as an or statement
-    cardImg: require('./imgs/WildCard.png'),
+    cardImg: require('./imgs/Y-Skip.png'),
   },
   {
-    cardName: 'Wild Card',
+    cardName: 'Green Skip Card',
     cardColor: 'wild',
     cardAction: 'color change',
-    cardNumber: 10,
-    // 10 means all numbers. use in if else as an or statement
-    cardImg: require('./imgs/WildCard.png'),
+    cardImg: require('./imgs/G-Skip.png'),
   },
   {
-    cardName: 'Wild Card',
-    cardColor: 'wild',
-    cardAction: 'color change',
-    cardNumber: 10,
-    // 10 means all numbers. use in if else as an or statement
-    cardImg: require('./imgs/WildCard.png'),
+    cardName: 'Red +2 Card',
+    cardColor: 'red',
+    cardAction: 'plusTwo',
+    cardImg: require('./imgs/R+2.png'),
   },
   {
-    cardName: 'Wild Card',
-    cardColor: 'wild',
-    cardAction: 'color change',
-    cardNumber: 10,
-    // 10 means all numbers. use in if else as an or statement
-    cardImg: require('./imgs/WildCard.png'),
+    cardName: 'Blue +2 Card',
+    cardColor: 'blue',
+    cardAction: 'plusTwo',
+    cardImg: require('./imgs/B+2.png'),
   },
   {
-    cardName: 'Wild Card',
-    cardColor: 'wild',
-    cardAction: 'color change',
-    cardNumber: 10,
-    // 10 means all numbers. use in if else as an or statement
-    cardImg: require('./imgs/WildCard.png'),
+    cardName: 'Yellow +2 Card',
+    cardColor: 'yellow',
+    cardAction: 'plusTwo',
+    cardImg: require('./imgs/Y+2.png'),
   },
   {
-    cardName: 'Wild Card',
-    cardColor: 'wild',
-    cardAction: 'color change',
-    cardNumber: 10,
-    // 10 means all numbers. use in if else as an or statement
-    cardImg: require('./imgs/WildCard.png'),
+    cardName: 'Green +2 Card',
+    cardColor: 'green',
+    cardAction: 'plusTwo',
+    cardImg: require('./imgs/G+2.png'),
   },
   {
     cardName: 'Wild Card',
