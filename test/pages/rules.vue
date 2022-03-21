@@ -79,7 +79,7 @@ data(){
       },
       {
         cardName: "Draw 2 Card",
-        cardImage: require('./imgs/+2-B.png'),
+        cardImage: require('./imgs/B+2.png'),
         cardDescription:`When you play this card, the next person to play must draw 2 cards and forfeit his/her turn.
             You may only play this card on a matching color or on another Draw 2 Card.
             Note: Should the person next to play have Draw 2 Cards or Wild Draw 4 cards on hand, they may choose 
