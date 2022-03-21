@@ -86,19 +86,7 @@ export default{
     flex-direction: row;
     align-items: center;
   }
-  #chat{
-    height:75vh;
-    display:flex;
-    flex-direction:column;
-    color: var(--font-color);
-  }
-  .chat{
-    border:5px solid var(--secondary-color);
-    padding:2rem;
-    border-radius: 30px;
-    width:40%;
-    margin-left:1rem;
-  }
+
   .comment{
     color:var(--third-color);
     font-family: 'Tomorrow', sans-serif;
@@ -184,18 +172,6 @@ export default{
     color:var(--font-color);
     font-weight: var(--medium-weight);
   }
-  /* .friend1{
-
-  }
-  .friend2{
-
-  }
-  .friend3{
-
-  }
-  .friend4{
-
-  } */
   li{
       list-style: none;
   }
@@ -212,5 +188,17 @@ export default{
 input[type="text"]::placeholder{
   color:var(--third-color)
 }
-
+  #chat{
+    height:75vh;
+    display:flex;
+    flex-direction:column;
+    color: var(--font-color);
+  }
+  .chat{
+    border:5px solid var(--secondary-color);
+    padding:2rem;
+    border-radius: 30px;
+    width:40%;
+    margin-left:1rem;
+  }
 </style>

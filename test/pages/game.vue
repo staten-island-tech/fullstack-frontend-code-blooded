@@ -2,7 +2,8 @@
     <div class="code-page"> 
         <button class="help"><a href="rules">?</a></button>
         <div class="options3">
-            <div class="code">
+            <div class="row">
+              <div class="code">
                 <div class="sample"> 
                     <h1 class="code-header">CODE:</h1>
                     <span id="game-input">{{pin}}</span>
@@ -29,6 +30,7 @@
               <input id="writeMessage" type="text" placeholder="write a message">
             </div>
         </div>
+            </div>
     </div>
 </template>
 <script>
@@ -93,19 +95,15 @@ export default{
     display:flex;
     flex-direction: row;
   }
-   #chat{
-    height:75vh;
+  .row{
     display:flex;
-    flex-direction:column;
-    color: var(--font-color);
+    flex-direction: row;
+    align-items: center;
   }
-  .chat{
-    border:5px solid var(--secondary-color);
-    padding:2rem;
-    border-radius: 30px;
-    width:40%;
-    margin-left:1rem;
+  .code{
+    width:40vw;
   }
+
   .comment{
     color:var(--third-color);
     font-family: 'Tomorrow', sans-serif;
@@ -132,8 +130,8 @@ export default{
   .start3,
   .delete3{
     border-radius: 35px;
-    width:100%;
-    font-size:1rem;
+    width:70%;
+    font-size:3rem;
     margin-top:1rem;
   }
  #game-input{
@@ -185,18 +183,7 @@ export default{
     color:var(--font-color);
     font-weight: var(--medium-weight);
   }
-  /* .friend1{
 
-  }
-  .friend2{
-
-  }
-  .friend3{
-
-  }
-  .friend4{
-
-  } */
   li{
       list-style: none;
   }
@@ -209,9 +196,24 @@ export default{
   box-sizing: border-box;
   border: 2px solid var(--third-color);
   border-radius: 20px;
+  align-self: flex-end;
 }
 input[type="text"]::placeholder{
   color:var(--third-color)
 }
+  #chat{
+    height:75vh;
+    display:flex;
+    flex-direction:column;
+    justify-content: space-between;
+    color: var(--font-color);
+  }
+  .chat{
+    border:5px solid var(--secondary-color);
+    padding:2rem;
+    border-radius: 30px;
+    width:40%;
+    margin-left:1rem;
+  }
 
 </style>
