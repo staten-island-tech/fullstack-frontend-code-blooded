@@ -52,7 +52,7 @@ export default {
   --thin-weight: 400;
 }
 
-template {
+.mdc-typography {
   margin: 0;
 }
 
@@ -62,6 +62,8 @@ template {
   max-width: 100vw;
   height: 100vh;
   font-family: 'Tomorrow', sans-serif;
+  margin: 0;
+  padding: 0;
 }
 #box {
   display: flex;

@@ -86,6 +86,7 @@ input {
   color: var(--font-color);
   font-size: 3.5rem;
   background-color: var(--background-color);
+  text-align: center;
 }
 ::placeholder {
   padding: 0.5rem;
@@ -98,13 +99,6 @@ input {
   color: var(--background-color);
   font-size: 3rem;
   border-color: var(--fourth-color);
-  padding: 0.5rem;
-}
-.join {
-  background-color: var(--secondary-color);
-  color: var(--fourth-color);
-  font-size: 3rem;
-  border-color: var(--secondary-color);
   padding: 0.5rem;
 }
 .sign-in {

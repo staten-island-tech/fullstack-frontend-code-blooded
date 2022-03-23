@@ -6,39 +6,34 @@
       <button class="help"><a href="rules">?</a></button>
       <button type="button" class="sign-in">sign in</button>
     </div>
-    <Join v-show="isJoinVisible" />
-    <div v-show="isJoinNotVisible" class="options">
-      <h1 class="logo">code-blooded</h1>
-      <input
-        ref="userName"
-        class="input"
-        type="text"
-        placeholder="enter a name"
-        name="username"
-        required
-      />
-      <button class="start" @click="goGame">start a game</button>
-      <button class="join" @click="showModal">show join code</button>
+    <div class="main-parent">
+      <div class="main-in">
+        <!-- <h1 class="logo">code-blooded</h1> -->
+        <GuestLogin></GuestLogin>
+      </div>
     </div>
-    <span class="apcsp">apcsp project</span>
+
+    <!-- <span class="apcsp">apcsp project</span> -->
   </div>
 </template>
 
 <script>
-import Join from '@/components/Join.vue'
+// import Join from '@/components/Join.vue'
 // import Modal from '@/components/Modal.vue';
 //   <Modal v-show="isModalVisible" @close="closeModal"/>
+
+import GuestLogin from '@/components/GuestLogin.vue'
 export default {
   name: 'App',
   components: {
     // Modal,
-    Join,
+    GuestLogin,
   },
   data() {
     return {
       isJoinVisible: false,
       isJoinNotVisible: true,
-      username: null,
+      username: '',
     }
   },
   methods: {
@@ -48,8 +43,13 @@ export default {
       this.username = this.$refs.userName.value
     },
     goGame() {
-      this.$router.push('/game')
-      this.username = this.$refs.userName.value
+      if (this.username.length > 0) {
+        this.$router.push('/game')
+        this.username = this.$refs.userName.value
+        console.log(this.username)
+      } else {
+        alert('Please input a username')
+      }
     },
     closeModal() {
       this.isJoinVisible = false
@@ -73,6 +73,10 @@ export default {
 }
 
 .mdc-typography {
+  margin: 0;
+}
+
+h1 {
   margin: 0;
 }
 /* Common CSS */
@@ -100,55 +104,7 @@ a {
   font-size: 2rem;
   position: absolute;
 }
-/* FLEX BOX FOR BUTTONS */
-.options,
-.join-contain {
-  display: flex;
-  justify-content: center;
-  margin: 0 auto;
-  align-items: center;
-}
-.options {
-  width: 90vw;
-  height: 90vh;
-  flex-direction: column;
-}
-.start,
-.join,
-input {
-  border-radius: 26px;
-  width: 32%;
-  font-size: 3rem;
-  margin-top: 1rem;
-}
-input {
-  border-color: var(--fourth-color);
-  border-width: 0.3rem;
-  color: var(--font-color);
-  font-size: 3.5rem;
-  background-color: var(--background-color);
-  text-align: center;
-}
-::placeholder {
-  padding: 0.5rem;
-  color: var(--font-color);
-  font-family: 'Tomorrow', sans-serif;
-  font-weight: var(--thin-weight);
-}
-.start {
-  background-color: var(--fourth-color);
-  color: var(--background-color);
-  font-size: 3rem;
-  border-color: var(--fourth-color);
-  padding: 0.5rem;
-}
-.join {
-  background-color: var(--secondary-color);
-  color: var(--fourth-color);
-  font-size: 3rem;
-  border-color: var(--secondary-color);
-  padding: 0.5rem;
-}
+
 /* SIGN IN BUTTON */
 .sign-in {
   background-color: var(--font-color);
@@ -169,19 +125,11 @@ input {
   font-size: 6rem;
   margin-bottom: 1rem;
 }
-/* BOTTOM LOGO THINGY */
-.apcsp {
-  background-color: var(--third-color);
-  bottom: 0;
-  position: absolute;
-  padding: 1rem;
-  border-radius: 5px 30px 5px 5px;
-}
-/* Join Components */
-.join-contain {
-  margin: 0 auto;
+.main-parent {
+  width: 100%;
+  height: 100%;
+  display: flex;
   justify-content: center;
   align-items: center;
-  width: 49%;
 }
 </style>
