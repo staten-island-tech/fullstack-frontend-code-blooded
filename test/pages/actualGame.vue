@@ -217,9 +217,9 @@ data(){
   }
 
   .deck-numbers{
-    width:100%;
-    height:20%;
+    width:40%;
     left: 0;
+    margin: 0;
   } 
 
 /* Bottom Middle*/
