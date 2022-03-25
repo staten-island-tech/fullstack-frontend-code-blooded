@@ -188,6 +188,8 @@ data(){
   }
   .timeRow{
     display: flex;
+        height: 40%;
+    margin-top: -2%;
   }
   .sizeLarge{
     font-size: 2rem;
@@ -208,7 +210,7 @@ data(){
   }
   .slash{
     position:relative;
-    bottom:2.7rem;
+    bottom:30%;
     /* position: absolute; */
   }
   .cardsBox{
