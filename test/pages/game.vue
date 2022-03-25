@@ -6,7 +6,7 @@
               <div class="code">
                 <div class="sample"> 
                     <h1 class="code-header">CODE:</h1>
-                    <span id="game-input">{{pin}}</span>
+                    <Pin></Pin>
                 </div>
                 <p class="comment">share this with friends for them to join</p>
                 <h2 class="whoJoined">Friends who have joined</h2>
@@ -34,10 +34,14 @@
     </div>
 </template>
 <script>
+import Pin from '@/components/Pin.vue';
 export default{
+  components: {
+      Pin
+    },
   data(){
     return{
-      pin:1111,
+      
     }
   },
   methods: {
@@ -122,6 +126,7 @@ export default{
   .sample{
       display: flex;
       flex-direction: row;
+      align-items: center;
   }
   .buttons{
       display: flex;

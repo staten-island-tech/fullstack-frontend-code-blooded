@@ -6,7 +6,7 @@
               <div class="code">
                 <div class="sample"> 
                     <h1 class="code-header">CODE:</h1>
-                    <input id="game-input" name="gameId" type="tel" placeholder="Game PIN" data-functional-selector="game-pin-input" autocomplete="off" dir="auto" value="" aria-expanded="false">
+                    <Pin></Pin>
                 </div>
                 <p class="comment">share this with friends for them to join</p>
                 <h2 class="whoJoined">Friends who have joined</h2>
@@ -33,7 +33,11 @@
     </div>
 </template>
 <script>
+import Pin from '@/components/Pin.vue';
 export default{
+  components: {
+      Pin
+    },
   methods: {
       goIndex() {
         this.$router.push('/');
@@ -56,6 +60,9 @@ export default{
 /* DISPLAY NONE */
 .hide{
   display:none;
+}
+.code{
+  width:60%;
 }
   .code-page{
     background-color: var(--background-color);
@@ -96,7 +103,7 @@ export default{
   .options2{
     display:flex;
     flex-direction: column;
-    width:90vw;
+    width:95vw;
     height:90vh;
     justify-content: center;
     margin:0 auto;
@@ -105,6 +112,7 @@ export default{
   .sample{
       display: flex;
       flex-direction: row;
+      align-items: center;
   }
   .buttons{
       display: flex;
@@ -198,7 +206,7 @@ input[type="text"]::placeholder{
     border:5px solid var(--secondary-color);
     padding:2rem;
     border-radius: 30px;
-    width:40%;
+    width:50%;
     margin-left:1rem;
   }
 </style>

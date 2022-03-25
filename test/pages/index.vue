@@ -195,4 +195,5 @@ import Join from '@/components/Join.vue';
     width:49%;
   }
 
+
 </style>
