@@ -1,3 +1,5 @@
+// playing game
+
 <template>
     <div id="container">
       <section class="gamepage">
