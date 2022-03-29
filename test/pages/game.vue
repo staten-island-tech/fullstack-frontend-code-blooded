@@ -41,7 +41,11 @@ export default {
     Pin,
   },
   data() {
-    return {}
+    return {
+      currentUser: '',
+      messages: [],
+      text: '',
+    }
   },
   methods: {
     goActualGame() {

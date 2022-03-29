@@ -26,32 +26,33 @@
 
 <script>
 import Join from '@/components/Join.vue'
-// import Modal from '@/components/Modal.vue';
-//   <Modal v-show="isModalVisible" @close="closeModal"/>
 export default {
   name: 'App',
   components: {
-    // Modal,
     Join,
   },
   data() {
     return {
+      // enter code when join is clicked
       isJoinVisible: false,
       isJoinNotVisible: true,
-      username: null,
+
+      // variables
+      currentUser: '',
     }
   },
   methods: {
     showModal() {
+      // enter code when join is clicked
       this.isJoinVisible = true
       this.isJoinNotVisible = false
-      this.username = this.$refs.userName.value
     },
     goGame() {
+      // go to waiting room
       this.$router.push('/game')
-      this.username = this.$refs.userName.value
     },
     closeModal() {
+      // enter code when join is clicked
       this.isJoinVisible = false
       this.isJoinNotVisible = true
     },
