@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="btn" v-if="!$auth.loading">
+    <div v-if="!$auth.loading" class="btn">
       <button class="help"><a href="rules">?</a></button>
       <Sign/>
       <NuxtLink v-if="$auth.isAuthenticated" to="/welcomeback">Profile</NuxtLink>
@@ -47,16 +47,6 @@ import Join from '@/components/Join.vue';
         this.isJoinVisible = false;
         this.isJoinNotVisible = true;
       },
-      // Log the user in
-    login () {
-      this.$auth.loginWithRedirect()
-    },
-    // Log the user out
-    logout () {
-      this.$auth.logout({
-        returnTo: window.location.origin
-      })
-    }
     }
   };
 </script>
