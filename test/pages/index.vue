@@ -1,14 +1,15 @@
 <template>
   <div id="app">
-    <div class="btn">
+    <div class="btn" v-if="!$auth.loading">
       <button class="help"><a href="rules">?</a></button>
-      <button type="button" class="sign-in">sign in</button>
+      <Sign/>
+      <NuxtLink v-if="$auth.isAuthenticated" to="/welcomeback">Profile</NuxtLink>
     </div>
     <Join v-show="isJoinVisible"/>
     <div v-show="isJoinNotVisible" class="options" >
       <h1 class="logo">code-blooded</h1>
       <input ref="userName" class="input" type="text" placeholder="enter a name" name="username" required>
-      <button class="start" @click="goGame">start a game</button>
+        <button class="start" @click="goGame">start a game</button>
       <button class="join" @click="showModal">show join code</button>
     </div>
     <span class="apcsp">apcsp project</span>
@@ -17,12 +18,12 @@
 
 <script>
 import Join from '@/components/Join.vue';
-  // import Modal from '@/components/Modal.vue';
+  import Sign from '@/components/Sign.vue';
   //   <Modal v-show="isModalVisible" @close="closeModal"/>
   export default {
     name: 'App',
     components: {
-      // Modal,
+      Sign,
       Join
     },
     data() {
@@ -46,6 +47,16 @@ import Join from '@/components/Join.vue';
         this.isJoinVisible = false;
         this.isJoinNotVisible = true;
       },
+      // Log the user in
+    login () {
+      this.$auth.loginWithRedirect()
+    },
+    // Log the user out
+    logout () {
+      this.$auth.logout({
+        returnTo: window.location.origin
+      })
+    }
     }
   };
 </script>

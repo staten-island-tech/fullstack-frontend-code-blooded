@@ -1,5 +1,6 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
+  ssr: false,
   head: {
     title: 'test',
     meta: [
@@ -43,6 +44,20 @@ export default {
   pwa: {
     manifest: {
       lang: 'en'
+    }
+  },
+  auth: {
+    redirect: {
+      login: '/', // redirect user when not connected
+      callback: '/auth/signed-in'
+    },
+    strategies: {
+      auth0: {
+        domain: 'dev-snb3oo-9.us.auth0.com',
+        clientId: 'mqbzKmpUpw3xHt5yi9IwLbaFMmLX7eIh',
+        logoutRedirectUri: 'http://localhost:3000',
+        // audience: 'https://my-api-domain.com/'
+      }
     }
   },
 

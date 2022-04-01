@@ -1,8 +1,8 @@
 <template>
-  <div id="app">
+  <div id="app" v-if="$auth.isAuthenticated">
     <div class="btn">
       <button class="help"><a href="rules">?</a></button>
-      <button type="button" class="sign-out">sign out</button>
+      <Sign/>
     </div>
     <div id="box">
       <div class="options1" >
