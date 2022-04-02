@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div v-if="!$auth.loading" class="btn">
+    <div class="btn">
       <button class="help"><a href="rules">?</a></button>
       <Sign/>
       <NuxtLink v-if="$auth.isAuthenticated" to="/welcomeback">Profile</NuxtLink>
