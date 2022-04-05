@@ -3,7 +3,6 @@
     <div class="btn">
       <button class="help"><a href="rules">?</a></button>
       <Sign/>
-      <NuxtLink v-if="$auth.isAuthenticated" to="/welcomeback">Profile</NuxtLink>
     </div>
     <Join v-show="isJoinVisible"/>
     <div v-show="isJoinNotVisible" class="options" >

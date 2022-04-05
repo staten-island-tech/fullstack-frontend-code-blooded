@@ -141,7 +141,7 @@ export default{
     width:40%;
   }
   /* SIGN IN BUTTON */
-  .sign-out{
+  .sign-in{
     background-color: var(--font-color);
     color:var(--background-color);
     border-radius: 25px;

@@ -34,3 +34,18 @@ export default {
   }
 }
 </script>
+<style scoped>
+  .sign-in{
+    background-color: var(--font-color);
+    color:var(--background-color);
+    border-radius: 25px;
+    height:3rem;
+    width:9rem;
+    position:absolute;
+    right:2rem;
+    top:2rem;
+    font-family: 'Tomorrow', sans-serif;
+    font-weight: var(--heavy-weight);
+     font-size:1.5rem;
+  }
+</style>
