@@ -1,5 +1,5 @@
 <template>
-  <div id="app" v-if="$auth.isAuthenticated">
+  <div v-if="$auth.isAuthenticated" id="app" >
     <div class="btn">
       <button class="help"><a href="rules">?</a></button>
       <Sign/>
@@ -19,7 +19,12 @@
   </div>
 </template>
 <script>
+import Sign from '@/components/Sign.vue';
 export default{
+  name:"welcomeback",
+   components: {
+      Sign,
+    },
   methods: {
       goInivitee() {
         this.$router.push('/invitee');

@@ -19,7 +19,7 @@
                     </ul>
                 </div>
                 <div class="buttons">
-                    <button class="leave" @click="goIndex">leave game</button>
+                    <Leave/>
                 </div>
 
             </div>
@@ -34,9 +34,11 @@
 </template>
 <script>
 import Pin from '@/components/Pin.vue';
+import Leave from '@/components/Leave.vue';
 export default{
   components: {
-      Pin
+      Pin,
+      Leave
     },
   methods: {
       goIndex() {

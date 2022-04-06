@@ -29,6 +29,7 @@ export default {
       this.$auth.logout({
         returnTo: window.location.origin,
       })
+      console.log("hello")
     }
     
   }
@@ -47,5 +48,7 @@ export default {
     font-family: 'Tomorrow', sans-serif;
     font-weight: var(--heavy-weight);
      font-size:1.5rem;
+     z-index:1;
   }
+
 </style>
