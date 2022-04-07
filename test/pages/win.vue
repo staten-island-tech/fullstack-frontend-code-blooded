@@ -2,7 +2,7 @@
   <div id="app">
     <div class="btn">
       <button class="help"><a href="rules">?</a></button>
-      <button type="button" class="sign-out">sign out</button>
+      <Sign/>
     </div>
     <ul class="confettiBox">
       <li class="confetti"></li>
@@ -31,7 +31,7 @@
       <div class="buttons-box">
         <button class="start1" @click="goGame">rematch</button>
         <button class="join1" @click="goGame">start new game</button>
-        <button class="join1" @click="goHome">home</button>
+        <Win/>
       </div>
     </div>
     </div>
@@ -39,7 +39,13 @@
   </div>
 </template>
 <script>
+import Sign from '@/components/Sign.vue';
+import Win from '@/components/Win.vue';
 export default{
+  components:{
+    Sign,
+    Win
+  },
   methods: {
       goHome() {
         this.$router.push('/');
@@ -72,11 +78,8 @@ export default{
     font-family: 'Tomorrow', sans-serif;
     margin: 0 auto;
   }
-  .mdc-typography {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    outline: 0;
+.mdc-typography {
+  margin: 0;
 }
   #box{
     display:flex;
