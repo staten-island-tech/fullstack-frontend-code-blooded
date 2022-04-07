@@ -38,7 +38,7 @@
             <div class="cardOnTable">
               <h2 class="tableLabel">table</h2>
             </div>
-            <button class="exitGame" @click="goIndex">END GAME</button>
+            <End/>
           </div>
         </div>
         
@@ -49,10 +49,13 @@
 </template>
 
 <script>
-import allCards from './allCards.js'
+import allCards from './allCards.js';
+import End from '@/components/End.vue';
 export default {
   name: 'actualGame',
-
+ components: {
+      End
+    },
 data(){
   return{
     allCards,
@@ -277,20 +280,7 @@ data(){
     margin-top:1rem;
     letter-spacing:.1rem;
   }
-.exitGame{
-  background-color: var(--fifth-color);
-  color: var(--font-color);
-  border-color: var(--fifth-color);
-  font-family: 'Tomorrow', sans-serif;
-    font-weight:var(--medium-weight);
-    border-radius: 15px;
-  font-size:1.7rem;
-    padding:.5rem;
-    text-transform: uppercase;
-    bottom:0;
-    right:0;
-    position:absolute;
-}
+
 
 </style>
 
