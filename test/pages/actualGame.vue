@@ -27,11 +27,13 @@
               </div>
             </div>
             <div class="cardsBox">
-                {{allCards.cardImg}}
+              <div>{{cardAtHand}}</div>
             </div>
           </div>
           <div class="gameActions">
-            <button class="drawACard">draw a card</button>
+
+              <button @click="initialCard(cardImg)" class="drawACard">draw a card</button>
+
             <button class="pass">pass</button>
           </div>
           <div class="table">
@@ -55,6 +57,7 @@ export default {
 
 data(){
   return{
+    cardAtHand: [],
     allCards,
     playerName:"Vue",
     playerColor:"#71D097",
@@ -91,7 +94,17 @@ data(){
       goIndex() {
         this.$router.push('/');
       },
+      // drawCard: function() {
+
+      // },
+      initialCard(cardImg){
+       // this.cardAtHand=cardImg
+                  // this.cartList.push(cardImg)
+                  console.log("hi")
+      }
     }
+
+    
 }
 </script>
 
