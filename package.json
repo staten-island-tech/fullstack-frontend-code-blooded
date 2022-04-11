@@ -1,6 +1,8 @@
 {
   "dependencies": {
     "@auth0/auth0-spa-js": "^1.21.0",
-    "@nuxtjs/axios": "^5.13.6"
+    "@nuxtjs/axios": "^5.13.6",
+    "express": "^4.17.3",
+    "socket.io": "^4.4.1"
   }
 }

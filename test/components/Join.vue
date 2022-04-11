@@ -5,8 +5,10 @@
       <input type="text" placeholder="enter a name" name="username" required>
       <button class="start" @click="goGame">start a game</button>
       <div class="join-contain">
-        <input id="join-code" type="text" placeholder="enter code" name="join-code" required>
-        <button class="join invitee" @click="goInvitee">join</button>
+        <input type='text' v-model="roomCode" placeholder='Game Code' />
+        <button class="join invitee" @click="goInvitee">JOIN GAME</button>
+        <!-- <input id="join-code" type="text" placeholder="enter code" name="join-code" required>
+        <button class="join invitee" @click="goInvitee">join</button> -->
       </div>
     </div>
     </div>
@@ -14,6 +16,11 @@
 <script>
   export default {
     name: 'Options',
+    data(){
+      return{
+        roomCode:"",
+      }
+    },
     methods: {
       close() {
         this.$emit('close');
@@ -22,7 +29,7 @@
         this.$router.push('/game');
       },
       goInvitee(){
-        this.$router.push('/invitee');
+        this.$router.push(`/invitee/play?roomCode=${roomCode}`);
       },
     },
   };
