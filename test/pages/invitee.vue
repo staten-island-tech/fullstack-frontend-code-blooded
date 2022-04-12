@@ -33,6 +33,7 @@
     </div>
 </template>
 <script>
+
 import Pin from '@/components/Pin.vue';
 import Leave from '@/components/Leave.vue';
 export default{

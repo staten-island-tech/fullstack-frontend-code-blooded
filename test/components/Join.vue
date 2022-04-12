@@ -14,11 +14,12 @@
     </div>
 </template>
 <script>
+import randomCodeGen from '../utils/randomCodeGen'
   export default {
     name: 'Options',
     data(){
       return{
-        roomCode:"",
+        roomCode:null,
       }
     },
     methods: {
@@ -26,10 +27,10 @@
         this.$emit('close');
       },
       goGame(){
-        this.$router.push('/game');
+        this.$router.push(`/game/play?roomCode=${randomCodeGen(5)}`);
       },
       goInvitee(){
-        this.$router.push(`/invitee/play?roomCode=${roomCode}`);
+        this.$router.push(`/invitee/play?roomCode=${this.roomCode}`);
       },
     },
   };
