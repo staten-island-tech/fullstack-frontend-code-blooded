@@ -14,7 +14,9 @@
     </div>
 </template>
 <script>
+import io from 'socket.io-client'
 import randomCodeGen from '../utils/randomCodeGen'
+
   export default {
     name: 'Options',
     data(){
@@ -31,6 +33,9 @@ import randomCodeGen from '../utils/randomCodeGen'
       },
       goInvitee(){
         this.$router.push(`/invitee/play?roomCode=${this.roomCode}`);
+        io.on("connection", socket =>{
+          socket.join(this.roomCode);
+        })
       },
     },
   };
