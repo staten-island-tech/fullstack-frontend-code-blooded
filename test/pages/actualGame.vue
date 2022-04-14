@@ -27,12 +27,12 @@
               </div>
             </div>
             <div class="cardsBox">
-              <div>{{cardAtHand}}</div>
+              <img :src="cardAtHand">
             </div>
           </div>
           <div class="gameActions">
 
-              <button @click="initialCard(cardImg)" class="drawACard">draw a card</button>
+              <button @click="dealCards()" class="drawACard">draw a card</button>
 
             <button class="pass">pass</button>
           </div>
@@ -59,6 +59,7 @@ data(){
   return{
     cardAtHand: [],
     allCards,
+    test:[],
     playerName:"Vue",
     playerColor:"#71D097",
     playerTime:22,
@@ -90,17 +91,21 @@ data(){
 
   }
 },
+mounted(){
+  console.log(this.allCards)
+},
+/* async fetch(){
+                    this.cardAtHand = await fetch('./allCards.js')
+                  .then(res => res.json())}, */
   methods: {
       goIndex() {
         this.$router.push('/');
       },
       // drawCard: function() {
 
-      // },
-      initialCard(cardImg){
-       // this.cardAtHand=cardImg
-                  // this.cartList.push(cardImg)
-                  console.log("hi")
+
+      intialCards(){
+        this.cardAtHand=require('./imgs/plus4WildCard.png')
       }
     }
 

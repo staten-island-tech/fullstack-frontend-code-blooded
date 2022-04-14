@@ -1,4 +1,6 @@
-const allCards = [
+
+
+ export default {allCards : [
   {
     cardName: 'Wild Card',
     cardColor: 'wild',
@@ -696,6 +698,5 @@ const allCards = [
   },
   
 ]
+ }
 
-console.log(allCards);
-export default allCards
