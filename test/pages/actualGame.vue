@@ -49,16 +49,19 @@
 </template>
 
 <script>
-import allCards from './allCards.js';
+import * as allCards from '@/utils/allCards.js'
+// import * as shuffleArray from '@/utils/shuffleArray.js'
+// import * as randomCodeGenerator from '@/utils/randomCodeGenerator.js'
 import End from '@/components/End.vue';
 export default {
-  name: 'actualGame',
+  name: 'ActualGame',
  components: {
       End
     },
 data(){
   return{
     allCards,
+
     playerName:"Vue",
     playerColor:"#71D097",
     playerTime:22,

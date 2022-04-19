@@ -21,7 +21,7 @@
 <script>
 import Sign from '@/components/Sign.vue';
 export default{
-  name:"welcomeback",
+  name:"WelcomeBack",
    components: {
       Sign,
     },
