@@ -4,7 +4,7 @@ const allCards = [
     cardColor: 'wild',
     cardAction: 'color change',
     cardNumber: 10,
-    // 10 means all numbers. use in if else as an or statement    
+    // 10 means all numbers. use in if else as an or statement
     cardImg: require('./imgs/WildCard.png'),
   },
   {
@@ -12,7 +12,7 @@ const allCards = [
     cardColor: 'wild',
     cardAction: 'color change',
     cardNumber: 10,
-    // 10 means all numbers. use in if else as an or statement    
+    // 10 means all numbers. use in if else as an or statement
     cardImg: require('./imgs/WildCard.png'),
   },
   {
@@ -20,7 +20,7 @@ const allCards = [
     cardColor: 'wild',
     cardAction: 'color change',
     cardNumber: 10,
-    // 10 means all numbers. use in if else as an or statement    
+    // 10 means all numbers. use in if else as an or statement
     cardImg: require('./imgs/WildCard.png'),
   },
   {
@@ -28,7 +28,7 @@ const allCards = [
     cardColor: 'wild',
     cardAction: 'color change',
     cardNumber: 10,
-    // 10 means all numbers. use in if else as an or statement    
+    // 10 means all numbers. use in if else as an or statement
     cardImg: require('./imgs/WildCard.png'),
   },
   {
@@ -207,8 +207,8 @@ const allCards = [
     cardAction: 'plusTwo',
     cardImg: require('./imgs/G+2.png'),
   },
-  
-// blue cards
+
+  // blue cards
 
   {
     cardName: 'Blue Zero Card',
@@ -242,22 +242,22 @@ const allCards = [
     cardImg: require('./imgs/B-4.png'),
   },
   {
-      cardName: 'Blue Five Card',
-      cardColor: 'blue',
-      cardNumber: 5,
-      cardImg: require('./imgs/B-5.png'),
+    cardName: 'Blue Five Card',
+    cardColor: 'blue',
+    cardNumber: 5,
+    cardImg: require('./imgs/B-5.png'),
   },
   {
-      cardName: 'Blue Six Card',
-      cardColor: 'blue',
-      cardNumber: 6,
-      cardImg: require('./imgs/B-6.png'),
+    cardName: 'Blue Six Card',
+    cardColor: 'blue',
+    cardNumber: 6,
+    cardImg: require('./imgs/B-6.png'),
   },
   {
-      cardName: 'Blue Seven Card',
-      cardColor: 'blue',
-      cardNumber: 7,
-      cardImg: require('./imgs/B-7.png'),
+    cardName: 'Blue Seven Card',
+    cardColor: 'blue',
+    cardNumber: 7,
+    cardImg: require('./imgs/B-7.png'),
   },
   {
     cardName: 'Blue Eight Card',
@@ -272,7 +272,7 @@ const allCards = [
     cardImg: require('./imgs/B-9.png'),
   },
 
-  // blue duplicates 
+  // blue duplicates
 
   {
     cardName: 'Blue One Card duplicate',
@@ -300,22 +300,22 @@ const allCards = [
     cardImg: require('./imgs/B-4.png'),
   },
   {
-      cardName: 'Blue Five Card duplicate',
-      cardColor: 'blue',
-      cardNumber: 5,
-      cardImg: require('./imgs/B-5.png'),
+    cardName: 'Blue Five Card duplicate',
+    cardColor: 'blue',
+    cardNumber: 5,
+    cardImg: require('./imgs/B-5.png'),
   },
   {
-      cardName: 'Blue Six Card duplicate',
-      cardColor: 'blue',
-      cardNumber: 6,
-      cardImg: require('./imgs/B-6.png'),
+    cardName: 'Blue Six Card duplicate',
+    cardColor: 'blue',
+    cardNumber: 6,
+    cardImg: require('./imgs/B-6.png'),
   },
   {
-      cardName: 'Blue Seven Card duplicate',
-      cardColor: 'blue',
-      cardNumber: 7,
-      cardImg: require('./imgs/B-7.png'),
+    cardName: 'Blue Seven Card duplicate',
+    cardColor: 'blue',
+    cardNumber: 7,
+    cardImg: require('./imgs/B-7.png'),
   },
   {
     cardName: 'Blue Eight Card duplicate',
@@ -363,22 +363,22 @@ const allCards = [
     cardImg: require('./imgs/G-4.png'),
   },
   {
-      cardName: 'Green Five Card',
-      cardColor: 'green',
-      cardNumber: 5,
-      cardImg: require('./imgs/G-5.png'),
+    cardName: 'Green Five Card',
+    cardColor: 'green',
+    cardNumber: 5,
+    cardImg: require('./imgs/G-5.png'),
   },
   {
-      cardName: 'Green Six Card',
-      cardColor: 'green',
-      cardNumber: 6,
-      cardImg: require('./imgs/G-6.png'),
+    cardName: 'Green Six Card',
+    cardColor: 'green',
+    cardNumber: 6,
+    cardImg: require('./imgs/G-6.png'),
   },
   {
-      cardName: 'Green Seven Card',
-      cardColor: 'green',
-      cardNumber: 7,
-      cardImg: require('./imgs/G-7.png'),
+    cardName: 'Green Seven Card',
+    cardColor: 'green',
+    cardNumber: 7,
+    cardImg: require('./imgs/G-7.png'),
   },
   {
     cardName: 'Green Eight Card',
@@ -393,7 +393,7 @@ const allCards = [
     cardImg: require('./imgs/G-9.png'),
   },
 
-// green duplicates
+  // green duplicates
 
   {
     cardName: 'Green One Card duplicate',
@@ -421,22 +421,22 @@ const allCards = [
     cardImg: require('./imgs/G-4.png'),
   },
   {
-      cardName: 'Green Five Card duplicate',
-      cardColor: 'green',
-      cardNumber: 5,
-      cardImg: require('./imgs/G-5.png'),
+    cardName: 'Green Five Card duplicate',
+    cardColor: 'green',
+    cardNumber: 5,
+    cardImg: require('./imgs/G-5.png'),
   },
   {
-      cardName: 'Green Six Card duplicate',
-      cardColor: 'green',
-      cardNumber: 6,
-      cardImg: require('./imgs/G-6.png'),
+    cardName: 'Green Six Card duplicate',
+    cardColor: 'green',
+    cardNumber: 6,
+    cardImg: require('./imgs/G-6.png'),
   },
   {
-      cardName: 'Green Seven Card duplicate',
-      cardColor: 'green',
-      cardNumber: 7,
-      cardImg: require('./imgs/G-7.png'),
+    cardName: 'Green Seven Card duplicate',
+    cardColor: 'green',
+    cardNumber: 7,
+    cardImg: require('./imgs/G-7.png'),
   },
   {
     cardName: 'Green Eight Card duplicate',
@@ -451,7 +451,7 @@ const allCards = [
     cardImg: require('./imgs/G-9.png'),
   },
 
-// red cards
+  // red cards
 
   {
     cardName: 'Red Zero Card',
@@ -485,22 +485,22 @@ const allCards = [
     cardImg: require('./imgs/R-4.png'),
   },
   {
-      cardName: 'Red Five Card',
-      cardColor: 'red',
-      cardNumber: 5,
-      cardImg: require('./imgs/R-5.png'),
+    cardName: 'Red Five Card',
+    cardColor: 'red',
+    cardNumber: 5,
+    cardImg: require('./imgs/R-5.png'),
   },
   {
-      cardName: 'Red Six Card',
-      cardColor: 'red',
-      cardNumber: 6,
-      cardImg: require('./imgs/R-6.png'),
+    cardName: 'Red Six Card',
+    cardColor: 'red',
+    cardNumber: 6,
+    cardImg: require('./imgs/R-6.png'),
   },
   {
-      cardName: 'Red Seven Card',
-      cardColor: 'red',
-      cardNumber: 7,
-      cardImg: require('./imgs/R-7.png'),
+    cardName: 'Red Seven Card',
+    cardColor: 'red',
+    cardNumber: 7,
+    cardImg: require('./imgs/R-7.png'),
   },
   {
     cardName: 'Red Eight Card',
@@ -515,7 +515,7 @@ const allCards = [
     cardImg: require('./imgs/R-9.png'),
   },
 
-// red duplicates
+  // red duplicates
 
   {
     cardName: 'Red One Card',
@@ -543,22 +543,22 @@ const allCards = [
     cardImg: require('./imgs/R-4.png'),
   },
   {
-      cardName: 'Red Five Card',
-      cardColor: 'red',
-      cardNumber: 5,
-      cardImg: require('./imgs/R-5.png'),
+    cardName: 'Red Five Card',
+    cardColor: 'red',
+    cardNumber: 5,
+    cardImg: require('./imgs/R-5.png'),
   },
   {
-      cardName: 'Red Six Card',
-      cardColor: 'red',
-      cardNumber: 6,
-      cardImg: require('./imgs/R-6.png'),
+    cardName: 'Red Six Card',
+    cardColor: 'red',
+    cardNumber: 6,
+    cardImg: require('./imgs/R-6.png'),
   },
   {
-      cardName: 'Red Seven Card',
-      cardColor: 'red',
-      cardNumber: 7,
-      cardImg: require('./imgs/R-7.png'),
+    cardName: 'Red Seven Card',
+    cardColor: 'red',
+    cardNumber: 7,
+    cardImg: require('./imgs/R-7.png'),
   },
   {
     cardName: 'Red Eight Card',
@@ -573,7 +573,7 @@ const allCards = [
     cardImg: require('./imgs/R-9.png'),
   },
 
-// yellow cards
+  // yellow cards
 
   {
     cardName: 'Yellow Zero Card',
@@ -607,22 +607,22 @@ const allCards = [
     cardImg: require('./imgs/Y-4.png'),
   },
   {
-      cardName: 'Yellow Five Card',
-      cardColor: 'yellow',
-      cardNumber: 5,
-      cardImg: require('./imgs/Y-5.png'),
+    cardName: 'Yellow Five Card',
+    cardColor: 'yellow',
+    cardNumber: 5,
+    cardImg: require('./imgs/Y-5.png'),
   },
   {
-      cardName: 'Yellow Six Card',
-      cardColor: 'yellow',
-      cardNumber: 6,
-      cardImg: require('./imgs/Y-6.png'),
+    cardName: 'Yellow Six Card',
+    cardColor: 'yellow',
+    cardNumber: 6,
+    cardImg: require('./imgs/Y-6.png'),
   },
   {
-      cardName: 'Yellow Seven Card',
-      cardColor: 'yellow',
-      cardNumber: 7,
-      cardImg: require('./imgs/Y-7.png'),
+    cardName: 'Yellow Seven Card',
+    cardColor: 'yellow',
+    cardNumber: 7,
+    cardImg: require('./imgs/Y-7.png'),
   },
   {
     cardName: 'Yellow Eight Card',
@@ -665,22 +665,22 @@ const allCards = [
     cardImg: require('./imgs/Y-4.png'),
   },
   {
-      cardName: 'Yellow Five Card duplicate',
-      cardColor: 'yellow',
-      cardNumber: 5,
-      cardImg: require('./imgs/Y-5.png'),
+    cardName: 'Yellow Five Card duplicate',
+    cardColor: 'yellow',
+    cardNumber: 5,
+    cardImg: require('./imgs/Y-5.png'),
   },
   {
-      cardName: 'Yellow Six Card duplicate',
-      cardColor: 'yellow',
-      cardNumber: 6,
-      cardImg: require('./imgs/Y-6.png'),
+    cardName: 'Yellow Six Card duplicate',
+    cardColor: 'yellow',
+    cardNumber: 6,
+    cardImg: require('./imgs/Y-6.png'),
   },
   {
-      cardName: 'Yellow Seven Card duplicate',
-      cardColor: 'yellow',
-      cardNumber: 7,
-      cardImg: require('./imgs/Y-7.png'),
+    cardName: 'Yellow Seven Card duplicate',
+    cardColor: 'yellow',
+    cardNumber: 7,
+    cardImg: require('./imgs/Y-7.png'),
   },
   {
     cardName: 'Yellow Eight Card duplicate',
@@ -694,8 +694,6 @@ const allCards = [
     cardNumber: 9,
     cardImg: require('./imgs/Y-9.png'),
   },
-  
 ]
 
-console.log(allCards);
 export default allCards
