@@ -9,8 +9,8 @@
       <input type="text" placeholder="enter a name" name="username" required>
       <button class="start">start a game</button>
       <div class="join-contain">
-          <input type="text" placeholder="enter code" name="join-code" required>
-        <button class="join">join</button>
+          <input v-model="roomCode" type="text" placeholder="enter code" name="join-code" required>
+        <Nuxt-link to='{`/play?this.roomCode=${this.roomCode}`}'><button class="join">join</button></Nuxt-link>
       </div>
     </div>
     <span class="apcsp">apcsp project</span>
@@ -18,7 +18,13 @@
 
 </template>
 <script>
+// import randomCodeGenerator from '@/utils/randomCodeGenerator'
 export default{
+  data(){
+    return{
+    roomCode: '',
+    }
+  },
   methods: {
       goActualGame() {
         this.$router.push('/actualGame');

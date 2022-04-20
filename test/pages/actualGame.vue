@@ -49,7 +49,7 @@
 </template>
 
 <script>
-// import io from 'socket.io-client'
+import io from 'socket.io-client'
 import queryString from 'query-string'
 import allCards from '@/utils/allCards.js'
 // import * as shuffleArray from '@/utils/shuffleArray.js'
@@ -67,7 +67,12 @@ data(){
     allCards,
     ENDPOINT: 'http://localhost:3000',
     data: queryString.parse(location.search),
-    room: this.data.roomCode,
+    // room: this.data.roomCode,
+    roomFull: false,
+    user: [],
+    currentUser: '',
+    message:'',
+    messages: [],
     playerName:"Vue",
     playerColor:"#71D097",
     playerTime:22,
@@ -94,17 +99,39 @@ data(){
       },      
     ],
 
-
-
-
   }
 },
+computed:{
+  connection: ()=>{
+    let socket
+    const connectionOptions =  {
+            "forceNew" : true,
+            "reconnectionAttempts": "Infinity", 
+            "timeout" : 10000,                  
+            "transports" : ["websocket"]
+        }
+        // eslint-disable-next-line prefer-const
+        socket = io.connect(this.ENDPOINT, connectionOptions)
+
+        socket.emit('join', {room: this.room}, (error) => {
+            if(error)
+                this.search = true
+        })
+
+        // cleanup on component unmount
+        return function cleanup() {
+            socket.emit('disconnect')
+            // shut down connnection instance
+            socket.off()
+        }
+    },
+  },
   methods: {
       goIndex() {
         this.$router.push('/');
       },
     }
-}
+};
 </script>
 
 <style scoped>

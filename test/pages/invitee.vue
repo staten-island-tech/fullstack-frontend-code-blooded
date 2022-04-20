@@ -38,7 +38,7 @@ import Leave from '@/components/Leave.vue';
 export default{
   components: {
       Pin,
-      Leave
+      Leave,
     },
   methods: {
       goIndex() {
