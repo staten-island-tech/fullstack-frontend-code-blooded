@@ -49,10 +49,14 @@
 </template>
 
 <script>
-import * as allCards from '@/utils/allCards.js'
+// import io from 'socket.io-client'
+import queryString from 'query-string'
+import allCards from '@/utils/allCards.js'
 // import * as shuffleArray from '@/utils/shuffleArray.js'
 // import * as randomCodeGenerator from '@/utils/randomCodeGenerator.js'
+
 import End from '@/components/End.vue';
+
 export default {
   name: 'ActualGame',
  components: {
@@ -61,7 +65,9 @@ export default {
 data(){
   return{
     allCards,
-
+    ENDPOINT: 'http://localhost:3000',
+    data: queryString.parse(location.search),
+    room: this.data.roomCode,
     playerName:"Vue",
     playerColor:"#71D097",
     playerTime:22,
