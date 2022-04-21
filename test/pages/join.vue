@@ -1,16 +1,15 @@
 <template>
-<div class="join">
+<div v-if="!client.code" class="join">
     <div class="btn">
       <button class="help"><a href="rules">?</a></button>
-      <button type="button" class="sign-in" @click="showModal">sign in</button>
+      <button type="button" class="sign-in" @click="signIn">sign in</button>
     </div>
     <div class="options">
       <h1 class="logo">code-blooded</h1>
-      <input type="text" placeholder="enter a name" name="username" required>
+      <input v-model="client.name" type="text"  placeholder="enter a name"  required>
       <button class="start">start a game</button>
       <div class="join-contain">
-          <input v-model="roomCode" type="text" placeholder="enter code" name="join-code" required>
-        <Nuxt-link to='{`/play?this.roomCode=${this.roomCode}`}'><button class="join">join</button></Nuxt-link>
+          <input v-model="room" type="text" placeholder="enter code" name="join-code" required>
       </div>
     </div>
     <span class="apcsp">apcsp project</span>
@@ -20,9 +19,11 @@
 <script>
 // import randomCodeGenerator from '@/utils/randomCodeGenerator'
 export default{
+  props: ['client', 'socket'],
   data(){
     return{
-    roomCode: '',
+      error: false,
+    room: null,
     }
   },
   methods: {
@@ -32,6 +33,13 @@ export default{
       goWelcomeBack(){
         this.$router.push('/welcomeBack');
       },
+      signIn(){
+        if(this.client.name.length > 0) {
+                    this.socket.emit('create', this.room);
+                    this.socket.emit('login', {'client': this.client});                    
+                    // this.$cookies.set('client',{name:this.client.name, room:this.room});
+                }
+      }
     }
 }
 </script>

@@ -29,6 +29,7 @@ export default {
       this.$auth.logout({
         returnTo: window.location.origin,
       })
+      // eslint-disable-next-line no-console
       console.log("hello")
     }
     
