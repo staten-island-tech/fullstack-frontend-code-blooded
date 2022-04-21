@@ -49,12 +49,25 @@
 </template>
 
 <script>
+// eslint-disable import/no-named-as-default-member 
+// eslint-disable prefer-const  
+// eslint-disable import/no-named-as-default 
 import io from 'socket.io-client'
 import queryString from 'query-string'
-import allCards from '@/utils/allCards.js'
-// import * as shuffleArray from '@/utils/shuffleArray.js'
-// import * as randomCodeGenerator from '@/utils/randomCodeGenerator.js'
 
+// import * as randomCodeGenerator from '@/utils/randomCodeGenerator.js'
+import useSound from 'use-sound'
+
+import bgMusic from '../assets/sounds/game-bg-music.mp3'
+import unoSound from '../assets/sounds/uno-sound.mp3'
+import shufflingSound from '../assets/sounds/shuffling-cards-1.mp3'
+import skipCardSound from '../assets/sounds/skip-sound.mp3'
+import draw2CardSound from '../assets/sounds/draw2-sound.mp3'
+import wildCardSound from '../assets/sounds/wild-sound.mp3'
+import draw4CardSound from '../assets/sounds/draw4-sound.mp3'
+import gameOverSound from '../assets/sounds/game-over-sound.mp3'
+import allCards from '@/utils/allCards.js'
+import * as shuffleArray from '@/utils/shuffleArray.js'
 import End from '@/components/End.vue';
 
 export default {
@@ -62,6 +75,17 @@ export default {
  components: {
       End
     },
+    setup(){
+      const [playBBgMusic, { pause }] = useSound(bgMusic, { loop: true })
+    const [playUnoSound] = useSound(unoSound)
+    const [playShufflingSound] = useSound(shufflingSound)
+    const [playSkipCardSound] = useSound(skipCardSound)
+    const [playDraw2CardSound] = useSound(draw2CardSound)
+    const [playWildCardSound] = useSound(wildCardSound)
+    const [playDraw4CardSound] = useSound(draw4CardSound)
+    const [playGameOverSound] = useSound(gameOverSound)
+
+},
 data(){
   return{
     allCards,
@@ -73,35 +97,77 @@ data(){
     currentUser: '',
     message:'',
     messages: [],
-    playerName:"Vue",
-    playerColor:"#71D097",
-    playerTime:22,
-    playerNext:"HTML",
-    nextColor:"#49C8FF",
-    playerData:[
-      {
-        playerName: "placeholder",
-        cardData:0,
-        id:1,
-        playerColor:"#71D097",
-      },
-      {
-        playerName: "placeholder",
-        cardData:0,
-        id:2,
-        playerColor: "#49C8FF"
-      },
-      {
-        playerName: "placeholder",
-        cardData:0,
-        id:3,
-        playerColor: "#EE914D"
-      },      
-    ],
+    gameOver: true,
+    winner: '',
+    turn: '',
+    player1Deck: [],
+    player2Deck: [],
+    player3Deck: [],
+    player4Deck: [],
+    currentColor: '',
+    currentNumber: '',
+    playedCardsPile: [],
+    drawCardPile: [],
+    isChatBoxHidden: true,
+    isUnoButtonPressed: false,
+    isSoundMuted: false,
+    isMusicMuted: true,
 
   }
 },
-computed:{
+  mounted:{
+      shuffle: ()=>{
+        let socket
+        // shuffle PACK_OF_CARDS array
+        const shuffledCards = shuffleArray(allCards)
+
+        // extract first 7 elements to player1Deck
+        const player1Deck = shuffledCards.splice(0, 7)
+
+        // extract first 7 elements to player2Deck
+        const player2Deck = shuffledCards.splice(0, 7)
+
+        const player3Deck = shuffledCards.splice(0, 7)
+
+        const player4Deck = shuffledCards.splice(0, 7)
+
+        // extract random card from shuffledCards and check if its not an action card
+        let startingCardIndex
+        while(true) {
+            startingCardIndex = Math.floor(Math.random() * 94)
+            if(shuffledCards[startingCardIndex]==='skipR' || shuffledCards[startingCardIndex]==='_R' || shuffledCards[startingCardIndex]==='D2R' ||
+            shuffledCards[startingCardIndex]==='skipG' || shuffledCards[startingCardIndex]==='_G' || shuffledCards[startingCardIndex]==='D2G' ||
+            shuffledCards[startingCardIndex]==='skipB' || shuffledCards[startingCardIndex]==='_B' || shuffledCards[startingCardIndex]==='D2B' ||
+            shuffledCards[startingCardIndex]==='skipY' || shuffledCards[startingCardIndex]==='_Y' || shuffledCards[startingCardIndex]==='D2Y' ||
+            shuffledCards[startingCardIndex]==='W' || shuffledCards[startingCardIndex]==='D4W') {
+                continue;
+            }
+            else
+                break;
+        }
+
+        // extract the card from that startingCardIndex into the playedCardsPile
+        const playedCardsPile = shuffledCards.splice(startingCardIndex, 1)
+
+        // store all remaining cards into drawCardPile
+        const drawCardPile = shuffledCards
+
+        // send initial state to server
+        socket.emit('initGameState', {
+            gameOver: false,
+            turn: 'Player 1',
+            player1Deck: [...player1Deck],
+            player2Deck: [...player2Deck],
+            player3Deck: [...player3Deck],
+            player4Deck: [...player4Deck],
+            currentColor: playedCardsPile[0].charAt(1),
+            currentNumber: playedCardsPile[0].charAt(0),
+            playedCardsPile: [...playedCardsPile],
+            drawCardPile: [...drawCardPile]
+        })
+    },
+      },
+methods:{
   connection: ()=>{
     let socket
     const connectionOptions =  {
@@ -125,13 +191,58 @@ computed:{
             socket.off()
         }
     },
+    communication: () => {
+      let socket
+        socket.on('initGameState', ({ gameOver, turn, player1Deck, player2Deck, player4Deck, player3Deck, currentColor, currentNumber, playedCardsPile, drawCardPile }) => {
+            this.gameOver = gameOver
+            this.turn = turn
+            this.player1Deck = player1Deck 
+            this.player2Deck = player2Deck
+            this.player3Deck = player3Deck 
+            this.player4Deck = player4Deck
+            this.currentColor = currentColor
+            this.currentNumber = currentNumber
+            this.playedCardsPile = playedCardsPile
+            this.drawCardPile = drawCardPile
+        })
+
+        socket.on('updateGameState', ({ gameOver, winner, turn, player1Deck, player2Deck, currentColor, currentNumber, playedCardsPile, drawCardPile }) => {
+            gameOver && this.gameOver 
+            gameOver===true && playGameOverSound()
+            winner && setWinner(winner)
+            turn && setTurn(turn)
+            player1Deck && setPlayer1Deck(player1Deck)
+            player2Deck && setPlayer2Deck(player2Deck)
+            currentColor && setCurrentColor(currentColor)
+            currentNumber && setCurrentNumber(currentNumber)
+            playedCardsPile && setPlayedCardsPile(playedCardsPile)
+            drawCardPile && setDrawCardPile(drawCardPile)
+            setUnoButtonPressed(false)
+        })
+
+        socket.on("roomData", ({ users }) => {
+            this.users = users
+        })
+
+        socket.on('currentUserData', ({ name }) => {
+            this.name = name
+        })
+
+        socket.on('message', message => {
+            setMessages(messages => [ ...messages, message ])
+
+            const chatBody = document.querySelector('.chat-body')
+            chatBody.scrollTop = chatBody.scrollHeight
+        })
+    },
   },
-  methods: {
+      /* methods: {
       goIndex() {
         this.$router.push('/');
       },
-    }
-};
+    }, */
+    };
+  
 </script>
 
 <style scoped>
