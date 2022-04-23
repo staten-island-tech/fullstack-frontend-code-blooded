@@ -52,7 +52,7 @@
 import allCards from './allCards.js';
 import End from '@/components/End.vue';
 export default {
-  name: 'actualGame',
+  name: 'ActualGame',
  components: {
       End
     },
