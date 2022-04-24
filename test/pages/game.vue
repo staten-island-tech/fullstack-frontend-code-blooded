@@ -46,7 +46,7 @@ export default{
   },
   methods: {
       goActualGame() {
-        this.$router.push('/actualGame');
+        this.$router.push('/UnoGame');
       },
       goWelcomeBack(){
         this.$router.push('/welcomeBack');
