@@ -34,7 +34,9 @@
   </div>
 </template>
 <script>
+import { newCode } from './index.vue'
 import Pin from '@/components/Pin.vue'
+
 export default {
   components: {
     Pin,

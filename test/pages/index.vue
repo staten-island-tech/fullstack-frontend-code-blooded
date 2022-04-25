@@ -25,6 +25,7 @@
 </template>
 
 <script>
+/*eslint-disable*/
 import io from 'socket.io-client'
 import Join from '@/components/Join.vue'
 import Sign from '@/components/Sign.vue'
@@ -53,18 +54,10 @@ export default {
       if (this.username.length < 1) {
         alert('please enter a username')
       } else {
-        // connecting localhost
-        this.socket = io('http://localhost:3000/')
-
-        /*eslint-disable*/
-        this.socket.on('hello', (arg1) => {
-          console.log(arg1) // 1
-          console.log(arg2) // "2"
-          console.log(arg3)
-        })
-        this.makeCode(5)
         // going to the waiting room
+        this.socketInstance = io('http://localhost:3000')
         this.$router.push('/game')
+        this.makeCode(5)
       }
 
       // this.username = this.$refs.userName.value
@@ -78,6 +71,8 @@ export default {
       }
       console.log(code)
       code = this.newCode
+
+      this.socketInstance.emit('roomCode', code)
     },
     closeModal() {
       this.isJoinVisible = false
