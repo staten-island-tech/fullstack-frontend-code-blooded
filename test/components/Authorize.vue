@@ -8,7 +8,7 @@
             <input v-model="client.name" type="text" placeholder="Name"  class="input"/>
         </div>        
         <div class="row">
-            <Button fa-icon="sign-in-alt" :click-handler="login">Entrar</Button>
+            <Button fa-icon="sign-in-alt" :click-handler="login">Enter</Button>
         </div>
     </div>
 </template>
