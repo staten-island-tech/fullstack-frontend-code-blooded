@@ -44,6 +44,11 @@ export default {
       newCode: '',
     }
   },
+  computed: {
+    newCode() {
+      return this.newCode
+    },
+  },
   methods: {
     showModal() {
       this.isJoinVisible = true
@@ -70,7 +75,7 @@ export default {
         code += chars.charAt(Math.floor(Math.random() * chars.length))
       }
       console.log(code)
-      code = this.newCode
+      code = String(this.newCode)
 
       this.socketInstance.emit('roomCode', code)
     },
