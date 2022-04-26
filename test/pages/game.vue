@@ -6,7 +6,7 @@
       <div class="row">
         <div class="code">
           <div class="sample">
-            <h1 class="code-header">CODE: {{ newCode }}</h1>
+            <h1 class="code-header" @click="getCode">CODE: {{ newCode }}</h1>
             <Pin></Pin>
           </div>
           <p class="comment">share this with friends for them to join</p>
@@ -34,7 +34,7 @@
   </div>
 </template>
 <script>
-import { newCode } from './index.vue'
+import io from 'socket.io-client'
 import Pin from '@/components/Pin.vue'
 
 export default {
@@ -42,9 +42,18 @@ export default {
     Pin,
   },
   data() {
-    return {}
+    return {
+      newCode: '',
+    }
   },
   methods: {
+    getCode() {
+      this.socketInstance = io('http://localhost:3001')
+      this.socketInstance.on('myCode', (arg) => {
+        this.newCode = arg
+        return this.newCode
+      })
+    },
     goActualGame() {
       this.$router.push('/actualGame')
     },

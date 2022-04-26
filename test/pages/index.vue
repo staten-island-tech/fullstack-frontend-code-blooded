@@ -60,7 +60,8 @@ export default {
         alert('please enter a username')
       } else {
         // going to the waiting room
-        this.socketInstance = io('http://localhost:3000')
+        this.socketInstance = io('http://localhost:3001')
+        console.log(this.socketInstance.io)
         this.$router.push('/game')
         this.makeCode(5)
       }
@@ -74,8 +75,9 @@ export default {
       for (let i = 0; i < length; i++) {
         code += chars.charAt(Math.floor(Math.random() * chars.length))
       }
-      console.log(code)
-      code = String(this.newCode)
+
+      this.newCode = code
+      // console.log(code)
 
       this.socketInstance.emit('roomCode', code)
     },
