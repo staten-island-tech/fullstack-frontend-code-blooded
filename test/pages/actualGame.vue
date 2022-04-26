@@ -32,7 +32,7 @@
           </div>
           <div class="gameActions">
 
-              <button @click="dealCards()" class="drawACard">draw a card</button>
+              <button @click="initialCards()" class="drawACard">draw a card</button>
 
             <button class="pass">pass</button>
           </div>
