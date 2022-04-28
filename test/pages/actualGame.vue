@@ -31,6 +31,7 @@
             </div>
           </div>
           <div class="gameActions">
+            <button class="shuffle">Shuffle Cards</button>
             <button class="drawACard">draw a card</button>
             <button class="pass">pass</button>
           </div>
@@ -52,7 +53,7 @@
 import allCards from './allCards.js';
 import End from '@/components/End.vue';
 export default {
-  name: 'actualGame',
+  name: 'ActualGame',
  components: {
       End
     },
@@ -235,6 +236,7 @@ data(){
     width:27vw;
     /* background-color: red; */
   }
+  .shuffle,
   .drawACard,
   .pass{
     width:75%;
@@ -248,8 +250,12 @@ data(){
     padding:.5rem;
     text-transform: uppercase;
   }
+  .shuffle{
+background-color: rgba(147, 43, 119, 1);
+     border-color: rgba(147, 43, 119, 1);
+  }
   .drawACard{
-    margin-top:60%;
+    margin-top:10%;
     background-color: var(--fourth-color);
     border-color: var(--fourth-color);
   }
