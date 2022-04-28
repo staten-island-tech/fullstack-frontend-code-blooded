@@ -96,7 +96,7 @@ export default {
     },
     async joinGame() {
       if (this.joinCode.length === 4) {
-        const codeExists = await database
+        const codeExists = await Uno
           .collection("games")
           .doc(`blackjack${this.joinCode}`)
           .get()
