@@ -34,21 +34,32 @@
   </div>
 </template>
 <script>
-import io from 'socket.io-client'
+// import io from 'socket.io-client'
 import Pin from '@/components/Pin.vue'
 
 export default {
   components: {
     Pin,
   },
+
   data() {
     return {
       newCode: '',
     }
   },
+  mounted() {
+    this.socket = this.$nuxtSocket({
+      channel: '/game',
+    })
+    // listen for events
+    this.socket.on('myCode', (code) => {
+      // Handle event
+      console.log(code)
+    })
+  },
   methods: {
     getCode() {
-      this.socketInstance = io('http://localhost:3001')
+      // this.socketInstance = io('http://localhost:3001')
       this.socketInstance.on('myCode', (arg) => {
         this.newCode = arg
         return this.newCode

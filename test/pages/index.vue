@@ -36,6 +36,15 @@ export default {
     Sign,
     Join,
   },
+  // mounted() {
+  //   this.socket = this.$nuxtSocket({
+  //     channel: '/index',
+  //   })
+  //   // listen for events
+  //   this.socket.on('roomCode', (msg, cb) => {
+  //     // Handle event
+  //   })
+  // },
   data() {
     return {
       isJoinVisible: false,
@@ -60,8 +69,13 @@ export default {
         alert('please enter a username')
       } else {
         // going to the waiting room
-        this.socketInstance = io('http://localhost:3001')
-        console.log(this.socketInstance.io)
+        this.socket = io('http://localhost:3001')
+
+        // this.socket = this.$nuxtSocket({
+        //   channel: '/index',
+        // })
+
+        console.log(this.socket)
         this.$router.push('/game')
         this.makeCode(5)
       }
@@ -79,7 +93,7 @@ export default {
       this.newCode = code
       // console.log(code)
 
-      this.socketInstance.emit('roomCode', code)
+      this.socket.emit('roomCode', code)
     },
     closeModal() {
       this.isJoinVisible = false
@@ -207,7 +221,7 @@ input {
   background-clip: border-box;
   background-size: 200% auto;
   background-clip: text;
-  text-fill-color: transparent;
+  /* text-fill-color: transparent; */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: textclip 2s linear infinite;

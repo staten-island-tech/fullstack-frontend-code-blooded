@@ -1,6 +1,6 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
-  ssr: false,
+  ssr: true,
   head: {
     title: 'test',
     meta: [
@@ -32,7 +32,23 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
+    // 'nuxt-socket-io',
   ],
+
+  // io: {
+  //   // module options
+  //   sockets: [
+  //     {
+  //       name: 'index',
+  //       url: 'http://localhost:3000',
+  //     },
+  //     // {
+  //     //   name:'game',
+  //     //   url:'http://localhost'
+  //     // }
+  //   ],
+  // },
+
   axios: {},
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
