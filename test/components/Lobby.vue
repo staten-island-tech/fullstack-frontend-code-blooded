@@ -33,7 +33,8 @@
 </template>
 
 <script>
-import socket from 'socket.io-client'
+// import mongoose from "mongoose"
+import io from 'socket.io-client'
 export default {
   name: "Lobby",
   props: {
@@ -43,7 +44,8 @@ export default {
   },
   data() {
     return {
-        socket,
+      
+      socket: io("http://localhost:3000"),
       playerStatus: {
         master: "",
         name: this.auth0Client,
@@ -54,6 +56,7 @@ export default {
       joinCode: "",
     };
   },
+  
   methods: {
     generateID() {
       const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -64,11 +67,11 @@ export default {
       console.log(this.roomCode);
     },
     async createRoom() {
-        this.socket = IO.socket("http://localhost:3000");
+      //  const socket = io("http://localhost:3000");
     this.socket.connect()
       if (this.playerStatus.name.length > 0) {
         this.generateID();
-        const newGame = database
+        const newGame = Uno
           .collection("games")
           .doc("uno" + this.roomCode);
         this.playerStatus.master = true;
@@ -98,15 +101,15 @@ export default {
       if (this.joinCode.length === 4) {
         const codeExists = await Uno
           .collection("games")
-          .doc(`blackjack${this.joinCode}`)
+          .doc(`uno${this.joinCode}`)
           .get()
           .then((snapshot) => {
             return snapshot.exists;
           });
         if (codeExists === true) {
-          const lobby = database
+          const lobby = Uno
             .collection("games")
-            .doc(`blackjack${this.joinCode}`);
+            .doc(`uno${this.joinCode}`);
           const slot = await lobby.get().then((snapshot) => {
             return snapshot.data().lobby.slots;
           });
@@ -153,7 +156,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style scoped>
 @mixin laptop {
   @media (min-width: 900px) {
     @content;
@@ -227,7 +230,7 @@ h5 {
 }
 </style>
 
-<style lang="scss" scoped>
+<style scoped>
 table,
 th,
 td {

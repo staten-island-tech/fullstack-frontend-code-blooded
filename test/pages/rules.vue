@@ -55,7 +55,7 @@
 
 <script>
 export default {
-  name: 'rules',
+  name: 'Rules',
 
 data(){
   return{
@@ -63,7 +63,7 @@ data(){
     cards:[
       {
         cardName: "Wild Card",
-        cardImage: require('./imgs/WildCard.png'),
+        cardImage: require('../deck/imgs/WildCard.png'),
         cardDescription:`When you play this card, you may change the color being played to any color (including the current color) to continue to play. 
             You may play the Wild Card even if you have another playable card in hand. 
             If this card is turned up at the beginning of play, the person to the left of the dealer chooses the color to behin play and plays the first card.`,
@@ -71,7 +71,7 @@ data(){
       },
       {
         cardName: "Wild Draw 4 Card",
-        cardImage: require('./imgs/plus4WildCard.png'),
+        cardImage: require('../deck/imgs/plus4WildCard.png'),
         cardDescription:`This card allows you to call the next color played and requires the next player to pick 4 cards from the DRAW pile and forfeit his/her turn.
             Note: Should the person next to play have Draw 2 Cards or Wild Draw 4 cards on hand, they may choose 
             to play them in response and pass the incremented penalty to the next player.`,
@@ -79,7 +79,7 @@ data(){
       },
       {
         cardName: "Draw 2 Card",
-        cardImage: require('./imgs/B+2.png'),
+        cardImage: require('../deck/imgs/B+2.png'),
         cardDescription:`When you play this card, the next person to play must draw 2 cards and forfeit his/her turn.
             You may only play this card on a matching color or on another Draw 2 Card.
             Note: Should the person next to play have Draw 2 Cards or Wild Draw 4 cards on hand, they may choose 
@@ -88,7 +88,7 @@ data(){
       },
       {
         cardName: "Reverse Card",
-        cardImage: require('./imgs/B-Reverse.png'),
+        cardImage: require('../deck/imgs/B-Reverse.png'),
         cardDescription:`This card reverses the direction of play. Play to the ledt now passes to the right and vice versa.
             If this card is turned up at the beginning of play, the player to the right now plays first and the play then goes
             to the right instead of the right. This card may only be played on a matching color or on another Reverse Card.`,
@@ -96,7 +96,7 @@ data(){
       },
       {
         cardName: "Skip Card",
-        cardImage: require('./imgs/B-Skip.png'),
+        cardImage: require('../deck/imgs/B-Skip.png'),
         cardDescription:`The next person in line to play after this card is played loses his/her turn and is "skipped."
             If this card turned up at the beginning of play, the first player is skipped.
             This card may only be played on a matching color or on another Skip Card.`,
@@ -104,7 +104,7 @@ data(){
       },
       {
         cardName: "Plain Number Card",
-        cardImage: require('./imgs/B-0.png'),
+        cardImage: require('../deck/imgs/B-0.png'),
         cardDescription:`No special actions are associated with these cards when played. 
             This type of card may be played on a matching color or number.`,
         id:6
