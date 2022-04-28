@@ -31,7 +31,6 @@
             </div>
           </div>
           <div class="gameActions">
-            <button class="shuffle">Shuffle Cards</button>
             <button class="drawACard">draw a card</button>
             <button class="pass">pass</button>
           </div>
@@ -50,7 +49,7 @@
 </template>
 
 <script>
-import allCards from './allCards.js';
+import deck from '../deck/allCards.js';
 import End from '@/components/End.vue';
 export default {
   name: 'ActualGame',
@@ -59,7 +58,7 @@ export default {
     },
 data(){
   return{
-    allCards,
+    deck,
     playerName:"Vue",
     playerColor:"#71D097",
     playerTime:22,
