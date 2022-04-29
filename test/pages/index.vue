@@ -53,11 +53,11 @@ export default {
       newCode: '',
     }
   },
-  computed: {
-    newCode() {
-      return this.newCode
-    },
-  },
+  // computed: {
+  //   newCode() {
+  //     return this.newCode
+  //   },
+  // },
   methods: {
     showModal() {
       this.isJoinVisible = true
@@ -69,15 +69,17 @@ export default {
         alert('please enter a username')
       } else {
         // going to the waiting room
-        this.socket = io('http://localhost:3001')
+        this.socketInstance = io('http://localhost:3001')
 
         // this.socket = this.$nuxtSocket({
         //   channel: '/index',
         // })
 
-        console.log(this.socket)
+        console.log(this.socketInstance)
         this.$router.push('/game')
         this.makeCode(5)
+
+        return this.socketInstance
       }
 
       // this.username = this.$refs.userName.value
@@ -93,7 +95,7 @@ export default {
       this.newCode = code
       // console.log(code)
 
-      this.socket.emit('roomCode', code)
+      this.socketInstance.emit('roomCode', code)
     },
     closeModal() {
       this.isJoinVisible = false

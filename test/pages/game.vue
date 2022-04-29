@@ -34,7 +34,7 @@
   </div>
 </template>
 <script>
-// import io from 'socket.io-client'
+import io from 'socket.io-client'
 import Pin from '@/components/Pin.vue'
 
 export default {
@@ -45,18 +45,19 @@ export default {
   data() {
     return {
       newCode: '',
+      socketInstance: io('/game.vue'),
     }
   },
-  mounted() {
-    this.socket = this.$nuxtSocket({
-      channel: '/game',
-    })
-    // listen for events
-    this.socket.on('myCode', (code) => {
-      // Handle event
-      console.log(code)
-    })
-  },
+  // mounted() {
+  //   this.socket = this.$nuxtSocket({
+  //     channel: '/game',
+  //   })
+  //   // listen for events
+  //   this.socket.on('myCode', (code) => {
+  //     // Handle event
+  //     console.log(code)
+  //   })
+  // },
   methods: {
     getCode() {
       // this.socketInstance = io('http://localhost:3001')
