@@ -32,8 +32,8 @@
           </div>
           <div class="gameActions">
 
-              <button @click="initialCards()" class="drawACard">draw a card</button>
-
+              <button @click="randomItem()" class="drawACard">draw a card</button>
+ <!-- <p v-if="cardAtHand"><img style="width:100%" :src="selectedImage" alt=""></p> -->
             <button class="pass">pass</button>
           </div>
           <div class="table">
@@ -57,7 +57,7 @@ export default {
 
 data(){
   return{
-    cardAtHand: [],
+    cardAtHand: null,
     allCards,
     test:[],
     playerName:"Vue",
@@ -102,12 +102,27 @@ mounted(){
         this.$router.push('/');
       },
       // drawCard: function() {
+            randomItem () {
+              
+              // items= this.allCards.cardImg;
+      // return this.allCards[Math.floor(Math.random()*this.allCards.length)];
+        const randomDeal = Math.floor(Math.random() * this.allCards.length);
+        console.log(randomDeal)
+    },
+
+      created() {
+      this.cardAtHand = this.allCards
+    // this.cardAtHand = this.randomItem(this.cardImg);
+    console.log('test');
+    console.log(allCards)
+  }
+  },
+
+      // intialCards(){
+      //   this.cardAtHand=require('./imgs/plus4WildCard.png')
+      // }
 
 
-      intialCards(){
-        this.cardAtHand=require('./imgs/plus4WildCard.png')
-      }
-    }
 
     
 }
