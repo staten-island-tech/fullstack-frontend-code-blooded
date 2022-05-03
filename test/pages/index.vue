@@ -51,6 +51,7 @@ export default {
       isJoinNotVisible: true,
       username: '',
       newCode: '',
+      totalUsers: [1, 1, 2, 3, , 45, 5],
     }
   },
   computed: {
@@ -71,11 +72,14 @@ export default {
         // going to the waiting room
         this.socket = io('http://localhost:3001')
 
-        // this.socket = this.$nuxtSocket({
-        //   channel: '/index',
-        // })
+        this.socket = this.$nuxtSocket({
+          channel: '/index',
+          reconnection: false,
+        })
 
         console.log(this.socket)
+        console.log(this.totalUsers)
+        console.log('this is the id ' + this.socket[0].connected)
         this.$router.push('/game')
         this.makeCode(5)
       }

@@ -43,20 +43,15 @@ export default {
   },
 
   data() {
-    return {
-      newCode: '',
-    }
+    return {}
   },
-  mounted() {
-    this.socket = this.$nuxtSocket({
-      channel: '/game',
-    })
-    // listen for events
-    this.socket.on('myCode', (code) => {
-      // Handle event
-      console.log(code)
-    })
-  },
+  // mounted() {
+  //   this.socket = this.$nuxtSocket({
+  //     name: this.socket.id,
+  //     channel: '/game',
+  //     reconnection: false,
+  //   })
+  // },
   methods: {
     getCode() {
       // this.socketInstance = io('http://localhost:3001')
