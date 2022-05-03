@@ -26,16 +26,23 @@
                 </div>
               </div>
             </div>
-            <div v-if="drawnCard" class="cardsBox" >
-    <div :card-img="drawnCard.cardImg" :card-name="drawnCard.cardName">{{drawnCard.cardImg}}</div>
-  </div>
+            
             <!-- <div class="cardsBox">
                 {{deck.cardImg}}
             </div> -->
           </div>
+          <div v-if ="deck.length">
+          <div v-if="drawnCard" class="cardsBox" >
+    <div :card-img="drawnCard.cardImg" :card-name="drawnCard.cardName">{{drawnCard.cardImg}}</div>
+  </div>
           <div class="gameActions">
-            <button class="drawACard" @click="drawACard">draw a card</button>
+            <button class="drawACard" @click="drawCard">draw a card</button>
             <button class="pass">pass</button>
+          </div>
+          </div>
+          <div v-else>
+            <h1>No More Cards</h1>
+    <button @click="makeDeck">Reshuffle</button>
           </div>
           <div class="table">
             <div class="cardOnTable">
@@ -105,7 +112,7 @@ data(){
       console.log(this.playerHand); 
       console.log(randomDeal);
     }, */
-    drawACard() {
+    drawCard() {
       
       if (this.deck.length > 0) {
         const randIndex = Math.floor(Math.random() * this.deck.length);
