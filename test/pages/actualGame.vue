@@ -36,18 +36,14 @@
               </div>
             </div>
           </div>
-
-          <!-- <div class="cardsBox">
-                {{deck.cardImg}}
-            </div> -->
         </div>
         <div v-if="deck.deck.length">
           <div class="gameActions">
-            <button v-if="drawnCard" class="drawACard" @click="drawCard">
+            <button class="drawACard" @click="drawCard">
               draw a card
             </button>
             <div class="cardsBox">
-              <img :src="drawnCard.cardImg" />
+              <img :src="drawnCard.cardImg"></img>
             </div>
             <button class="pass">pass</button>
           </div>
