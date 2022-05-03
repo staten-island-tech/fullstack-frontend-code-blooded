@@ -31,9 +31,9 @@
                 {{deck.cardImg}}
             </div> -->
           </div>
-          <div v-if ="deck.length">
-          <div v-if="drawnCard" class="cardsBox" >
-    <div :card-img="drawnCard.cardImg" :card-name="drawnCard.cardName">{{drawnCard.cardImg}}</div>
+          <div v-if ="this.deck.length">
+          <div v-if="this.drawnCard" class="cardsBox" >
+    <div :card-img="this.drawnCard.cardImg" :card-name="this.drawnCard.cardName">{{this.drawnCard.cardImg}}</div>
   </div>
           <div class="gameActions">
             <button class="drawACard" @click="drawCard">draw a card</button>
@@ -42,7 +42,7 @@
           </div>
           <div v-else>
             <h1>No More Cards</h1>
-    <button @click="makeDeck">Reshuffle</button>
+    <button>Reshuffle</button>
           </div>
           <div class="table">
             <div class="cardOnTable">
