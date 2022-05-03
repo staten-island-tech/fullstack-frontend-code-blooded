@@ -26,12 +26,15 @@
                 </div>
               </div>
             </div>
-            <div class="cardsBox">
+            <div v-if="drawnCard" class="cardsBox" >
+    <div :card-img="drawnCard.cardImg" :card-name="drawnCard.cardName">{{drawnCard.cardImg}}</div>
+  </div>
+            <!-- <div class="cardsBox">
                 {{deck.cardImg}}
-            </div>
+            </div> -->
           </div>
           <div class="gameActions">
-            <button class="drawACard" @click="deal">draw a card</button>
+            <button class="drawACard" @click="drawACard">draw a card</button>
             <button class="pass">pass</button>
           </div>
           <div class="table">
@@ -49,9 +52,8 @@
 </template>
 
 <script>
-// import deck from '@/deck/allCards.js';
+import deck from '@/deck/deck.js';
 import End from '@/components/End.vue';
-const deck = require("../deck/allCards.js").deck;
 export default {
   name: 'ActualGame',
  components: {
@@ -59,7 +61,8 @@ export default {
     },
 data(){
   return{
-    deck: [],
+    deck,
+    drawnCard:undefined,
     playerName:"Vue",
     playerColor:"#71D097",
     playerTime:22,
@@ -95,14 +98,23 @@ data(){
       goIndex() {
         this.$router.push('/');
       },
-      deal() {
+      /* deal() {
       this.deck = deck;
       const randomDeal = Math.floor(Math.random() * deck.length);
       /*       console.log(this.deck);
-      console.log(this.playerHand); */
+      console.log(this.playerHand); 
       console.log(randomDeal);
-    },
+    }, */
+    drawACard() {
+      
+      if (this.deck.length > 0) {
+        const randIndex = Math.floor(Math.random() * this.deck.length);
+        this.drawnCard = this.deck.splice(randIndex, 1)[0];
+        console.log(this.drawnCard);
+      }
+      
     }
+}
 }
 </script>
 

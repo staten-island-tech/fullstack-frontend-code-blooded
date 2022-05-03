@@ -7,7 +7,7 @@
     <div class="options">
       <h1 class="logo">code-blooded</h1>
       <input type="text" placeholder="enter a name" name="username" required>
-      <button class="start">start a game</button>
+      <button class="start" @click = "startAGame">start a game</button>
       <div class="join-contain">
           <input type="text" placeholder="enter code" name="join-code" required>
         <button class="join">join</button>
@@ -18,6 +18,7 @@
 
 </template>
 <script>
+import socket from "socket.io-client"
 export default{
   methods: {
       goActualGame() {
@@ -26,6 +27,11 @@ export default{
       goWelcomeBack(){
         this.$router.push('/welcomeBack');
       },
+      startAGame(){
+        socket.on("connect", () => {
+  console.log(socket.id); // x8WIv7-mJelg7on_ALbx
+});
+      }
     }
 }
 </script>
