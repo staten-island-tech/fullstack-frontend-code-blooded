@@ -31,7 +31,7 @@
               <div class="timeRow">
                 <h2 class="time sizeSmall" :style="{ color: nextColor }">
                   {{ playerNext }}
-                </h2>
+                </h2>5
                 <h2 class="time sizeSmall">is up next</h2>
               </div>
             </div>
@@ -43,7 +43,7 @@
             </button>
           <div v-if="drawnCard" >
             <div class="cardsBox">
-              <img :src="drawnCard.cardImg"></img>
+              <img :src="drawnCard.cardImg">
             </div>
             <button class="pass">pass</button>
           </div>
@@ -100,6 +100,11 @@ export default {
           playerColor: '#EE914D',
         },
       ],
+    }
+  },
+  mounted:{
+    shuffle: () => {
+      for()
     }
   },
   methods: {
