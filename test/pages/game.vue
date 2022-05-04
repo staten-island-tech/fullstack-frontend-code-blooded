@@ -34,7 +34,7 @@
   </div>
 </template>
 <script>
-// import io from 'socket.io-client'
+import io from 'socket.io-client'
 import Pin from '@/components/Pin.vue'
 
 export default {
