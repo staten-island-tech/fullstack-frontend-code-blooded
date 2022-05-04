@@ -36,15 +36,6 @@ export default {
     Sign,
     Join,
   },
-  // mounted() {
-  //   this.socket = this.$nuxtSocket({
-  //     channel: '/index',
-  //   })
-  //   // listen for events
-  //   this.socket.on('roomCode', (msg, cb) => {
-  //     // Handle event
-  //   })
-  // },
   data() {
     return {
       isJoinVisible: false,
@@ -54,11 +45,6 @@ export default {
       totalUsers: [1, 1, 2, 3, , 45, 5],
     }
   },
-  // computed: {
-  //   newCode() {
-  //     return this.newCode
-  //   },
-  // },
   methods: {
     showModal() {
       this.isJoinVisible = true
@@ -70,7 +56,7 @@ export default {
         alert('please enter a username')
       } else {
         // going to the waiting room
-        this.socketInstance = io('http://localhost:3001')
+        // this.socketInstance = io('http://localhost:3001')
 
         this.socket = this.$nuxtSocket({
           channel: '/index',
@@ -79,7 +65,7 @@ export default {
 
         console.log(this.socket)
         console.log(this.totalUsers)
-        console.log('this is the id ' + this.socket[0].connected)
+        console.log('this is the id')
         this.$router.push('/game')
         this.makeCode(5)
 

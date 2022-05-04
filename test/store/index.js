@@ -14,3 +14,5 @@
 //     commit('SET_MESSAGE', chatMessageFmt)
 //   },
 // }
+
+export const state = () => ({})

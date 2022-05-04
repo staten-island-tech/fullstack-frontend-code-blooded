@@ -34,20 +34,15 @@ export default {
     '@nuxtjs/pwa',
     'nuxt-socket-io',
   ],
-
-  // io: {
-  //   // module options
-  //   sockets: [
-  //     {
-  //       name: 'index',
-  //       url: 'http://localhost:3000',
-  //     },
-  //     // {
-  //     //   name:'game',
-  //     //   url:'http://localhost'
-  //     // }
-  //   ],
-  // },
+  io: {
+    sockets: [
+      {
+        name: 'home',
+        url: 'http://localhost:3000',
+        default: true,
+      },
+    ],
+  },
 
   axios: {},
   // PWA module configuration: https://go.nuxtjs.dev/pwa
