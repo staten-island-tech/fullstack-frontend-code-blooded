@@ -41,9 +41,14 @@
           <button class="drawACard" @click="drawCard">
               draw a card
             </button>
-          <div v-if="drawnCard" >
+          <!-- <div v-if="drawnCard" >
             <div class="cardsBox">
-              <img :src="drawnCard.cardImg"></img>
+              <img :src="drawnCard.cardImg">
+            </div> -->
+
+             <div v-if="drawnCard" >
+            <div class="cardsBox">
+              <img :src="drawnCard.cardImg">
             </div>
             <button class="pass">pass</button>
           </div>
@@ -117,7 +122,7 @@ export default {
       if (this.deck.deck.length > 0) {
         const randIndex = Math.floor(Math.random() * this.deck.deck.length)
         this.drawnCard = this.deck.deck.splice(randIndex, 1)[0]
-        console.log(this.drawnCard)
+
       }
     },
   },
@@ -243,6 +248,7 @@ export default {
 .cardsBox {
   width: 100%;
   height: 60%;
+  transform: translate(-50rem, 3rem);
 }
 
 .deck-numbers {
