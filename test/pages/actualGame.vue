@@ -37,7 +37,7 @@
               <div class="timeRow">
                 <h2 class="time sizeSmall" :style="{ color: nextColor }">
                   {{ playerNext }}
-                </h2>5
+                </h2>
                 <h2 class="time sizeSmall">is up next</h2>
               </div>
             </div>
@@ -51,11 +51,15 @@
             <button class="pass">pass</button>
           <div v-if="drawnCard" >
             <div class="cardsBox">
+<<<<<<< HEAD
               <img :src="drawnCard.cardImg">
           <div v-if="drawnCard" >
             <div class="cardsBox">
               <img :src="drawnCard.cardImg"></img>
 
+=======
+              <img :src="drawnCard.cardImg"></img>
+>>>>>>> parent of f94f833 (update and fix shuffle)
             </div>
 
              <!-- <div v-if="drawnCard" >
@@ -125,6 +129,7 @@ export default {
       ],
     }
   },
+<<<<<<< HEAD
  /*  mounted:{
     shuffle: (i) => {
       for(i = 0; i <= this.deck.deck.length; i++){
@@ -135,6 +140,8 @@ export default {
       }
     }, */
  
+=======
+>>>>>>> parent of f94f833 (update and fix shuffle)
   methods: {
     goIndex() {
       this.$router.push('/')
