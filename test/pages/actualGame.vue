@@ -10,7 +10,13 @@
             >
               {{ player.playerName }}
             </h1>
+            <!-- <ul>
+  <li v-for="index in 7" :key="index">
+    {{ deck.deck[index].cardName }}
+  </li>
+</ul> -->
             <h2 class="cardLeft">{{ player.cardData }} cards in hand</h2>
+            
           </div>
         </div>
       </div>
@@ -31,40 +37,34 @@
               <div class="timeRow">
                 <h2 class="time sizeSmall" :style="{ color: nextColor }">
                   {{ playerNext }}
-                </h2>
+                </h2>5
                 <h2 class="time sizeSmall">is up next</h2>
               </div>
             </div>
           </div>
         </div>
+      
         <div v-if="deck.deck.length" class="gameActions">
           <button class="drawACard" @click="drawCard">
               draw a card
             </button>
-          <!-- <div v-if="drawnCard" >
-            <div class="cardsBox">
-              <img :src="drawnCard.cardImg">
-            </div> -->
-
-             <div v-if="drawnCard" >
+            <button class="pass">pass</button>
+          <div v-if="drawnCard" >
             <div class="cardsBox">
               <img :src="drawnCard.cardImg">
             </div>
-            <button class="pass">pass</button>
-          </div>
         </div>
         <div v-else>
           <h1>No More Cards</h1>
           <button>Reshuffle</button>
         </div>
+        </div>
         <div class="table">
           <div class="cardOnTable">
             <h2 class="tableLabel">table</h2>
-            
-              <div class="tableImg" v-for="index in 7" :key="index">
-                <img z-index=3 :src="deck.deck[index].cardImg">
-              </div>
-            
+            <div v-for="tia in 7" :key="tia">
+              <div>{{deck.deck[tia].cardName}}</div>
+            </div>
           </div>
           <End />
         </div>
@@ -112,6 +112,16 @@ export default {
       ],
     }
   },
+ /*  mounted:{
+    shuffle: (i) => {
+      for(i = 0; i <= this.deck.deck.length; i++){
+        const shuffleDeck = Math.floor(Math.random() * this.deck.deck.length)
+            this.selectedContacts.push(contacts[i].id);
+      }
+
+      }
+    }, */
+ 
   methods: {
     goIndex() {
       this.$router.push('/')
@@ -253,7 +263,6 @@ export default {
 .cardsBox {
   width: 100%;
   height: 60%;
-  transform: translate(-50rem, 3rem);
 }
 
 .deck-numbers {
@@ -319,9 +328,5 @@ export default {
   font-size: 2rem;
   margin-top: 1rem;
   letter-spacing: 0.1rem;
-}
-
-.tableImg{
-  z-index: -1;
 }
 </style>
