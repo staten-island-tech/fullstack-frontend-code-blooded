@@ -48,10 +48,16 @@
           <button class="drawACard" @click="drawCard">
               draw a card
             </button>
+<<<<<<< HEAD
             <button class="pass">pass</button>
           <div v-if="drawnCard" >
             <div class="cardsBox">
               <img :src="drawnCard.cardImg">
+=======
+          <div v-if="drawnCard" >
+            <div class="cardsBox">
+              <img :src="drawnCard.cardImg"></img>
+>>>>>>> parent of 264b583 (translate)
             </div>
 
              <!-- <div v-if="drawnCard" >
@@ -141,7 +147,11 @@ export default {
       if (this.deck.deck.length > 0) {
         const randIndex = Math.floor(Math.random() * this.deck.deck.length)
         this.drawnCard = this.deck.deck.splice(randIndex, 1)[0]
+<<<<<<< HEAD
       console.log(this.drawnCard)
+=======
+        console.log(this.drawnCard)
+>>>>>>> parent of 264b583 (translate)
       }
     },
   },
@@ -267,7 +277,6 @@ export default {
 .cardsBox {
   width: 100%;
   height: 60%;
-  transform: translate(-50rem, 3rem);
 }
 
 .deck-numbers {
