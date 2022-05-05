@@ -48,17 +48,14 @@
           <button class="drawACard" @click="drawCard">
               draw a card
             </button>
-<<<<<<< HEAD
-<<<<<<< HEAD
             <button class="pass">pass</button>
           <div v-if="drawnCard" >
             <div class="cardsBox">
               <img :src="drawnCard.cardImg">
-=======
           <div v-if="drawnCard" >
             <div class="cardsBox">
               <img :src="drawnCard.cardImg"></img>
->>>>>>> parent of 264b583 (translate)
+
             </div>
 
              <!-- <div v-if="drawnCard" >
