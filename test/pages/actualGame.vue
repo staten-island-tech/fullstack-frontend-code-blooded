@@ -60,6 +60,11 @@
         <div class="table">
           <div class="cardOnTable">
             <h2 class="tableLabel">table</h2>
+            
+              <div class="tableImg" v-for="index in 7" :key="index">
+                <img z-index=3 :src="deck.deck[index].cardImg">
+              </div>
+            
           </div>
           <End />
         </div>
@@ -314,5 +319,9 @@ export default {
   font-size: 2rem;
   margin-top: 1rem;
   letter-spacing: 0.1rem;
+}
+
+.tableImg{
+  z-index: -1;
 }
 </style>
