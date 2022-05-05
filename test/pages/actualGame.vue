@@ -10,7 +10,13 @@
             >
               {{ player.playerName }}
             </h1>
+            <!-- <ul>
+  <li v-for="index in 7" :key="index">
+    {{ deck.deck[index].cardName }}
+  </li>
+</ul> -->
             <h2 class="cardLeft">{{ player.cardData }} cards in hand</h2>
+            
           </div>
         </div>
       </div>
@@ -37,28 +43,28 @@
             </div>
           </div>
         </div>
+      
         <div v-if="deck.deck.length" class="gameActions">
           <button class="drawACard" @click="drawCard">
               draw a card
             </button>
-          <!-- <div v-if="drawnCard" >
-            <div class="cardsBox">
-              <img :src="drawnCard.cardImg">
-<<<<<<< HEAD
-=======
-            </div> -->
-
-             <div v-if="drawnCard" >
-            <div class="cardsBox">
-              <img :src="drawnCard.cardImg">
->>>>>>> 264b58303a29d7f58b905fb404e6f02c9666b1db
-            </div>
             <button class="pass">pass</button>
-          </div>
+          <div v-if="drawnCard" >
+            <div class="cardsBox">
+              <img :src="drawnCard.cardImg">
+            </div>
+
+             <!-- <div v-if="drawnCard" >
+            <div class="cardsBox">
+              <img :src="drawnCard.cardImg">
+            </div>
+            
+          </div> -->
         </div>
         <div v-else>
           <h1>No More Cards</h1>
           <button>Reshuffle</button>
+        </div>
         </div>
         <div class="table">
           <div class="cardOnTable">
@@ -110,11 +116,16 @@ export default {
       ],
     }
   },
-  mounted:{
-    shuffle: () => {
-      for()
-    }
-  },
+ /*  mounted:{
+    shuffle: (i) => {
+      for(i = 0; i <= this.deck.deck.length; i++){
+        const shuffleDeck = Math.floor(Math.random() * this.deck.deck.length)
+            this.selectedContacts.push(contacts[i].id);
+      }
+
+      }
+    }, */
+ 
   methods: {
     goIndex() {
       this.$router.push('/')
@@ -130,7 +141,7 @@ export default {
       if (this.deck.deck.length > 0) {
         const randIndex = Math.floor(Math.random() * this.deck.deck.length)
         this.drawnCard = this.deck.deck.splice(randIndex, 1)[0]
-
+      console.log(this.drawnCard)
       }
     },
   },
