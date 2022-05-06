@@ -41,17 +41,9 @@
           <button class="drawACard" @click="drawCard">
               draw a card
             </button>
-          <!-- <div v-if="drawnCard" >
+          <div v-if="drawnCard" >
             <div class="cardsBox">
               <img :src="drawnCard.cardImg">
-<<<<<<< HEAD
-=======
-            </div> -->
-
-             <div v-if="drawnCard" >
-            <div class="cardsBox">
-              <img :src="drawnCard.cardImg">
->>>>>>> 264b58303a29d7f58b905fb404e6f02c9666b1db
             </div>
             <button class="pass">pass</button>
           </div>
@@ -110,11 +102,13 @@ export default {
       ],
     }
   },
-  mounted:{
+ /*  mounted:{
     shuffle: () => {
-      for()
-    }
-  },
+      if (this.deck.deck.length > 0) {
+        const shuffleDeck = Math.floor(Math.random() * this.deck.deck.length)
+       
+    } */
+  
   methods: {
     goIndex() {
       this.$router.push('/')
@@ -130,7 +124,7 @@ export default {
       if (this.deck.deck.length > 0) {
         const randIndex = Math.floor(Math.random() * this.deck.deck.length)
         this.drawnCard = this.deck.deck.splice(randIndex, 1)[0]
-
+        console.log(this.drawnCard)
       }
     },
   },
@@ -256,7 +250,6 @@ export default {
 .cardsBox {
   width: 100%;
   height: 60%;
-  transform: translate(-50rem, 3rem);
 }
 
 .deck-numbers {
