@@ -46,11 +46,7 @@ export default {
   },
   methods: {
     getCode() {
-      // this.socketInstance = io('http://localhost:3001')
-      this.socketInstance.on('myCode', (arg) => {
-        this.newCode = arg
-        return this.newCode
-      })
+      console.log(this.socket)
     },
     goActualGame() {
       this.$router.push('/actualGame')

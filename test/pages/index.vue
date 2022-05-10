@@ -17,7 +17,12 @@
         name="username"
         required
       />
-      <button class="start" @click="goGame">start a game</button>
+      <!-- <button class="start" @click="goGame">start a game</button> -->
+
+      <button class="start">
+        <NuxtLink to="/game">start a game</NuxtLink>
+      </button>
+
       <button class="join" @click="showModal">show join code</button>
     </div>
     <span class="apcsp">apcsp project</span>
@@ -26,7 +31,7 @@
 
 <script>
 /*eslint-disable*/
-import io from 'socket.io-client'
+// import io from 'socket.io-client'
 import Join from '@/components/Join.vue'
 import Sign from '@/components/Sign.vue'
 //   <Modal v-show="isModalVisible" @close="closeModal"/>
@@ -52,16 +57,14 @@ export default {
       // this.username = this.$refs.userName.value
     },
     goGame() {
-      if (this.username.length < 1) {
+      this.$store.commit('increment')
+      console.log(this.$store.state.count)
+
+      /*  if (this.username.length < 1) {
         alert('please enter a username')
       } else {
         // going to the waiting room
         // this.socketInstance = io('http://localhost:3001')
-
-        this.socket = this.$nuxtSocket({
-          channel: '/index',
-          reconnection: false,
-        })
 
         console.log(this.socket)
         console.log(this.totalUsers)
@@ -70,7 +73,7 @@ export default {
         this.makeCode(5)
 
         return this.socketInstance
-      }
+      } */
 
       // this.username = this.$refs.userName.value
     },
@@ -175,6 +178,12 @@ input {
   font-size: 3rem;
   border-color: var(--fourth-color);
   padding: 0.5rem;
+}
+.start-button {
+  background-color: var(--fourth-color);
+  color: var(--background-color);
+  font-size: 3rem;
+  border-color: var(--fourth-color);
 }
 .join {
   background-color: var(--secondary-color);

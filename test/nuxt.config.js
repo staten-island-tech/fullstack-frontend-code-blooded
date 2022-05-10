@@ -32,17 +32,7 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
-    'nuxt-socket-io',
   ],
-  io: {
-    sockets: [
-      {
-        name: 'home',
-        url: 'http://localhost:3000',
-        default: true,
-      },
-    ],
-  },
 
   axios: {},
   // PWA module configuration: https://go.nuxtjs.dev/pwa

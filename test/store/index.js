@@ -1,18 +1,25 @@
-// export const state = () => ({
-//   chatMessages: '',
-// })
+// export const state = () => ({})
 
-// export const mutations = {
-//   SET_MESSAGE(state, chatMessage) {
-//     state.chatMessages += chatMessage
-//   },
-// }
+import { app } from 'vue'
+import { createStore } from 'vuex'
 
-// export const actions = {
-//   FORMAT_MESSAGE({ commit }, chatMessage) {
-//     const chatMessageFmt = `${new Date().toLocaleString()}: ${chatMessage}\r\n`
-//     commit('SET_MESSAGE', chatMessageFmt)
-//   },
-// }
+// Create a new store instance.
+const store = createStore({
+  state() {
+    return {
+      count: 0,
+    }
+  },
+  mutations: {
+    increment(state) {
+      state.count++
+    },
+  },
+})
 
-export const state = () => ({})
+const app = createApp({
+  /* your root component */
+})
+
+// Install the store instance as a plugin
+app.use(store)
