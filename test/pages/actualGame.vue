@@ -37,7 +37,7 @@
               <div class="timeRow">
                 <h2 class="time sizeSmall" :style="{ color: nextColor }">
                   {{ playerNext }}
-                </h2>5
+                </h2>
                 <h2 class="time sizeSmall">is up next</h2>
               </div>
             </div>
@@ -112,15 +112,15 @@ export default {
       ],
     }
   },
- /*  mounted:{
-    shuffle: (i) => {
-      for(i = 0; i <= this.deck.deck.length; i++){
-        const shuffleDeck = Math.floor(Math.random() * this.deck.deck.length)
-            this.selectedContacts.push(contacts[i].id);
-      }
+  //  mounted:{
+  //   shuffle: (i) => {
+  //     for(i = 0; i <= this.deck.deck.length; i++){
+  //       const shuffleDeck = Math.floor(Math.random() * this.deck.deck.length)
+  //           this.selectedContacts.push(contacts[i].id);
+  //     }
 
-      }
-    }, */
+  //     }
+  //   }, 
  
   methods: {
     goIndex() {
