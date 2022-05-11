@@ -137,6 +137,53 @@ setCookie(name, value, seconds){
   }
   return null;
 },
+onConnection(socket) {
+​
+  /**
+   * Whenever a room is requested, looks for a slot for the player,
+   * up to 10 players in a room, maxRooms and started games are respected.
+   * @method
+   * @param {String} playerName Player name
+   * @return responseRoom with the name of the room, otherwise error.
+   */
+  socket.on('requestRoom', function(playerName) {
+    socket.playerName = playerName;
+    for (let i = 1; i <= numRooms; i++) {
+      let name = 'Room_' + i;
+      let people;
+      try {
+        people = io.sockets.adapter.rooms[name].length;
+      } catch (e) {
+        people = 0;
+      }
+      if (people < maxPeople && data[name]['timeout']['s'] > 0) {
+        socket.join(name);
+        console.log('>> User ' + socket.playerName +
+        ' connected on ' + name + ' (' + (people + 1) + '/' + maxPeople + ')');
+        io.to(socket.id).emit('responseRoom', name);
+        if (people + 1 >= 2) {
+          clearInterval(data[name]['timeout']['id']);
+          data[name]['timeout']['s'] = 4;
+          data[name]['timeout']['id'] = setInterval(function() {
+            startingCountdown(name);
+          }, 1000);
+        }
+        return;
+      }
+    }
+    io.to(socket.id).emit('responseRoom', 'error');
+    console.log('>> Rooms exceeded');
+  });
+  },
+  startingCountdown(name) {
+  let countDown = data[name]['timeout']['s']--;
+  io.to(name).emit('countDown', countDown);
+  console.log('>> ' + name + ': Starting in ' + countDown);
+  if (countDown <= 0) {
+    clearInterval(data[name]['timeout']['id']);
+    startGame(name);
+  }
+}
   },
   methods: {
     goIndex() {
