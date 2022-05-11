@@ -76,6 +76,8 @@
 <script>
 import deck from '@/deck/deck.js'
 import End from '@/components/End.vue'
+import VueCookies from 'vue-cookies'
+const socket = io({autoConnect: false});
 export default {
   name: 'ActualGame',
   components: {
@@ -85,43 +87,19 @@ export default {
     return {
       deck,
       drawnCard: undefined,
-      playerName: 'Vue',
-      playerColor: '#71D097',
-      playerTime: 22,
-      playerNext: 'HTML',
-      nextColor: '#49C8FF',
-      playerData: [
-        {
-          playerName: 'placeholder',
-          cardData: 0,
-          id: 1,
-          playerColor: '#71D097',
-        },
-        {
-          playerName: 'placeholder',
-          cardData: 0,
-          id: 2,
-          playerColor: '#49C8FF',
-        },
-        {
-          playerName: 'placeholder',
-          cardData: 0,
-          id: 3,
-          playerColor: '#EE914D',
-        },
-      ],
+      room,
+      hand = [],
+      turn,
+      playerName,
     }
   },
- /*  mounted:{
-    shuffle: (i) => {
-      for(i = 0; i <= this.deck.deck.length; i++){
-        const shuffleDeck = Math.floor(Math.random() * this.deck.deck.length)
-            this.selectedContacts.push(contacts[i].id);
-      }
-
-      }
-    }, */
- 
+  mounted:{
+    },
+  created:{
+setCookie(name, value, seconds){
+  this.$cookie.set("keyName", keyValue, "expiring time")
+}
+  },
   methods: {
     goIndex() {
       this.$router.push('/')
