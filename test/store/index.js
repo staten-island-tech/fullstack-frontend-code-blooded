@@ -1,25 +1,22 @@
-// export const state = () => ({})
+import vue from 'vue'
+import vuex from 'vuex'
 
-import { app } from 'vue'
-import { createStore } from 'vuex'
+vue.use(vuex)
 
-// Create a new store instance.
-const store = createStore({
-  state() {
-    return {
-      count: 0,
+export default new vuex.Store({
+  state: {
+    users:{
+      {
+        name: "user A",
+        room
+      }
     }
-  },
-  mutations: {
-    increment(state) {
-      state.count++
-    },
-  },
-})
 
-const app = createApp({
-  /* your root component */
-})
+  },
 
-// Install the store instance as a plugin
-app.use(store)
+  getters: {},
+
+  mutations: {},
+
+  actions: {},
+})
