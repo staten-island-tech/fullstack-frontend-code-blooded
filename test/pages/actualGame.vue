@@ -78,6 +78,7 @@ import deck from '@/deck/deck.js'
 import End from '@/components/End.vue'
 import VueCookies from 'vue-cookies'
 const socket = io({autoConnect: false});
+socket.on('connect', requestRoom);
 export default {
   name: 'ActualGame',
   components: {
@@ -94,11 +95,48 @@ export default {
     }
   },
   mounted:{
+    init(){
+      playerName = getCookie('playerName');
+  if (playerName == null) {
+    playerName = prompt('Enter your name: ', 'Guest');
+    if (playerName == null || playerName == "") {
+      playerName = 'Guest';
+    }
+    setCookie('playerName', playerName, 24 * 3600);
+  }
+​
+  socket.connect();
+},
+requestRoom() {
+  socket.emit('requestRoom', playerName);
+  room = 0;
+  hand = [];
+  turn = false;
+  console.log('>> Room Request');
+},
     },
   created:{
 setCookie(name, value, seconds){
-  this.$cookie.set("keyName", keyValue, "expiring time")
-}
+ /*  this.$cookie.set("keyName", keyValue, "expiring time") */
+  let date = new Date();
+  date.setTime(date.getTime() + (seconds * 1000));
+  let expires = "expires=" + date.toUTCString();
+  document.cookie = name + "=" + value + ";" + expires + ";path=/";
+  },
+  getCookie(name) {
+  name += "=";
+  let cookies = document.cookie.split(';');
+  for(let i = 0; i < cookies.length; i++) {
+    let cookie = cookies[i];
+    while (cookie.charAt(0) == ' ') {
+      cookie = cookie.substring(1);
+    }
+    if (cookie.indexOf(name) == 0) {
+      return cookie.substring(name.length, cookie.length);
+    }
+  }
+  return null;
+},
   },
   methods: {
     goIndex() {
