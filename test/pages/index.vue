@@ -35,6 +35,9 @@
 import Join from '@/components/Join.vue'
 import Sign from '@/components/Sign.vue'
 //   <Modal v-show="isModalVisible" @close="closeModal"/>
+
+// vuex here
+import { mapState } from 'vuex'
 export default {
   name: 'App',
   components: {
@@ -50,6 +53,7 @@ export default {
       totalUsers: [1, 1, 2, 3, , 45, 5],
     }
   },
+  computed: mapState(['chatMessages']),
   methods: {
     showModal() {
       this.isJoinVisible = true

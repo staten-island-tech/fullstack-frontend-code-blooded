@@ -32,7 +32,24 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
+    'nuxt-socket-io',
   ],
+
+  io: {
+    sockets: [
+      {
+        name: 'test',
+        url: 'http://localhost:3000',
+        default: true,
+        vuex: {
+          // event "progress" will trigger the mutation and pass the event's data to mutation
+          mutations: [{ progress: 'examples/setProgress' }],
+          actions: [{ chatMessage: 'formatMessage' }],
+          emitBacks: [{ 'examples/sample': 'examples/setProgress' }],
+        },
+      },
+    ],
+  },
 
   axios: {},
   // PWA module configuration: https://go.nuxtjs.dev/pwa
