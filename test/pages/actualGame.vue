@@ -51,7 +51,7 @@
             <button class="pass">pass</button>
           <div v-if="drawnCard" >
             <div class="cardsBox">
-              <img :src="drawnCard.cardImg">
+              <img :src="attempt.cardImg">
             </div>
         </div>
         <div v-else>
@@ -85,6 +85,7 @@ export default {
     return {
       deck,
       drawnCard: undefined,
+      attempt:[],
       playerName: 'Vue',
       playerColor: '#71D097',
       playerTime: 22,
@@ -137,6 +138,7 @@ export default {
       if (this.deck.deck.length > 0) {
         const randIndex = Math.floor(Math.random() * this.deck.deck.length)
         this.drawnCard = this.deck.deck.splice(randIndex, 1)[0]
+        this.attempt.push(this.drawnCard)
 
       }
     },
@@ -261,8 +263,9 @@ export default {
   /* position: absolute; */
 }
 .cardsBox {
-  width: 100%;
-  height: 60%;
+  width: 250%;
+  height: 100%;
+  transform: translate(-61%);
 }
 
 .deck-numbers {
