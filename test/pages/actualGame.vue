@@ -99,8 +99,8 @@ socket.on('turnPlayer', function(data) {
     turn = false;
     console.log('<< Not your turn');
   }
-});
-​
+})
+
 socket.on('haveCard', function(nums) {
   hand = nums;
   for (let i = 0; i < hand.length; i++) {
@@ -116,11 +116,7 @@ socket.on('haveCard', function(nums) {
                   socket.id + ') leaves the room');
     }
   });
-​
-  /**
-   * Whenever disconnection is completed
-   * @method
-   */
+
   socket.on('disconnect', function() {
     console.log('>> Player ' + socket.playerName + ' ('+
                 socket.id + ') disconnected');
@@ -134,7 +130,6 @@ socket.on('drawCard', function(res) {
 	let namePlayer = data[res[1]]['players']['name'];
 	let handPlayer = data[res[1]]['players'][numPlayer]['hand'];
 	let deck = data[res[1]]['deck'];
-​
 	if (idPlayer == socket.id) {
 		let card = parseInt(deck.shift());
 		handPlayer.push(card);
@@ -153,14 +148,11 @@ socket.on('drawCard', function(res) {
     let namePlayer = data[res[1]]['players']['name'];
     let handPlayer = data[res[1]]['players'][numPlayer]['hand'];
     let deck = data[res[1]]['deck'];
-​
     if (idPlayer == socket.id) {
       let playedColor = cardColor(res[0]);
       let playedNumber = res[0] % 14;
-​
       let boardColor = cardColor(data[res[1]]['cardOnBoard']);
       let boardNumber = data[res[1]]['cardOnBoard'] % 14;
-​
       if (playedColor == 'black' || playedColor == boardColor || playedNumber == boardNumber) {
         // Play card
         io.to(res[1]).emit('sendCard', res[0]);
@@ -171,7 +163,6 @@ socket.on('drawCard', function(res) {
           handPlayer.splice(cardPos, 1);
         }
         io.to(idPlayer).emit('haveCard', handPlayer);
-​
         // Next turn
         let skip = 0;
         if (cardType(res[0]) == 'Skip') {
@@ -188,20 +179,19 @@ socket.on('drawCard', function(res) {
         numPlayer = Math.abs(numPlayer + (-1) ** data[res[1]]['reverse'] * (1 + skip)) % data[res[1]]['people'];
         data[res[1]]['turn'] = numPlayer;
         io.to(res[1]).emit('turnPlayer', data[res[1]]['players'][numPlayer]['id']);
-​
       }
     }
     socket.on('haveCard', function(nums) {
   hand = nums;
-  ctx.clearRect(0, 400, canvas.width, canvas.height);
+  
   for (let i = 0; i < hand.length; i++) {
-    ctx.drawImage(cards, 1+cdWidth*(hand[i]%14), 1+cdHeight*Math.floor(hand[i]/14), cdWidth, cdHeight, (hand.length/112)*(cdWidth/3)+(canvas.width/(2+(hand.length-1)))*(i+1)-(cdWidth/4), 400, cdWidth/2, cdHeight/2);
+  
     console.log('<< Have card: ' + hand[i]);
   }
 });
 socket.on('sendCard', function(num) {
-  ctx.drawImage(cards, 1+cdWidth*(num%14), 1+cdHeight*Math.floor(num/14), cdWidth, cdHeight, canvas.width/2-cdWidth/4, canvas.height/2-cdHeight/4, cdWidth/2, cdHeight/2);
-});
+  console.log('Im done with life');
+})
 export default {
   name: 'ActualGame',
   components: {
