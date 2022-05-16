@@ -1,7 +1,7 @@
 <template>
     <div class="code-page"> 
         <button class="help"><a href="rules">?</a></button>
-        <div class="options3">
+        <div class="options2">
             <div class="row">
               <div class="code">
                 <div class="sample"> 
@@ -19,8 +19,7 @@
                     </ul>
                 </div>
                 <div class="buttons">
-                    <button class="start3" @click="goActualGame">START GAME</button>
-                    <button class="delete3" @click="goWelcomeBack">DELETE GAME</button>
+                    <Leave/>
                 </div>
 
             </div>
@@ -29,33 +28,26 @@
               <span class="space"> </span>
               <input id="writeMessage" type="text" placeholder="write a message">
             </div>
-        </div>
             </div>
+        </div>
     </div>
 </template>
 <script>
-import Pin from '@/components/Pin.vue';
+import Pin from '@/components/reg-comp/Pin.vue';
+import Leave from '@/components/reg-comp/Leave.vue';
 export default{
+  name:"Invitee",
   components: {
-      Pin
+      Pin,
+      Leave
     },
-  data(){
-    return{
-      
-    }
-  },
   methods: {
-      goActualGame() {
-        this.$router.push('/actualGame');
+      goIndex() {
+        this.$router.push('/');
       },
-      goWelcomeBack(){
-        this.$router.push('/welcomeBack');
-      },
-    },
-    
+    }
 }
 </script>
-
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Tomorrow:wght@400;600;900&display=swap');
 *{
@@ -68,8 +60,12 @@ export default{
   --medium-weight:600;
   --thin-weight:400;
 }
+/* DISPLAY NONE */
 .hide{
   display:none;
+}
+.code{
+  width:60%;
 }
   .code-page{
     background-color: var(--background-color);
@@ -95,17 +91,10 @@ export default{
     font-size: 2rem;
     position:absolute;
   }
-  .options3{
-    display:flex;
-    flex-direction: row;
-  }
   .row{
     display:flex;
     flex-direction: row;
     align-items: center;
-  }
-  .code{
-    width:40vw;
   }
 
   .comment{
@@ -114,10 +103,10 @@ export default{
     font-weight: var(--heavy-weight);
     font-size:1.5rem;
   }
-  .options3{
+  .options2{
     display:flex;
     flex-direction: column;
-    width:90vw;
+    width:95vw;
     height:90vh;
     justify-content: center;
     margin:0 auto;
@@ -132,37 +121,43 @@ export default{
       display: flex;
       flex-direction: column;
   }
-  .start3,
-  .delete3{
+  .start,
+  .leave{
     border-radius: 35px;
     width:70%;
     font-size:3rem;
     margin-top:1rem;
   }
- #game-input{
+  input{
     border-color: var(--fourth-color);
     border-width: .3rem;
     color:var(--font-color);
-    font-size:3.5rem;
+    font-size:1.5rem;
     border-radius: 26px;
     width:40%;
-    font-size:2rem;
+    font-size:3rem;
     margin-top:1rem;
     background-color:var(--background-color);
-    padding:0.5rem;
-    color:var(--font-color);
-    font-family: 'Tomorrow', sans-serif;
-    font-weight: var(--thin-weight);
   }
-
-  .start3{
+  .space { flex-grow: 1; }
+  #writeMessage{
+    align-self:flex-end;
+    margin-top: auto; 
+  }
+  ::placeholder {
+  padding:0.5rem;
+  color:var(--font-color);
+  font-family: 'Tomorrow', sans-serif;
+  font-weight: var(--thin-weight);
+}
+  .start{
     background-color: var(--fourth-color);
     color:var(--background-color);
     font-size:3rem;
     border-color: var(--fourth-color);
     padding:.5rem;
   }
-  .delete3{
+  .leave{
     background-color: var(--secondary-color);
     color:var(--fourth-color);
     font-size:3rem;
@@ -188,7 +183,6 @@ export default{
     color:var(--font-color);
     font-weight: var(--medium-weight);
   }
-
   li{
       list-style: none;
   }
@@ -201,7 +195,6 @@ export default{
   box-sizing: border-box;
   border: 2px solid var(--third-color);
   border-radius: 20px;
-  align-self: flex-end;
 }
 input[type="text"]::placeholder{
   color:var(--third-color)
@@ -210,15 +203,13 @@ input[type="text"]::placeholder{
     height:75vh;
     display:flex;
     flex-direction:column;
-    justify-content: space-between;
     color: var(--font-color);
   }
   .chat{
     border:5px solid var(--secondary-color);
     padding:2rem;
     border-radius: 30px;
-    width:40%;
+    width:50%;
     margin-left:1rem;
   }
-
 </style>

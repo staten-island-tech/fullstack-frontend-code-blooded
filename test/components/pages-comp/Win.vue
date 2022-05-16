@@ -39,9 +39,10 @@
   </div>
 </template>
 <script>
-import Sign from '@/components/Sign.vue';
-import Win from '@/components/Win.vue';
+import Sign from '@/components/reg-comp/Sign.vue';
+import Win from '@/components/reg-comp/Win.vue';
 export default{
+  name:"Win",
   components:{
     Sign,
     Win

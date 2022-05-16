@@ -19,6 +19,7 @@
 </template>
 <script>
 export default{
+  name:"Join",
   methods: {
       goActualGame() {
         this.$router.push('/actualGame');

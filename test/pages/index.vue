@@ -5,6 +5,9 @@
       <Sign/>
     </div>
     <Join v-show="isJoinVisible"/>
+
+    <ActualGame></ActualGame>
+
     <div v-show="isJoinNotVisible" class="options" >
       <h1 class="logo">code-blooded</h1>
       <input ref="userName" class="input" type="text" placeholder="enter a name" name="username" required>
@@ -16,14 +19,22 @@
 </template>
 
 <script>
-import Join from '@/components/Join.vue';
-  import Sign from '@/components/Sign.vue';
+import Join from '@/components/reg-comp/Join.vue';
+import Sign from '@/components/reg-comp/Sign.vue';
+
+// pages comp
+import ActualGame from '@/components/reg-comp/ActualGame.vue';
+
   //   <Modal v-show="isModalVisible" @close="closeModal"/>
   export default {
     name: 'App',
     components: {
       Sign,
-      Join
+      Join,
+
+      // page
+
+      ActualGame,
     },
     data() {
       return {
@@ -40,6 +51,7 @@ import Join from '@/components/Join.vue';
       },
       goGame(){
         this.$router.push('/game');
+      
         this.username = this.$refs.userName.value;
       },
       closeModal() {

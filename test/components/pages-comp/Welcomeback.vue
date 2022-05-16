@@ -19,9 +19,9 @@
   </div>
 </template>
 <script>
-import Sign from '@/components/Sign.vue';
+import Sign from '@/components/reg-comp/Sign.vue';
 export default{
-  name:"welcomeback",
+  name:"Welcomeback",
    components: {
       Sign,
     },
