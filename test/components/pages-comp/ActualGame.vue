@@ -41,7 +41,7 @@
           </div>
         </div>
         <div class="gameActions">
-          <button class="drawACard">draw a card</button>
+          <button class="drawACard" @click="doSmth">draw a card</button>
           <button class="pass">pass</button>
         </div>
         <div class="table">
@@ -96,6 +96,9 @@ export default {
   methods: {
     goIndex() {
       this.$router.push('/')
+    },
+    doSmth() {
+      console.log(this.$socket)
     },
   },
 }

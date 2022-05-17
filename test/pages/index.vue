@@ -57,19 +57,24 @@ export default {
       wrapper: true,
     }
   },
+
   methods: {
     showModal() {
       this.isJoinVisible = true
       this.isJoinNotVisible = false
       // this.username = this.$refs.userName.value;
+      console.log(this.socketInstance)
     },
     goGame() {
       // this.$router.push('/game');
       // this.username = this.$refs.userName.value;
+
       this.testingComp = true
       this.wrapper = false
       this.socketInstance = io('http://localhost:3001')
+      // return this.socketInstance
     },
+
     closeModal() {
       this.isJoinVisible = false
       this.isJoinNotVisible = true
