@@ -6,7 +6,7 @@
     </div>
     <Join v-show="isJoinVisible" />
 
-    <ActualGame v-show="testingComp"></ActualGame>
+    <ActualGame v-show="testingComp" :socket="$socket"></ActualGame>
 
     <div class="landing-wrapper" v-show="wrapper">
       <div v-show="isJoinNotVisible" class="options">
@@ -69,10 +69,10 @@ export default {
       // this.$router.push('/game');
       // this.username = this.$refs.userName.value;
 
-      this.testingComp = true
-      this.wrapper = false
+      // this.testingComp = true
+      // this.wrapper = false
       this.socketInstance = io('http://localhost:3001')
-      // return this.socketInstance
+      console.log(this.$socket)
     },
 
     closeModal() {
