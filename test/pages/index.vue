@@ -5,13 +5,13 @@
       <Sign/>
     </div>
     <Join v-show="isJoinVisible"/>
-
-    <ActualGame></ActualGame>
+    <Game v-show="waitingPage"></Game>
+    <!-- <ActualGame v-show="gameClick"></ActualGame> -->
 
     <div v-show="isJoinNotVisible" class="options" >
       <h1 class="logo">code-blooded</h1>
       <input ref="userName" class="input" type="text" placeholder="enter a name" name="username" required>
-        <button class="start" @click="goGame">start a game</button>
+        <button class="start" @click="waitClick">start a game</button>
       <button class="join" @click="showModal">show join code</button>
     </div>
     <span class="apcsp">apcsp project</span>
@@ -23,9 +23,9 @@ import Join from '@/components/reg-comp/Join.vue';
 import Sign from '@/components/reg-comp/Sign.vue';
 
 // pages comp
-import ActualGame from '@/components/reg-comp/ActualGame.vue';
+// import ActualGame from '@/components/pages-comp/ActualGame.vue';
+import Game from '@/components/pages-comp/Game.vue';
 
-  //   <Modal v-show="isModalVisible" @close="closeModal"/>
   export default {
     name: 'App',
     components: {
@@ -33,14 +33,18 @@ import ActualGame from '@/components/reg-comp/ActualGame.vue';
       Join,
 
       // page
-
-      ActualGame,
+      Game,
+      // ActualGame,
     },
     data() {
       return {
         isJoinVisible: false,
         isJoinNotVisible:true,
         username: null,
+
+        // actual game 
+        gameClick: false,
+        waitingPage: false,
       };
     },
     methods: {
@@ -58,6 +62,13 @@ import ActualGame from '@/components/reg-comp/ActualGame.vue';
         this.isJoinVisible = false;
         this.isJoinNotVisible = true;
       },
+      actualClick(){
+        this.gameClick = true;
+      },
+      waitClick(){
+        this.waitingPage = true;
+        this.isJoinNotVisible = false;
+      }
     }
   };
 </script>
@@ -180,7 +191,7 @@ import ActualGame from '@/components/reg-comp/ActualGame.vue';
   background-clip: border-box;
   background-size: 200% auto;
    background-clip: text;
-  text-fill-color: transparent;
+  /* text-fill-color: transparent; */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: textclip 2s linear infinite;

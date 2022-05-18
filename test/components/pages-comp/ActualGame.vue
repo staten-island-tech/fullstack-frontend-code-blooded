@@ -27,7 +27,7 @@
               </div>
             </div>
             <div class="cardsBox">
-                {{allCards.cardImg}}
+                <!-- {{allCards.cardImg}} -->
             </div>
           </div>
           <div class="gameActions">
@@ -49,12 +49,13 @@
 </template>
 
 <script>
-// import allCards from '../../pages/allCards.js';
+// import allCards from './allCards.js';
 import End from '@/components/reg-comp/End.vue';
 export default {
   name: 'ActualGame',
  components: {
-      End
+      End,
+      // allCards
     },
 data(){
   return{

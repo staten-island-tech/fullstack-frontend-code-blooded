@@ -1,9 +1,11 @@
 <template>
   <div class="home">
+    <!-- doesn't work cause t's no longer a page -->
+    <!-- <Welcomeback v-show="welcomeTrue"></Welcomeback> -->
     <!-- Check that the SDK client is not currently loading before accessing is methods -->
     <div v-if="!$auth.loading">
       <!-- if logged in -->
-      <button v-if="$auth.isAuthenticated" class="exitGame" @click="loggedIn">
+      <button v-if="$auth.isAuthenticated" class="exitGame" @click="out">
         end game
       </button>
       <!-- if not logged it-->
@@ -15,13 +17,22 @@
 </template>
 
 <script>
-
+// import Welcomeback from '@/components/pages-comp/Welcomeback.vue';
+// import Welcomeback from '../pages-comp/Welcomeback.vue';
 export default {
   name: 'Leave',
+  components: {
+    // Welcomeback
+  },
+  data(){
+    return{
+      welcomeTrue: false,
+    }
+  },
   methods: {
     // if user is logged in
     loggedIn () {
-      this.$router.push('/welcomeBack');
+      this.welcomeTrue = true;
     },
     // if user is logged out
     out () {

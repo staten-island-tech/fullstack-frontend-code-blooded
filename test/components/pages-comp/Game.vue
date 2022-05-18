@@ -1,7 +1,8 @@
 <template>
     <div class="code-page"> 
         <button class="help"><a href="rules">?</a></button>
-        <div class="options3">
+        <ActualGame v-show="gameClick"></ActualGame>
+        <div v-show="waitClick" class="options3" >
             <div class="row">
               <div class="code">
                 <div class="sample"> 
@@ -19,7 +20,7 @@
                     </ul>
                 </div>
                 <div class="buttons">
-                    <button class="start3" @click="goActualGame">START GAME</button>
+                    <button class="start3" @click="actualClick">START GAME</button>
                     <button class="delete3" @click="goWelcomeBack">DELETE GAME</button>
                 </div>
 
@@ -34,20 +35,25 @@
     </div>
 </template>
 <script>
+import ActualGame from '@/components/pages-comp/ActualGame.vue';
 import Pin from '@/components/reg-comp/Pin.vue';
+
 export default{
   name:"Game",
   components: {
-      Pin
+      Pin,
+      ActualGame
     },
   data(){
     return{
-      
+      gameClick:false,
+      waitClick: true,
     }
   },
   methods: {
-      goActualGame() {
-        this.$router.push('/actualGame');
+      actualClick() {
+        this.gameClick = true;
+        this.waitClick = false;
       },
       goWelcomeBack(){
         this.$router.push('/welcomeBack');
