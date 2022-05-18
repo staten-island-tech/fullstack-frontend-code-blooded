@@ -56,7 +56,7 @@
 </template>
 
 <script>
-// import allCards from '../../pages/allCards.js';
+import deck from '@/pages/deck.js';
 import End from '@/components/reg-comp/End.vue'
 export default {
   name: 'ActualGame',
@@ -68,7 +68,9 @@ export default {
   },
   data() {
     return {
-      // allCards,
+      deck,
+      currentCard: {},
+      cardsAlreadySelected: [],
       playerName: 'Vue',
       playerColor: '#71D097',
       playerTime: 22,
@@ -100,8 +102,11 @@ export default {
     goIndex() {
       this.$router.push('/')
     },
-    doSmth() {
+    doSmth() { 
       this.socketInfo.emit('testingEvent', 'hi')
+      const randomNumber = Math.floor(Math.random() * (this.deck.length))
+  this.currentCard = this.deck.splice(randomNumber, 1)
+  console.log(this.currentCard.length)
     },
   },
 }
