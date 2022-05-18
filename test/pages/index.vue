@@ -76,7 +76,6 @@ export default {
       this.socketInstance = io('http://localhost:3001')
 
       this.socketInfo = this.socketInstance
-      this.socketInfo.emit('testingEvent', 'hi')
     },
 
     closeModal() {

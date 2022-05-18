@@ -101,7 +101,7 @@ export default {
       this.$router.push('/')
     },
     doSmth() {
-      console.log(this.socketInfo)
+      this.socketInfo.emit('testingEvent', 'hi')
     },
   },
 }
