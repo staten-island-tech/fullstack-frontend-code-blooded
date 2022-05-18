@@ -6,7 +6,7 @@
     </div>
     <Join v-show="isJoinVisible" />
 
-    <ActualGame v-show="testingComp" :socket="$socket"></ActualGame>
+    <ActualGame v-show="testingComp" :socketInfo="socketInfo"></ActualGame>
 
     <div class="landing-wrapper" v-show="wrapper">
       <div v-show="isJoinNotVisible" class="options">
@@ -48,6 +48,7 @@ export default {
 
     ActualGame,
   },
+
   data() {
     return {
       isJoinVisible: false,
@@ -55,6 +56,7 @@ export default {
       username: null,
       testingComp: false,
       wrapper: true,
+      socketInfo: {},
     }
   },
 
@@ -69,10 +71,12 @@ export default {
       // this.$router.push('/game');
       // this.username = this.$refs.userName.value;
 
-      // this.testingComp = true
-      // this.wrapper = false
+      this.testingComp = true
+      this.wrapper = false
       this.socketInstance = io('http://localhost:3001')
-      console.log(this.$socket)
+
+      this.socketInfo = this.socketInstance
+      this.socketInfo.emit('testingEvent', 'hi')
     },
 
     closeModal() {

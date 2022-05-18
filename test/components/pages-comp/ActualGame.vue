@@ -63,6 +63,9 @@ export default {
   components: {
     End,
   },
+  props: {
+    socketInfo: Object,
+  },
   data() {
     return {
       // allCards,
@@ -98,7 +101,7 @@ export default {
       this.$router.push('/')
     },
     doSmth() {
-      console.log(this.$socket)
+      console.log(this.socketInfo)
     },
   },
 }
