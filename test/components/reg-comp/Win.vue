@@ -21,7 +21,7 @@ export default {
   methods: {
     // if user is logged in
     loggedIn () {
-      this.$router.push('/welcomeBack');
+      this.$router.push('/WelcomeBack');
     },
     // if user is logged out
     out () {

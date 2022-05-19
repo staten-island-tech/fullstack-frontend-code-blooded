@@ -54,9 +54,11 @@ export default{
       actualClick() {
         this.gameClick = true;
         this.waitClick = false;
-      },
+       },
       goWelcomeBack(){
-        this.$router.push('/welcomeBack');
+        this.$router.push('/Welcomeback');
+      console.log('logged')
+
       },
     },
     

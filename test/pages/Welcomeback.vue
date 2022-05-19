@@ -4,14 +4,17 @@
       <button class="help"><a href="rules">?</a></button>
       <Sign/>
     </div>
+    <Join v-show="isJoinVisible"></Join>
+    <Game v-show="waitingPage"></Game>
+    <Invitee v-show="invitePage"></Invitee>
     <div id="box">
       <div class="options1" >
       <h2 class="logo">welcome back!</h2>
       <button class="join1" @click="goFriends">find friends</button>
-      <button class="start1" @click="goGame">start a game</button>
+      <button class="start1" @click="waitClick">start a game</button>
        <div class="join-contain">
         <input type="text" placeholder="enter code" name="join-code" required>
-        <button class="join1 invitee" @click="goInivitee">join</button>
+        <button class="join1 invitee" @click="inviteClick">join</button>
       </div>
     </div>
     </div>
@@ -19,22 +22,40 @@
   </div>
 </template>
 <script>
+import Join from '@/components/reg-comp/Join.vue';
 import Sign from '@/components/reg-comp/Sign.vue';
+import Game from '@/components/pages-comp/Game.vue';
+import Invitee from '@/components/pages-comp/Invitee.vue';
 export default{
   name:"Welcomeback",
    components: {
       Sign,
+       Game,
+       Join,
+       Invitee
+    },
+    data() {
+      return {
+        isJoinVisible: false,
+        isJoinNotVisible:true,
+        username: null,
+
+        // actual game 
+        waitingPage: false,
+        invitePage: false
+      };
     },
   methods: {
-      goInivitee() {
-        this.$router.push('/invitee');
-      },
-      goGame(){
-        this.$router.push('/game');
-      },
       goFriends(){
         this.$router.push('/friends');
       },
+      inviteClick(){
+        this.invitePage = true
+      },
+      waitClick(){
+        this.waitingPage = true;
+        this.isJoinNotVisible = false;
+      }
     }
 }
 </script>

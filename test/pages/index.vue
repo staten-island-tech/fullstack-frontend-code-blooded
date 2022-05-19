@@ -43,7 +43,6 @@ import Game from '@/components/pages-comp/Game.vue';
         username: null,
 
         // actual game 
-        gameClick: false,
         waitingPage: false,
       };
     },
