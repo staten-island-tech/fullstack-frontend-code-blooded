@@ -58,7 +58,7 @@ export default{
       goWelcomeBack(){
         this.$router.push('/Welcomeback');
       console.log('logged')
-
+        window.location.reload(); 
       },
     },
     
