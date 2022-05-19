@@ -37,7 +37,8 @@
             </div>
           </div>
           <div class="cardsBox">
-            <!-- {{allCards.cardImg}} -->
+            <img :src="currentCard.cardImg">
+            <!-- {{currentCard.cardImg}} -->
           </div>
         </div>
         <div class="gameActions">
@@ -104,9 +105,13 @@ export default {
     },
     doSmth() { 
       this.socketInfo.emit('testingEvent', 'hi')
-      const randomNumber = Math.floor(Math.random() * (this.deck.length))
-  this.currentCard = this.deck.splice(randomNumber, 1)
+    //  let x=0;
+    //  for(x=0; x++; x>4) {
+        const randomNumber = Math.floor(Math.random() * (this.deck.length))
+  this.currentCard = this.deck.splice(randomNumber, 7)
   console.log(this.currentCard.length)
+   //   }
+      
     },
   },
 }
