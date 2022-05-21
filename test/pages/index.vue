@@ -4,15 +4,18 @@
       <button class="help"><a href="rules">?</a></button>
       <Sign />
     </div>
-    <Join v-show="isJoinVisible" />
+    <Options v-show="isJoinVisible" />
 
-    <ActualGame v-show="testingComp" :socketInfo="socketInfo"></ActualGame>
+    <Host v-show="hostComp" :socketInfo="socketInfo"></Host>
 
-    <div class="landing-wrapper" v-show="wrapper">
+    <!-- <ActualGame v-show="gameComp" :socketInfo="socketInfo"></ActualGame> -->
+
+    <div class="landing-wrapper" v-show="landingWrapper">
       <div v-show="isJoinNotVisible" class="options">
         <h1 class="logo">code-blooded</h1>
         <input
           ref="userName"
+          v-model="username"
           class="input"
           type="text"
           placeholder="enter a name"
@@ -31,32 +34,33 @@
 <script>
 import io from 'socket.io-client'
 
-import Join from '@/components/reg-comp/Join.vue'
+import Options from '@/components/reg-comp/Join.vue'
 import Sign from '@/components/reg-comp/Sign.vue'
 
 // pages comp
-import ActualGame from '@/components/pages-comp/ActualGame.vue'
+import Host from '@/components/pages-comp/Host.vue'
 
 //   <Modal v-show="isModalVisible" @close="closeModal"/>
 export default {
   name: 'App',
   components: {
     Sign,
-    Join,
+    Options,
 
-    // page
-
-    ActualGame,
+    Host,
   },
 
   data() {
     return {
       isJoinVisible: false,
       isJoinNotVisible: true,
-      username: null,
-      testingComp: false,
-      wrapper: true,
+      username: '',
+      landingWrapper: true,
+
+      hostComp: false,
+
       socketInfo: {},
+      newCode: '',
     }
   },
 
@@ -64,18 +68,37 @@ export default {
     showModal() {
       this.isJoinVisible = true
       this.isJoinNotVisible = false
-      // this.username = this.$refs.userName.value;
-      console.log(this.socketInstance)
     },
+
     goGame() {
-      // this.$router.push('/game');
-      // this.username = this.$refs.userName.value;
+      if (this.username.length < 1) {
+        alert('please enter a username')
+      } else {
+        // this.gameComp = true
+        this.hostComp = true
+        this.landingWrapper = false
 
-      this.testingComp = true
-      this.wrapper = false
-      this.socketInstance = io('http://localhost:3001')
+        this.socketInstance = io('http://localhost:3001')
+        this.socketInfo = this.socketInstance
 
-      this.socketInfo = this.socketInstance
+        this.socketInfo.emit('addUser', this.username)
+
+        this.socketInfo.on('urSocket', (arg) => {
+          console.log(arg)
+        })
+
+        this.makeCode(5)
+      }
+    },
+
+    makeCode(length) {
+      let code = ''
+      const chars =
+        'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+      for (let i = 0; i < length; i++) {
+        code += chars.charAt(Math.floor(Math.random() * chars.length))
+      }
+      this.newCode = code
     },
 
     closeModal() {

@@ -63,9 +63,9 @@ export default {
   components: {
     End,
   },
-  props: {
-    socketInfo: Object,
-  },
+  // props: {
+  //   socketInfo: Object,
+  // },
   data() {
     return {
       // allCards,

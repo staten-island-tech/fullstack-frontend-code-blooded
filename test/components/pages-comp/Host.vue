@@ -1,7 +1,7 @@
 <template>
   <div class="code-page">
     <button class="help"><a href="rules">?</a></button>
-    <div class="options2">
+    <div class="options3">
       <div class="row">
         <div class="code">
           <div class="sample">
@@ -19,7 +19,8 @@
             </ul>
           </div>
           <div class="buttons">
-            <Leave />
+            <button class="start3" @click="goActualGame">START GAME</button>
+            <button class="delete3" @click="goWelcomeBack">DELETE GAME</button>
           </div>
         </div>
         <div id="chat" class="chat">
@@ -33,23 +34,25 @@
 </template>
 <script>
 import Pin from '@/components/reg-comp/Pin.vue'
-import Leave from '@/components/reg-comp/Leave.vue'
 export default {
-  name: 'Invitee',
+  name: 'Host',
   components: {
     Pin,
-    Leave,
   },
-  props: {
-    socketInfo: Object,
+  data() {
+    return {}
   },
   methods: {
-    goIndex() {
-      this.$router.push('/')
+    goActualGame() {
+      this.$router.push('/actualGame')
+    },
+    goWelcomeBack() {
+      this.$router.push('/welcomeBack')
     },
   },
 }
 </script>
+
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Tomorrow:wght@400;600;900&display=swap');
 * {
@@ -62,12 +65,8 @@ export default {
   --medium-weight: 600;
   --thin-weight: 400;
 }
-/* DISPLAY NONE */
 .hide {
   display: none;
-}
-.code {
-  width: 60%;
 }
 .code-page {
   background-color: var(--background-color);
@@ -93,10 +92,17 @@ a {
   font-size: 2rem;
   position: absolute;
 }
+.options3 {
+  display: flex;
+  flex-direction: row;
+}
 .row {
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+.code {
+  width: 40vw;
 }
 
 .comment {
@@ -105,10 +111,10 @@ a {
   font-weight: var(--heavy-weight);
   font-size: 1.5rem;
 }
-.options2 {
+.options3 {
   display: flex;
   flex-direction: column;
-  width: 95vw;
+  width: 90vw;
   height: 90vh;
   justify-content: center;
   margin: 0 auto;
@@ -123,45 +129,37 @@ a {
   display: flex;
   flex-direction: column;
 }
-.start,
-.leave {
+.start3,
+.delete3 {
   border-radius: 35px;
   width: 70%;
   font-size: 3rem;
   margin-top: 1rem;
 }
-input {
+#game-input {
   border-color: var(--fourth-color);
   border-width: 0.3rem;
   color: var(--font-color);
-  font-size: 1.5rem;
+  font-size: 3.5rem;
   border-radius: 26px;
   width: 40%;
-  font-size: 3rem;
+  font-size: 2rem;
   margin-top: 1rem;
   background-color: var(--background-color);
-}
-.space {
-  flex-grow: 1;
-}
-#writeMessage {
-  align-self: flex-end;
-  margin-top: auto;
-}
-::placeholder {
   padding: 0.5rem;
   color: var(--font-color);
   font-family: 'Tomorrow', sans-serif;
   font-weight: var(--thin-weight);
 }
-.start {
+
+.start3 {
   background-color: var(--fourth-color);
   color: var(--background-color);
   font-size: 3rem;
   border-color: var(--fourth-color);
   padding: 0.5rem;
 }
-.leave {
+.delete3 {
   background-color: var(--secondary-color);
   color: var(--fourth-color);
   font-size: 3rem;
@@ -187,6 +185,7 @@ input {
   color: var(--font-color);
   font-weight: var(--medium-weight);
 }
+
 li {
   list-style: none;
 }
@@ -199,6 +198,7 @@ li {
   box-sizing: border-box;
   border: 2px solid var(--third-color);
   border-radius: 20px;
+  align-self: flex-end;
 }
 input[type='text']::placeholder {
   color: var(--third-color);
@@ -207,13 +207,14 @@ input[type='text']::placeholder {
   height: 75vh;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   color: var(--font-color);
 }
 .chat {
   border: 5px solid var(--secondary-color);
   padding: 2rem;
   border-radius: 30px;
-  width: 50%;
+  width: 40%;
   margin-left: 1rem;
 }
 </style>
