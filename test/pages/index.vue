@@ -6,7 +6,7 @@
     </div>
     <Options v-show="isJoinVisible" />
 
-    <Host v-show="hostComp" :socketInfo="socketInfo"></Host>
+    <Host v-show="hostComp" :socketInfo="socketInfo" :code="newCode"></Host>
 
     <!-- <ActualGame v-show="gameComp" :socketInfo="socketInfo"></ActualGame> -->
 
@@ -99,6 +99,11 @@ export default {
         code += chars.charAt(Math.floor(Math.random() * chars.length))
       }
       this.newCode = code
+
+      this.socketInfo.emit('placeUser', this.username, this.newCode)
+      this.socketInfo.on('userList', (arg) => {
+        console.log(arg)
+      })
     },
 
     closeModal() {

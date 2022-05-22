@@ -17,6 +17,7 @@
         <div class="join-contain">
           <input
             id="join-code"
+            v-model="urCode"
             type="text"
             placeholder="enter code"
             name="join-code"
@@ -45,7 +46,11 @@ export default {
       joinWrap: true,
       hostComp: false,
       inviteeComp: false,
+
       username: '',
+      newCode: '',
+
+      urCode: '',
     }
   },
   methods: {
@@ -73,8 +78,41 @@ export default {
       }
     },
     goInvitee() {
-      this.inviteeComp = true
-      this.joinWrap = false
+      if (this.username.length < 1) {
+        alert('please enter a username')
+      } else {
+        this.joinRoom()
+      }
+    },
+    makeCode(length) {
+      let code = ''
+      const chars =
+        'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+      for (let i = 0; i < length; i++) {
+        code += chars.charAt(Math.floor(Math.random() * chars.length))
+      }
+      this.newCode = code
+    },
+    joinRoom() {
+      if (this.urCode.length < 1) {
+        alert('please enter room code')
+      } else {
+        this.socketInstance = io('http://localhost:3001')
+        this.socketInfo = this.socketInstance
+
+        this.verifyRoom()
+      }
+    },
+    verifyRoom() {
+      this.socketInfo.emit('checkRoom', this.urCode)
+      this.socketInfo.on('checked', (arg) => {
+        if (arg === true) {
+          this.inviteeComp = true
+          this.joinWrap = false
+        } else {
+          alert('please enter valid code')
+        }
+      })
     },
   },
 }

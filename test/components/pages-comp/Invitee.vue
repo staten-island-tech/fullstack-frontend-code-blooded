@@ -5,7 +5,7 @@
       <div class="row">
         <div class="code">
           <div class="sample">
-            <h1 class="code-header">CODE:</h1>
+            <h1 class="code-header">CODE:{{ code }}</h1>
             <Pin></Pin>
           </div>
           <p class="comment">share this with friends for them to join</p>
@@ -42,6 +42,7 @@ export default {
   },
   props: {
     socketInfo: Object,
+    urCode: String,
   },
   methods: {
     goIndex() {
