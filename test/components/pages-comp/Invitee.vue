@@ -42,7 +42,7 @@ export default {
   },
   props: {
     socketInfo: Object,
-    urCode: String,
+    code: String,
   },
   methods: {
     goIndex() {
