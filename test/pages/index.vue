@@ -6,7 +6,13 @@
     </div>
     <Options v-show="isJoinVisible" />
 
-    <Host v-show="hostComp" :socketInfo="socketInfo" :code="newCode"></Host>
+    <Host
+      v-show="hostComp"
+      :socketInfo="socketInfo"
+      :code="newCode"
+      :players="players"
+      :username='username'
+    ></Host>
 
     <!-- <ActualGame v-show="gameComp" :socketInfo="socketInfo"></ActualGame> -->
 
@@ -63,6 +69,8 @@ export default {
       newCode: '',
 
       imHost: false,
+
+      players: [],
     }
   },
 
@@ -106,7 +114,7 @@ export default {
       )
 
       this.socketInfo.on('currentRoom', (arg) => {
-        console.log('here ' + arg)
+        this.players = arg
       })
     },
 

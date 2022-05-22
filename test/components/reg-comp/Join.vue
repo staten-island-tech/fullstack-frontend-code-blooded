@@ -1,7 +1,7 @@
 <template>
   <div class="joinWrap">
-    <Host v-show="hostComp"></Host>
-    <Invitee v-show="inviteeComp" :code="urCode"></Invitee>
+    <Host v-show="hostComp"  :socketInfo="socketInfo" :username='username' :code="newCode" :players="players"></Host>
+    <Invitee v-show="inviteeComp"  :socketInfo="socketInfo" :username='username' :code="urCode" :players="players"></Invitee>
 
     <div class="optionapp" v-show="joinWrap">
       <div class="options">
@@ -53,6 +53,8 @@ export default {
       newCode: '',
 
       urCode: '',
+
+      players: [],
     }
   },
   methods: {
@@ -100,7 +102,7 @@ export default {
       )
 
       this.socketInfo.on('currentRoom', (arg) => {
-        console.log('here ' + arg)
+        this.players = arg
       })
     },
     joinRoom() {
@@ -128,7 +130,7 @@ export default {
           )
 
           this.socketInfo.on('currentRoom', (arg) => {
-            console.log('here ' + arg)
+            this.players = arg
           })
         } else {
           alert('please enter valid code')
