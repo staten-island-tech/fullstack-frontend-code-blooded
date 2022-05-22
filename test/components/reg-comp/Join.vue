@@ -47,6 +47,8 @@ export default {
       hostComp: false,
       inviteeComp: false,
 
+      imHost: false,
+
       username: '',
       newCode: '',
 
@@ -61,18 +63,15 @@ export default {
       if (this.username.length < 1) {
         alert('please enter a username')
       } else {
-        // this.gameComp = true
+        // hide landing page, show host waiting room
         this.hostComp = true
         this.joinWrap = false
 
+        this.imHost = true
+
+        // connect
         this.socketInstance = io('http://localhost:3001')
         this.socketInfo = this.socketInstance
-
-        this.socketInfo.emit('addUser', this.username)
-
-        this.socketInfo.on('urSocket', (arg) => {
-          console.log(arg)
-        })
 
         this.makeCode(5)
       }
@@ -92,6 +91,13 @@ export default {
         code += chars.charAt(Math.floor(Math.random() * chars.length))
       }
       this.newCode = code
+
+      this.socketInfo.emit(
+        'placeHost',
+        this.username,
+        this.newCode,
+        this.imHost
+      )
     },
     joinRoom() {
       if (this.urCode.length < 1) {
@@ -109,6 +115,13 @@ export default {
         if (arg === true) {
           this.inviteeComp = true
           this.joinWrap = false
+
+          this.socketInfo.emit(
+            'placeGuest',
+            this.username,
+            this.urCode,
+            this.imHost
+          )
         } else {
           alert('please enter valid code')
         }

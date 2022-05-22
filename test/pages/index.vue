@@ -61,6 +61,8 @@ export default {
 
       socketInfo: {},
       newCode: '',
+
+      imHost: false,
     }
   },
 
@@ -78,14 +80,10 @@ export default {
         this.hostComp = true
         this.landingWrapper = false
 
+        this.imHost = true
+
         this.socketInstance = io('http://localhost:3001')
         this.socketInfo = this.socketInstance
-
-        this.socketInfo.emit('addUser', this.username)
-
-        this.socketInfo.on('urSocket', (arg) => {
-          console.log(arg)
-        })
 
         this.makeCode(5)
       }
@@ -100,10 +98,12 @@ export default {
       }
       this.newCode = code
 
-      this.socketInfo.emit('placeUser', this.username, this.newCode)
-      this.socketInfo.on('userList', (arg) => {
-        console.log(arg)
-      })
+      this.socketInfo.emit(
+        'placeHost',
+        this.username,
+        this.newCode,
+        this.imHost
+      )
     },
 
     closeModal() {
