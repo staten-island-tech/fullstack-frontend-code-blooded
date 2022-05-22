@@ -104,6 +104,10 @@ export default {
         this.newCode,
         this.imHost
       )
+
+      this.socketInfo.on('currentRoom', (arg) => {
+        console.log('here ' + arg)
+      })
     },
 
     closeModal() {

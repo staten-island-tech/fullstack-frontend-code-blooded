@@ -98,6 +98,10 @@ export default {
         this.newCode,
         this.imHost
       )
+
+      this.socketInfo.on('currentRoom', (arg) => {
+        console.log('here ' + arg)
+      })
     },
     joinRoom() {
       if (this.urCode.length < 1) {
@@ -122,6 +126,10 @@ export default {
             this.urCode,
             this.imHost
           )
+
+          this.socketInfo.on('currentRoom', (arg) => {
+            console.log('here ' + arg)
+          })
         } else {
           alert('please enter valid code')
         }
