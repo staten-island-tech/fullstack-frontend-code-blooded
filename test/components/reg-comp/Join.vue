@@ -1,7 +1,7 @@
 <template>
   <div class="joinWrap">
     <Host v-show="hostComp"></Host>
-    <Invitee v-show="inviteeComp"></Invitee>
+    <Invitee v-show="inviteeComp" :code="urCode"></Invitee>
 
     <div class="optionapp" v-show="joinWrap">
       <div class="options">
