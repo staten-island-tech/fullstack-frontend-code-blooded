@@ -37,8 +37,8 @@
             </div>
           </div>
           <div class="cardsBox">
-            <img :src="currentCard.cardImg">
-            <!-- {{currentCard.cardImg}} -->
+            <!-- <img :src="currentCard.cardImg"> -->
+            {{currentCard.length}}
           </div>
         </div>
         <div class="gameActions">
@@ -108,7 +108,7 @@ export default {
     //  let x=0;
     //  for(x=0; x++; x>4) {
         const randomNumber = Math.floor(Math.random() * (this.deck.length))
-  this.currentCard = this.deck.splice(randomNumber, 7)
+  this.currentCard = this.deck.splice(randomNumber, 4)
   console.log(this.currentCard.length)
    //   }
       
