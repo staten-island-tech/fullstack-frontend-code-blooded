@@ -73,8 +73,13 @@ export default {
   },
   methods: {
     start() {
-      this.socketInfo.on('message-received', (data) => {
-        this.messages = this.messages.concat(data)
+      this.socketInfo.on('newMessage', (message) => {
+        if (this.messages.includes(message)) {
+          console.log('message added')
+        } else {
+          this.messages = this.messages.concat(message)
+          console.log(this.messages)
+        }
       })
     },
     sendMessage() {
@@ -88,7 +93,7 @@ export default {
         text: this.text,
         user: this.username,
       }
-      this.socketInfo.emit('message', message, this.code)
+      this.socketInfo.emit('myMessage', message, this.code)
     },
     goIndex() {
       this.$router.push('/')

@@ -1,51 +1,57 @@
 <template>
   <div class="code-page">
-    <button class="help"><a href="rules">?</a></button>
-    <div class="options3">
-      <div class="row">
-        <div class="code">
-          <div class="sample">
-            <h1 class="code-header">CODE: {{ code }}</h1>
-            <Pin></Pin>
-          </div>
-          <p class="comment">share this with friends for them to join</p>
-          <h2 class="whoJoined">Friends who have joined</h2>
-          <div class="friend-list">
-            <ul class="list" v-for="player in players" :key="player">
-              <li>{{ player }}, is playing</li>
-              <!-- <li class="friend1 friend">javascript, the host, is playing</li>
+    <ActualGame v-show="gameTime"></ActualGame>
+    <!-- the waiting room -->
+    <div class="hostRoom" v-show="inRoom">
+      <button class="help"><a href="rules">?</a></button>
+      <div class="options3">
+        <div class="row">
+          <div class="code">
+            <div class="sample">
+              <h1 class="code-header">CODE: {{ code }}</h1>
+              <Pin></Pin>
+            </div>
+            <p class="comment">share this with friends for them to join</p>
+            <h2 class="whoJoined">Friends who have joined</h2>
+            <div class="friend-list">
+              <ul class="list" v-for="player in players" :key="player">
+                <li>{{ player }}, is playing</li>
+                <!-- <li class="friend1 friend">javascript, the host, is playing</li>
               <li class="friend2 friend">vue, the invitee, is playing</li>
               <li class="friend3 friend">css, the invitee, is playing</li>
               <li class="friend4 friend">html, the invitee, is playing</li> -->
-            </ul>
-          </div>
-          <div class="buttons">
-            <button class="start3" @click="goActualGame">START GAME</button>
-            <button class="delete3" @click="goWelcomeBack">DELETE GAME</button>
-          </div>
-        </div>
-        <div id="chat" class="chat">
-          <p class="friend chat">game created</p>
-          <p class="friend chat">type a message to access chat</p>
-          <span class="space"> </span>
-
-          <!-- here is the chat space i made -->
-          <div class="chatList">
-            <div class="messages-container">
-              <div v-for="message in messages" :key="message.id">
-                <b>{{ message.user }}</b> :{{ message.text }}
-              </div>
+              </ul>
+            </div>
+            <div class="buttons">
+              <button class="start3" @click="goActualGame">START GAME</button>
+              <button class="delete3" @click="goWelcomeBack">
+                DELETE GAME
+              </button>
             </div>
           </div>
+          <div id="chat" class="chat">
+            <p class="friend chat">game created</p>
+            <p class="friend chat">type a message to access chat</p>
+            <span class="space"> </span>
 
-          <input
-            id="writeMessage"
-            v-model="text"
-            @click="start"
-            v-on:keyup.enter="sendMessage"
-            type="text"
-            placeholder="write a message"
-          />
+            <!-- here is the chat space i made -->
+            <div class="chatList">
+              <div class="messages-container">
+                <div v-for="message in messages" :key="message.id">
+                  <b>{{ message.user }}</b> :{{ message.text }}
+                </div>
+              </div>
+            </div>
+
+            <input
+              id="writeMessage"
+              v-model="text"
+              @click="start"
+              v-on:keyup.enter="sendMessage"
+              type="text"
+              placeholder="write a message"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -53,10 +59,13 @@
 </template>
 <script>
 import Pin from '@/components/reg-comp/Pin.vue'
+import ActualGame from '@/components/pages-comp/ActualGame.vue'
+
 export default {
   name: 'Host',
   components: {
     Pin,
+    ActualGame,
   },
   props: {
     socketInfo: Object,
@@ -68,12 +77,20 @@ export default {
     return {
       text: '',
       messages: [],
+      gameTime: false,
+      inRoom: true,
+      playerCount: '',
     }
   },
   methods: {
     start() {
-      this.socketInfo.on('message-received', (data) => {
-        this.messages = this.messages.concat(data)
+      this.socketInfo.on('newMessage', (message) => {
+        if (this.messages.includes(message)) {
+          console.log('message added')
+        } else {
+          this.messages = this.messages.concat(message)
+          console.log(this.messages)
+        }
       })
     },
     sendMessage() {
@@ -87,7 +104,7 @@ export default {
         text: this.text,
         user: this.username,
       }
-      this.socketInfo.emit('message', message, this.code)
+      this.socketInfo.emit('myMessage', message, this.code)
     },
     goActualGame() {
       this.$router.push('/actualGame')
