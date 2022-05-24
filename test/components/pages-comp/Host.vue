@@ -107,7 +107,8 @@ export default {
       this.socketInfo.emit('myMessage', message, this.code)
     },
     goActualGame() {
-      this.$router.push('/actualGame')
+      this.gameTime = true
+      this.inRoom = false
     },
     goWelcomeBack() {
       this.$router.push('/welcomeBack')
