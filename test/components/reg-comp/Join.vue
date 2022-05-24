@@ -1,7 +1,19 @@
 <template>
   <div class="joinWrap">
-    <Host v-show="hostComp"  :socketInfo="socketInfo" :username='username' :code="newCode" :players="players"></Host>
-    <Invitee v-show="inviteeComp"  :socketInfo="socketInfo" :username='username' :code="urCode" :players="players"></Invitee>
+    <Host
+      v-show="hostComp"
+      :socketInfo="socketInfo"
+      :username="username"
+      :code="newCode"
+      :players="players"
+    ></Host>
+    <Invitee
+      v-show="inviteeComp"
+      :socketInfo="socketInfo"
+      :username="username"
+      :code="urCode"
+      :players="players"
+    ></Invitee>
 
     <div class="optionapp" v-show="joinWrap">
       <div class="options">
@@ -117,8 +129,8 @@ export default {
     },
     verifyRoom() {
       this.socketInfo.emit('checkRoom', this.urCode)
-      this.socketInfo.on('checked', (arg) => {
-        if (arg === true) {
+      this.socketInfo.on('checked', (verified, full) => {
+        if (verified === true && full === false) {
           this.inviteeComp = true
           this.joinWrap = false
 
@@ -132,9 +144,15 @@ export default {
           this.socketInfo.on('currentRoom', (arg) => {
             this.players = arg
           })
-        } else {
-          alert('please enter valid code')
+        } 
+        
+        if(verified === false){
+          alert('please enter a valid code')
         }
+        if(full === true){
+          alert('this room is currently full')
+        }
+
       })
     },
   },
