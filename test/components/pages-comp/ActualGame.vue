@@ -3,7 +3,7 @@
     <section class="gamepage">
       <div class="player-container">
         <div v-for="player in playerData" :key="player.id" class="players">
-          <div class="player-box" :style="{ borderColor: player.playerColor }">
+          <!-- <div class="player-box" :style="{ borderColor: player.playerColor }">
             <h1
               class="username"
               :style="{ backgroundColor: player.playerColor }"
@@ -11,11 +11,11 @@
               {{ player.playerName }}
             </h1>
             <h2 class="cardLeft">{{ player.cardData }} cards in hand</h2>
-          </div>
+          </div> -->
         </div>
       </div>
       <div class="cardStack">
-        <div class="cardHand">
+        <!-- <div class="cardHand">
           <h2 class="deck-numbers">deck: 93 | used: 18</h2>
           <div class="middleBox">
             <div class="icon"><h3 class="slash">//</h3></div>
@@ -37,10 +37,10 @@
             </div>
           </div>
           <div class="cardsBox">
-            <!-- <img :src="currentCard.cardImg"> -->
+            <img :src="currentCard.cardImg"> 
             {{currentCard.length}}
           </div>
-        </div>
+        </div> -->
         <div class="gameActions">
           <button class="drawACard" @click="doSmth">draw a card</button>
           <button class="pass">pass</button>
