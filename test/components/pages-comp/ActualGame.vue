@@ -72,31 +72,11 @@ export default {
       deck,
       currentCard: {},
       cardsAlreadySelected: [],
-      playerName: 'Vue',
-      playerColor: '#71D097',
-      playerTime: 22,
-      playerNext: 'HTML',
-      nextColor: '#49C8FF',
-      playerData: [
-        {
-          playerName: 'placeholder',
-          cardData: 0,
-          id: 1,
-          playerColor: '#71D097',
-        },
-        {
-          playerName: 'placeholder',
-          cardData: 0,
-          id: 2,
-          playerColor: '#49C8FF',
-        },
-        {
-          playerName: 'placeholder',
-          cardData: 0,
-          id: 3,
-          playerColor: '#EE914D',
-        },
-      ],
+      roomFull: false,
+      users: [],
+      currentUser: '',
+      message: '',
+      messages: [],
     }
   },
   methods: {
