@@ -1,49 +1,53 @@
 <template>
   <div class="code-page">
-    <button class="help"><a href="rules">?</a></button>
-    <div class="options2">
-      <div class="row">
-        <div class="code">
-          <div class="sample">
-            <h1 class="code-header">CODE: {{ code }}</h1>
-            <Pin></Pin>
-          </div>
-          <p class="comment">share this with friends for them to join</p>
-          <h2 class="whoJoined">Friends who have joined</h2>
-          <div class="friend-list">
-            <ul class="list" v-for="player in players" :key="player">
-              <li>{{ player }}, is playing</li>
-              <!-- <li class="friend1 friend">javascript, the host, is playing</li>
+    <ActualGame v-show="gameTime"></ActualGame>
+    <!-- the waiting room -->
+    <div v-show="inRoom" class="inviteeRoom">
+      <button class="help"><a href="rules">?</a></button>
+      <div class="options2">
+        <div class="row">
+          <div class="code">
+            <div class="sample">
+              <h1 class="code-header">CODE: {{ code }}</h1>
+              <Pin></Pin>
+            </div>
+            <p class="comment">share this with friends for them to join</p>
+            <h2 class="whoJoined">Friends who have joined</h2>
+            <div class="friend-list">
+              <ul class="list" v-for="player in players" :key="player">
+                <li>{{ player }}, is playing</li>
+                <!-- <li class="friend1 friend">javascript, the host, is playing</li>
               <li class="friend2 friend">vue, the invitee, is playing</li>
               <li class="friend3 friend">css, the invitee, is playing</li>
               <li class="friend4 friend">html, the invitee, is playing</li>
            -->
-            </ul>
-          </div>
-          <div class="buttons">
-            <Leave />
-          </div>
-        </div>
-        <div id="chat" class="chat">
-          <p class="friend chat">game created</p>
-          <p class="friend chat">type a message to access chat</p>
-          <span class="space"> </span>
-
-          <!-- here is the chat space i made -->
-          <div class="chatList">
-            <div class="messages-container">
-              <div v-for="message in messages" :key="message.id">
-                <b>{{ message.user }}</b> :{{ message.text }}
-              </div>
+              </ul>
             </div>
-            <input
-              id="writeMessage"
-              v-model="text"
-              @click="start"
-              v-on:keyup.enter="sendMessage"
-              type="text"
-              placeholder="write a message"
-            />
+            <div class="buttons">
+              <Leave />
+            </div>
+          </div>
+          <div id="chat" class="chat">
+            <p class="friend chat">game created</p>
+            <p class="friend chat">confirm your presence with a message</p>
+            <span class="space"> </span>
+
+            <!-- here is the chat space i made -->
+            <div class="chatList">
+              <div class="messages-container">
+                <div v-for="message in messages" :key="message.id">
+                  <b>{{ message.user }}</b> :{{ message.text }}
+                </div>
+              </div>
+              <input
+                id="writeMessage"
+                v-model="text"
+                @click="start"
+                v-on:keyup.enter="sendMessage"
+                type="text"
+                placeholder="write a message"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -53,11 +57,13 @@
 <script>
 import Pin from '@/components/reg-comp/Pin.vue'
 import Leave from '@/components/reg-comp/Leave.vue'
+import ActualGame from '@/components/pages-comp/ActualGame.vue'
 export default {
   name: 'Invitee',
   components: {
     Pin,
     Leave,
+    ActualGame,
   },
   props: {
     socketInfo: Object,
@@ -69,6 +75,8 @@ export default {
     return {
       text: '',
       messages: [],
+      gameTime: false,
+      inRoom: true,
     }
   },
   methods: {
@@ -80,6 +88,11 @@ export default {
           this.messages = this.messages.concat(message)
           console.log(this.messages)
         }
+      })
+
+      this.socketInfo.on('startNow', (status) => {
+        this.gameTime = status
+        this.inRoom = false
       })
     },
     sendMessage() {

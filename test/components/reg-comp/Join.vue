@@ -144,15 +144,14 @@ export default {
           this.socketInfo.on('currentRoom', (arg) => {
             this.players = arg
           })
-        } 
-        
-        if(verified === false){
-          alert('please enter a valid code')
-        }
-        if(full === true){
-          alert('this room is currently full')
         }
 
+        if (verified === false) {
+          alert('please enter a valid code')
+        }
+        if (full === true) {
+          alert('this room is currently full')
+        }
       })
     },
   },

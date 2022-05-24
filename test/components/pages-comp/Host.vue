@@ -79,7 +79,6 @@ export default {
       messages: [],
       gameTime: false,
       inRoom: true,
-      playerCount: '',
     }
   },
   methods: {
@@ -109,6 +108,8 @@ export default {
     goActualGame() {
       this.gameTime = true
       this.inRoom = false
+
+      this.socketInfo.emit('startGame', this.gameTime)
     },
     goWelcomeBack() {
       this.$router.push('/welcomeBack')
