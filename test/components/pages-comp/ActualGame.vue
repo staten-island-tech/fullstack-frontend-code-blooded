@@ -6,7 +6,7 @@
         <div v-for="player in playersEx" :key="player" class="players">
           <div class="player-box" :style="{ borderColor: red }">
             <h1 class="username" :style="{ backgroundColor: red }">
-              {{ player }} player here
+              {{ player }}
             </h1>
             <h2 class="cardLeft">7 cards in hand</h2>
           </div>
