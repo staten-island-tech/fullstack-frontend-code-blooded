@@ -4,15 +4,24 @@
       <button class="help"><a href="rules">?</a></button>
       <Sign />
     </div>
-    <Join v-show="isJoinVisible" />
+    <Options v-show="isJoinVisible" />
 
-    <ActualGame v-show="testingComp" :socket-info="socketInfo"></ActualGame>
+    <Host
+      v-show="hostComp"
+      :socket-info="socketInfo"
+      :code="newCode"
+      :players="players"
+      :username='username'
+    ></Host>
 
-    <div v-show="wrapper" class="landing-wrapper">
+    <!-- <ActualGame v-show="gameComp" :socketInfo="socketInfo"></ActualGame> -->
+
+    <div v-show="landingWrapper" class="landing-wrapper">
       <div v-show="isJoinNotVisible" class="options">
         <h1 class="logo">code-blooded</h1>
         <input
           ref="userName"
+          v-model="username"
           class="input"
           type="text"
           placeholder="enter a name"
@@ -31,34 +40,37 @@
 <script>
 import io from 'socket.io-client'
 
-import Join from '@/components/reg-comp/Join.vue'
+import Options from '@/components/reg-comp/Join.vue'
 import Sign from '@/components/reg-comp/Sign.vue'
 
 // pages comp
-import ActualGame from '@/components/ActualGame.vue'
+import Host from '@/components/pages-comp/Host.vue'
 
 //   <Modal v-show="isModalVisible" @close="closeModal"/>
 export default {
   name: 'App',
   components: {
     Sign,
-    Join,
+    Options,
 
-    // page
-
-    ActualGame,
+    Host,
   },
 
   data() {
     return {
       isJoinVisible: false,
       isJoinNotVisible: true,
-      username: null,
-      testingComp: false,
-      wrapper: true,
+      username: '',
+      landingWrapper: true,
+
+      hostComp: false,
+
       socketInfo: {},
-      users: [],
-      currentUser: '',
+      newCode: '',
+
+      imHost: false,
+
+      players: [],
     }
   },
 
@@ -66,18 +78,44 @@ export default {
     showModal() {
       this.isJoinVisible = true
       this.isJoinNotVisible = false
-      // this.username = this.$refs.userName.value;
-      console.log(this.socketInstance)
     },
+
     goGame() {
-      // this.$router.push('/game');
-      // this.username = this.$refs.userName.value;
+      if (this.username.length < 1) {
+        alert('please enter a username')
+      } else {
+        // this.gameComp = true
+        this.hostComp = true
+        this.landingWrapper = false
 
-      this.testingComp = true
-      this.wrapper = false
-      this.socketInstance = io('http://localhost:3001')
+        this.imHost = true
 
-      this.socketInfo = this.socketInstance
+        this.socketInstance = io('http://localhost:3001')
+        this.socketInfo = this.socketInstance
+
+        this.makeCode(5)
+      }
+    },
+
+    makeCode(length) {
+      let code = ''
+      const chars =
+        'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+      for (let i = 0; i < length; i++) {
+        code += chars.charAt(Math.floor(Math.random() * chars.length))
+      }
+      this.newCode = code
+
+      this.socketInfo.emit(
+        'placeHost',
+        this.username,
+        this.newCode,
+        this.imHost
+      )
+
+      this.socketInfo.on('currentRoom', (arg) => {
+        this.players = arg
+      })
     },
 
     closeModal() {
