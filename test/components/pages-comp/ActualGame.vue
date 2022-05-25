@@ -74,8 +74,11 @@
 </template>
 
 <script>
+import io from 'socket.io-client'
 import deck from '@/pages/deck.js';
 import End from '@/components/reg-comp/End.vue'
+this.socketInfo = io.connect("https//:localhost:3000")
+
 export default {
   name: 'ActualGame',
   components: {
@@ -105,6 +108,8 @@ export default {
       gameOver: true,
       winner: '',
       turn: '',
+      room: '',
+      roomFull: false,
       player1Deck: [],
       player2Deck: [],
       currentColor:'',
@@ -117,6 +122,19 @@ export default {
   methods: {
     goIndex() {
       this.$router.push('/')
+    },
+    socket(){
+        this.socketInfo.emit('join', {room: this.room}, (error) => {
+            if(error)
+                this.roomFull = true
+        })
+
+        // cleanup on component unmount
+        return function cleanup() {
+            this.socketInfo.emit('disconnect')
+            // shut down connnection instance
+            this.socketInfo.off()
+        }
     },
     /* socket(){
        this.socketInfo.on('initGameState', ({ gameOver, turn, player1Deck, player2Deck, currentColor, currentNumber, playedCardsPile, drawCardPile }) => {
