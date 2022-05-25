@@ -22,7 +22,7 @@ export default{
   name:"Join",
   methods: {
       goActualGame() {
-        this.$router.push('/ActualGame');
+        this.$router.push('/actualGame');
       },
       goWelcomeBack(){
         this.$router.push('/welcomeBack');

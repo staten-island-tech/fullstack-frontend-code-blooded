@@ -98,7 +98,6 @@ export default{
     border:5px solid var(--fourth-color);
     border-radius: 26px;
     position:absolute;
-
   }
   .options1::after{
     content: "";
@@ -180,5 +179,4 @@ export default{
     align-items: center;
     width:62%;
   }
-
 </style>

@@ -5,7 +5,7 @@
         <div>
           <h1>Player 1 Deck</h1>
           <div v-for="card in player1Deck" :key="card.id" class="p1d">
-            <button  @click="onCardPlayedHandler"><img :src="card.cardImg"></button>
+            <button  @click="onCardPlayedHandler(card)"><img :src="card.cardImg"></button>
           </div>
         </div>
         <div>
@@ -107,7 +107,7 @@ export default {
       this.$router.push('/')
     },
     socket(){
-       this.socket.on('initGameState', ({ gameOver, turn, player1Deck, player2Deck, currentColor, currentNumber, playedCardsPile, drawCardPile }) => {
+       this.socketInfo.on('initGameState', ({ gameOver, turn, player1Deck, player2Deck, currentColor, currentNumber, playedCardsPile, drawCardPile }) => {
             this.gameOver = true
             this.turn = ''
             this.player1Deck = []
@@ -128,6 +128,7 @@ export default {
     return array
     },
     startGame() { 
+        this.socketInfo.emit('testingEvent', 'hi')
       const shuffledCards = this.shuffleArray(deck)
       this.player1Deck = shuffledCards.splice(0, 7)
       this.player2Deck = shuffledCards.splice(0, 7)
@@ -148,13 +149,13 @@ export default {
         this.drawCardPile = shuffledCards
     },
     startSocket(){
-      this.socket.emit('initGameState', {
+      this.socketInfo.emit('initGameState', {
             gameOver: false,
             turn: 'Player 1',
             player1Deck: [...this.player1Deck],
             player2Deck: [...this.player2Deck],
-            currentColor: this.playedCardsPile[0].charAt(1),
-            currentNumber: this.playedCardsPile[0].charAt(0),
+            currentColor: this.playedCardsPile[0].cardColor,
+            currentNumber: this.playedCardsPile[0].cardNumber,
             playedCardsPile: [...this.playedCardsPile],
             drawCardPile: [...this.drawCardPile]
         })
@@ -171,8 +172,8 @@ export default {
             // if card played was a number card
             case '0R': case '1R': case '2R': case '3R': case '4R': case '5R': case '6R': case '7R': case '8R': case '9R': case '_R': case '0G': case '1G': case '2G': case '3G': case '4G': case '5G': case '6G': case '7G': case '8G': case '9G': case '_G': case '0B': case '1B': case '2B': case '3B': case '4B': case '5B': case '6B': case '7B': case '8B': case '9B': case '_B': case '0Y': case '1Y': case '2Y': case '3Y': case '4Y': case '5Y': case '6Y': case '7Y': case '8Y': case '9Y': case '_Y': {
                 // extract number and color of played card
-                const numberOfPlayedCard = playedCard.charAt(0)
-                const colorOfPlayedCard = playedCard.charAt(1)
+                const numberOfPlayedCard = playedCard.cardNumber
+                const colorOfPlayedCard = playedCard.cardColor
                 // check for color match
                 if(this.currentColor === colorOfPlayedCard) {
                     console.log('colors matched!')
@@ -194,7 +195,7 @@ export default {
                             updatedPlayer1Deck.push(drawCard1)
                             updatedPlayer1Deck.push(drawCard2)
                             // send new state to server
-                            this.socket.emit('updateGameState', {
+                            this.socketInfo.emit('updateGameState', {
                                 gameOver: this.checkGameOver(this.player1Deck),
                                 winner: this.checkWinner(this.player1Deck, 'Player 1'),
                                 turn: 'Player 2',
@@ -207,7 +208,7 @@ export default {
                         }
                         else {
                             // send new state to server
-                            this.socket.emit('updateGameState', {
+                            this.socketInfo.emit('updateGameState', {
                                 gameOver: this.checkGameOver(this.player1Deck),
                                 winner: this.checkWinner(this.player1Deck, 'Player 1'),
                                 turn: 'Player 2',
@@ -235,7 +236,7 @@ export default {
                             updatedPlayer2Deck.push(drawCard1)
                             updatedPlayer2Deck.push(drawCard2)
                             // send new state to server
-                            this.socket.emit('updateGameState', {
+                            this.socketInfo.emit('updateGameState', {
                                 gameOver: this.checkGameOver(this.player2Deck),
                                 winner: this.checkWinner(this.player2Deck, 'Player 2'),
                                 turn: 'Player 1',
@@ -248,7 +249,7 @@ export default {
                         }
                         else {
                             // send new state to server
-                            this.socket.emit('updateGameState', {
+                            this.socketInfo.emit('updateGameState', {
                                 gameOver: this.checkGameOver(this.player2Deck),
                                 winner: this.checkWinner(this.player2Deck, 'Player 2'),
                                 turn: 'Player 1',
@@ -294,7 +295,7 @@ export default {
                         }
                         else {
                             // send new state to server
-                            this.socket.emit('updateGameState', {
+                            this.socketInfo.emit('updateGameState', {
                                 gameOver: this.checkGameOver(this.player1Deck),
                                 winner: this.checkWinner(this.player1Deck, 'Player 1'),
                                 turn: 'Player 2',
@@ -322,7 +323,7 @@ export default {
                             updatedPlayer2Deck.push(drawCard1)
                             updatedPlayer2Deck.push(drawCard2)
                             // send new state to server
-                            this.socket.emit('updateGameState', {
+                            this.socketInfo.emit('updateGameState', {
                                 gameOver: this.checkGameOver(this.player2Deck),
                                 winner: this.checkWinner(this.player2Deck, 'Player 2'),
                                 turn: 'Player 1',
@@ -335,7 +336,7 @@ export default {
                         }
                         else {
                             // send new state to server
-                            this.socket.emit('updateGameState', {
+                            this.socketInfo.emit('updateGameState', {
                                 gameOver: this.checkGameOver(this.player2Deck),
                                 winner: this.checkWinner(this.player2Deck, 'Player 2'),
                                 turn: 'Player 1',
@@ -356,7 +357,7 @@ export default {
             // if card played was a skip card
             case 'skipR': case 'skipG': case 'skipB': case 'skipY': {
                 // extract color of played skip card
-                const colorOfPlayedCard = playedCard.charAt(4)
+                const colorOfPlayedCard = playedCard.cardColor
                 // check for color match
                 if(this.currentColor === colorOfPlayedCard) {
                     console.log('colors matched!')
@@ -378,7 +379,7 @@ export default {
                             updatedPlayer1Deck.push(drawCard1)
                             updatedPlayer1Deck.push(drawCard2)
                             // send new state to server
-                            this.socket.emit('updateGameState', {
+                            this.socketInfo.emit('updateGameState', {
                                 gameOver: this.checkGameOver(this.player1Deck),
                                 winner: this.checkWinner(this.player1Deck, 'Player 1'),
                                 playedCardsPile: [...this.playedCardsPile.slice(0, this.playedCardsPile.length), playedCard, ...this.playedCardsPile.slice(this.playedCardsPile.length)],
@@ -390,7 +391,7 @@ export default {
                         }
                         else {
                             // send new state to server
-                            this.socket.emit('updateGameState', {
+                            this.socketInfo.emit('updateGameState', {
                                 gameOver: this.checkGameOver(this.player1Deck),
                                 winner: this.checkWinner(this.player1Deck, 'Player 1'),
                                 playedCardsPile: [...this.playedCardsPile.slice(0, this.playedCardsPile.length), playedCard, ...this.playedCardsPile.slice(this.playedCardsPile.length)],
@@ -417,7 +418,7 @@ export default {
                             updatedPlayer2Deck.push(drawCard1)
                             updatedPlayer2Deck.push(drawCard2)
                             // send new state to server
-                            this.socket.emit('updateGameState', {
+                            this.socketInfo.emit('updateGameState', {
                                 gameOver: this.checkGameOver(this.player2Deck),
                                 winner: this.checkWinner(this.player2Deck, 'Player 2'),
                                 playedCardsPile: [...this.playedCardsPile.slice(0, this.playedCardsPile.length), playedCard, ...this.playedCardsPile.slice(this.playedCardsPile.length)],
@@ -429,7 +430,7 @@ export default {
                         }
                         else {
                             // send new state to server
-                            this.socket.emit('updateGameState', {
+                            this.socketInfo.emit('updateGameState', {
                                 gameOver: this.checkGameOver(this.player2Deck),
                                 winner: this.checkWinner(this.player2Deck, 'Player 2'),
                                 playedCardsPile: [...this.playedCardsPile.slice(0, this.playedCardsPile.length), playedCard, ...this.playedCardsPile.slice(this.playedCardsPile.length)],
@@ -461,7 +462,7 @@ export default {
                             updatedPlayer1Deck.push(drawCard1)
                             updatedPlayer1Deck.push(drawCard2)
                             // send new state to server
-                            this.socket.emit('updateGameState', {
+                            this.socketInfo.emit('updateGameState', {
                                 gameOver: this.checkGameOver(this.player1Deck),
                                 winner: this.checkWinner(this.player1Deck, 'Player 1'),
                                 playedCardsPile: [...this.playedCardsPile.slice(0, this.playedCardsPile.length), playedCard, ...this.playedCardsPile.slice(this.playedCardsPile.length)],
@@ -473,7 +474,7 @@ export default {
                         }
                         else {
                             // send new state to server
-                            this.socket.emit('updateGameState', {
+                            this.socketInfo.emit('updateGameState', {
                                 gameOver: this.checkGameOver(this.player1Deck),
                                 winner: this.checkWinner(this.player1Deck, 'Player 1'),
                                 playedCardsPile: [...this.playedCardsPile.slice(0, this.playedCardsPile.length), playedCard, ...this.playedCardsPile.slice(this.playedCardsPile.length)],
@@ -500,7 +501,7 @@ export default {
                             updatedPlayer2Deck.push(drawCard1)
                             updatedPlayer2Deck.push(drawCard2)
                             // send new state to server
-                            this.socket.emit('updateGameState', {
+                            this.socketInfo.emit('updateGameState', {
                                 gameOver: this.checkGameOver(this.player2Deck),
                                 winner: this.checkWinner(this.player2Deck, 'Player 2'),
                                 playedCardsPile: [...this.playedCardsPile.slice(0, this.playedCardsPile.length), playedCard, ...this.playedCardsPile.slice(this.playedCardsPile.length)],
@@ -512,7 +513,7 @@ export default {
                         }
                         else {
                             // send new state to server
-                            this.socket.emit('updateGameState', {
+                            this.socketInfo.emit('updateGameState', {
                                 gameOver: this.checkGameOver(this.player2Deck),
                                 winner: this.checkWinner(this.player2Deck, 'Player 2'),
                                 playedCardsPile: [...this.playedCardsPile.slice(0, this.playedCardsPile.length), playedCard, ...this.playedCardsPile.slice(this.playedCardsPile.length)],
@@ -532,7 +533,7 @@ export default {
             // if card played was a draw 2 card
             case 'D2R': case 'D2G': case 'D2B': case 'D2Y': {
                 // extract color of played skip card
-                const colorOfPlayedCard = playedCard.charAt(2)
+                const colorOfPlayedCard = playedCard.cardColor
                 // check for color match
                 if(this.currentColor === colorOfPlayedCard) {
                     console.log('colors matched!')
@@ -558,7 +559,7 @@ export default {
                             updatedPlayer1Deck.push(drawCard1X)
                             updatedPlayer1Deck.push(drawCard2X)
                             // send new state to server
-                            this.socket.emit('updateGameState', {
+                            this.socketInfo.emit('updateGameState', {
                                 gameOver: this.checkGameOver(this.player1Deck),
                                 winner: this.checkWinner(this.player1Deck, 'Player 1'),
                                 playedCardsPile: [...this.playedCardsPile.slice(0, this.playedCardsPile.length), playedCard, ...this.playedCardsPile.slice(this.playedCardsPile.length)],
@@ -571,7 +572,7 @@ export default {
                         }
                         else {
                             // send new state to server
-                            this.socket.emit('updateGameState', {
+                            this.socketInfo.emit('updateGameState', {
                                 gameOver: this.checkGameOver(this.player1Deck),
                                 winner: this.checkWinner(this.player1Deck, 'Player 1'),
                                 playedCardsPile: [...this.playedCardsPile.slice(0, this.playedCardsPile.length), playedCard, ...this.playedCardsPile.slice(this.playedCardsPile.length)],
@@ -617,7 +618,7 @@ export default {
                         }
                         else {
                             // send new state to server
-                            this.socket.emit('updateGameState', {
+                            this.socketInfo.emit('updateGameState', {
                                 gameOver: this.checkGameOver(this.player2Deck),
                                 winner: this.checkWinner(this.player2Deck, 'Player 1'),
                                 playedCardsPile: [...this.playedCardsPile.slice(0, this.playedCardsPile.length), playedCard, ...this.playedCardsPile.slice(this.playedCardsPile.length)],
@@ -655,7 +656,7 @@ export default {
                             updatedPlayer1Deck.push(drawCard1X)
                             updatedPlayer1Deck.push(drawCard2X)
                             // send new state to server
-                            this.socket.emit('updateGameState', {
+                            this.socketInfo.emit('updateGameState', {
                                 gameOver: this.checkGameOver(this.player1Deck),
                                 winner: this.checkWinner(this.player1Deck, 'Player 1'),
                                 playedCardsPile: [...this.playedCardsPile.slice(0, this.playedCardsPile.length), playedCard, ...this.playedCardsPile.slice(this.playedCardsPile.length)],
@@ -668,7 +669,7 @@ export default {
                         }
                         else {
                             // send new state to server
-                            this.socket.emit('updateGameState', {
+                            this.socketInfo.emit('updateGameState', {
                                 gameOver: this.checkGameOver(this.player1Deck),
                                 winner: this.checkWinner(this.player1Deck, 'Player 1'),
                                 playedCardsPile: [...this.playedCardsPile.slice(0, this.playedCardsPile.length), playedCard, ...this.playedCardsPile.slice(this.playedCardsPile.length)],
@@ -701,7 +702,7 @@ export default {
                             updatedPlayer2Deck.push(drawCard1X)
                             updatedPlayer2Deck.push(drawCard2X)
                             // send new state to server
-                            this.socket.emit('updateGameState', {
+                            this.socketInfo.emit('updateGameState', {
                                 gameOver: this.checkGameOver(this.player2Deck),
                                 winner: this.checkWinner(this.player2Deck, 'Player 1'),
                                 playedCardsPile: [...this.playedCardsPile.slice(0, this.playedCardsPile.length), playedCard, ...this.playedCardsPile.slice(this.playedCardsPile.length)],
@@ -714,7 +715,7 @@ export default {
                         }
                         else {
                             // send new state to server
-                            this.socket.emit('updateGameState', {
+                            this.socketInfo.emit('updateGameState', {
                                 gameOver: this.checkGameOver(this.player2Deck),
                                 winner: this.checkWinner(this.player2Deck, 'Player 1'),
                                 playedCardsPile: [...this.playedCardsPile.slice(0, this.playedCardsPile.length), playedCard, ...this.playedCardsPile.slice(this.playedCardsPile.length)],
@@ -755,7 +756,7 @@ export default {
                         updatedPlayer1Deck.push(drawCard1)
                         updatedPlayer1Deck.push(drawCard2)
                         // send new state to server
-                        this.socket.emit('updateGameState', {
+                        this.socketInfo.emit('updateGameState', {
                             gameOver: this.checkGameOver(this.player1Deck),
                             winner: this.checkWinner(this.player1Deck, 'Player 1'),
                             turn: 'Player 2',
@@ -768,7 +769,7 @@ export default {
                     }
                     else {
                         // send new state to server
-                        this.socket.emit('updateGameState', {
+                        this.socketInfo.emit('updateGameState', {
                             gameOver: this.checkGameOver(this.player1Deck),
                             winner: this.checkWinner(this.player1Deck, 'Player 1'),
                             turn: 'Player 2',
@@ -798,7 +799,7 @@ export default {
                         updatedPlayer2Deck.push(drawCard1)
                         updatedPlayer2Deck.push(drawCard2)
                         // send new state to server
-                        this.socket.emit('updateGameState', {
+                        this.socketInfo.emit('updateGameState', {
                             gameOver: this.checkGameOver(this.player2Deck),
                             winner: this.checkWinner(this.player2Deck, 'Player 2'),
                             turn: 'Player 1',
@@ -811,7 +812,7 @@ export default {
                     }
                     else {
                         // send new state to server
-                        this.socket.emit('updateGameState', {
+                        this.socketInfo.emit('updateGameState', {
                             gameOver: this.checkGameOver(this.player2Deck),
                             winner: this.checkWinner(this.player2Deck, 'Player 2'),
                             turn: 'Player 1',
@@ -866,7 +867,7 @@ export default {
                     }
                     else {
                         // send new state to server
-                        this.socket.emit('updateGameState', {
+                        this.socketInfo.emit('updateGameState', {
                             gameOver: this.checkGameOver(this.player1Deck),
                             winner: this.checkWinner(this.player1Deck, 'Player 1'),
                             playedCardsPile: [...this.playedCardsPile.slice(0, this.playedCardsPile.length), playedCard, ...this.playedCardsPile.slice(this.playedCardsPile.length)],
@@ -893,7 +894,7 @@ export default {
                     const drawCard4 = copiedDrawCardPileArray.pop()
                     // then update currentColor and currentNumber - turn will remain same
                     // send new state to server
-                    this.socket.emit('updateGameState', {
+                    this.socketInfo.emit('updateGameState', {
                         gameOver: this.checkGameOver(this.player2Deck),
                         winner: this.checkWinner(this.player2Deck, 'Player 2'),
                         playedCardsPile: [...this.playedCardsPile.slice(0, this.playedCardsPile.length), playedCard, ...this.playedCardsPile.slice(this.playedCardsPile.length)],
@@ -914,7 +915,7 @@ export default {
                         updatedPlayer2Deck.push(drawCard1X)
                         updatedPlayer2Deck.push(drawCard2X)
                         // send new state to server
-                        this.socket.emit('updateGameState', {
+                        this.socketInfo.emit('updateGameState', {
                             gameOver: this.checkGameOver(this.player2Deck),
                             winner: this.checkWinner(this.player2Deck, 'Player 2'),
                             playedCardsPile: [...this.playedCardsPile.slice(0, this.playedCardsPile.length), playedCard, ...this.playedCardsPile.slice(this.playedCardsPile.length)],
@@ -927,7 +928,7 @@ export default {
                     }
                     else {
                         // send new state to server
-                        this.socket.emit('updateGameState', {
+                        this.socketInfo.emit('updateGameState', {
                             gameOver: this.checkGameOver(this.player2Deck),
                             winner: this.checkWinner(this.player2Deck, 'Player 2'),
                             playedCardsPile: [...this.playedCardsPile.slice(0, this.playedCardsPile.length), playedCard, ...this.playedCardsPile.slice(this.playedCardsPile.length)],
@@ -952,12 +953,12 @@ export default {
             // pull out last element from it
             const drawCard = copiedDrawCardPileArray.pop()
             // extract number and color of drawn card
-            const colorOfDrawnCard = drawCard.charAt(drawCard.length - 1)
-            const numberOfDrawnCard = drawCard.charAt(0)
+            const colorOfDrawnCard = drawCard.cardColor
+            const numberOfDrawnCard = drawCard.cardNumber
             if(colorOfDrawnCard === this.currentColor && (drawCard === 'skipR' || drawCard === 'skipG' || drawCard === 'skipB' || drawCard === 'skipY')) {
                 alert(`You drew ${drawCard}. It was played for you.`)
                 // send new state to server
-                this.socket.emit('updateGameState', {
+                this.socketInfo.emit('updateGameState', {
                     playedCardsPile: [...this.playedCardsPile.slice(0, this.playedCardsPile.length), drawCard, ...this.playedCardsPile.slice(this.playedCardsPile.length)],
                     currentColor: colorOfDrawnCard,
                     currentNumber: 404,
@@ -973,7 +974,7 @@ export default {
                 const drawCard1 = copiedDrawCardPileArray.pop()
                 const drawCard2 = copiedDrawCardPileArray.pop()
                 // send new state to server
-                this.socket.emit('updateGameState', {
+                this.socketInfo.emit('updateGameState', {
                     playedCardsPile: [...this.playedCardsPile.slice(0, this.playedCardsPile.length), drawCard, ...this.playedCardsPile.slice(this.playedCardsPile.length)],
                     player2Deck: [...this.player2Deck.slice(0, this.player2Deck.length), drawCard1, drawCard2, ...this.player2Deck.slice(this.player2Deck.length)],
                     currentColor: colorOfDrawnCard,
@@ -986,7 +987,7 @@ export default {
                 // ask for new color
                 const newColor = prompt('Enter first letter of new color (R/G/B/Y)').toUpperCase()
                 // send new state to server
-                this.socket.emit('updateGameState', {
+                this.socketInfo.emit('updateGameState', {
                     turn: 'Player 2',
                     playedCardsPile: [...this.playedCardsPile.slice(0, this.playedCardsPile.length), drawCard, ...this.playedCardsPile.slice(this.playedCardsPile.length)],
                     currentColor: newColor,
@@ -1007,7 +1008,7 @@ export default {
                 const drawCard3 = copiedDrawCardPileArray.pop()
                 const drawCard4 = copiedDrawCardPileArray.pop()
                 // send new state to server
-                this.socket.emit('updateGameState', {
+                this.socketInfo.emit('updateGameState', {
                     playedCardsPile: [...this.playedCardsPile.slice(0, this.playedCardsPile.length), drawCard, ...this.playedCardsPile.slice(this.playedCardsPile.length)],
                     player2Deck: [...this.player2Deck.slice(0, this.player2Deck.length), drawCard1, drawCard2, drawCard3, drawCard4, ...this.player2Deck.slice(this.player2Deck.length)],
                     currentColor: newColor,
@@ -1019,7 +1020,7 @@ export default {
             else if(numberOfDrawnCard === this.currentNumber || colorOfDrawnCard === this.currentColor) {
                 alert(`You drew ${drawCard}. It was played for you.`)
                 // send new state to server
-                this.socket.emit('updateGameState', {
+                this.socketInfo.emit('updateGameState', {
                     turn: 'Player 2',
                     playedCardsPile: [...this.playedCardsPile.slice(0, this.playedCardsPile.length), drawCard, ...this.playedCardsPile.slice(this.playedCardsPile.length)],
                     currentColor: colorOfDrawnCard,
@@ -1030,7 +1031,7 @@ export default {
             // else add the drawn card to player1's deck
             else {
                 // send new state to server
-                this.socket.emit('updateGameState', {
+                this.socketInfo.emit('updateGameState', {
                     turn: 'Player 2',
                     player1Deck: [...this.player1Deck.slice(0, this.player1Deck.length), drawCard, ...this.player1Deck.slice(this.player1Deck.length)],
                     drawCardPile: [...copiedDrawCardPileArray]
@@ -1049,7 +1050,7 @@ export default {
             if(colorOfDrawnCard === this.currentColor && (drawCard === 'skipR' || drawCard === 'skipG' || drawCard === 'skipB' || drawCard === 'skipY')) {
                 alert(`You drew ${drawCard}. It was played for you.`)
                 // send new state to server
-                this.socket.emit('updateGameState', {
+                this.socketInfo.emit('updateGameState', {
                     playedCardsPile: [...this.playedCardsPile.slice(0, this.playedCardsPile.length), drawCard, ...this.playedCardsPile.slice(this.playedCardsPile.length)],
                     currentColor: colorOfDrawnCard,
                     currentNumber: 404,
@@ -1065,7 +1066,7 @@ export default {
                 const drawCard1 = copiedDrawCardPileArray.pop()
                 const drawCard2 = copiedDrawCardPileArray.pop()
                 // send new state to server
-                this.socket.emit('updateGameState', {
+                this.socketInfo.emit('updateGameState', {
                     playedCardsPile: [...this.playedCardsPile.slice(0, this.playedCardsPile.length), drawCard, ...this.playedCardsPile.slice(this.playedCardsPile.length)],
                     player1Deck: [...this.player1Deck.slice(0, this.player1Deck.length), drawCard1, drawCard2, ...this.player1Deck.slice(this.player1Deck.length)],
                     currentColor: colorOfDrawnCard,
@@ -1078,7 +1079,7 @@ export default {
                 // ask for new color
                 const newColor = prompt('Enter first letter of new color (R/G/B/Y)').toUpperCase()
                 // send new state to server
-                this.socket.emit('updateGameState', {
+                this.socketInfo.emit('updateGameState', {
                     turn: 'Player 1',
                     playedCardsPile: [...this.playedCardsPile.slice(0, this.playedCardsPile.length), drawCard, ...this.playedCardsPile.slice(this.playedCardsPile.length)],
                     currentColor: newColor,
@@ -1099,7 +1100,7 @@ export default {
                 const drawCard3 = copiedDrawCardPileArray.pop()
                 const drawCard4 = copiedDrawCardPileArray.pop()
                 // send new state to server
-                this.socket.emit('updateGameState', {
+                this.socketInfo.emit('updateGameState', {
                     playedCardsPile: [...this.playedCardsPile.slice(0, this.playedCardsPile.length), drawCard, ...this.playedCardsPile.slice(this.playedCardsPile.length)],
                     player1Deck: [...this.player1Deck.slice(0, this.player1Deck.length), drawCard1, drawCard2, drawCard3, drawCard4, ...this.player1Deck.slice(this.player1Deck.length)],
                     currentColor: newColor,
@@ -1111,7 +1112,7 @@ export default {
             else if(numberOfDrawnCard === this.currentNumber || colorOfDrawnCard === this.currentColor) {
                 alert(`You drew ${drawCard}. It was played for you.`)
                 // send new state to server
-                this.socket.emit('updateGameState', {
+                this.socketInfo.emit('updateGameState', {
                     turn: 'Player 1',
                     playedCardsPile: [...this.playedCardsPile.slice(0, this.playedCardsPile.length), drawCard, ...this.playedCardsPile.slice(this.playedCardsPile.length)],
                     currentColor: colorOfDrawnCard,
