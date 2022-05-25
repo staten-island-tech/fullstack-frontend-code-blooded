@@ -65,10 +65,22 @@ export default {
     End,
   },
   props: {
-    socketInfo: Object,
-    code: String,
-    players: Array,
-    username: String,
+    socketInfo: {
+      type: Object,
+      required: true,
+    },
+    code: {
+      type: String,
+      required: true,
+    },
+    players: {
+      type: Array,
+      required: true,
+    },
+    username: {
+      type: String,
+      required: true,
+    },
   },
   data() {
     return {
@@ -106,6 +118,7 @@ export default {
     },
     doSmth() {
       this.socketInfo.emit('testingEvent', 'hi')
+      console.log(this.username)
     },
   },
 }
