@@ -77,8 +77,6 @@
 import io from 'socket.io-client'
 import deck from '@/pages/deck.js';
 import End from '@/components/reg-comp/End.vue'
-this.socketInfo = io.connect("https//:localhost:3000")
-
 export default {
   name: 'ActualGame',
   components: {
