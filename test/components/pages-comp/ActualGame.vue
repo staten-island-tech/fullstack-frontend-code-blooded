@@ -9,6 +9,8 @@
               {{ player }}
             </h1>
             <h2 class="cardLeft">7 cards in hand</h2>
+
+            <img :src="allCards[0].cardImg" alt="" />
           </div>
         </div>
       </div>
@@ -71,7 +73,7 @@
 </template>
 
 <script>
-// import allCards from '../../pages/allCards.js';
+import allCards from '../../pages/allCards.js'
 // import End from '@/components/reg-comp/End.vue'
 export default {
   name: 'ActualGame',
@@ -102,7 +104,7 @@ export default {
   },
   data() {
     return {
-      // allCards,
+      allCards,
       // playerName: 'Vue',
       // playerColor: '#71D097',
       // playerTime: 22,
