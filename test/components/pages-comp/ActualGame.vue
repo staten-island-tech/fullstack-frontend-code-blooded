@@ -5,7 +5,7 @@
         <div>
           <h1>Player 1 Deck</h1>
           <div v-for="card in player1Deck" :key="card.id" class="p1d">
-            <img :src="card.cardImg">
+            <button  @click="onCardPlayedHandler"><img :src="card.cardImg"></button>
           </div>
         </div>
         <div>
@@ -60,7 +60,10 @@
           <div class="cardOnTable">
             <h2 class="tableLabel">table</h2>
             <div v-for="drawn in drawCardPile" :key="drawn.id" class="dcp">
-              <img :src="drawn.cardImg" @click="onCardPlayedHandler">
+                <img :src="drawn.cardImg">
+            </div>
+            <div v-for="tia in playedCardsPile" :key="tia.id">
+                <img :src="tia.cardImg">
             </div>
           </div>
           <End />
@@ -110,21 +113,11 @@ export default {
             this.player1Deck = []
             this.player2Deck = []
             this.currentColor = ''
-            this.scurrentNumber = ''
+            this.currentNumber = ''
             this.playedCardsPile = []
             this.drawCardPile = []
         })
         },
-    roomData(){
-          this.socket.on("roomData", ({ users }) => {
-            this.users = []
-        })  
-        },
-    currentUserData(){
-        this.socket.on('currentUserData', ({ name }) => {
-            this.name = ''
-        })
-    },
     shuffleArray(array){
       for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1))
@@ -1051,8 +1044,8 @@ export default {
             // pull out last element from it
             const drawCard = copiedDrawCardPileArray.pop()
             // extract number and color of drawn card
-            const colorOfDrawnCard = drawCard.charAt(drawCard.length - 1)
-            const numberOfDrawnCard = drawCard.charAt(0)
+            const colorOfDrawnCard = drawCard.cardColor
+            const numberOfDrawnCard = drawCard.cardNumber
             if(colorOfDrawnCard === this.currentColor && (drawCard === 'skipR' || drawCard === 'skipG' || drawCard === 'skipB' || drawCard === 'skipY')) {
                 alert(`You drew ${drawCard}. It was played for you.`)
                 // send new state to server
@@ -1129,7 +1122,7 @@ export default {
             // else add the drawn card to player2's deck
             else {
                 // send new state to server
-                this.socket.emit('updateGameState', {
+                this.socketInfo.emit('updateGameState', {
                     turn: 'Player 1',
                     player2Deck: [...this.player2Deck.slice(0, this.player2Deck.length), drawCard, ...this.player2Deck.slice(this.player2Deck.length)],
                     drawCardPile: [...copiedDrawCardPileArray]
