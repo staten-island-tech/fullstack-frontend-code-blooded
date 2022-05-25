@@ -53,7 +53,7 @@
             <div class="cardsBox">
               <!-- <img :src="drawnCard.cardImg"> 
               Also for LISA -->
-              <!-- <div>{{table}}</div> -->
+              <div>{{table}}</div>
             </div>
         </div>
         <div v-else>
@@ -141,11 +141,11 @@ export default {
       if (this.deck.deck.length > 0) {
         const randIndex = Math.floor(Math.random() * this.deck.deck.length)
         this.drawnCard = this.deck.deck.splice(randIndex, 1)[0]
-        //above this the code for LISA
-        // const pls = this.drawnCard.cardImg
-        // this.table.push(pls)
-        // console.log(pls)
-        // this.attempt.push(this.drawnCard)
+        // above this the code for LISA
+        const pls = this.drawnCard.cardImg
+        this.table.push(pls)
+        console.log(pls)
+        this.attempt.push(this.drawnCard)
 
       }
     },
