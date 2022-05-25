@@ -80,6 +80,9 @@ export default {
   },
   props: {
     socketInfo: Object,
+    code: String,
+    players: Array,
+    username: String,
   },
   data() {
     return {
