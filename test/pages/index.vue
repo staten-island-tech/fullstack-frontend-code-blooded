@@ -57,6 +57,8 @@ export default {
       testingComp: false,
       wrapper: true,
       socketInfo: {},
+      users: [],
+      currentUser: '',
     }
   },
 
@@ -76,7 +78,6 @@ export default {
       this.socketInstance = io('http://localhost:3001')
 
       this.socketInfo = this.socketInstance
-
     },
 
     closeModal() {
