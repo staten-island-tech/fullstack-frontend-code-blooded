@@ -4,7 +4,7 @@
       <div class="player-container">
         <div>
           <h1>Player 1 Deck</h1>
-          <div v-for="card in player1Deck" :key="card" class="p1d">
+          <div v-for="card in player1Deck" :key="card.id" class="p1d">
             <img :src="card.cardImg">
           </div>
         </div>
@@ -59,8 +59,8 @@
         <div class="table">
           <div class="cardOnTable">
             <h2 class="tableLabel">table</h2>
-            <div v-for="card in drawCardPile" :key="card" class="dcp">
-              <img :src="card.cardImg" @click="onCardPlayedHandler">
+            <div v-for="drawn in drawCardPile" :key="drawn.id" class="dcp">
+              <img :src="drawn.cardImg" @click="onCardPlayedHandler">
             </div>
           </div>
           <End />
@@ -99,10 +99,31 @@ export default {
       isUnoButtonPressed: false,
     }
   },
-  
   methods: {
     goIndex() {
       this.$router.push('/')
+    },
+    socket(){
+       this.socket.on('initGameState', ({ gameOver, turn, player1Deck, player2Deck, currentColor, currentNumber, playedCardsPile, drawCardPile }) => {
+            this.gameOver = true
+            this.turn = ''
+            this.player1Deck = []
+            this.player2Deck = []
+            this.currentColor = ''
+            this.scurrentNumber = ''
+            this.playedCardsPile = []
+            this.drawCardPile = []
+        })
+        },
+    roomData(){
+          this.socket.on("roomData", ({ users }) => {
+            this.users = []
+        })  
+        },
+    currentUserData(){
+        this.socket.on('currentUserData', ({ name }) => {
+            this.name = ''
+        })
     },
     shuffleArray(array){
       for (let i = array.length - 1; i > 0; i--) {
