@@ -51,7 +51,9 @@
             <button class="pass">pass</button>
           <div v-if="drawnCard" >
             <div class="cardsBox">
-              <img :src="attempt.cardImg">
+              <!-- <img :src="drawnCard.cardImg"> 
+              Also for LISA -->
+              <!-- <div>{{table}}</div> -->
             </div>
         </div>
         <div v-else>
@@ -62,8 +64,8 @@
         <div class="table">
           <div class="cardOnTable">
             <h2 class="tableLabel">table</h2>
-            <div v-for="tia in 7" :key="tia">
-              <div>{{deck.deck[tia].cardName}}</div>
+            <div @click="playCard" >
+              <img :src="table" alt="">
             </div>
           </div>
           <End />
@@ -85,6 +87,7 @@ export default {
     return {
       deck,
       drawnCard: undefined,
+      table:[],
       attempt:[],
       playerName: 'Vue',
       playerColor: '#71D097',
@@ -138,10 +141,21 @@ export default {
       if (this.deck.deck.length > 0) {
         const randIndex = Math.floor(Math.random() * this.deck.deck.length)
         this.drawnCard = this.deck.deck.splice(randIndex, 1)[0]
-        this.attempt.push(this.drawnCard)
+        //above this the code for LISA
+        // const pls = this.drawnCard.cardImg
+        // this.table.push(pls)
+        // console.log(pls)
+        // this.attempt.push(this.drawnCard)
 
       }
     },
+    playCard(){ 
+      const workpls = this.drawnCard.cardImg
+      console.log(workpls)
+      // this.table.push(workpls)
+      // console.log(table)
+
+    }
   },
 }
 </script>
