@@ -1,6 +1,12 @@
 <template>
   <div class="code-page">
-    <ActualGame v-show="gameTime"></ActualGame>
+    <ActualGame
+      v-show="gameTime"
+      :socketInfo="socketInfo"
+      :code="code"
+      :players="players"
+      :username="username"
+    ></ActualGame>
     <!-- the waiting room -->
     <div v-show="inRoom" class="inviteeRoom">
       <button class="help"><a href="rules">?</a></button>
@@ -12,7 +18,9 @@
               <Pin></Pin>
             </div>
             <p class="comment">share this with friends for them to join</p>
-            <h2 class="whoJoined">Friends who have joined</h2>
+            <h2 class="whoJoined">
+              {{ playerList.length }} Friends who have joined
+            </h2>
             <div class="friend-list">
               <ul class="list" v-for="player in players" :key="player">
                 <li>{{ player }}, is playing</li>
@@ -77,11 +85,14 @@ export default {
       messages: [],
       gameTime: false,
       inRoom: true,
+      playerList: [],
     }
   },
   methods: {
     start() {
-      this.socketInfo.on('newMessage', (message) => {
+      this.socketInfo.on('newMessage', (message, playerList) => {
+        this.playerList = playerList
+        console.log('theres are playrs' + this.playerList)
         if (this.messages.includes(message)) {
           console.log('message added')
         } else {

@@ -1,6 +1,7 @@
 <template>
   <div id="container">
     <section class="gamepage">
+      <!-- where the other players are displayed -->
       <div class="player-container">
         <div v-for="player in playerData" :key="player.id" class="players">
           <div class="player-box" :style="{ borderColor: player.playerColor }">
@@ -63,37 +64,40 @@ export default {
   components: {
     End,
   },
-  // props: {
-  //   socketInfo: Object,
-  // },
+  props: {
+    socketInfo: Object,
+    code: String,
+    players: Array,
+    username: String,
+  },
   data() {
     return {
       // allCards,
-      playerName: 'Vue',
-      playerColor: '#71D097',
-      playerTime: 22,
-      playerNext: 'HTML',
-      nextColor: '#49C8FF',
-      playerData: [
-        {
-          playerName: 'placeholder',
-          cardData: 0,
-          id: 1,
-          playerColor: '#71D097',
-        },
-        {
-          playerName: 'placeholder',
-          cardData: 0,
-          id: 2,
-          playerColor: '#49C8FF',
-        },
-        {
-          playerName: 'placeholder',
-          cardData: 0,
-          id: 3,
-          playerColor: '#EE914D',
-        },
-      ],
+      // playerName: 'Vue',
+      // playerColor: '#71D097',
+      // playerTime: 22,
+      // playerNext: 'HTML',
+      // nextColor: '#49C8FF',
+      // playerData: [
+      //   {
+      //     playerName: 'placeholder',
+      //     cardData: 0,
+      //     id: 1,
+      //     playerColor: '#71D097',
+      //   },
+      //   {
+      //     playerName: 'placeholder',
+      //     cardData: 0,
+      //     id: 2,
+      //     playerColor: '#49C8FF',
+      //   },
+      //   {
+      //     playerName: 'placeholder',
+      //     cardData: 0,
+      //     id: 3,
+      //     playerColor: '#EE914D',
+      //   },
+      // ],
     }
   },
   methods: {
