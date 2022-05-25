@@ -6,6 +6,7 @@
       :code="code"
       :players="players"
       :username="username"
+      :players-ex="playersEx"
     ></ActualGame>
     <!-- the waiting room -->
     <div v-show="inRoom" class="inviteeRoom">
@@ -19,7 +20,7 @@
             </div>
             <p class="comment">share this with friends for them to join</p>
             <h2 class="whoJoined">
-              {{ playerList.length }} Friends who have joined
+              {{ players.length }} Friends who have joined
             </h2>
             <div class="friend-list">
               <ul v-for="player in players" :key="player" class="list">
@@ -74,10 +75,22 @@ export default {
     ActualGame,
   },
   props: {
-    socketInfo: Object,
-    code: String,
-    players: Array,
-    username: String,
+    socketInfo: {
+      type: Object,
+      required: true,
+    },
+    code: {
+      type: String,
+      required: true,
+    },
+    players: {
+      type: Array,
+      required: true,
+    },
+    username: {
+      type: String,
+      required: true,
+    },
   },
   data() {
     return {
@@ -86,6 +99,7 @@ export default {
       gameTime: false,
       inRoom: true,
       playerList: [],
+      playersEx: [],
     }
   },
   methods: {
@@ -103,6 +117,10 @@ export default {
       this.socketInfo.on('startNow', (status) => {
         this.gameTime = status
         this.inRoom = false
+        const myPlayer = this.players.indexOf(this.username)
+        const total = this.playerList
+        total.splice(myPlayer, 1)
+        this.playersEx = total
       })
     },
     sendMessage() {
