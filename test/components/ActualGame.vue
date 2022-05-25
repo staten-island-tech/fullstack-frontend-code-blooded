@@ -2,8 +2,18 @@
   <div id="container">
     <section class="gamepage">
       <div class="player-container">
-        <div v-for="player in playerData" :key="player.id" class="players">
-          <!-- <div class="player-box" :style="{ borderColor: player.playerColor }">
+        <div>
+          <h1>Player 1 Deck</h1>
+          <div v-for="card in player1Deck" :key="card">
+            <img :src="card.cardImg">
+          </div>
+        </div>
+        <div>
+          <h1>Player 2 Deck</h1>
+          <div>{{player2Deck.length}}</div>
+        </div>
+        <!-- <div v-for="player in playerData" :key="player.id" class="players">
+           <div class="player-box" :style="{ borderColor: player.playerColor }">
             <h1
               class="username"
               :style="{ backgroundColor: player.playerColor }"
@@ -11,8 +21,8 @@
               {{ player.playerName }}
             </h1>
             <h2 class="cardLeft">{{ player.cardData }} cards in hand</h2>
-          </div> -->
-        </div>
+          </div>
+        </div> -->
       </div>
       <div class="cardStack">
         <!-- <div class="cardHand">
@@ -42,7 +52,7 @@
           </div>
         </div> -->
         <div class="gameActions">
-          <button class="drawACard" @click="doSmth">draw a card</button>
+          <button class="drawACard" @click="startGame">Shuffle</button>
           <button class="pass">pass</button>
         </div>
         <div class="table">
@@ -70,30 +80,65 @@ export default {
   data() {
     return {
       deck,
-      currentCard: {},
-      cardsAlreadySelected: [],
-      roomFull: false,
-      users: [],
-      currentUser: '',
-      message: '',
-      messages: [],
+      gameOver: true,
+      winner: '',
+      turn: '',
+      player1Deck: [],
+      player2Deck: [],
+      currentColor:'',
+      currentNumber: '',
+      playedCardsPile: [],
+      drawCardPile: [],
     }
   },
+  
   methods: {
     goIndex() {
       this.$router.push('/')
     },
-    doSmth() { 
-      this.socketInfo.emit('testingEvent', 'hi')
-    //  let x=0;
-    //  for(x=0; x++; x>4) {
-        const randomNumber = Math.floor(Math.random() * (this.deck.length))
-  this.currentCard = this.deck.splice(randomNumber, 4)
-  console.log(this.currentCard.length)
-   //   }
-      
+    shuffleArray(array){
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1))
+        const temp = array[i]
+        array[i] = array[j]
+        array[j] = temp;
+    }   
+    return array
     },
+    startGame() { 
+      const shuffledCards = this.shuffleArray(deck)
+      this.player1Deck = shuffledCards.splice(0, 7)
+      this.player2Deck = shuffledCards.splice(0, 7)
+      let startingCardIndex
+        while(true) {
+            startingCardIndex = Math.floor(Math.random() * 94)
+            if(shuffledCards[startingCardIndex].cardName ==='Red Skip Card' || shuffledCards[startingCardIndex].cardName ==='Red Reverse Card' || shuffledCards[startingCardIndex].cardName==='Red +2 Card' ||
+            shuffledCards[startingCardIndex].cardName ==='Green Skip Card' || shuffledCards[startingCardIndex].cardName ==='Green Reverse Card' || shuffledCards[startingCardIndex].cardName ==='Green +2 Card' ||
+            shuffledCards[startingCardIndex].cardName ==='Blue Skip Card' || shuffledCards[startingCardIndex].cardName ==='Blue Reverse Card' || shuffledCards[startingCardIndex].cardName ==='Blue +2 Card' ||
+            shuffledCards[startingCardIndex].cardName ==='Yellow Skip Card' || shuffledCards[startingCardIndex].cardName ==='Yellow Reverse Card' || shuffledCards[startingCardIndex].cardName ==='Yellow +2 Card' ||
+            shuffledCards[startingCardIndex].cardName ==='Wild Card' || shuffledCards[startingCardIndex].cardName ==='+4 Wild Card') {
+                continue;
+            }
+            else
+                break;
+        }
+        this.playedCardsPile = shuffledCards.splice(startingCardIndex, 1)
+        this.drawCardPile = shuffledCards
+    },
+    startSocket(){
+      this.socket.emit('initGameState', {
+            gameOver: false,
+            turn: 'Player 1',
+            player1Deck: [...this.player1Deck],
+            player2Deck: [...this.player2Deck],
+            currentColor: this.playedCardsPile[0].charAt(1),
+            currentNumber: this.playedCardsPile[0].charAt(0),
+            playedCardsPile: [...this.playedCardsPile],
+            drawCardPile: [...this.drawCardPile]
+        })
+    }
   },
+  
 }
 </script>
 

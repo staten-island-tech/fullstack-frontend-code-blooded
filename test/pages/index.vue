@@ -6,9 +6,9 @@
     </div>
     <Join v-show="isJoinVisible" />
 
-    <ActualGame v-show="testingComp" :socketInfo="socketInfo"></ActualGame>
+    <ActualGame v-show="testingComp" :socket-info="socketInfo"></ActualGame>
 
-    <div class="landing-wrapper" v-show="wrapper">
+    <div v-show="wrapper" class="landing-wrapper">
       <div v-show="isJoinNotVisible" class="options">
         <h1 class="logo">code-blooded</h1>
         <input
@@ -35,7 +35,7 @@ import Join from '@/components/reg-comp/Join.vue'
 import Sign from '@/components/reg-comp/Sign.vue'
 
 // pages comp
-import ActualGame from '@/components/pages-comp/ActualGame.vue'
+import ActualGame from '@/components/ActualGame.vue'
 
 //   <Modal v-show="isModalVisible" @close="closeModal"/>
 export default {
@@ -76,6 +76,7 @@ export default {
       this.socketInstance = io('http://localhost:3001')
 
       this.socketInfo = this.socketInstance
+
     },
 
     closeModal() {
