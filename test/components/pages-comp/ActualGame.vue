@@ -1,6 +1,7 @@
 <template>
   <div id="container">
     <section class="gamepage">
+<<<<<<< HEAD
       <!-- huge section of selina's code i tried to replicate to the 80% of my ability -->
       <div class="player-container">
         <div v-for="player in playersEx" :key="player" class="players">
@@ -49,6 +50,8 @@
       </div>
 
       >>>>>>> f26ba43ec0f166f3bc1dc946721bd5e29049f08e
+=======
+>>>>>>> parent of 6b38cdd (show other players)
       <!-- where the other players are displayed -->
       <div class="player-container">
         <div v-for="player in playerData" :key="player.id" class="players">
