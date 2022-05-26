@@ -1,7 +1,6 @@
 <template>
   <div id="container">
     <section class="gamepage">
-<<<<<<< HEAD
       <!-- huge section of selina's code i tried to replicate to the 80% of my ability -->
       <div class="player-container">
         <div v-for="player in playersEx" :key="player" class="players">
@@ -10,12 +9,46 @@
               {{ player }}
             </h1>
             <h2 class="cardLeft">7 cards in hand</h2>
+
+            <img :src="allCards[0].cardImg" alt="" />
+            <h1>{{ allCards.length }}</h1>
           </div>
         </div>
       </div>
 
-=======
->>>>>>> parent of 6b38cdd (show other players)
+      =======
+      <!-- bottome row i think -->
+      <div class="cardStack">
+        <div class="cardHand">
+          <h2 class="deck-numbers">deck: 93 | used: 18</h2>
+          <div class="middleBox">
+            <div class="icon"><h3 class="slash">//</h3></div>
+            <div class="time-player">
+              <div class="timeRow">
+                <h1 class="time sizeLarge" :style="{ color: red }">--</h1>
+                <h1 class="time sizeLarge">has -- seconds left</h1>
+              </div>
+              <div class="timeRow">
+                <h2 class="time sizeSmall" :style="{ color: red }">--</h2>
+                <h2 class="time sizeSmall">is up next</h2>
+              </div>
+            </div>
+          </div>
+          <div class="cardsBox"></div>
+        </div>
+        <div class="gameActions">
+          <button class="drawACard" @click="doSmth">draw a card</button>
+          <button class="pass">pass</button>
+        </div>
+        <div class="table">
+          <div class="cardOnTable">
+            <h2 class="tableLabel">table</h2>
+          </div>
+          <End />
+        </div>
+      </div>
+
+      >>>>>>> f26ba43ec0f166f3bc1dc946721bd5e29049f08e
       <!-- where the other players are displayed -->
       <div class="player-container">
         <div v-for="player in playerData" :key="player.id" class="players">
