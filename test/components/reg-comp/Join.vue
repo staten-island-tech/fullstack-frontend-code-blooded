@@ -2,25 +2,25 @@
   <div class="joinWrap">
     <Host
       v-show="hostComp"
-      :socketInfo="socketInfo"
+      :socket-info="socketInfo"
       :username="username"
       :code="newCode"
       :players="players"
     ></Host>
     <Invitee
       v-show="inviteeComp"
-      :socketInfo="socketInfo"
+      :socket-info="socketInfo"
       :username="username"
       :code="urCode"
       :players="players"
     ></Invitee>
 
-    <div class="optionapp" v-show="joinWrap">
+    <div v-show="joinWrap" class="optionapp">
       <div class="options">
         <h1 class="logo">code-blooded</h1>
         <input
-          type="text"
           v-model="username"
+          type="text"
           placeholder="enter a name"
           name="username"
           required
@@ -44,6 +44,7 @@
 
 <script>
 import io from 'socket.io-client'
+import deck from '../../pages/deck.js'
 import Host from '@/components/pages-comp/Host.vue'
 import Invitee from '@/components/pages-comp/Invitee.vue'
 
@@ -55,6 +56,7 @@ export default {
   },
   data() {
     return {
+      deck,
       joinWrap: true,
       hostComp: false,
       inviteeComp: false,

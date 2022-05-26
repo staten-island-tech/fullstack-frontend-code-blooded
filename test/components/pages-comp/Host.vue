@@ -2,14 +2,17 @@
   <div class="code-page">
     <ActualGame
       v-show="gameTime"
-      :socketInfo="socketInfo"
+      :socket-info="socketInfo"
       :code="code"
       :players="players"
+      :player-deck="playerDeck"
+      :played-cards-pile="playedCardsPile"
+      :draw-card-pile="drawCardPile"
       :username="username"
-      :playersEx="playersEx"
+      :players-ex="playersEx"
     ></ActualGame>
     <!-- the waiting room -->
-    <div class="hostRoom" v-show="inRoom">
+    <div v-show="inRoom" class="hostRoom">
       <button class="help"><a href="rules">?</a></button>
       <div class="options3">
         <div class="row">
@@ -23,7 +26,7 @@
               {{ players.length }} Friends who have joined
             </h2>
             <div class="friend-list">
-              <ul class="list" v-for="player in players" :key="player">
+              <ul v-for="player in players" :key="player" class="list">
                 <li>{{ player }}, is playing</li>
                 <!-- <li class="friend1 friend">javascript, the host, is playing</li>
               <li class="friend2 friend">vue, the invitee, is playing</li>
@@ -55,10 +58,10 @@
             <input
               id="writeMessage"
               v-model="text"
-              @click="start"
-              v-on:keyup.enter="sendMessage"
               type="text"
               placeholder="write a message"
+              @click="start"
+              @keyup.enter="sendMessage"
             />
           </div>
         </div>
@@ -67,6 +70,7 @@
   </div>
 </template>
 <script>
+import deck from '../../pages/deck.js'
 import Pin from '@/components/reg-comp/Pin.vue'
 import ActualGame from '@/components/pages-comp/ActualGame.vue'
 
@@ -96,11 +100,15 @@ export default {
   },
   data() {
     return {
+      deck,
       text: '',
       messages: [],
       gameTime: false,
       inRoom: true,
       playerList: [],
+      playerDeck: [],
+      playedCardsPile: [],
+      drawCardPile: [],
       playersEx: [],
     }
   },
@@ -140,11 +148,24 @@ export default {
       }
       this.socketInfo.emit('myMessage', message, this.code)
     },
+      shuffleArray(array){
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1))
+        const temp = array[i]
+        array[i] = array[j]
+        array[j] = temp;
+    }   
+    return array
+    },
     goActualGame() {
       this.gameTime = true
       this.inRoom = false
-
-      this.socketInfo.emit('startGame', this.gameTime)
+      const shuffledCards = this.shuffleArray(deck)
+      this.playerDeck = shuffledCards.splice(0, 7)
+      this.playedCardsPile = shuffledCards.splice(0, 1)
+        this.drawCardPile = shuffledCards
+        this.socketInfo.emit('startGame', this.gameTime, this.playerDeck, this.playedCardsPile, this.drawCardPile)
+        console.log(this.playerDeck.length)
     },
     goWelcomeBack() {
       this.$router.push('/welcomeBack')
