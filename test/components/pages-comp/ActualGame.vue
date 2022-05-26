@@ -9,6 +9,8 @@
               {{ player }} player here
             </h1>
             <h2 class="cardLeft">7 cards in hand</h2>
+            <img :src="deck[0].cardImg" />
+            <h1></h1>
           </div>
         </div>
       </div>
@@ -71,11 +73,12 @@
 </template>
 
 <script>
-// import allCards from '../../pages/allCards.js';
+import deck from '../../pages/allCards.js'
 // import End from '@/components/reg-comp/End.vue'
 export default {
   name: 'ActualGame',
   components: {
+    // deck,
     // End,
   },
   props: {
