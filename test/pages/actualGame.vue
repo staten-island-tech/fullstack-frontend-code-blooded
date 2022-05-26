@@ -53,7 +53,11 @@
             <div class="cardsBox">
               <!-- <img :src="drawnCard.cardImg"> 
               Also for LISA -->
-              <div>{{table}}</div>
+              <div class="stuff">
+              <div class="attempt" v-for="card in table" :key="card">
+                <img :src="card" alt="">
+              </div>
+              </div>
             </div>
         </div>
         <div v-else>
@@ -273,7 +277,7 @@ export default {
 }
 .slash {
   position: relative;
-  bottom: 30%;
+  bottom: 50%;
   /* position: absolute; */
 }
 .cardsBox {
@@ -345,5 +349,11 @@ export default {
   font-size: 2rem;
   margin-top: 1rem;
   letter-spacing: 0.1rem;
+}
+
+.stuff{
+  display: flex;
+  /* flex-direction: row; */
+  transform: translate(4rem);
 }
 </style>
