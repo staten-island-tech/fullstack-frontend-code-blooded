@@ -47,7 +47,7 @@
             <div class="chatList">
               <div class="messages-container">
                 <div v-for="message in messages" :key="message.id">
-                  <b>{{ message.user }}</b> :{{ message.text }}
+                  <b>{{ message.user }}</b> :  {{ message.text }}
                 </div>
               </div>
             </div>
@@ -200,10 +200,12 @@ a {
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
+  margin: 5%;
 }
-.code {
-  width: 40vw;
-}
+/* .code {
+  width: 60%;
+} */
 
 .comment {
   color: var(--third-color);
@@ -214,11 +216,9 @@ a {
 .options3 {
   display: flex;
   flex-direction: column;
-  width: 90vw;
+  width: 80vw;
   height: 90vh;
-  justify-content: center;
   margin: 0 auto;
-  align-items: center;
 }
 .sample {
   display: flex;
@@ -309,6 +309,13 @@ input[type='text']::placeholder {
   flex-direction: column;
   justify-content: space-between;
   color: var(--font-color);
+}
+.chatList{
+    overflow-y: scroll;
+    overflow-wrap: break-word;
+}
+::-webkit-scrollbar {
+  width: 0px;
 }
 .chat {
   border: 5px solid var(--secondary-color);
