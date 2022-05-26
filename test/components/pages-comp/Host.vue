@@ -121,10 +121,8 @@ export default {
         this.gameTime = status
         this.inRoom = false
 
-        const myPlayer = this.players.indexOf(this.username)
-        const total = this.playerList
-        total.splice(myPlayer, 1)
-        this.playersEx = total
+        this.playersEx = this.players.slice(1, this.players.length)
+        console.log(this.playersEx)
       })
     },
     sendMessage() {
