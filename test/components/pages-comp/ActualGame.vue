@@ -78,7 +78,7 @@ import deck from '../../pages/allCards.js'
 export default {
   name: 'ActualGame',
   components: {
-    // deck,
+    deck,
     // End,
   },
   props: {
@@ -140,6 +140,7 @@ export default {
     doSmth() {
       this.socketInfo.emit('testingEvent', 'hi')
       console.log(this.playersEx)
+      console.log(this.deck[0])
     },
   },
 }
