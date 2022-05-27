@@ -54,7 +54,7 @@
               <!-- <img :src="drawnCard.cardImg"> 
               Also for LISA -->
               <div class="stuff">
-              <div class="attempt" v-for="card in table" :key="card">
+              <div v-for="card in table" :key="card">
                 <img :src="card" alt="">
               </div>
               </div>
@@ -92,7 +92,6 @@ export default {
       deck,
       drawnCard: undefined,
       table:[],
-      attempt:[],
       playerName: 'Vue',
       playerColor: '#71D097',
       playerTime: 22,
@@ -149,7 +148,6 @@ export default {
         const pls = this.drawnCard.cardImg
         this.table.push(pls)
         console.log(pls)
-        this.attempt.push(this.drawnCard)
 
       }
     },
@@ -281,7 +279,7 @@ export default {
   /* position: absolute; */
 }
 .cardsBox {
-  width: 250%;
+  width: 214%;
   height: 100%;
   transform: translate(-61%);
 }
@@ -355,5 +353,6 @@ export default {
   display: flex;
   /* flex-direction: row; */
   transform: translate(4rem);
+  overflow: scroll;
 }
 </style>
