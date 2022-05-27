@@ -7,6 +7,7 @@
       :players="players"
       :username="username"
       :playersEx="playersEx"
+      :myHand="myHand"
     ></ActualGame>
     <!-- the waiting room -->
     <div v-show="inRoom" class="inviteeRoom">
@@ -64,6 +65,7 @@
   </div>
 </template>
 <script>
+import deck from '@/pages/deck.js'
 import Pin from '@/components/reg-comp/Pin.vue'
 import Leave from '@/components/reg-comp/Leave.vue'
 import ActualGame from '@/components/pages-comp/ActualGame.vue'
@@ -94,12 +96,14 @@ export default {
   },
   data() {
     return {
+      deck,
       text: '',
       messages: [],
       gameTime: false,
       inRoom: true,
       playerList: [],
       playersEx: [],
+      myHand: [],
     }
   },
   methods: {
@@ -123,7 +127,16 @@ export default {
         const total = this.playerList
         total.splice(myPlayer, 1)
         this.playersEx = total
+
+        this.deal()
       })
+    },
+    deal() {
+      for (let i = 0; i < 7; i++) {
+        const ran = Math.floor(Math.random() * 109)
+        this.myHand.push(deck[ran])
+      }
+      console.log(this.myHand)
     },
     sendMessage() {
       console.log(this.text)

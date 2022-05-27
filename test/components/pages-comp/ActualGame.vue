@@ -9,7 +9,9 @@
               {{ player }} player here
             </h1>
             <h2 class="cardLeft">7 cards in hand</h2>
-            <img :src="deck[0].cardImg" alt="" srcset="" />
+            <div v-for="card in myHand" :key="card">
+              <img :src="card.cardImg" />
+            </div>
             <h1></h1>
           </div>
         </div>
@@ -79,7 +81,6 @@ import deck from '@/pages/deck.js'
 export default {
   name: 'ActualGame',
   components: {
-    // deck,
     // End,
   },
   props: {
@@ -100,6 +101,10 @@ export default {
       required: true,
     },
     playersEx: {
+      type: Array,
+      required: true,
+    },
+    myHand: {
       type: Array,
       required: true,
     },
