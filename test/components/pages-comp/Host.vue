@@ -7,6 +7,7 @@
       :players="players"
       :username="username"
       :playersEx="playersEx"
+      :myHand="myHand"
     ></ActualGame>
     <!-- the waiting room -->
     <div class="hostRoom" v-show="inRoom">
@@ -44,8 +45,11 @@
             <!-- here is the chat space i made -->
             <div class="chatList">
               <div class="messages-container">
+                <!-- check this out -->
                 <div v-for="message in messages" :key="message.id" class="messageBox">
                   <b>{{ message.user }}</b> :  {{ message.text }}
+                <div v-for="message in messages" :key="message.id">
+                  <b>{{ message.user }}</b> : {{ message.text }}
                 </div>
               </div>
             </div>
@@ -65,6 +69,7 @@
   </div>
 </template>
 <script>
+import deck from '@/pages/deck.js'
 import ActualGame from '@/components/pages-comp/ActualGame.vue'
 
 export default {
@@ -92,12 +97,14 @@ export default {
   },
   data() {
     return {
+      deck,
       text: '',
       messages: [],
       gameTime: false,
       inRoom: true,
       playerList: [],
       playersEx: [],
+      myHand: [],
     }
   },
   methods: {
@@ -139,6 +146,15 @@ export default {
       this.inRoom = false
 
       this.socketInfo.emit('startGame', this.gameTime)
+
+      this.deal()
+    },
+    deal() {
+      for (let i = 0; i < 7; i++) {
+        const ran = Math.floor(Math.random() * 109)
+        this.myHand.push(deck[ran])
+      }
+      console.log(this.myHand)
     },
     goWelcomeBack() {
       this.$router.push('/')
@@ -305,9 +321,9 @@ input[type='text']::placeholder {
   padding: 2rem;
    border-radius: 30px;
 }
-.chatList{
-    overflow-y: scroll;
-    overflow-wrap: break-word;
+.chatList {
+  overflow-y: scroll;
+  overflow-wrap: break-word;
 }
 ::-webkit-scrollbar {
   width: 1px;

@@ -9,7 +9,9 @@
               {{ player }} player here
             </h1>
             <h2 class="cardLeft">7 cards in hand</h2>
-            <img :src="deck[0].cardImg" />
+            <div v-for="card in myHand" :key="card">
+              <img :src="card.cardImg" />
+            </div>
             <h1></h1>
           </div>
         </div>
@@ -73,12 +75,12 @@
 </template>
 
 <script>
-import deck from '../../pages/allCards.js'
+import deck from '@/pages/deck.js'
 // import End from '@/components/reg-comp/End.vue'
+/* eslint-disable vue/no-unused-components */
 export default {
   name: 'ActualGame',
   components: {
-    deck,
     // End,
   },
   props: {
@@ -102,10 +104,14 @@ export default {
       type: Array,
       required: true,
     },
+    myHand: {
+      type: Array,
+      required: true,
+    },
   },
   data() {
     return {
-      // allCards,
+      deck,
       // playerName: 'Vue',
       // playerColor: '#71D097',
       // playerTime: 22,
