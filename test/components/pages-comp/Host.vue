@@ -10,13 +10,11 @@
     ></ActualGame>
     <!-- the waiting room -->
     <div class="hostRoom" v-show="inRoom">
-      <button class="help"><a href="rules">?</a></button>
       <div class="options3">
         <div class="row">
           <div class="code">
             <div class="sample">
               <h1 class="code-header">CODE: {{ code }}</h1>
-              <Pin></Pin>
             </div>
             <p class="comment">share this with friends for them to join</p>
             <h2 class="whoJoined">
@@ -46,7 +44,7 @@
             <!-- here is the chat space i made -->
             <div class="chatList">
               <div class="messages-container">
-                <div v-for="message in messages" :key="message.id">
+                <div v-for="message in messages" :key="message.id" class="messageBox">
                   <b>{{ message.user }}</b> :  {{ message.text }}
                 </div>
               </div>
@@ -67,13 +65,11 @@
   </div>
 </template>
 <script>
-import Pin from '@/components/reg-comp/Pin.vue'
 import ActualGame from '@/components/pages-comp/ActualGame.vue'
 
 export default {
   name: 'Host',
   components: {
-    Pin,
     ActualGame,
   },
   props: {
@@ -145,7 +141,7 @@ export default {
       this.socketInfo.emit('startGame', this.gameTime)
     },
     goWelcomeBack() {
-      this.$router.push('/welcomeBack')
+      this.$router.push('/')
     },
   },
 }
@@ -174,6 +170,8 @@ export default {
   margin: 0 auto;
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 button {
   font-family: 'Tomorrow', sans-serif;
@@ -190,20 +188,21 @@ a {
   font-size: 2rem;
   position: absolute;
 }
-.options3 {
-  display: flex;
-  flex-direction: row;
-}
+
 .row {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  margin: 5%;
+  margin: 0 auto;
 }
-/* .code {
-  width: 60%;
-} */
+
+.code{
+  width:80%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
 
 .comment {
   color: var(--third-color);
@@ -214,15 +213,11 @@ a {
 .options3 {
   display: flex;
   flex-direction: column;
-  width: 80vw;
-  height: 90vh;
+  width: 100vw;
+  height: 90%;
   margin: 0 auto;
 }
-.sample {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
+
 .buttons {
   display: flex;
   flex-direction: column;
@@ -240,7 +235,7 @@ a {
   color: var(--font-color);
   font-size: 3.5rem;
   border-radius: 26px;
-  width: 40%;
+  width: 20%;
   font-size: 2rem;
   margin-top: 1rem;
   background-color: var(--background-color);
@@ -307,19 +302,24 @@ input[type='text']::placeholder {
   flex-direction: column;
   justify-content: space-between;
   color: var(--font-color);
+  padding: 2rem;
+   border-radius: 30px;
 }
 .chatList{
     overflow-y: scroll;
     overflow-wrap: break-word;
 }
 ::-webkit-scrollbar {
-  width: 0px;
+  width: 1px;
 }
 .chat {
   border: 5px solid var(--secondary-color);
-  padding: 2rem;
-  border-radius: 30px;
   width: 40%;
   margin-left: 1rem;
+}
+.friend{
+  padding: .5rem;
+   border-radius: 10px;
+   border-width: 2px;
 }
 </style>
