@@ -5,7 +5,6 @@
       :socket-info="socketInfo"
       :username="username"
       :code="newCode"
-      :playerDeck="playerDeck"
       :players="players"
     ></Host>
     <Invitee
