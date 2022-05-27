@@ -74,10 +74,10 @@
 </template>
 
 <script>
-import io from 'socket.io-client'
+// import io from 'socket.io-client'
 import deck from '@/pages/deck.js';
 import End from '@/components/reg-comp/End.vue'
-this.socketInfo = io.connect("https//:localhost:3000")
+// this.socketInfo = io.connect("https//:localhost:3000")
 
 export default {
   name: 'ActualGame',
@@ -123,7 +123,7 @@ export default {
     goIndex() {
       this.$router.push('/')
     },
-    socket(){
+    /* socket(){
         this.socketInfo.emit('join', {room: this.room}, (error) => {
             if(error)
                 this.roomFull = true
@@ -135,7 +135,7 @@ export default {
             // shut down connnection instance
             this.socketInfo.off()
         }
-    },
+    }, */
     /* socket(){
        this.socketInfo.on('initGameState', ({ gameOver, turn, player1Deck, player2Deck, currentColor, currentNumber, playedCardsPile, drawCardPile }) => {
             this.gameOver = true
@@ -158,12 +158,12 @@ export default {
     return array
     },
     startGame() { 
-        this.socketInfo.emit('testingEvent', 'hi')
+      //  this.socketInfo.emit('testingEvent', 'hi')
       const shuffledCards = this.shuffleArray(deck)
       this.player1Deck = shuffledCards.splice(0, 7)
       this.player2Deck = shuffledCards.splice(0, 7)
       let startingCardIndex
-        /* while(true) {
+        while(true) {
             startingCardIndex = Math.floor(Math.random() * 94)
             if(shuffledCards[startingCardIndex].cardName ==='skipR' || shuffledCards[startingCardIndex].cardName ==='_R' || shuffledCards[startingCardIndex].cardName==='D2R' ||
             shuffledCards[startingCardIndex].cardName ==='skipG' || shuffledCards[startingCardIndex].cardName ==='_G' || shuffledCards[startingCardIndex].cardName ==='D2G' ||
@@ -174,7 +174,7 @@ export default {
             }
             else
                 break;
-        } */
+        }
         this.playedCardsPile = shuffledCards.splice(startingCardIndex, 1)
         this.drawCardPile = shuffledCards
         this.socketInfo.emit('initGameState', {
