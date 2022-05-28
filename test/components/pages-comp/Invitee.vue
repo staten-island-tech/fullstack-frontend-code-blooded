@@ -8,6 +8,7 @@
       :username="username"
       :playersEx="playersEx"
       :myHand="myHand"
+      :deck="remainDeck"
     ></ActualGame>
     <!-- the waiting room -->
     <div v-show="inRoom" class="inviteeRoom">
@@ -97,6 +98,7 @@ export default {
   data() {
     return {
       deck,
+      remainDeck: [],
       text: '',
       messages: [],
       gameTime: false,
@@ -132,11 +134,22 @@ export default {
       })
     },
     deal() {
+      this.socketInfo.once('drawInitial', (remainDeck) => {
+        this.deck = remainDeck
+        this.drawFirst()
+      })
+    },
+    drawFirst() {
+      this.remainDeck = this.deck
       for (let i = 0; i < 7; i++) {
-        const ran = Math.floor(Math.random() * 109)
+        const ran = Math.floor(Math.random() * this.deck.length + 1)
         this.myHand.push(deck[ran])
+        this.remainDeck.splice(ran, 1)
       }
-      console.log(this.myHand)
+      this.socketInfo.emit('updateDeck', this.myHand, this.remainDeck)
+      console.log(this.myHand.length)
+      console.log('no cards left' + this.deck.length)
+      return this.myHand
     },
     sendMessage() {
       console.log(this.text)

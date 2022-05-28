@@ -8,6 +8,7 @@
       :username="username"
       :playersEx="playersEx"
       :myHand="myHand"
+      :deck="remainDeck"
     ></ActualGame>
     <!-- the waiting room -->
     <div class="hostRoom" v-show="inRoom">
@@ -100,6 +101,7 @@ export default {
   data() {
     return {
       deck,
+      remainDeck: [],
       text: '',
       messages: [],
       gameTime: false,
@@ -152,11 +154,20 @@ export default {
       this.deal()
     },
     deal() {
+      this.remainDeck = this.deck
       for (let i = 0; i < 7; i++) {
         const ran = Math.floor(Math.random() * 109)
         this.myHand.push(deck[ran])
+        this.remainDeck.splice(ran, 1)
       }
-      console.log(this.myHand)
+      console.log('heres my deck' + this.myHand)
+      this.socketInfo.emit('updateDeck', this.myHand, this.remainDeck)
+
+      this.socketInfo.on('currentDeck', (remainDeck) => {
+        this.remainDeck = remainDeck
+        this.deck = this.remainDeck
+        console.log('deck reamins' + this.deck.length)
+      })
     },
     goWelcomeBack() {
       this.$router.push('/')

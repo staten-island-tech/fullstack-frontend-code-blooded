@@ -9,6 +9,7 @@
               {{ player }}
             </h1>
             <h2 class="cardLeft">7 cards in hand</h2>
+            <h2 class="cardLeft">{{ deck.length }}</h2>
 
             <h1></h1>
           </div>
@@ -32,7 +33,7 @@
             </div>
           </div>
           <div class="cardsBox">
-            <div v-for="card in myHand" :key="card">
+            <div v-for="card in myHand" :key="card.cardName">
               <img :src="card.cardImg" />
             </div>
           </div>
@@ -107,7 +108,7 @@
 </template>
 
 <script>
-import deck from '@/pages/deck.js'
+// import deck from '@/pages/deck.js'
 // import End from '@/components/reg-comp/End.vue'
 /* eslint-disable vue/no-unused-components */
 export default {
@@ -140,10 +141,14 @@ export default {
       type: Array,
       required: true,
     },
+    deck: {
+      type: Array,
+      required: true,
+    },
   },
   data() {
     return {
-      deck,
+      // deck,
       // playerName: 'Vue',
       // playerColor: '#71D097',
       // playerTime: 22,
