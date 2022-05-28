@@ -18,7 +18,9 @@
       <!-- lisa's poorly replicated bottom row -->
       <div class="cardStack">
         <div class="cardHand">
-          <h2 class="deck-numbers">deck: 93 | used: 18</h2>
+          <h2 class="deck-numbers">
+            deck: {{ deck.length }} | used: {{ 108 - deck.length }}
+          </h2>
           <div class="middleBox">
             <div class="icon"><h3 class="slash">//</h3></div>
             <div class="time-player">
@@ -33,8 +35,8 @@
             </div>
           </div>
           <div class="cardsBox">
-            <div v-for="card in myHand" :key="card.cardName">
-              <img :src="card.cardImg" />
+            <div v-for="(card, index) in myHand" :key="card.cardName">
+              <img :src="card.cardImg" @click="action(index)" />
             </div>
           </div>
         </div>
@@ -185,6 +187,10 @@ export default {
       console.log(this.playersEx)
       console.log(this.deck[0])
     },
+    action(index) {
+      console.log(index)
+      console.log(this.myHand[index])
+    },
   },
 }
 </script>
@@ -306,6 +312,7 @@ export default {
   /* position: absolute; */
 }
 .cardsBox {
+  z-index: 1;
   width: 100%;
   height: 60%;
   display: flex;

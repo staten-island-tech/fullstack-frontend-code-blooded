@@ -310,56 +310,56 @@ const deck = [
   // blue duplicates
 
   {
-    cardName: '1B',
+    cardName: '1B1',
     cardColor: 'blue',
     cardNumber: 1,
     cardImg: require('./imgs/B-1.png'),
   },
 
   {
-    cardName: '2B',
+    cardName: '2B1',
     cardColor: 'blue',
     cardNumber: 2,
     cardImg: require('./imgs/B-2.png'),
   },
   {
-    cardName: '3B',
+    cardName: '3B1',
     cardColor: 'blue',
     cardNumber: 3,
     cardImg: require('./imgs/B-3.png'),
   },
   {
-    cardName: '4B',
+    cardName: '4B1',
     cardColor: 'blue',
     cardNumber: 4,
     cardImg: require('./imgs/B-4.png'),
   },
   {
-    cardName: '5B',
+    cardName: '5B1',
     cardColor: 'blue',
     cardNumber: 5,
     cardImg: require('./imgs/B-5.png'),
   },
   {
-    cardName: '6B',
+    cardName: '6B1',
     cardColor: 'blue',
     cardNumber: 6,
     cardImg: require('./imgs/B-6.png'),
   },
   {
-    cardName: '7B',
+    cardName: '7B1',
     cardColor: 'blue',
     cardNumber: 7,
     cardImg: require('./imgs/B-7.png'),
   },
   {
-    cardName: '8B',
+    cardName: '8B1',
     cardColor: 'blue',
     cardNumber: 8,
     cardImg: require('./imgs/B-8.png'),
   },
   {
-    cardName: '9B',
+    cardName: '9B1',
     cardColor: 'blue',
     cardNumber: 9,
     cardImg: require('./imgs/B-9.png'),
@@ -431,56 +431,56 @@ const deck = [
   // green duplicates
 
   {
-    cardName: '1G',
+    cardName: '1G1',
     cardColor: 'green',
     cardNumber: 1,
     cardImg: require('./imgs/G-1.png'),
   },
 
   {
-    cardName: '2G',
+    cardName: '2G1',
     cardColor: 'green',
     cardNumber: 2,
     cardImg: require('./imgs/G-2.png'),
   },
   {
-    cardName: '3G',
+    cardName: '3G1',
     cardColor: 'green',
     cardNumber: 3,
     cardImg: require('./imgs/G-3.png'),
   },
   {
-    cardName: '4G',
+    cardName: '4G1',
     cardColor: 'green',
     cardNumber: 4,
     cardImg: require('./imgs/G-4.png'),
   },
   {
-    cardName: '5G',
+    cardName: '5G1',
     cardColor: 'green',
     cardNumber: 5,
     cardImg: require('./imgs/G-5.png'),
   },
   {
-    cardName: '6G',
+    cardName: '6G1',
     cardColor: 'green',
     cardNumber: 6,
     cardImg: require('./imgs/G-6.png'),
   },
   {
-    cardName: '7G',
+    cardName: '7G1',
     cardColor: 'green',
     cardNumber: 7,
     cardImg: require('./imgs/G-7.png'),
   },
   {
-    cardName: '8G',
+    cardName: '8G1',
     cardColor: 'green',
     cardNumber: 8,
     cardImg: require('./imgs/G-8.png'),
   },
   {
-    cardName: '9G',
+    cardName: '9G1',
     cardColor: 'green',
     cardNumber: 9,
     cardImg: require('./imgs/G-9.png'),
@@ -553,56 +553,56 @@ const deck = [
   // red duplicates
 
   {
-    cardName: '1R',
+    cardName: '1R1',
     cardColor: 'red',
     cardNumber: 1,
     cardImg: require('./imgs/R-1.png'),
   },
 
   {
-    cardName: '2R',
+    cardName: '2R1',
     cardColor: 'red',
     cardNumber: 2,
     cardImg: require('./imgs/R-2.png'),
   },
   {
-    cardName: '3R',
+    cardName: '3R1',
     cardColor: 'red',
     cardNumber: 3,
     cardImg: require('./imgs/R-3.png'),
   },
   {
-    cardName: '4R',
+    cardName: '4R1',
     cardColor: 'red',
     cardNumber: 4,
     cardImg: require('./imgs/R-4.png'),
   },
   {
-    cardName: '5R',
+    cardName: '5R1',
     cardColor: 'red',
     cardNumber: 5,
     cardImg: require('./imgs/R-5.png'),
   },
   {
-    cardName: '6R',
+    cardName: '6R1',
     cardColor: 'red',
     cardNumber: 6,
     cardImg: require('./imgs/R-6.png'),
   },
   {
-    cardName: '7R',
+    cardName: '7R1',
     cardColor: 'red',
     cardNumber: 7,
     cardImg: require('./imgs/R-7.png'),
   },
   {
-    cardName: '8R',
+    cardName: '8R1',
     cardColor: 'red',
     cardNumber: 8,
     cardImg: require('./imgs/R-8.png'),
   },
   {
-    cardName: '9R',
+    cardName: '9R1',
     cardColor: 'red',
     cardNumber: 9,
     cardImg: require('./imgs/R-9.png'),
@@ -675,56 +675,56 @@ const deck = [
   // yellow duplicates
 
   {
-    cardName: '1Y',
+    cardName: '1Y1',
     cardColor: 'yellow',
     cardNumber: 1,
     cardImg: require('./imgs/Y-1.png'),
   },
 
   {
-    cardName: '2Y',
+    cardName: '2Y1',
     cardColor: 'yellow',
     cardNumber: 2,
     cardImg: require('./imgs/Y-2.png'),
   },
   {
-    cardName: '3Y',
+    cardName: '3Y1',
     cardColor: 'yellow',
     cardNumber: 3,
     cardImg: require('./imgs/Y-3.png'),
   },
   {
-    cardName: '4Y',
+    cardName: '4Y1',
     cardColor: 'yellow',
     cardNumber: 4,
     cardImg: require('./imgs/Y-4.png'),
   },
   {
-    cardName: '5Y',
+    cardName: '5Y1',
     cardColor: 'yellow',
     cardNumber: 5,
     cardImg: require('./imgs/Y-5.png'),
   },
   {
-    cardName: '6Y',
+    cardName: '6Y1',
     cardColor: 'yellow',
     cardNumber: 6,
     cardImg: require('./imgs/Y-6.png'),
   },
   {
-    cardName: '7Y',
+    cardName: '7Y1',
     cardColor: 'yellow',
     cardNumber: 7,
     cardImg: require('./imgs/Y-7.png'),
   },
   {
-    cardName: '8Y',
+    cardName: '8Y1',
     cardColor: 'yellow',
     cardNumber: 8,
     cardImg: require('./imgs/Y-8.png'),
   },
   {
-    cardName: '9Y',
+    cardName: '9Y1',
     cardColor: 'yellow',
     cardNumber: 9,
     cardImg: require('./imgs/Y-9.png'),

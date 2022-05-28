@@ -106,6 +106,7 @@ export default {
       playerList: [],
       playersEx: [],
       myHand: [],
+      hostStatus: false,
     }
   },
   methods: {
@@ -146,7 +147,7 @@ export default {
         this.myHand.push(deck[ran])
         this.remainDeck.splice(ran, 1)
       }
-      this.socketInfo.emit('updateDeck', this.myHand, this.remainDeck)
+      this.socketInfo.emit('updateAll', this.myHand, this.remainDeck)
       console.log(this.myHand.length)
       console.log('no cards left' + this.deck.length)
       return this.myHand

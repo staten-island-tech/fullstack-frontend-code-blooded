@@ -109,6 +109,7 @@ export default {
       playerList: [],
       playersEx: [],
       myHand: [],
+      hostStatus: true,
     }
   },
   methods: {
@@ -163,9 +164,8 @@ export default {
       console.log('heres my deck' + this.myHand)
       this.socketInfo.emit('updateDeck', this.myHand, this.remainDeck)
 
-      this.socketInfo.on('currentDeck', (remainDeck) => {
+      this.socketInfo.once('hostInitial', (remainDeck) => {
         this.remainDeck = remainDeck
-        this.deck = this.remainDeck
         console.log('deck reamins' + this.deck.length)
       })
     },
