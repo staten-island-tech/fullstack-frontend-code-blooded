@@ -46,22 +46,27 @@
             <div class="chatList">
               <div class="messages-container">
                 <!-- check this out -->
-                <div v-for="message in messages" :key="message.id" class="messageBox">
-                  <b>{{ message.user }}</b> :  {{ message.text }}
-                <div v-for="message in messages" :key="message.id">
+                <div
+                  v-for="message in messages"
+                  :key="message.id"
+                  class="messageBox"
+                >
                   <b>{{ message.user }}</b> : {{ message.text }}
+                  <div v-for="message in messages" :key="message.id">
+                    <b>{{ message.user }}</b> : {{ message.text }}
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <input
-              id="writeMessage"
-              v-model="text"
-              @click="start"
-              v-on:keyup.enter="sendMessage"
-              type="text"
-              placeholder="write a message"
-            />
+              <input
+                id="writeMessage"
+                v-model="text"
+                @click="start"
+                v-on:keyup.enter="sendMessage"
+                type="text"
+                placeholder="write a message"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -213,8 +218,8 @@ a {
   margin: 0 auto;
 }
 
-.code{
-  width:80%;
+.code {
+  width: 80%;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -319,7 +324,7 @@ input[type='text']::placeholder {
   justify-content: space-between;
   color: var(--font-color);
   padding: 2rem;
-   border-radius: 30px;
+  border-radius: 30px;
 }
 .chatList {
   overflow-y: scroll;
@@ -333,9 +338,9 @@ input[type='text']::placeholder {
   width: 40%;
   margin-left: 1rem;
 }
-.friend{
-  padding: .5rem;
-   border-radius: 10px;
-   border-width: 2px;
+.friend {
+  padding: 0.5rem;
+  border-radius: 10px;
+  border-width: 2px;
 }
 </style>
