@@ -52,21 +52,18 @@
                   class="messageBox"
                 >
                   <b>{{ message.user }}</b> : {{ message.text }}
-                  <div v-for="message in messages" :key="message.id">
-                    <b>{{ message.user }}</b> : {{ message.text }}
-                  </div>
                 </div>
               </div>
-
-              <input
-                id="writeMessage"
-                v-model="text"
-                @click="start"
-                v-on:keyup.enter="sendMessage"
-                type="text"
-                placeholder="write a message"
-              />
             </div>
+
+            <input
+              id="writeMessage"
+              v-model="text"
+              @click="start"
+              v-on:keyup.enter="sendMessage"
+              type="text"
+              placeholder="write a message"
+            />
           </div>
         </div>
       </div>

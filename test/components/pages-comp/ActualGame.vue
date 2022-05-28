@@ -4,16 +4,48 @@
       <!-- huge section of selina's code i tried to replicate to the 80% of my ability -->
       <div class="player-container">
         <div v-for="player in playersEx" :key="player" class="players">
-          <div class="player-box" :style="{ borderColor: red }">
-            <h1 class="username" :style="{ backgroundColor: red }">
-              {{ player }} player here
+          <div class="player-box">
+            <h1 class="username">
+              {{ player }}
             </h1>
             <h2 class="cardLeft">7 cards in hand</h2>
+
+            <h1></h1>
+          </div>
+        </div>
+      </div>
+      <!-- lisa's poorly replicated bottom row -->
+      <div class="cardStack">
+        <div class="cardHand">
+          <h2 class="deck-numbers">deck: 93 | used: 18</h2>
+          <div class="middleBox">
+            <div class="icon"><h3 class="slash">//</h3></div>
+            <div class="time-player">
+              <div class="timeRow">
+                <h1 class="time sizeLarge">player's name</h1>
+                <h1 class="time sizeLarge">has --- seconds left</h1>
+              </div>
+              <div class="timeRow">
+                <h2 class="time sizeSmall">so and so</h2>
+                <h2 class="time sizeSmall">is up next</h2>
+              </div>
+            </div>
+          </div>
+          <div class="cardsBox">
             <div v-for="card in myHand" :key="card">
               <img :src="card.cardImg" />
             </div>
-            <h1></h1>
           </div>
+        </div>
+        <div class="gameActions">
+          <button class="drawACard" @click="doSmth">draw a card</button>
+          <button class="pass">pass</button>
+        </div>
+        <div class="table">
+          <div class="cardOnTable">
+            <h2 class="tableLabel">table</h2>
+          </div>
+          <End />
         </div>
       </div>
 
@@ -271,6 +303,8 @@ export default {
 .cardsBox {
   width: 100%;
   height: 60%;
+  display: flex;
+  justify-content: stretch;
 }
 
 .deck-numbers {
