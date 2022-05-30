@@ -10,6 +10,13 @@
       :playersEx="playersEx"
       :myHand="myHand"
     ></ActualGame>
+    <!-- <ActualGame
+      v-show="gameTime"
+      v-bind="$props"
+      :deck="deck"
+      :playersEx="playersEx"
+      :myHand="myHand"
+    ></ActualGame> -->
     <!-- the waiting room -->
     <div class="hostRoom" v-show="inRoom">
       <div class="options3">
@@ -131,6 +138,7 @@ export default {
 
         this.playersEx = this.players.slice(1, this.players.length)
         console.log(this.playersEx)
+        console.log('what is socket' + this.socketInfo)
       })
     },
     sendMessage() {
@@ -146,28 +154,29 @@ export default {
       }
       this.socketInfo.emit('myMessage', message, this.code)
     },
+    // deal the first 7 to host first
     goActualGame() {
-      this.gameTime = true
-      this.inRoom = false
-
-      this.socketInfo.emit('startGame', this.gameTime)
-
+      this.remainDeck = this.deck
       this.deal()
     },
+    // dealing then emiting to server -> guest -> server -> host -> actual start
     deal() {
-      this.remainDeck = this.deck
       for (let i = 0; i < 7; i++) {
         const ran = Math.floor(Math.random() * 109)
         this.myHand.push(deck[ran])
         this.remainDeck.splice(ran, 1)
       }
       console.log('heres my deck' + this.myHand)
-      this.socketInfo.emit('updateDeck', this.myHand, this.remainDeck)
+      this.socketInfo.emit('hostHand', this.myHand, this.remainDeck)
 
-      // this.socketInfo.once('hostInitial', (remainDeck) => {
-      //   this.remainDeck = remainDeck
-      //   console.log('deck reamins' + this.deck.length)
-      // })
+      this.starting()
+    },
+    starting() {
+      this.socketInfo.on('hostStart', (start) => {
+        this.gameTime = true
+        this.inRoom = false
+        this.socketInfo.emit('startGame', this.gameTime)
+      })
     },
     goWelcomeBack() {
       this.$router.push('/')

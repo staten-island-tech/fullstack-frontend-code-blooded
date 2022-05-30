@@ -19,7 +19,7 @@
       <div class="cardStack">
         <div class="cardHand">
           <h2 class="deck-numbers">
-            deck: {{ deck.length }} | used: {{ 108 - remainDeck.length }}
+            deck: {{ remainDeck.length }} | used: {{ 108 - remainDeck.length }}
           </h2>
           <div class="middleBox">
             <div class="icon"><h3 class="slash">//</h3></div>
@@ -150,7 +150,7 @@ export default {
   },
   data() {
     return {
-      remainDeck: [],
+      remainDeck: this.deck,
       // deck,
       // playerName: 'Vue',
       // playerColor: '#71D097',
@@ -193,6 +193,7 @@ export default {
         console.log(this.myHand[index])
         this.socketInfo.emit('testingEvent', 'hi')
         console.log(this.players)
+        console.log('my username' + this.username)
 
         this.myTurn()
       } else {

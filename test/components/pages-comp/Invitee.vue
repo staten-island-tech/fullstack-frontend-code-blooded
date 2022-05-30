@@ -122,16 +122,15 @@ export default {
         }
       })
 
+      this.deal()
       this.socketInfo.on('startNow', (status) => {
-        this.gameTime = status
-        this.inRoom = false
-
         const myPlayer = this.players.indexOf(this.username)
         const total = this.playerList
         total.splice(myPlayer, 1)
         this.playersEx = total
 
-        this.deal()
+        this.gameTime = status
+        this.inRoom = false
       })
     },
     deal() {
@@ -150,7 +149,6 @@ export default {
       this.socketInfo.emit('updateAll', this.myHand, this.remainDeck)
       console.log(this.myHand.length)
       console.log('no cards left' + this.deck.length)
-      return this.myHand
     },
     sendMessage() {
       console.log(this.text)
