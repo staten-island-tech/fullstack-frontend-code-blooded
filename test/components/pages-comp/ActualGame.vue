@@ -19,7 +19,7 @@
       <div class="cardStack">
         <div class="cardHand">
           <h2 class="deck-numbers">
-            deck: {{ deck.length }} | used: {{ 108 - deck.length }}
+            deck: {{ deck.length }} | used: {{ 108 - remainDeck.length }}
           </h2>
           <div class="middleBox">
             <div class="icon"><h3 class="slash">//</h3></div>
@@ -150,6 +150,7 @@ export default {
   },
   data() {
     return {
+      remainDeck: [],
       // deck,
       // playerName: 'Vue',
       // playerColor: '#71D097',
@@ -183,13 +184,23 @@ export default {
       this.$router.push('/')
     },
     doSmth() {
-      this.socketInfo.emit('testingEvent', 'hi')
       console.log(this.playersEx)
       console.log(this.deck[0])
     },
     action(index) {
-      console.log(index)
-      console.log(this.myHand[index])
+      if (this.players[0] === this.username) {
+        console.log(index)
+        console.log(this.myHand[index])
+        this.socketInfo.emit('testingEvent', 'hi')
+        console.log(this.players)
+
+        this.myTurn()
+      } else {
+        alert('it is ' + this.players[0] + "'s turn")
+      }
+    },
+    myTurn() {
+      console.log('hi')
     },
   },
 }

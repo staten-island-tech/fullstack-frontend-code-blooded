@@ -3,12 +3,12 @@
     <ActualGame
       v-show="gameTime"
       :socketInfo="socketInfo"
+      :deck="deck"
       :code="code"
       :players="players"
       :username="username"
       :playersEx="playersEx"
       :myHand="myHand"
-      :deck="remainDeck"
     ></ActualGame>
     <!-- the waiting room -->
     <div class="hostRoom" v-show="inRoom">
@@ -164,10 +164,10 @@ export default {
       console.log('heres my deck' + this.myHand)
       this.socketInfo.emit('updateDeck', this.myHand, this.remainDeck)
 
-      this.socketInfo.once('hostInitial', (remainDeck) => {
-        this.remainDeck = remainDeck
-        console.log('deck reamins' + this.deck.length)
-      })
+      // this.socketInfo.once('hostInitial', (remainDeck) => {
+      //   this.remainDeck = remainDeck
+      //   console.log('deck reamins' + this.deck.length)
+      // })
     },
     goWelcomeBack() {
       this.$router.push('/')
