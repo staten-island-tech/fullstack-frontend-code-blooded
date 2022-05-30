@@ -6,7 +6,6 @@
       :code="code"
       :players="players"
       :username="username"
-      :playerDeck="playerDeck"
       :playersEx="playersEx"
     ></ActualGame>
     <!-- the waiting room -->
