@@ -8,7 +8,7 @@
 
     <Host
       v-show="hostComp"
-      :socketInfo="socketInfo"
+      :socket-info="socketInfo"
       :code="newCode"
       :players="players"
       :username='username'
@@ -16,7 +16,7 @@
 
     <!-- <ActualGame v-show="gameComp" :socketInfo="socketInfo"></ActualGame> -->
 
-    <div class="landing-wrapper" v-show="landingWrapper">
+    <div v-show="landingWrapper" class="landing-wrapper">
       <div v-show="isJoinNotVisible" class="options">
         <h1 class="logo">code-blooded</h1>
         <input
@@ -40,7 +40,7 @@
 <script>
 import io from 'socket.io-client'
 
-import Options from '@/components/reg-comp/Join.vue'
+import Options from '@/components/pages-comp/Join.vue'
 import Sign from '@/components/reg-comp/Sign.vue'
 
 // pages comp

@@ -1,13 +1,13 @@
 <template>
   <div class="code-page">
-    <ActualGame
+    <ActualVGame
       v-show="gameTime"
-      :socketInfo="socketInfo"
+      :socket-info="socketInfo"
       :code="code"
       :players="players"
       :username="username"
-      :playersEx="playersEx"
-    ></ActualGame>
+      :players-ex="playersEx"
+    ></ActualVGame>
     <!-- the waiting room -->
     <div v-show="inRoom" class="inviteeRoom">
       <button class="help"><a href="rules">?</a></button>
@@ -23,7 +23,7 @@
               {{ players.length }} Friends who have joined
             </h2>
             <div class="friend-list">
-              <ul class="list" v-for="player in players" :key="player">
+              <ul v-for="player in players" :key="player" class="list">
                 <li>{{ player }}, is playing</li>
                 <!-- <li class="friend1 friend">javascript, the host, is playing</li>
               <li class="friend2 friend">vue, the invitee, is playing</li>
@@ -51,10 +51,10 @@
               <input
                 id="writeMessage"
                 v-model="text"
-                @click="start"
-                v-on:keyup.enter="sendMessage"
                 type="text"
                 placeholder="write a message"
+                @click="start"
+                @keyup.enter="sendMessage"
               />
             </div>
           </div>
@@ -66,13 +66,13 @@
 <script>
 import Pin from '@/components/reg-comp/Pin.vue'
 import Leave from '@/components/reg-comp/Leave.vue'
-import ActualGame from '@/components/pages-comp/ActualGame.vue'
+import ActualVGame from '@/components/pages-comp/ActualVGame.vue'
 export default {
   name: 'Invitee',
   components: {
     Pin,
     Leave,
-    ActualGame,
+    ActualVGame,
   },
   props: {
     socketInfo: {

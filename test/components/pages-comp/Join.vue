@@ -1,136 +1,176 @@
 <template>
-<div class="join">
-    <div class="btn">
-      <button class="help"><a href="rules">?</a></button>
-      <button type="button" class="sign-in" @click="showModal">sign in</button>
-    </div>
-    <div class="options">
-      <h1 class="logo">code-blooded</h1>
-      <input type="text" placeholder="enter a name" name="username" required>
-      <button class="start">start a game</button>
-      <div class="join-contain">
-          <input type="text" placeholder="enter code" name="join-code" required>
-        <button class="join">join</button>
+  <div class="joinWrap">
+    <Host
+      v-show="hostComp"
+      :socket-info="socketInfo"
+      :username="username"
+      :code="newCode"
+      :players="players"
+    ></Host>
+    <Invitee
+      v-show="inviteeComp"
+      :socket-info="socketInfo"
+      :username="username"
+      :code="urCode"
+      :players="players"
+    ></Invitee>
+
+    <div v-show="joinWrap" class="optionapp">
+      <div class="options">
+        <h1 class="logo">code-blooded</h1>
+        <input
+          v-model="username"
+          type="text"
+          placeholder="enter a name"
+          name="username"
+          required
+        />
+        <button class="start" @click="goHost">start a game</button>
+        <div class="join-contain">
+          <input
+            id="join-code"
+            v-model="urCode"
+            type="text"
+            placeholder="enter code"
+            name="join-code"
+            required
+          />
+          <button class="join invitee" @click="goInvitee">join</button>
+        </div>
       </div>
     </div>
-    <span class="apcsp">apcsp project</span>
-</div>
-
+  </div>
 </template>
+
 <script>
-export default{
-  name:"Join",
-  methods: {
-      goActualGame() {
-        this.$router.push('/actualGame');
-      },
-      goWelcomeBack(){
-        this.$router.push('/welcomeBack');
-      },
+import io from 'socket.io-client'
+import deck from '../../pages/deck.js'
+import Host from '@/components/pages-comp/Host.vue'
+import Invitee from '@/components/pages-comp/Invitee.vue'
+
+export default {
+  name: 'Options',
+  components: {
+    Host,
+    Invitee,
+  },
+  props: {
+    code: {
+      type: String,
+      required: true,
+    },
+  },
+  data() {
+    return {
+      deck,
+      joinWrap: true,
+      hostComp: false,
+      inviteeComp: false,
+
+      imHost: false,
+
+      username: '',
+      newCode: '',
+
+      urCode: '',
+
+      players: [],
     }
+  },
+  methods: {
+    close() {
+      this.$emit('close')
+    },
+    goHost() {
+      if (this.username.length < 1) {
+        alert('please enter a username')
+      } else {
+        // hide landing page, show host waiting room
+        this.hostComp = true
+        this.joinWrap = false
+
+        this.imHost = true
+
+        // connect
+        this.socketInstance = io('http://localhost:3001')
+        this.socketInfo = this.socketInstance
+
+        this.makeCode(5)
+      }
+    },
+    goInvitee() {
+      if (this.username.length < 1) {
+        alert('please enter a username')
+      } else {
+        this.joinRoom()
+      }
+    },
+    makeCode(length) {
+      let code = ''
+      const chars =
+        'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+      for (let i = 0; i < length; i++) {
+        code += chars.charAt(Math.floor(Math.random() * chars.length))
+      }
+      this.newCode = code
+
+      this.socketInfo.emit(
+        'placeHost',
+        this.username,
+        this.newCode,
+        this.imHost
+      )
+
+      this.socketInfo.on('currentRoom', (arg) => {
+        this.players = arg
+      })
+    },
+    joinRoom() {
+      if (this.urCode.length < 1) {
+        alert('please enter room code')
+      } else {
+        this.socketInstance = io('http://localhost:3001')
+        this.socketInfo = this.socketInstance
+
+        this.verifyRoom()
+      }
+    },
+    verifyRoom() {
+      this.socketInfo.emit('checkRoom', this.urCode)
+      this.socketInfo.on('checked', (verified, full) => {
+        if (verified === true && full === false) {
+          this.inviteeComp = true
+          this.joinWrap = false
+
+          this.socketInfo.emit(
+            'placeGuest',
+            this.username,
+            this.urCode,
+            this.imHost
+          )
+
+          this.socketInfo.on('currentRoom', (arg) => {
+            this.players = arg
+          })
+        }
+
+        if (verified === false) {
+          alert('please enter a valid code')
+        }
+        if (full === true) {
+          alert('this room is currently full')
+        }
+      })
+    },
+  },
 }
 </script>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Tomorrow:wght@400;600;900&display=swap');
-:root{
-  --background-color:#0E1555;
-  --secondary-color:#4E1184;
-  --third-color:#932B77;
-  --fourth-color:#FD367E;
-  --font-color:#ffff;
-  --heavy-weight:900;
-  --medium-weight:600;
-  --thin-weight:400;
+<style scoped>
+/* .optionapp {
+  z-index: 20;
+} */
+#join-code {
+  font-size: 2.5rem;
+  padding: 0.2rem;
 }
-  #app{
-    background-color: var(--background-color);
-    max-width: 100%;
-    height: 100vh;
-    font-family: 'Tomorrow', sans-serif;
-    margin:0 auto;
-  }
-  button{
-    font-family: 'Tomorrow', sans-serif;
-    font-weight:var(--medium-weight);
-  }
-  a{
-    text-decoration: none;
-  }
-  .help{
-    background-color: gray;
-    font-weight: var(--heavy-weight);
-    width:3rem;
-    height:3rem;
-    font-size: 2rem;
-    position:absolute;
-  }
-  .options{
-    display:flex;
-    flex-direction: column;
-    width:90vw;
-    height:90vh;
-    justify-content: center;
-    margin:0 auto;
-    align-items: center;
-  }
-  .start,
-  .join,
-  input{
-    border-radius: 26px;
-    width:32%;
-    font-size:3rem;
-    margin-top:1rem;
-  }
-  input{
-    border-color: var(--fourth-color);
-    border-width: .3rem;
-    color:var(--font-color);
-    font-size:3.5rem;
-    background-color:var(--background-color);
-  }
-  ::placeholder {
-  padding:0.5rem;
-  color:var(--font-color);
-  font-family: 'Tomorrow', sans-serif;
-  font-weight: var(--thin-weight);
-}
-  .start{
-    background-color: var(--fourth-color);
-    color:var(--background-color);
-    font-size:3rem;
-    border-color: var(--fourth-color);
-    padding:.5rem;
-  }
-  .join{
-    background-color: var(--secondary-color);
-    color:var(--fourth-color);
-    font-size:3rem;
-    border-color: var(--secondary-color);
-      padding:.5rem;
-  }
-  .sign-in{
-    background-color: var(--font-color);
-    color:var(--background-color);
-    border-radius: 25px;
-    height:3rem;
-    width:9rem;
-    position:absolute;
-    right:2rem;
-    top:2rem;
-    font-family: 'Tomorrow', sans-serif;
-    font-weight: var(--heavy-weight);
-     font-size:1.5rem;
-  }
-  .logo{
-    color:var(--font-color);
-    font-size: 6rem;
-  margin-bottom:1rem;
-  }
-  .apcsp{
-    background-color: var(--third-color);
-    bottom:0;
-    position:absolute;
-    padding:1rem;
-     border-radius: 5px 30px 5px 5px;
-  }
 </style>

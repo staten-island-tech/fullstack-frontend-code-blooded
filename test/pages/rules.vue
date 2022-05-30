@@ -55,14 +55,14 @@
 
 <script>
 export default {
-  name: 'rules',
+  name: 'Rules',
 
 data(){
   return{
 
     cards:[
       {
-        cardName: "Wild Card",
+        cardName: "W",
         cardImage: require('./imgs/WildCard.png'),
         cardDescription:`When you play this card, you may change the color being played to any color (including the current color) to continue to play. 
             You may play the Wild Card even if you have another playable card in hand. 
@@ -70,7 +70,7 @@ data(){
         id:1
       },
       {
-        cardName: "Wild Draw 4 Card",
+        cardName: "D4W",
         cardImage: require('./imgs/plus4WildCard.png'),
         cardDescription:`This card allows you to call the next color played and requires the next player to pick 4 cards from the DRAW pile and forfeit his/her turn.
             Note: Should the person next to play have Draw 2 Cards or Wild Draw 4 cards on hand, they may choose 
@@ -78,7 +78,7 @@ data(){
         id:2
       },
       {
-        cardName: "Draw 2 Card",
+        cardName: "D2",
         cardImage: require('./imgs/B+2.png'),
         cardDescription:`When you play this card, the next person to play must draw 2 cards and forfeit his/her turn.
             You may only play this card on a matching color or on another Draw 2 Card.
@@ -87,7 +87,7 @@ data(){
         id:3
       },
       {
-        cardName: "Reverse Card",
+        cardName: "_C",
         cardImage: require('./imgs/B-Reverse.png'),
         cardDescription:`This card reverses the direction of play. Play to the ledt now passes to the right and vice versa.
             If this card is turned up at the beginning of play, the player to the right now plays first and the play then goes
@@ -95,7 +95,7 @@ data(){
         id:4
       },
       {
-        cardName: "Skip Card",
+        cardName: "skipC",
         cardImage: require('./imgs/B-Skip.png'),
         cardDescription:`The next person in line to play after this card is played loses his/her turn and is "skipped."
             If this card turned up at the beginning of play, the first player is skipped.
@@ -103,7 +103,7 @@ data(){
         id:5
       },
       {
-        cardName: "Plain Number Card",
+        cardName: "NC",
         cardImage: require('./imgs/B-0.png'),
         cardDescription:`No special actions are associated with these cards when played. 
             This type of card may be played on a matching color or number.`,

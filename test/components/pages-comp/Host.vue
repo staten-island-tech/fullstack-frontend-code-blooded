@@ -1,16 +1,13 @@
 <template>
   <div class="code-page">
-    <ActualGame
+    <ActualHGame
       v-show="gameTime"
       :socket-info="socketInfo"
       :code="code"
       :players="players"
-      :player-deck="playerDeck"
-      :played-cards-pile="playedCardsPile"
-      :draw-card-pile="drawCardPile"
       :username="username"
       :players-ex="playersEx"
-    ></ActualGame>
+    ></ActualHGame>
     <!-- the waiting room -->
     <div v-show="inRoom" class="hostRoom">
       <button class="help"><a href="rules">?</a></button>
@@ -72,13 +69,13 @@
 <script>
 import deck from '../../pages/deck.js'
 import Pin from '@/components/reg-comp/Pin.vue'
-import ActualGame from '@/components/pages-comp/ActualGame.vue'
+import ActualHGame from '@/components/pages-comp/ActualHGame.vue'
 
 export default {
   name: 'Host',
   components: {
     Pin,
-    ActualGame,
+    ActualHGame,
   },
   props: {
     socketInfo: {
@@ -106,9 +103,6 @@ export default {
       gameTime: false,
       inRoom: true,
       playerList: [],
-      playerDeck: [],
-      playedCardsPile: [],
-      drawCardPile: [],
       playersEx: [],
     }
   },
@@ -148,24 +142,10 @@ export default {
       }
       this.socketInfo.emit('myMessage', message, this.code)
     },
-      shuffleArray(array){
-      for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1))
-        const temp = array[i]
-        array[i] = array[j]
-        array[j] = temp;
-    }   
-    return array
-    },
     goActualGame() {
       this.gameTime = true
       this.inRoom = false
-      const shuffledCards = this.shuffleArray(deck)
-      this.playerDeck = shuffledCards.splice(0, 7)
-      this.playedCardsPile = shuffledCards.splice(0, 1)
-        this.drawCardPile = shuffledCards
-        this.socketInfo.emit('startGame', this.gameTime, this.playerDeck, this.playedCardsPile, this.drawCardPile)
-        console.log(this.playerDeck.length)
+        this.socketInfo.emit('startGame', this.gameTime)
     },
     goWelcomeBack() {
       this.$router.push('/welcomeBack')
