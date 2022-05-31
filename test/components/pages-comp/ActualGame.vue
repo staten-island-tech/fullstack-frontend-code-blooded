@@ -9,7 +9,7 @@
               {{ player }}
             </h1>
             <h2 class="cardLeft">7 cards in hand</h2>
-            <h2 class="cardLeft">{{ deck.length }}</h2>
+            <h2 class="cardLeft">{{ remainDeck.length }}</h2>
 
             <h1></h1>
           </div>
@@ -35,7 +35,7 @@
             </div>
           </div>
           <div class="cardsBox">
-            <div v-for="(card, index) in myHand" :key="card.cardName">
+            <div v-for="(card, index) in hand" :key="card.cardName">
               <img :src="card.cardImg" @click="action(index)" />
             </div>
           </div>
@@ -44,10 +44,13 @@
           <button class="drawACard" @click="doSmth">draw a card</button>
           <button class="pass">pass</button>
         </div>
-        <div class="table">
+        <div class="table" @click="showTable">
           <div class="cardOnTable">
             <h2 class="tableLabel">table</h2>
-            <img :src="firstCard.cardImg" />
+            <div v-show="noTable"><h1>click to show table</h1></div>
+            <div v-show="tableShow">
+              <img :src="firstCard.cardImg" />
+            </div>
           </div>
           <End />
         </div>
@@ -156,6 +159,12 @@ export default {
   data() {
     return {
       remainDeck: this.deck,
+      hand: this.myHand,
+      order: this.players,
+      table: this.firstCard,
+
+      noTable: true,
+      tableShow: false,
       // deck,
       // playerName: 'Vue',
       // playerColor: '#71D097',
@@ -185,12 +194,23 @@ export default {
     }
   },
   methods: {
+    showTable() {
+      this.noTable = false
+      this.tableShow = true
+
+      this.socketInfo.on('updateNow', (table, order, deck) => {
+        this.table = table
+        this.order = order
+        this.remainDeck = deck
+      })
+    },
     goIndex() {
       this.$router.push('/')
     },
     doSmth() {
       console.log(this.playersEx)
       console.log(this.deck[0])
+      console.log(this.order)
     },
     action(index) {
       const cardIndex = index
@@ -210,9 +230,33 @@ export default {
       const colors = ['blue', 'green', 'yellow', 'red']
       if (colors.includes(this.myHand[cardIndex].cardColor)) {
         console.log('this card is a color')
+        if (this.myHand[cardIndex].cardColor === this.firstCard.cardColor) {
+          console.log('its a match')
+          if (cardIndex === 1) {
+            this.table = this.myHand[cardIndex]
+            this.hand.slice(1, this.hand.length)
+            this.pass()
+          } else {
+            this.hand.splice(cardIndex, 1)
+            this.pass()
+          }
+          console.log(this.hand)
+        }
       } else {
         console.log('not a color')
       }
+    },
+    pass() {
+      const reorder = this.order.splice(0, 1)
+      this.order.push(reorder)
+      console.log('this is the new order' + this.order)
+
+      this.socketInfo.emit(
+        'gameUpdate',
+        this.table,
+        this.order,
+        this.remainDeck
+      )
     },
   },
 }
@@ -340,6 +384,9 @@ export default {
   height: 60%;
   display: flex;
   justify-content: stretch;
+  overflow: auto;
+  white-space: nowrap;
+  transform: translateY(-100px);
 }
 
 .deck-numbers {

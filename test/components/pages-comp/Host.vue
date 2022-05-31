@@ -3,7 +3,7 @@
     <ActualGame
       v-show="gameTime"
       :socketInfo="socketInfo"
-      :deck="deck"
+      :deck="remainDeck"
       :code="code"
       :players="players"
       :username="username"
@@ -168,14 +168,16 @@ export default {
         this.myHand.push(this.remainDeck[ran])
         this.remainDeck.splice(ran, 1)
       }
+      this.drawFirst()
       console.log('heres my deck' + this.myHand)
       this.socketInfo.emit('hostHand', this.myHand, this.remainDeck)
 
       this.starting()
     },
     starting() {
-      this.socketInfo.on('hostStart', (start) => {
-        this.drawFirst()
+      this.socketInfo.on('hostStart', (deck) => {
+        this.remainDeck = deck
+
         this.gameTime = true
         this.inRoom = false
         this.socketInfo.emit('startGame', this.gameTime, this.firstCard)
@@ -185,6 +187,7 @@ export default {
       const ran = Math.floor(Math.random() * this.remainDeck.length)
       this.firstCard = this.remainDeck[ran]
       this.remainDeck.splice(ran, 1)
+      console.log('drawing first card ' + this.remainDeck.length)
     },
     goWelcomeBack() {
       this.$router.push('/')
