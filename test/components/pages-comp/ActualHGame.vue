@@ -106,11 +106,11 @@ export default {
     goIndex() {
       this.$router.push('/')
     },
-    checkGameOver(arr) {
-        return arr.length === 1
+    checkGameOver(players) {
+        return players.length === 1
     },
-    checkWinner(arr, player) {
-        return arr.length === 1 ? player : ''
+    checkWinner(players, player) {
+        return players.length === 1 ? player : ''
     },
     shuffleArray(array){
       for (let i = array.length - 1; i > 0; i--) {
