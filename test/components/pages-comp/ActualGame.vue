@@ -188,20 +188,26 @@ export default {
       console.log(this.deck[0])
     },
     action(index) {
+      const cardIndex = index
       if (this.players[0] === this.username) {
         console.log(index)
         console.log(this.myHand[index])
-        this.socketInfo.emit('testingEvent', 'hi')
+        this.socketInfo.emit('testing', 'hi')
         console.log(this.players)
         console.log('my username' + this.username)
 
-        this.myTurn()
+        this.myTurn(cardIndex)
       } else {
         alert('it is ' + this.players[0] + "'s turn")
       }
     },
-    myTurn() {
-      console.log('hi')
+    myTurn(cardIndex) {
+      const colors = ['blue', 'green', 'yellow', 'red']
+      if (colors.includes(this.myHand[cardIndex].cardColor)) {
+        console.log('this card is a color')
+      } else {
+        console.log('not a color')
+      }
     },
   },
 }
