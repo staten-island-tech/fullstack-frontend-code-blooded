@@ -9,6 +9,7 @@
       :playersEx="playersEx"
       :myHand="myHand"
       :deck="remainDeck"
+      :firstCard="firstCard"
     ></ActualGame>
     <!-- the waiting room -->
     <div v-show="inRoom" class="inviteeRoom">
@@ -107,6 +108,7 @@ export default {
       playersEx: [],
       myHand: [],
       hostStatus: false,
+      firstCard: {},
     }
   },
   methods: {
@@ -123,7 +125,8 @@ export default {
       })
 
       this.deal()
-      this.socketInfo.on('startNow', (status) => {
+      this.socketInfo.on('startNow', (status, firstCard) => {
+        this.firstCard = firstCard
         const myPlayer = this.players.indexOf(this.username)
         const total = this.playerList
         total.splice(myPlayer, 1)

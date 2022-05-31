@@ -9,6 +9,7 @@
       :username="username"
       :playersEx="playersEx"
       :myHand="myHand"
+      :firstCard="firstCard"
     ></ActualGame>
     <!-- <ActualGame
       v-show="gameTime"
@@ -117,6 +118,7 @@ export default {
       playersEx: [],
       myHand: [],
       hostStatus: true,
+      firstCard: {},
     }
   },
   methods: {
@@ -162,8 +164,8 @@ export default {
     // dealing then emiting to server -> guest -> server -> host -> actual start
     deal() {
       for (let i = 0; i < 7; i++) {
-        const ran = Math.floor(Math.random() * 109)
-        this.myHand.push(deck[ran])
+        const ran = Math.floor(Math.random() * this.remainDeck.length)
+        this.myHand.push(this.remainDeck[ran])
         this.remainDeck.splice(ran, 1)
       }
       console.log('heres my deck' + this.myHand)
@@ -173,10 +175,16 @@ export default {
     },
     starting() {
       this.socketInfo.on('hostStart', (start) => {
+        this.drawFirst()
         this.gameTime = true
         this.inRoom = false
-        this.socketInfo.emit('startGame', this.gameTime)
+        this.socketInfo.emit('startGame', this.gameTime, this.firstCard)
       })
+    },
+    drawFirst() {
+      const ran = Math.floor(Math.random() * this.remainDeck.length)
+      this.firstCard = this.remainDeck[ran]
+      this.remainDeck.splice(ran, 1)
     },
     goWelcomeBack() {
       this.$router.push('/')

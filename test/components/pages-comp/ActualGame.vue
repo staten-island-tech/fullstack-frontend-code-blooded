@@ -47,6 +47,7 @@
         <div class="table">
           <div class="cardOnTable">
             <h2 class="tableLabel">table</h2>
+            <img :src="firstCard.cardImg" />
           </div>
           <End />
         </div>
@@ -120,6 +121,10 @@ export default {
   },
   props: {
     socketInfo: {
+      type: Object,
+      required: true,
+    },
+    firstCard: {
       type: Object,
       required: true,
     },
