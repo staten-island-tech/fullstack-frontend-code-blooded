@@ -35,7 +35,7 @@
             </div>
           </div>
           <div class="cardsBox">
-            <div v-for="(card, index) in hand" :key="card.cardName">
+            <div v-for="(card, index) in myHand" :key="card.cardName">
               <img :src="card.cardImg" @click="action(index)" />
             </div>
           </div>
@@ -257,22 +257,28 @@ export default {
           this.table = this.myHand[cardIndex]
           this.propCard = false
           this.realCard = true
+
+          this.hand = this.myHand
           this.hand.slice(1, this.hand.length)
           console.log(this.hand)
-          this.pass()
         } else {
           this.hand.splice(cardIndex, 1)
-          this.pass()
         }
+        this.pass()
       } else {
         alert('pick another card')
       }
     },
     pass() {
-      const shifted = this.order.shift()
+      if (this.players.length === 2) {
+        this.order = this.players
+        this.order.reverse()
+      } else {
+        const shifted = this.order.shift()
 
-      this.order.push(shifted)
-      alert('this is the new order' + this.order)
+        this.order.push(shifted)
+        alert('this is the new order' + this.order)
+      }
 
       this.tellSocket()
     },
