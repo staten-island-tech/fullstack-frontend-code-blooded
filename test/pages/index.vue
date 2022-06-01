@@ -11,7 +11,7 @@
       :socketInfo="socketInfo"
       :code="newCode"
       :players="players"
-      :username='username'
+      :username="username"
     ></Host>
 
     <!-- <ActualGame v-show="gameComp" :socketInfo="socketInfo"></ActualGame> -->
@@ -91,7 +91,7 @@ export default {
         this.imHost = true
 
         // this.socketInstance = io('http://localhost:3001')
-        this.socketInstance = io('https://code-blooded.onrender.com')
+        this.socketInstance = io('https://code-blooded-kyht.onrender.com')
         this.socketInfo = this.socketInstance
 
         this.makeCode(5)
