@@ -11,14 +11,6 @@
       :myHand="myHand"
       :firstCard="firstCard"
     ></ActualGame>
-    <!-- <ActualGame
-      v-show="gameTime"
-      v-bind="$props"
-      :deck="deck"
-      :playersEx="playersEx"
-      :myHand="myHand"
-    ></ActualGame> -->
-    <!-- the waiting room -->
     <div class="hostRoom" v-show="inRoom">
       <div class="options3">
         <div class="row">
