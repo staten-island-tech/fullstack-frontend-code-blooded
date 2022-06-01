@@ -161,7 +161,7 @@ export default {
   data() {
     return {
       remainDeck: [],
-      hand: [],
+      hand: this.myHand,
       order: [],
       table: {},
 
@@ -221,7 +221,8 @@ export default {
     doSmth() {
       console.log(this.playersEx)
       console.log(this.deck[0])
-      console.log(this.order)
+      console.log('order' + this.order)
+      console.log('hand' + this.myHand)
     },
     action(index) {
       const cardIndex = index
@@ -263,6 +264,7 @@ export default {
           console.log(this.hand)
         } else {
           this.hand.splice(cardIndex, 1)
+          alert('this is in my hand' + this.hand)
         }
         this.pass()
       } else {
