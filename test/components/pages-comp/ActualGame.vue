@@ -49,7 +49,8 @@
             <h2 class="tableLabel">table</h2>
             <div v-show="noTable"><h1>click to show table</h1></div>
             <div v-show="tableShow">
-              <img :src="firstCard.cardImg" />
+              <img v-show="propCard" :src="firstCard.cardImg" />
+              <img v-show="realCard" :src="table.cardImg" />
             </div>
           </div>
           <End />
@@ -156,15 +157,20 @@ export default {
       required: true,
     },
   },
+
   data() {
     return {
-      remainDeck: this.deck,
-      hand: this.myHand,
-      order: this.players,
-      table: this.firstCard,
+      remainDeck: [],
+      hand: [],
+      order: [],
+      table: {},
 
       noTable: true,
       tableShow: false,
+
+      propCard: true,
+      realCard: false,
+
       // deck,
       // playerName: 'Vue',
       // playerColor: '#71D097',
@@ -192,6 +198,11 @@ export default {
       //   },
       // ],
     }
+  },
+  computed: {
+    returnData() {
+      return this.deck
+    },
   },
   methods: {
     showTable() {
@@ -230,27 +241,42 @@ export default {
       const colors = ['blue', 'green', 'yellow', 'red']
       if (colors.includes(this.myHand[cardIndex].cardColor)) {
         console.log('this card is a color')
-        if (this.myHand[cardIndex].cardColor === this.firstCard.cardColor) {
-          console.log('its a match')
-          if (cardIndex === 1) {
-            this.table = this.myHand[cardIndex]
-            this.hand.slice(1, this.hand.length)
-            this.pass()
-          } else {
-            this.hand.splice(cardIndex, 1)
-            this.pass()
-          }
+
+        this.placeCard(cardIndex)
+      } else {
+        alert('this isnt a color')
+      }
+    },
+    placeCard(cardIndex) {
+      if (
+        this.myHand[cardIndex].cardColor === this.firstCard.cardColor ||
+        this.myHand[cardIndex].cardNumber === this.firstCard.cardNumber
+      ) {
+        console.log('its a match')
+        if (cardIndex === 1) {
+          this.table = this.myHand[cardIndex]
+          this.propCard = false
+          this.realCard = true
+          this.hand.slice(1, this.hand.length)
           console.log(this.hand)
+          this.pass()
+        } else {
+          this.hand.splice(cardIndex, 1)
+          this.pass()
         }
       } else {
-        console.log('not a color')
+        alert('pick another card')
       }
     },
     pass() {
-      const reorder = this.order.splice(0, 1)
-      this.order.push(reorder)
-      console.log('this is the new order' + this.order)
+      const shifted = this.order.shift()
 
+      this.order.push(shifted)
+      alert('this is the new order' + this.order)
+
+      this.tellSocket()
+    },
+    tellSocket() {
       this.socketInfo.emit(
         'gameUpdate',
         this.table,
