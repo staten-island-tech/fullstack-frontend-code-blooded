@@ -91,7 +91,7 @@ export default {
         this.imHost = true
 
         // this.socketInstance = io('http://localhost:3001')
-        this.socketInstance = io('https://code-blooded-kyht.onrender.com')
+        this.socketInstance = io('https://codeblooded-kyht.onrender.com')
         this.socketInfo = this.socketInstance
 
         this.makeCode(5)
