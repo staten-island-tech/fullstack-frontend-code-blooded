@@ -125,15 +125,6 @@ export default {
           console.log(this.messages)
         }
       })
-
-      this.socketInfo.on('startNow', (status) => {
-        this.gameTime = status
-        this.inRoom = false
-
-        this.playersEx = this.players.slice(1, this.players.length)
-        console.log(this.playersEx)
-        console.log('what is socket' + this.socketInfo)
-      })
     },
     sendMessage() {
       console.log(this.text)
@@ -148,39 +139,9 @@ export default {
       }
       this.socketInfo.emit('myMessage', message, this.code)
     },
-    // deal the first 7 to host first
-    goActualGame() {
-      this.remainDeck = this.deck
-      this.deal()
-    },
-    // dealing then emiting to server -> guest -> server -> host -> actual start
-    deal() {
-      for (let i = 0; i < 7; i++) {
-        const ran = Math.floor(Math.random() * this.remainDeck.length)
-        this.myHand.push(this.remainDeck[ran])
-        this.remainDeck.splice(ran, 1)
-      }
-      this.drawFirst()
-      console.log('heres my deck' + this.myHand)
-      this.socketInfo.emit('hostHand', this.myHand, this.remainDeck)
+    //  host clicked start game
+    goActualGame() {},
 
-      this.starting()
-    },
-    starting() {
-      this.socketInfo.on('hostStart', (deck) => {
-        this.remainDeck = deck
-
-        this.gameTime = true
-        this.inRoom = false
-        this.socketInfo.emit('startGame', this.gameTime, this.firstCard)
-      })
-    },
-    drawFirst() {
-      const ran = Math.floor(Math.random() * this.remainDeck.length)
-      this.firstCard = this.remainDeck[ran]
-      this.remainDeck.splice(ran, 1)
-      console.log('drawing first card ' + this.remainDeck.length)
-    },
     goWelcomeBack() {
       this.$router.push('/')
     },
