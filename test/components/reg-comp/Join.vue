@@ -84,7 +84,8 @@ export default {
         this.imHost = true
 
         // connect
-        this.socketInstance = io('http://localhost:3001')
+        // this.socketInstance = io('http://localhost:3001')
+        this.socketInstance = io('https://code-blooded.onrender.com')
         this.socketInfo = this.socketInstance
 
         this.makeCode(5)
@@ -121,7 +122,8 @@ export default {
       if (this.urCode.length < 1) {
         alert('please enter room code')
       } else {
-        this.socketInstance = io('http://localhost:3001')
+        // this.socketInstance = io('http://localhost:3001')
+        this.socketInstance = io('https://code-blooded.onrender.com')
         this.socketInfo = this.socketInstance
 
         this.verifyRoom()
