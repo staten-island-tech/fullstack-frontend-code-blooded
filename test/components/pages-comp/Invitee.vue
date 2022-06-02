@@ -3,13 +3,11 @@
     <ActualGame
       v-show="gameTime"
       :socketInfo="socketInfo"
-      :code="code"
+      :code="newCode"
       :players="players"
       :username="username"
-      :playersEx="playersEx"
-      :myHand="myHand"
-      :deck="remainDeck"
-      :firstCard="firstCard"
+      :firstCard="myFirst"
+       :tableFirst="tableCard"
     ></ActualGame>
     <!-- the waiting room -->
     <div v-show="inRoom" class="inviteeRoom">
@@ -109,6 +107,11 @@ export default {
       myHand: [],
       hostStatus: false,
       firstCard: {},
+
+      // variables for lisa's redid game mech
+      myFirst: {},
+      allDrawn: [],
+      tableCard: {},
     }
   },
   methods: {
@@ -124,35 +127,48 @@ export default {
         }
       })
 
-      this.deal()
-      this.socketInfo.on('startNow', (status, firstCard) => {
-        this.firstCard = firstCard
-        const myPlayer = this.players.indexOf(this.username)
-        const total = this.playerList
-        total.splice(myPlayer, 1)
-        this.playersEx = total
+      // socket says guest can draw a card!!
+      this.socketInfo.on('guestDraw', (hostCard, deck) => {
+        this.allDrawn.push(hostCard)
+        this.remainDeck = deck
+        this.deal()
+      })
 
-        this.gameTime = status
-        this.inRoom = false
+      // other guests drew a card
+      this.socketInfo.on('checkStart', (guestCard, remains) => {
+        this.remainDeck = remains
+        this.allDrawn.push(guestCard)
       })
+
+      // the host said the game is starting
+      this.socketInfo.on(
+        'frStart',
+        (inRoom, gameTime, allDrawn, table, remainDeck) => {
+          this.allDrawn = allDrawn
+          this.inRoom = inRoom
+          this.gameTime = gameTime
+          this.tableCard = table
+          this.remainDeck = remainDeck
+        }
+      )
     },
+    // game mech (hopefully)
     deal() {
-      this.socketInfo.once('drawInitial', (remainDeck) => {
-        this.deck = remainDeck
-        this.drawFirst()
-      })
-    },
-    drawFirst() {
-      this.remainDeck = this.deck
-      for (let i = 0; i < 7; i++) {
-        const ran = Math.floor(Math.random() * this.deck.length + 1)
-        this.myHand.push(deck[ran])
-        this.remainDeck.splice(ran, 1)
+      const ran = Math.floor(Math.random() * this.remainDeck.length)
+
+      this.myFirst = this.remainDeck[ran]
+      const addDrawn = {
+        user: this.username,
+        card: this.myFirst,
       }
-      this.socketInfo.emit('updateAll', this.myHand, this.remainDeck)
-      console.log(this.myHand.length)
-      console.log('no cards left' + this.deck.length)
+      this.allDrawn.push(addDrawn)
+      this.remainDeck.splice(ran, 1)
+      // emitting to socket host's first card
+      // myFirst is a OBJECT OF THE CARD
+      // addDrawn contains USER AND CARD DATA
+      this.socketInfo.emit('myDraw', this.myFirst, addDrawn, this.remainDeck)
     },
+    // chat mech for guests here
     sendMessage() {
       console.log(this.text)
       this.addMessage()

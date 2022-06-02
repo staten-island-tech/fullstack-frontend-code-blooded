@@ -3,13 +3,12 @@
     <ActualGame
       v-show="gameTime"
       :socketInfo="socketInfo"
-      :deck="remainDeck"
-      :code="code"
+      :code="newCode"
       :players="players"
       :username="username"
-      :playersEx="playersEx"
-      :myHand="myHand"
-      :firstCard="firstCard"
+      :firstCard="myFirst"
+      :allFirst="allDrawn"
+      :tableFirst="tableCard"
     ></ActualGame>
     <div class="hostRoom" v-show="inRoom">
       <div class="options3">
@@ -108,9 +107,16 @@ export default {
       inRoom: true,
       playerList: [],
       playersEx: [],
-      myHand: [],
       hostStatus: true,
       firstCard: {},
+
+      // new variables
+      myFirst: {},
+
+      // all players start cards
+      allDrawn: [],
+
+      tableCard: {},
     }
   },
   methods: {
@@ -125,7 +131,51 @@ export default {
           console.log(this.messages)
         }
       })
+
+      // ha bc this is also starting game mech sos
+      this.socketInfo.on('checkStart', (guestCard, cardData, remains) => {
+        this.remainDeck = remains
+        console.log(guestCard)
+        this.allDrawn.push(cardData)
+        this.gameStart()
+      })
     },
+
+    // geme mech starts here
+
+    gameStart() {
+      if (this.allDrawn.length === this.players.length) {
+        this.inRoom = false
+        this.gameTime = true
+        this.table()
+        this.socketInfo.emit(
+          'realStart',
+          this.inRoom,
+          this.gameTime,
+          this.allDrawn,
+          this.tableCard,
+          this.remainDeck
+        )
+      } else {
+        alert('please wait...')
+      }
+    },
+
+    // drawing first card for the table
+    table() {
+      const ran = Math.floor(Math.random() * this.remainDeck.length)
+      this.tableMore(ran)
+    },
+    tableMore(ran) {
+      if (this.remainDeck[ran].cardColor === 'wild') {
+        this.table()
+      } else {
+        this.tableCard = this.remainDeck[ran]
+        this.remainDeck.splice(ran, 1)
+      }
+    },
+
+    // this is chat mech
     sendMessage() {
       console.log(this.text)
       this.addMessage()
@@ -139,8 +189,26 @@ export default {
       }
       this.socketInfo.emit('myMessage', message, this.code)
     },
+
+    // host start game mech
     //  host clicked start game
-    goActualGame() {},
+    goActualGame() {
+      this.remainDeck = this.deck
+      this.deal()
+    },
+    deal() {
+      const ran = Math.floor(Math.random() * this.remainDeck.length)
+
+      this.myFirst = this.remainDeck[ran]
+      const addDrawn = {
+        user: this.username,
+        card: this.myFirst,
+      }
+      this.allDrawn.push(addDrawn)
+      this.remainDeck.splice(ran, 1)
+      // emitting to socket host's first card
+      this.socketInfo.emit('firstCard', this.myFirst, addDrawn, this.remainDeck)
+    },
 
     goWelcomeBack() {
       this.$router.push('/')

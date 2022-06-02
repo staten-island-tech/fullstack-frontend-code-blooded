@@ -5,11 +5,9 @@
       <div class="player-container">
         <div v-for="player in playersEx" :key="player" class="players">
           <div class="player-box">
-            <h1 class="username">
-              {{ player }}
-            </h1>
+            <h1 class="username">PLAYER HERE</h1>
             <h2 class="cardLeft">7 cards in hand</h2>
-            <h2 class="cardLeft">{{ remainDeck.length }}</h2>
+            <h2 class="cardLeft">LENGTH OF CARDS IN HAND</h2>
 
             <h1></h1>
           </div>
@@ -19,23 +17,13 @@
       <div class="cardStack">
         <div class="cardHand">
           <h2 class="deck-numbers">
-            deck: {{ remainDeck.length }} | used: {{ 108 - remainDeck.length }}
+            deck: DECK LENGTH | used: 108- THE LENGTH
           </h2>
-          <div class="middleBox">
-            <div class="icon"><h3 class="slash">//</h3></div>
-            <div class="time-player">
-              <div class="timeRow">
-                <h1 class="time sizeLarge">player's name</h1>
-                <h1 class="time sizeLarge">has --- seconds left</h1>
-              </div>
-              <div class="timeRow">
-                <h2 class="time sizeSmall">so and so</h2>
-                <h2 class="time sizeSmall">is up next</h2>
-              </div>
-            </div>
-          </div>
+
           <div class="cardsBox">
+            <h1>hi</h1>
             <div v-for="(card, index) in myHand" :key="card.cardName">
+              <h1>where r my cards</h1>
               <img :src="card.cardImg" @click="action(index)" />
             </div>
           </div>
@@ -49,67 +37,13 @@
             <h2 class="tableLabel">table</h2>
             <div v-show="noTable"><h1>click to show table</h1></div>
             <div v-show="tableShow">
-              <img v-show="propCard" :src="firstCard.cardImg" />
-              <img v-show="realCard" :src="table.cardImg" />
+              <img :src="tableFirst.cardImg" />
+              <h1>{{ table }}</h1>
             </div>
           </div>
           <End />
         </div>
       </div>
-
-      <!-- where the other players are displayed -->
-      <!--  <div class="player-container">
-        <div v-for="player in playerData" :key="player.id" class="players">
-          <div class="player-box" :style="{ borderColor: player.playerColor }">
-            <h1
-              class="username"
-              :style="{ backgroundColor: player.playerColor }"
-            >
-              {{ player.playerName }}
-            </h1>
-            <h2 class="cardLeft">{{ player.cardData }} cards in hand</h2>
-          </div>
-        </div>
-      </div>
- -->
-      <!-- bottom row -->
-      <!--  
-      <div class="cardStack">
-        <div class="cardHand">
-          <h2 class="deck-numbers">deck: 93 | used: 18</h2>
-          <div class="middleBox">
-            <div class="icon"><h3 class="slash">//</h3></div>
-            <div class="time-player">
-              <div class="timeRow">
-                <h1 class="time sizeLarge" :style="{ color: playerColor }">
-                  {{ playerName }}
-                </h1>
-                <h1 class="time sizeLarge">
-                  has {{ playerTime }} seconds left
-                </h1>
-              </div>
-              <div class="timeRow">
-                <h2 class="time sizeSmall" :style="{ color: nextColor }">
-                  {{ playerNext }}
-                </h2>
-                <h2 class="time sizeSmall">is up next</h2>
-              </div>
-            </div>
-          </div>
-          <div class="cardsBox">
-          </div>
-        </div>
-        <div class="gameActions">
-          <button class="drawACard" @click="doSmth">draw a card</button>
-          <button class="pass">pass</button>
-        </div>
-        <div class="table">
-          <div class="cardOnTable">
-            <h2 class="tableLabel">table</h2>
-          </div>
-          <End />
-        </div>
-      </div> -->
     </section>
   </div>
 </template>
@@ -128,10 +62,6 @@ export default {
       type: Object,
       required: true,
     },
-    firstCard: {
-      type: Object,
-      required: true,
-    },
     code: {
       type: String,
       required: true,
@@ -144,15 +74,15 @@ export default {
       type: String,
       required: true,
     },
-    playersEx: {
-      type: Array,
+    firstCard: {
+      type: Object,
       required: true,
     },
-    myHand: {
-      type: Array,
+    tableFirst: {
+      type: Object,
       required: true,
     },
-    deck: {
+    allFirst: {
       type: Array,
       required: true,
     },
@@ -160,138 +90,30 @@ export default {
 
   data() {
     return {
-      remainDeck: [],
-      hand: this.myHand,
-      order: [],
-      table: {},
-
-      noTable: true,
       tableShow: false,
+      noTable: true,
+      table: [],
+      myHand: [],
 
-      propCard: true,
-      realCard: false,
-
-      // deck,
-      // playerName: 'Vue',
-      // playerColor: '#71D097',
-      // playerTime: 22,
-      // playerNext: 'HTML',
-      // nextColor: '#49C8FF',
-      // playerData: [
-      //   {
-      //     playerName: 'placeholder',
-      //     cardData: 0,
-      //     id: 1,
-      //     playerColor: '#71D097',
-      //   },
-      //   {
-      //     playerName: 'placeholder',
-      //     cardData: 0,
-      //     id: 2,
-      //     playerColor: '#49C8FF',
-      //   },
-      //   {
-      //     playerName: 'placeholder',
-      //     cardData: 0,
-      //     id: 3,
-      //     playerColor: '#EE914D',
-      //   },
-      // ],
+      allPlayers: [],
     }
   },
-  computed: {
-    returnData() {
-      return this.deck
-    },
-  },
+
   methods: {
     showTable() {
       this.noTable = false
       this.tableShow = true
 
-      this.socketInfo.on('updateNow', (table, order, deck) => {
-        this.table = table
-        this.order = order
-        this.remainDeck = deck
-      })
+      this.table.push(this.tableFirst)
+
+      // eslint-disable-next-line no-unused-expressions
+      this.myHand.push[this.firstCard]
     },
+
     goIndex() {
       this.$router.push('/')
     },
-    doSmth() {
-      console.log(this.playersEx)
-      console.log(this.deck[0])
-      console.log('order' + this.order)
-      console.log('hand' + this.myHand)
-    },
-    action(index) {
-      const cardIndex = index
-      if (this.players[0] === this.username) {
-        console.log(index)
-        console.log(this.myHand[index])
-        this.socketInfo.emit('testing', 'hi')
-        console.log(this.players)
-        console.log('my username' + this.username)
-
-        this.myTurn(cardIndex)
-      } else {
-        alert('it is ' + this.players[0] + "'s turn")
-      }
-    },
-    myTurn(cardIndex) {
-      const colors = ['blue', 'green', 'yellow', 'red']
-      if (colors.includes(this.myHand[cardIndex].cardColor)) {
-        console.log('this card is a color')
-
-        this.placeCard(cardIndex)
-      } else {
-        alert('this isnt a color')
-      }
-    },
-    placeCard(cardIndex) {
-      if (
-        this.myHand[cardIndex].cardColor === this.firstCard.cardColor ||
-        this.myHand[cardIndex].cardNumber === this.firstCard.cardNumber
-      ) {
-        console.log('its a match')
-        if (cardIndex === 1) {
-          this.table = this.myHand[cardIndex]
-          this.propCard = false
-          this.realCard = true
-
-          this.hand = this.myHand
-          this.hand.slice(1, this.hand.length)
-          console.log(this.hand)
-        } else {
-          this.hand.splice(cardIndex, 1)
-          alert('this is in my hand' + this.hand)
-        }
-        this.pass()
-      } else {
-        alert('pick another card')
-      }
-    },
-    pass() {
-      if (this.players.length === 2) {
-        this.order = this.players
-        this.order.reverse()
-      } else {
-        const shifted = this.order.shift()
-
-        this.order.push(shifted)
-        alert('this is the new order' + this.order)
-      }
-
-      this.tellSocket()
-    },
-    tellSocket() {
-      this.socketInfo.emit(
-        'gameUpdate',
-        this.table,
-        this.order,
-        this.remainDeck
-      )
-    },
+    doSmth() {},
   },
 }
 </script>
