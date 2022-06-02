@@ -174,7 +174,8 @@ export default {
         this.remainDeck[ran].cardColor === 'wild' ||
         this.remainDeck[ran].cardAction === 'reverse' ||
         this.remainDeck[ran].cardAction === 'skip' ||
-        this.remainDeck[ran].cardAction === 'color change'
+        this.remainDeck[ran].cardAction === 'color change' ||
+        this.remainDeck[ran].cardAction === 'plusTwo'
       ) {
         this.table()
       } else {
@@ -219,7 +220,8 @@ export default {
     },
 
     goWelcomeBack() {
-      this.$router.push('/')
+      // this.$router.push('/')
+      location.reload()
     },
   },
 }
@@ -242,7 +244,8 @@ export default {
 }
 .code-page {
   background-color: var(--background-color);
-  max-width: 100%;
+  /* max-width: 100%; */
+  max-width: 100vw;
   height: 100vh;
   font-family: 'Tomorrow', sans-serif;
   margin: 0 auto;

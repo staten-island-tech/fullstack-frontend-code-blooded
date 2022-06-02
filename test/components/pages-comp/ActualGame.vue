@@ -1,6 +1,6 @@
 <template>
   <div id="container">
-    <Win v-show="finish"></Win>
+    <WinPg v-show="finish" :winner="winner"></WinPg>
     <div v-show="gamePg">
       <section class="gamepage">
         <!-- huge section of selina's code i tried to replicate to the 80% of my ability -->
@@ -25,13 +25,13 @@
             <div class="cardsBox">
               <div v-for="(card, index) in myHand" :key="card.cardName">
                 <img :src="myHandImgs[index]" @click="action(index)" />
-                <h1>{{ alerted }}</h1>
               </div>
+              <h1>{{ alerted }}</h1>
             </div>
           </div>
           <div class="gameActions">
             <button class="drawACard" @click="doSmth">draw a card</button>
-            <button class="pass">pass</button>
+            <!-- <button class="pass">pass</button> -->
           </div>
           <div class="table" @click="showTable">
             <div class="cardOnTable">
@@ -53,12 +53,12 @@
 // import deck from '@/pages/deck.js'
 // import End from '@/components/reg-comp/End.vue'
 /* eslint-disable vue/no-unused-components */
-import Win from '@/components/pages-comp/Win.vue'
+import WinPg from '@/components/pages-comp/Win.vue'
 export default {
   name: 'ActualGame',
   components: {
     // End,
-    Win,
+    WinPg,
   },
   props: {
     socketInfo: {
@@ -101,6 +101,8 @@ export default {
 
   data() {
     return {
+      remaining: [],
+
       tableShow: false,
       noTable: true,
 
@@ -128,6 +130,7 @@ export default {
       allMoves: [],
 
       alerted: '',
+      winner: '',
     }
   },
 
@@ -135,6 +138,8 @@ export default {
     showTable() {
       this.noTable = false
       this.tableShow = true
+
+      this.remaining = this.deck
 
       // I GOT THE IMAGE LINKKKKK
       this.startingTable = this.tableFirst
@@ -176,18 +181,39 @@ export default {
 
       // all moves
       this.socketInfo.on('newMove', (move) => {
-        this.allMoves.concat(move)
+        this.allMoves.push(move)
+        console.log(this.allMoves)
         if (this.allMoves.length !== 0) {
           this.finish = true
           this.gamePg = false
+          this.socketInfo.emit('ending', this.finish, this.gamePg)
         }
+      })
+
+      this.socketInfo.once('done', (win, game) => {
+        this.finish = win
+        this.gamePg = game
+        this.winner = this.allMoves[0].user
+        // console.log(this.allMoves[0].user)
+        // console.log(this.finish)
+        // console.log(this.gamePg)
       })
     },
 
     goIndex() {
       this.$router.push('/')
     },
-    doSmth() {},
+    doSmth() {
+      const ran = Math.floor(Math.random() * this.remaining.length)
+      this.myHand.push(this.remaining[ran])
+      console.log(this.remaining[ran])
+      const img = this.remaining[ran].cardImg
+
+      this.myHandImgs.push(img)
+      console.log(this.myHandImgs)
+      this.remaining.splice(ran, 1)
+      console.log(this.remaining.length)
+    },
     action(index) {
       const myMove = {
         id: new Date().getTime(),
@@ -231,7 +257,7 @@ export default {
 #container {
   background-color: var(--background-color);
   max-width: 100vw;
-  height: 100vh;
+  height: 100%;
   font-family: 'Tomorrow', sans-serif;
   margin: 0 auto;
   overflow: hidden;
