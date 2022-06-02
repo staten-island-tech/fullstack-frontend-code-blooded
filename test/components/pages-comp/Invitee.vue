@@ -55,7 +55,9 @@
                   <b>{{ message.user }}</b> :{{ message.text }}
                 </div>
               </div>
-              <input
+              
+            </div>
+            <input
                 id="writeMessage"
                 v-model="text"
                 @click="start"
@@ -63,7 +65,6 @@
                 type="text"
                 placeholder="write a message"
               />
-            </div>
           </div>
         </div>
       </div>
