@@ -8,7 +8,9 @@
       :username="username"
       :firstCard="myFirst"
       :tableFirst="tableCard"
-       :allFirst="allDrawn"
+      :allFirst="allDrawn"
+      :playersEx="playersEx"
+      :deck="deck"
     ></ActualGame>
     <!-- the waiting room -->
     <div v-show="inRoom" class="inviteeRoom">
@@ -145,6 +147,11 @@ export default {
       this.socketInfo.on(
         'frStart',
         (inRoom, gameTime, allDrawn, table, remainDeck) => {
+          const myPlayer = this.players.indexOf(this.username)
+          const total = this.playerList
+          total.splice(myPlayer, 1)
+          this.playersEx = total
+
           this.allDrawn = allDrawn
           this.inRoom = inRoom
           this.gameTime = gameTime

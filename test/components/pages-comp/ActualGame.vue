@@ -1,50 +1,51 @@
 <template>
   <div id="container">
-    <section class="gamepage">
-      <!-- huge section of selina's code i tried to replicate to the 80% of my ability -->
-      <div class="player-container">
-        <div v-for="player in playersEx" :key="player" class="players">
-          <div class="player-box">
-            <h1 class="username">PLAYER HERE</h1>
-            <h2 class="cardLeft">7 cards in hand</h2>
-            <h2 class="cardLeft">LENGTH OF CARDS IN HAND</h2>
+    <Win v-show="finish"></Win>
+    <div v-show="gamePg">
+      <section class="gamepage">
+        <!-- huge section of selina's code i tried to replicate to the 80% of my ability -->
+        <div class="player-container">
+          <div v-for="player in notYou" :key="player.user" class="players">
+            <div class="player-box">
+              <h1 class="username">{{ player.user }}</h1>
+              <h1 class="username">uno</h1>
+              <!-- <h2 class="cardLeft">{{ player.card }}</h2> -->
 
-            <h1></h1>
+              <h1></h1>
+            </div>
           </div>
         </div>
-      </div>
-      <!-- lisa's poorly replicated bottom row -->
-      <div class="cardStack">
-        <div class="cardHand">
-          <!-- <h2 class="deck-numbers">
+        <!-- lisa's poorly replicated bottom row -->
+        <div class="cardStack">
+          <div class="cardHand">
+            <!-- <h2 class="deck-numbers">
             deck: DECK LENGTH | used: 108- THE LENGTH
           </h2> -->
 
-          <div class="cardsBox">
-            <h1>hi</h1>
-            <div v-for="(card, index) in myHand" :key="card.cardName">
-              <h1>where r my cards</h1>
-              <img :src="card.cardImg" @click="action(index)" />
+            <div class="cardsBox">
+              <div v-for="(card, index) in myHand" :key="card.cardName">
+                <img :src="myHandImgs[index]" @click="action(index)" />
+                <h1>{{ alerted }}</h1>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="gameActions">
-          <button class="drawACard" @click="doSmth">draw a card</button>
-          <button class="pass">pass</button>
-        </div>
-        <div class="table" @click="showTable">
-          <div class="cardOnTable">
-            <h2 class="tableLabel">table</h2>
-            <div v-show="noTable"><h1>click to show table</h1></div>
-            <div v-show="tableShow">
-              <img :src="tableFirst.cardImg" />
-              <h1>{{ table }}</h1>
-            </div>
+          <div class="gameActions">
+            <button class="drawACard" @click="doSmth">draw a card</button>
+            <button class="pass">pass</button>
           </div>
-          <End />
+          <div class="table" @click="showTable">
+            <div class="cardOnTable">
+              <h2 class="tableLabel">table</h2>
+              <div v-show="noTable"><h1>click to show table</h1></div>
+              <div v-show="tableShow">
+                <img :src="topLink" />
+              </div>
+            </div>
+            <End />
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   </div>
 </template>
 
@@ -52,10 +53,12 @@
 // import deck from '@/pages/deck.js'
 // import End from '@/components/reg-comp/End.vue'
 /* eslint-disable vue/no-unused-components */
+import Win from '@/components/pages-comp/Win.vue'
 export default {
   name: 'ActualGame',
   components: {
     // End,
+    Win,
   },
   props: {
     socketInfo: {
@@ -67,6 +70,14 @@ export default {
       required: true,
     },
     players: {
+      type: Array,
+      required: true,
+    },
+    deck: {
+      type: Array,
+      required: true,
+    },
+    playersEx: {
       type: Array,
       required: true,
     },
@@ -92,10 +103,31 @@ export default {
     return {
       tableShow: false,
       noTable: true,
-      table: [],
-      myHand: [],
 
+      finish: false,
+      gamePg: true,
+
+      // starting table is an OBJECT of the INITIAL STARTING CARD DATA
+      startingTable: {},
+      table: [],
+      topLink: '',
+
+      // starting table is an OBJECT of the INITIAL CARD IN UR HAND DATA
+      startingHand: {},
+      // inc all data
+      myHand: [],
+      // just the images of the cards in ur hand
+      myHandImgs: [],
+
+      // player cards data
+      startingFirst: [],
       allPlayers: [],
+      notYou: [],
+
+      // ??
+      allMoves: [],
+
+      alerted: '',
     }
   },
 
@@ -104,16 +136,79 @@ export default {
       this.noTable = false
       this.tableShow = true
 
-      this.table.push(this.tableFirst)
+      // I GOT THE IMAGE LINKKKKK
+      this.startingTable = this.tableFirst
+      this.table.push(this.startingTable)
+      this.topLink = this.table[0].cardImg
 
-      // eslint-disable-next-line no-unused-expressions
-      this.myHand.push[this.firstCard]
+      // this is for your hand
+      this.startingHand = this.firstCard
+      this.myHand.push(this.startingHand)
+      this.myHand.forEach((element) => {
+        this.myHandImgs.push(element.cardImg)
+      })
+
+      // all player card data here
+      this.startingFirst = this.allFirst
+      this.allPlayers.push(this.startingFirst)
+
+      // testing
+      console.log(this.allPlayers[0])
+      const holder = this.allPlayers[0]
+      const temp = []
+      holder.forEach((element) => temp.push(element.user))
+      console.log(temp)
+      const tempIndex = temp.indexOf(this.username)
+      console.log('my username' + this.username)
+      console.log('index of my place' + tempIndex)
+      if (tempIndex === 0) {
+        this.notYou = holder
+        this.notYou.shift()
+      } else {
+        if (this.players.length === 2) {
+          this.notYou = holder
+          this.notYou.pop()
+        } else {
+          this.notYou = holder.splice(tempIndex, 1)
+        }
+        console.log('not u' + this.notYou)
+      }
+
+      // all moves
+      this.socketInfo.on('newMove', (move) => {
+        this.allMoves.concat(move)
+        if (this.allMoves.length !== 0) {
+          this.finish = true
+          this.gamePg = false
+        }
+      })
     },
 
     goIndex() {
       this.$router.push('/')
     },
     doSmth() {},
+    action(index) {
+      const myMove = {
+        id: new Date().getTime(),
+        card: this.myHand[index],
+        user: this.username,
+      }
+
+      const lastTable = this.table.length - 1
+      const color = this.table[lastTable].cardColor
+      const number = this.table[lastTable].cardNumber
+      // console.log('table no' + number)
+      console.log(this.myHand[index].cardColor)
+      if (
+        this.myHand[index].cardColor === color ||
+        this.myHand[lastTable].cardNumber === number
+      ) {
+        this.socketInfo.emit('played', myMove)
+      } else {
+        this.alerted = 'invalid card type'
+      }
+    },
   },
 }
 </script>

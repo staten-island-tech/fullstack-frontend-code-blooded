@@ -9,6 +9,8 @@
       :firstCard="myFirst"
       :allFirst="allDrawn"
       :tableFirst="tableCard"
+      :playersEx="playersEx"
+      :deck="deck"
     ></ActualGame>
     <div class="hostRoom" v-show="inRoom">
       <div class="options3">
@@ -148,6 +150,7 @@ export default {
         this.inRoom = false
         this.gameTime = true
         this.table()
+        this.playersEx = this.players.slice(1, this.players.length)
         this.socketInfo.emit(
           'realStart',
           this.inRoom,
@@ -170,7 +173,8 @@ export default {
       if (
         this.remainDeck[ran].cardColor === 'wild' ||
         this.remainDeck[ran].cardAction === 'reverse' ||
-        this.remainDeck[ran].cardAction === 'skip'
+        this.remainDeck[ran].cardAction === 'skip' ||
+        this.remainDeck[ran].cardAction === 'color change'
       ) {
         this.table()
       } else {
