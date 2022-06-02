@@ -358,6 +358,13 @@ input[type='text']::placeholder {
   flex-direction: column;
   color: var(--font-color);
 }
+.chatList {
+  overflow-y: scroll;
+  overflow-wrap: break-word;
+}
+::-webkit-scrollbar {
+  width: 1px;
+}
 .chat {
   border: 5px solid var(--secondary-color);
   padding: 2rem;

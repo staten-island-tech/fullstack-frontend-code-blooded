@@ -209,7 +209,7 @@ a {
 /* confetti */
 .confetti {
   width: 13px;
-  height: 20px;
+  height: 16px;
   background-color: #f2d74e;
   position: absolute;
   left: 50%;
@@ -314,7 +314,7 @@ a {
     transform: rotateZ(5deg) rotateY(1080deg) translate(-7vw, 80vh);
   }
   100% {
-    transform: rotateZ(15deg) rotateY(1440deg) translate(7vw, 97vh);
+    transform: rotateZ(15deg) rotateY(1440deg) translate(7vw, 95vh);
   }
 }
 </style>
