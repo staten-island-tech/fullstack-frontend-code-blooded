@@ -45,10 +45,10 @@
             <!-- here is the chat space i made -->
             <div class="chatList">
               <p class="friend chat">game created</p>
-            <p class="friend chat">confirm your presence with a message</p>
-            <p class="friend chat">
+              <p class="friend chat">confirm your presence with a message</p>
+              <p class="friend chat">
               currently only compatible with 2 players only...
-            </p>
+              </p>
               <div class="messages-container">
                 <!-- check this out -->
                 <div

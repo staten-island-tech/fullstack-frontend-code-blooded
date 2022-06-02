@@ -54,9 +54,9 @@
                 <div v-for="message in messages" :key="message.id">
                   <b>{{ message.user }}</b> :{{ message.text }}
                 </div>
-              </div>
-              
+              </div> 
             </div>
+            <!-- input area -->
             <input
                 id="writeMessage"
                 v-model="text"
