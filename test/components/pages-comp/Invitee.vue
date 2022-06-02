@@ -43,6 +43,9 @@
           <div id="chat" class="chat">
             <p class="friend chat">game created</p>
             <p class="friend chat">confirm your presence with a message</p>
+            <p class="friend chat">
+              currently only compatible with 2 players only...
+            </p>
             <span class="space"> </span>
 
             <!-- here is the chat space i made -->

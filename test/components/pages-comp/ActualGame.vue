@@ -5,9 +5,9 @@
       <section class="gamepage">
         <!-- huge section of selina's code i tried to replicate to the 80% of my ability -->
         <div class="player-container">
-          <div v-for="player in notYou" :key="player.user" class="players">
+          <div v-for="player in playersEx" :key="player.user" class="players">
             <div class="player-box">
-              <h1 class="username">{{ player.user }}</h1>
+              <h1 class="username">{{ player }}</h1>
               <h1 class="username">uno</h1>
               <!-- <h2 class="cardLeft">{{ player.card }}</h2> -->
 
@@ -228,7 +228,8 @@ export default {
       console.log(this.myHand[index].cardColor)
       if (
         this.myHand[index].cardColor === color ||
-        this.myHand[lastTable].cardNumber === number
+        this.myHand[index].cardNumber === number ||
+        this.myHand[index].cardColor === 'wild'
       ) {
         this.socketInfo.emit('played', myMove)
       } else {
