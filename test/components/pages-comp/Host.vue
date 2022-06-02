@@ -3,7 +3,7 @@
     <ActualGame
       v-show="gameTime"
       :socketInfo="socketInfo"
-      :code="newCode"
+      :code="code"
       :players="players"
       :username="username"
       :firstCard="myFirst"
@@ -167,7 +167,11 @@ export default {
       this.tableMore(ran)
     },
     tableMore(ran) {
-      if (this.remainDeck[ran].cardColor === 'wild') {
+      if (
+        this.remainDeck[ran].cardColor === 'wild' ||
+        this.remainDeck[ran].cardAction === 'reverse' ||
+        this.remainDeck[ran].cardAction === 'skip'
+      ) {
         this.table()
       } else {
         this.tableCard = this.remainDeck[ran]

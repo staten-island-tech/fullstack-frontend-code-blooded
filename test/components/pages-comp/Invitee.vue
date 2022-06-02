@@ -3,11 +3,12 @@
     <ActualGame
       v-show="gameTime"
       :socketInfo="socketInfo"
-      :code="newCode"
+      :code="code"
       :players="players"
       :username="username"
       :firstCard="myFirst"
-       :tableFirst="tableCard"
+      :tableFirst="tableCard"
+       :allFirst="allDrawn"
     ></ActualGame>
     <!-- the waiting room -->
     <div v-show="inRoom" class="inviteeRoom">

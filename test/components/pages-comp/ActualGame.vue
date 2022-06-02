@@ -16,9 +16,9 @@
       <!-- lisa's poorly replicated bottom row -->
       <div class="cardStack">
         <div class="cardHand">
-          <h2 class="deck-numbers">
+          <!-- <h2 class="deck-numbers">
             deck: DECK LENGTH | used: 108- THE LENGTH
-          </h2>
+          </h2> -->
 
           <div class="cardsBox">
             <h1>hi</h1>
