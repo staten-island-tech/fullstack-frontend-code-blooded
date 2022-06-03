@@ -386,6 +386,7 @@ input[type='text']::placeholder {
   flex-direction: column;
   justify-content: space-between;
   color: var(--font-color);
+  background-color: red;
   padding: 2rem;
   border-radius: 30px;
 }
@@ -393,9 +394,11 @@ input[type='text']::placeholder {
   overflow-y: scroll;
   overflow-wrap: break-word;
   overscroll-behavior-y: contain;
+  scroll-snap-type: y proximity;
 }
 .chatList > div > div:last-child {
   scroll-snap-align: end;
+  scroll-snap-type: y proximity;
 }
 ::-webkit-scrollbar {
   width: 1px;

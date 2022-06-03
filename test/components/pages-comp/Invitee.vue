@@ -363,9 +363,11 @@ input[type='text']::placeholder {
   overflow-y: scroll;
   overflow-wrap: break-word;
   overscroll-behavior-y: contain;
+  scroll-snap-type: y proximity;
 }
 .chatList > div > div:last-child {
   scroll-snap-align: end;
+  scroll-snap-type: y proximity;
 }
 ::-webkit-scrollbar {
   width: 1px;
