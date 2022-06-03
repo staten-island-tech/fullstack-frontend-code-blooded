@@ -412,4 +412,16 @@ input[type='text']::placeholder {
   border-radius: 10px;
   border-width: 2px;
 }
+.list > div > div:nth-child(1) {
+ color:#71d097;
+}
+.list > div > div:nth-child(2) {
+ color:#49c8ff;
+}
+.list > div > div:nth-child(3) {
+ color:#ee914d;
+}
+.list > div > div:nth-child(4) {
+ color:#fdff83;
+}
 </style>
