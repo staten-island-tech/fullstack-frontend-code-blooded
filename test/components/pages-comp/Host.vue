@@ -385,7 +385,7 @@ input[type='text']::placeholder {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  color: red;
+  color: var(--font-color);
   padding: 2rem;
   border-radius: 30px;
 }
