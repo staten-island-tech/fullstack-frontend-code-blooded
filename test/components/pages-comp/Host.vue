@@ -392,6 +392,7 @@ input[type='text']::placeholder {
 .chatList {
   overflow-y: scroll;
   overflow-wrap: break-word;
+  overscroll-behavior-y: contain;
 }
 ::-webkit-scrollbar {
   width: 1px;
