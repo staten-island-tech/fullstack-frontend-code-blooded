@@ -386,8 +386,11 @@ input[type='text']::placeholder {
   flex-direction: column;
   justify-content: space-between;
   color: var(--font-color);
+  border: 5px solid var(--secondary-color);
   padding: 2rem;
   border-radius: 30px;
+  width: 40%;
+  margin-left: 1rem;
 }
 .chatList {
   overflow-y: scroll;
@@ -402,15 +405,12 @@ input[type='text']::placeholder {
 ::-webkit-scrollbar {
   width: 1px;
 }
-.chat {
-  border: 5px solid var(--secondary-color);
-  width: 40%;
-  margin-left: 1rem;
-}
+
 .friend {
   padding: 0.5rem;
   border-radius: 10px;
   border-width: 2px;
+  border: 5px solid var(--secondary-color);
 }
 .list > li > li:nth-child(1) {
  color:#71d097;
