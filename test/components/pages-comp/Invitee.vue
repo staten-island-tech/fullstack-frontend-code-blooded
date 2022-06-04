@@ -48,7 +48,7 @@
               <p class="friend chat">game created</p>
               <p class="friend chat">confirm your presence with a message</p>
               <p class="friend chat">
-              currently only compatible with 2 players only...
+              currently only compatible with 4 players only...
             </p>
               <div class="messages-container">
                 <div v-for="message in messages" :key="message.id">
@@ -358,6 +358,17 @@ input[type='text']::placeholder {
   display: flex;
   flex-direction: column;
   color: var(--font-color);
+  width: 50%;
+  margin-left: 1rem;
+  border: 5px solid var(--secondary-color);
+  padding: 2rem;
+  border-radius: 30px;
+}
+.friend {
+  padding: 0.5rem;
+  border-radius: 10px;
+  border-width: 2px;
+  border: 5px solid var(--secondary-color);
 }
 .chatList {
   overflow-y: scroll;
@@ -372,13 +383,7 @@ input[type='text']::placeholder {
 ::-webkit-scrollbar {
   width: 1px;
 }
-.chat {
-  border: 5px solid var(--secondary-color);
-  padding: 2rem;
-  border-radius: 30px;
-  width: 50%;
-  margin-left: 1rem;
-}
+
 .list > li > li:nth-child(1) {
  color:#71d097;
 }
