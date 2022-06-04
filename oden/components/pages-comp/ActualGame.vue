@@ -1,9 +1,19 @@
 <template>
   <div id="container">
     <WinPg v-show="finish" :winner="winner"></WinPg>
+
+<!-- selina's pop up :) -->
+    <div id="popupInstructions" v-show="popBoolean">
+      <h1 class="popUpTitle">How to Play ODEN</h1>
+      <h3 class="explainHost">only host can click out</h3>
+      <p class="gameExplaine">lorem ipsum until we make one</p>
+      <button class="socketSync" @click="popFalse">Let's Play!</button>
+    </div>
+
+
     <div v-show="gamePg">
       <section class="gamepage">
-        <!-- huge section of selina's code i tried to replicate to the 80% of my ability -->
+        <!-- huge section of **selina**'s code i tried to replicate to the 80% of my ability -->
         <div class="player-container">
           <div v-for="player in playersEx" :key="player.user" class="players">
             <div class="player-box">
@@ -15,7 +25,7 @@
             </div>
           </div>
         </div>
-        <!-- lisa's poorly replicated bottom row -->
+        <!-- :(lisa's poorly replicated bottom row - but it looks good :) -->
         <div class="cardStack">
           <div class="cardHand">
             <!-- <h2 class="deck-numbers">
@@ -134,7 +144,16 @@ export default {
     }
   },
 
+  data() {
+    return {
+      popBoolean: true,
+    }
+  },
+
   methods: {
+    popFalse(){
+      this.popBoolean = false;
+    },
     showTable() {
       this.noTable = false
       this.tableShow = true
@@ -425,5 +444,18 @@ export default {
   font-size: 2rem;
   margin-top: 1rem;
   letter-spacing: 0.1rem;
+}
+
+/* pop up css */
+#popUpInstructions{
+  background-color: var(--background-color);
+  border: 5px solid var(--fourth-color);
+  width:50vw;
+  height:65vh;
+}
+
+.socketSync{
+  background-color: var(--fourth-color);
+  width:85%;
 }
 </style>
