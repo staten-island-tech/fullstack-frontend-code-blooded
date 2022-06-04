@@ -467,7 +467,7 @@ export default {
 
 /* pop up css */
 #popUpInstructions{
-  background-color: var(--background-color);
+  background-color: red;
   border: 5px solid var(--fourth-color);
   z-index:1;
   width:50vw;
