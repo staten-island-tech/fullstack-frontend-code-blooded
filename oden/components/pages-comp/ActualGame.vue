@@ -119,7 +119,7 @@ export default {
       finish: false,
       gamePg: true,
       popBoolean: true,
-      opacity: '50%',
+      opacity: Number,
 
       // starting table is an OBJECT of the INITIAL STARTING CARD DATA
       startingTable: {},
@@ -151,6 +151,7 @@ export default {
     popFalse(){
       this.popBoolean = false;
       this.gamePg = true;
+      this.opacity = 1;
     },
     showTable() {
       this.noTable = false
@@ -312,7 +313,10 @@ export default {
   border-width: 0.4rem;
   color: var(--font-color);
 }
-
+.gamepage{
+  opacity:0.5;
+  z-index:3;
+}
 .username {
   width: 10vw;
   padding: 1rem;
