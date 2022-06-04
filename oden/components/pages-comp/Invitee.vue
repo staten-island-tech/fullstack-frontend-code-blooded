@@ -37,6 +37,7 @@
               </ul>
             </div>
             <div class="buttons">
+              <p class="comment">Status: {{ roomStat }}</p>
               <Leave />
             </div>
           </div>
@@ -48,23 +49,23 @@
               <p class="friend chat">game created</p>
               <p class="friend chat">confirm your presence with a message</p>
               <p class="friend chat">
-              currently only compatible with 4 players only...
-            </p>
+                currently only compatible with 4 players only...
+              </p>
               <div class="messages-container">
                 <div v-for="message in messages" :key="message.id">
                   <b>{{ message.user }}</b> :{{ message.text }}
                 </div>
-              </div> 
+              </div>
             </div>
             <!-- input area -->
             <input
-                id="writeMessage"
-                v-model="text"
-                @click="start"
-                v-on:keyup.enter="sendMessage"
-                type="text"
-                placeholder="write a message"
-              />
+              id="writeMessage"
+              v-model="text"
+              @click="start"
+              v-on:keyup.enter="sendMessage"
+              type="text"
+              placeholder="write a message"
+            />
           </div>
         </div>
       </div>
@@ -119,6 +120,8 @@ export default {
       myFirst: {},
       allDrawn: [],
       tableCard: {},
+
+      roomStat: 'waiting for more players...',
     }
   },
   methods: {
@@ -166,6 +169,7 @@ export default {
     },
     // game mech (hopefully)
     deal() {
+      this.roomStat = 'dealing cards...'
       const ran = Math.floor(Math.random() * this.remainDeck.length)
 
       this.myFirst = this.remainDeck[ran]
@@ -385,15 +389,15 @@ input[type='text']::placeholder {
 }
 
 .list > li > li:nth-child(1) {
- color:#71d097;
+  color: #71d097;
 }
 .list > li > li:nth-child(2) {
- color:#49c8ff;
+  color: #49c8ff;
 }
 .list > li > li:nth-child(3) {
- color:#ee914d;
+  color: #ee914d;
 }
 .list > li > li:nth-child(4) {
- color:#fdff83;
+  color: #fdff83;
 }
 </style>

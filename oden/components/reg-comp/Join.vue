@@ -21,11 +21,11 @@
         <input
           type="text"
           v-model="username"
-          placeholder="enter a name"
+          :placeholder="user"
           name="username"
           required
         />
-        <button class="start" @click="goHost">start a game</button>
+        <button class="start" @click="checkHost">start a game</button>
         <div class="join-contain">
           <input
             id="join-code"
@@ -35,7 +35,7 @@
             name="join-code"
             required
           />
-          <button class="join invitee" @click="goInvitee">join</button>
+          <button class="join invitee" @click="checkInvitee">join</button>
         </div>
       </div>
     </div>
@@ -52,6 +52,12 @@ export default {
   components: {
     Host,
     Invitee,
+  },
+  props: {
+    user: {
+      type: String,
+      default: 'enter a name',
+    },
   },
   data() {
     return {
@@ -73,29 +79,47 @@ export default {
     close() {
       this.$emit('close')
     },
+    checkHost() {
+      this.blankInput()
+    },
     goHost() {
-      if (this.username.length < 1) {
+      // hide landing page, show host waiting room
+      this.hostComp = true
+      this.joinWrap = false
+
+      this.imHost = true
+
+      // connect
+      this.socketInstance = io('http://localhost:3001')
+      // this.socketInstance = io('https://codeblooded-kyht.onrender.com')
+      this.socketInfo = this.socketInstance
+
+      this.makeCode(5)
+    },
+    blankInput() {
+      if (this.username.length < 1 && this.user === 'enter a name') {
         alert('please enter a username')
+      } else if (this.username.length > 1) {
+        this.goHost()
       } else {
-        // hide landing page, show host waiting room
-        this.hostComp = true
-        this.joinWrap = false
-
-        this.imHost = true
-
-        // connect
-        this.socketInstance = io('http://localhost:3001')
-        // this.socketInstance = io('https://codeblooded-kyht.onrender.com')
-        this.socketInfo = this.socketInstance
-
-        this.makeCode(5)
+        this.username = this.user
+        this.goHost()
       }
     },
+    checkInvitee() {
+      this.blankInvitee()
+    },
     goInvitee() {
-      if (this.username.length < 1) {
-        alert('please enter a username')
+      this.joinRoom()
+    },
+    blankInvitee() {
+      if (this.username.length < 1 && this.user === 'enter a name') {
+        alert('please enter')
+      } else if (this.username.length > 0 && this.user === 'enter a name') {
+        this.goInvitee()
       } else {
-        this.joinRoom()
+        this.username = this.user
+        this.goInvitee()
       }
     },
     makeCode(length) {
@@ -166,5 +190,9 @@ export default {
 #join-code {
   font-size: 2.5rem;
   padding: 0.2rem;
+}
+
+::placeholder {
+  color: white;
 }
 </style>

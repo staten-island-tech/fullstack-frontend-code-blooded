@@ -4,7 +4,7 @@
       <button class="help"><a href="rules">?</a></button>
       <Sign />
     </div>
-    <Options v-show="isJoinVisible" />
+    <Options v-show="isJoinVisible" :user="userJoin" />
 
     <Host
       v-show="hostComp"
@@ -22,6 +22,7 @@
         <input
           ref="userName"
           v-model="username"
+          :keyup="passProps()"
           class="input"
           type="text"
           placeholder="enter a name"
@@ -71,10 +72,19 @@ export default {
       imHost: false,
 
       players: [],
+
+      userJoin: null,
     }
   },
 
   methods: {
+    passProps() {
+      if (this.username.length < 1) {
+        this.userJoin = 'enter a name'
+      } else {
+        this.userJoin = this.username
+      }
+    },
     showModal() {
       this.isJoinVisible = true
       this.isJoinNotVisible = false

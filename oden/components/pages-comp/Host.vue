@@ -33,6 +33,7 @@
               </ul>
             </div>
             <div class="buttons">
+              <p class="comment">Status: {{ roomStat }}</p>
               <button class="start3" @click="goActualGame">START GAME</button>
               <button class="delete3" @click="goWelcomeBack">
                 DELETE GAME
@@ -47,7 +48,7 @@
               <p class="friend chat">game created; happy playing!</p>
               <p class="friend chat">confirm your presence with a message</p>
               <p class="friend chat">
-              currently only compatible with 4 players only...
+                currently only compatible with 4 players only...
               </p>
               <div class="messages-container">
                 <!-- check this out -->
@@ -122,25 +123,24 @@ export default {
       allDrawn: [],
 
       tableCard: {},
+
+      roomStat: 'waiting for players...',
     }
   },
   methods: {
     start() {
       this.socketInfo.on('newMessage', (message, playerList) => {
         this.playerList = playerList
-        console.log('theres are playrs' + this.playerList)
         if (this.messages.includes(message)) {
           console.log('message added')
         } else {
           this.messages = this.messages.concat(message)
-          console.log(this.messages)
         }
       })
 
       // ha bc this is also starting game mech sos
       this.socketInfo.on('checkStart', (guestCard, cardData, remains) => {
         this.remainDeck = remains
-        console.log(guestCard)
         this.allDrawn.push(cardData)
         this.gameStart()
       })
@@ -163,7 +163,7 @@ export default {
           this.remainDeck
         )
       } else {
-        alert('please wait...')
+        this.roomStat = 'dealing cards...'
       }
     },
 
@@ -189,7 +189,6 @@ export default {
 
     // this is chat mech
     sendMessage() {
-      console.log(this.text)
       this.addMessage()
       this.text = ''
     },
@@ -413,15 +412,15 @@ input[type='text']::placeholder {
   border: 5px solid var(--secondary-color);
 }
 .list > li > li:nth-child(1) {
- color:#71d097;
+  color: #71d097;
 }
 .list > li > li:nth-child(2) {
- color:#49c8ff;
+  color: #49c8ff;
 }
 .list > li > li:nth-child(3) {
- color:#ee914d;
+  color: #ee914d;
 }
 .list > li > li:nth-child(4) {
- color:#fdff83;
+  color: #fdff83;
 }
 </style>
