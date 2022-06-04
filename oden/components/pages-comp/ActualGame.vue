@@ -11,7 +11,7 @@
     </div>
 
 
-    <div v-show="gamePg">
+    <div v-show="gamePg" :style="{opacity: {{ opacity }};}">
       <section class="gamepage">
         <!-- huge section of **selina**'s code i tried to replicate to the 80% of my ability -->
         <div class="player-container">
@@ -119,6 +119,7 @@ export default {
       finish: false,
       gamePg: true,
       popBoolean: true,
+      opacity: '50%',
 
       // starting table is an OBJECT of the INITIAL STARTING CARD DATA
       startingTable: {},
@@ -281,6 +282,11 @@ export default {
   font-size: 100%;
   vertical-align: baseline;
   box-sizing: border-box;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 .mdc-typography {
   margin: 0;
