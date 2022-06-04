@@ -6,7 +6,7 @@
     <div id="popupInstructions" v-show="popBoolean">
       <h1 class="popUpTitle">How to Play ODEN</h1>
       <h3 class="explainHost">only host can click out</h3>
-      <p class="gameExplaine">lorem ipsum until we make one</p>
+      <p class="gameExplain">lorem ipsum until we make one</p>
       <button class="socketSync" @click="popFalse">Let's Play!</button>
     </div>
 
@@ -117,7 +117,8 @@ export default {
       noTable: true,
 
       finish: false,
-      gamePg: true,
+      gamePg: false,
+      popBoolean: true,
 
       // starting table is an OBJECT of the INITIAL STARTING CARD DATA
       startingTable: {},
@@ -144,15 +145,11 @@ export default {
     }
   },
 
-  data() {
-    return {
-      popBoolean: true,
-    }
-  },
 
   methods: {
     popFalse(){
       this.popBoolean = false;
+      this.gamePg = true;
     },
     showTable() {
       this.noTable = false
@@ -452,10 +449,37 @@ export default {
   border: 5px solid var(--fourth-color);
   width:50vw;
   height:65vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:center;
 }
+.popUpTitle{
+  color:var(--font-color);
+  font-size: 4.5rem;
+  margin-bottom:1rem;
+  font-family: 'Tomorrow', sans-serif;
+  font-weight: var(--heavy-weight);
+}
+.explainHost{
+  color: var(--third-color);
+  font-family: 'Tomorrow', sans-serif;
+  font-weight: var(--heavy-weight);
+  font-size: 1.5rem;
+}
+.gameExplain{
 
+}
 .socketSync{
   background-color: var(--fourth-color);
+  border-color: var(--fourth-color);
+  color:var(--font-color);
+  font-family: 'Tomorrow', sans-serif;
+  font-weight: var(--heavy-weight);
+  padding: 0.5rem;
   width:85%;
+  border-radius: 26px;
+  font-size: 3rem;
+  margin-top: 1rem;
 }
 </style>
