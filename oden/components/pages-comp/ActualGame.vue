@@ -117,7 +117,7 @@ export default {
       noTable: true,
 
       finish: false,
-      gamePg: false,
+      gamePg: true,
       popBoolean: true,
 
       // starting table is an OBJECT of the INITIAL STARTING CARD DATA
@@ -373,7 +373,7 @@ export default {
   /* position: absolute; */
 }
 .cardsBox {
-  z-index: 1;
+  z-index: 2;
   width: 100%;
   height: 60%;
   display: flex;
@@ -381,6 +381,18 @@ export default {
   overflow: auto;
   white-space: nowrap;
   transform: translateY(-100px);
+  /* scroll */
+  overflow-y: scroll;
+  overflow-wrap: break-word;
+  overscroll-behavior-y: contain;
+  scroll-snap-type: y proximity;
+}
+.cardsBox > div > div:last-child {
+  scroll-snap-align: end;
+  scroll-snap-type: y proximity;
+}
+::-webkit-scrollbar {
+  width: 1px;
 }
 
 .deck-numbers {
@@ -447,11 +459,12 @@ export default {
 #popUpInstructions{
   background-color: var(--background-color);
   border: 5px solid var(--fourth-color);
+  z-index:1;
   width:50vw;
   height:65vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items:center;
 }
 .popUpTitle{
