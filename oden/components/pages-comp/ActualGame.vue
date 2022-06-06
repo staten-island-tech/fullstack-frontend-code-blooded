@@ -404,17 +404,32 @@ export default {
   white-space: nowrap;
   transform: translateY(-100px);
   /* scroll */
-  overflow-y: scroll;
+  overflow-x: scroll;
   overflow-wrap: break-word;
-  overscroll-behavior-y: contain;
-  scroll-snap-type: y proximity;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
 }
 .cardsBox > div > div:last-child {
   scroll-snap-align: end;
-  scroll-snap-type: y proximity;
+  scroll-snap-type: x proximity;
 }
 ::-webkit-scrollbar {
-  width: 1px;
+  width: 3.5px;
+  background-color: #F5F5F5;
+  background: linear-gradient(left, #bf96b3, #f786e4);
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: linear-gradient(left, #bf96b3, #f786e4);
+  box-shadow: inset 0 0 1px 1px #5C6670;
+}
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background: #eee;
+  box-shadow: 0 0 1px 1px #bbb, inset 0 0 7px rgba(0,0,0,0.3)
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(left, #8391A6, #536175);
 }
 
 .deck-numbers {
