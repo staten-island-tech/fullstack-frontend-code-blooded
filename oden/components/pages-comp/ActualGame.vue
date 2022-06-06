@@ -4,14 +4,16 @@
 
     <!-- selina's pop up :) -->
     <div id="popupInstructions" v-show="popBoolean">
-      <h1 class="popUpTitle">How to Play ODEN</h1>
+      <h1 class="popUpTitle">How to Play <h1 class="logo popUpTitle">ODEN</h1></h1>
       <h3 class="explainHost">only host can click out</h3>
       <p class="gameExplain">lorem ipsum until we make one</p>
       <button class="socketSync" @click="popFalse">Let's Play!</button>
     </div>
 
     <!-- was working on my stuff this morning, I deleted  :style="{opacity: {{ opacity }};}" from gamePg div-->
+    
     <div v-show="gamePg">
+    <div class="opacityDiv" v-show="popBoolean">
       <section class="gamepage">
         <!-- huge section of **selina**'s code i tried to replicate to the 80% of my ability -->
         <div class="player-container">
@@ -55,6 +57,7 @@
           </div>
         </div>
       </section>
+    </div>
     </div>
   </div>
 </template>
@@ -120,8 +123,8 @@ export default {
       gamePg: true,
 
       // i changed this to false to see the game sry
-      popBoolean: false,
-      opacity: Number,
+      popBoolean: true,
+      
 
       // starting table is an OBJECT of the INITIAL STARTING CARD DATA
       startingTable: {},
@@ -152,7 +155,7 @@ export default {
     popFalse() {
       this.popBoolean = false
       this.gamePg = true
-      this.opacity = 1
+      
     },
     showTable() {
       this.noTable = false
@@ -314,9 +317,10 @@ export default {
   border-width: 0.4rem;
   color: var(--font-color);
 }
-.gamepage {
+.opacityDiv {
   opacity: 0.5;
   z-index: 3;
+  position:relative;
 }
 .username {
   width: 10vw;
@@ -467,20 +471,23 @@ export default {
 }
 
 /* pop up css */
-#popUpInstructions {
-  background-color: red;
-  border: 5px solid var(--fourth-color);
-  z-index: 1;
+#popupInstructions {
+  background-color: var(--background-color);
+  border: 7px solid var(--fourth-color);
+  position: absolute;
+  border-radius: 25px;
+  z-index: 50;
   width: 50vw;
   height: 65vh;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  padding:2rem;
 }
 .popUpTitle {
   color: var(--font-color);
-  font-size: 4.5rem;
+  font-size: 2.5rem;
   margin-bottom: 1rem;
   font-family: 'Tomorrow', sans-serif;
   font-weight: var(--heavy-weight);
@@ -502,7 +509,7 @@ export default {
   padding: 0.5rem;
   width: 85%;
   border-radius: 26px;
-  font-size: 3rem;
+  font-size: 2rem;
   margin-top: 1rem;
 }
 </style>
