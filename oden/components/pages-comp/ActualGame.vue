@@ -5,7 +5,8 @@
     <!-- selina's pop up :) -->
     <div id="popupInstructions" v-show="popBoolean">
       <span class="socketSync top">WIN</span>
-      <h3 class="explainHost">Click the first card that matches table card in:
+      <h3 class="explainHost">
+        Click the first card that matches table card in:
       </h3>
       <ul>
         <li class="explainHost">color</li>
@@ -17,7 +18,7 @@
     </div>
 
     <!-- was working on my stuff this morning, I deleted  :style="{opacity: {{ opacity }};}" from gamePg div-->
-    
+
     <div v-show="gamePg">
       <section class="gamepage">
         <!-- huge section of **selina**'s code i tried to replicate to the 80% of my ability -->
@@ -128,7 +129,6 @@ export default {
 
       // i changed this to false to see the game sry
       popBoolean: true,
-      
 
       // starting table is an OBJECT of the INITIAL STARTING CARD DATA
       startingTable: {},
@@ -159,7 +159,26 @@ export default {
     popFalse() {
       this.popBoolean = false
       this.gamePg = true
-      
+
+      // all moves
+      this.socketInfo.on('newMove', (move) => {
+        this.allMoves.push(move)
+        console.log(this.allMoves)
+        if (this.allMoves.length !== 0) {
+          this.finish = true
+          this.gamePg = false
+          this.socketInfo.emit('ending', this.finish, this.gamePg)
+        }
+      })
+
+      this.socketInfo.once('done', (win, game) => {
+        this.finish = win
+        this.gamePg = game
+        this.winner = this.allMoves[0].user
+        // console.log(this.allMoves[0].user)
+        // console.log(this.finish)
+        // console.log(this.gamePg)
+      })
     },
     showTable() {
       this.noTable = false
@@ -204,26 +223,6 @@ export default {
         }
         console.log('not u' + this.notYou)
       }
-
-      // all moves
-      this.socketInfo.on('newMove', (move) => {
-        this.allMoves.push(move)
-        console.log(this.allMoves)
-        if (this.allMoves.length !== 0) {
-          this.finish = true
-          this.gamePg = false
-          this.socketInfo.emit('ending', this.finish, this.gamePg)
-        }
-      })
-
-      this.socketInfo.once('done', (win, game) => {
-        this.finish = win
-        this.gamePg = game
-        this.winner = this.allMoves[0].user
-        // console.log(this.allMoves[0].user)
-        // console.log(this.finish)
-        // console.log(this.gamePg)
-      })
     },
 
     goIndex() {
@@ -415,21 +414,21 @@ export default {
 }
 ::-webkit-scrollbar {
   width: 3.5px;
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
   background: linear-gradient(left, #bf96b3, #f786e4);
 }
 ::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background: linear-gradient(left, #bf96b3, #f786e4);
-  box-shadow: inset 0 0 1px 1px #5C6670;
+  box-shadow: inset 0 0 1px 1px #5c6670;
 }
 ::-webkit-scrollbar-track {
   border-radius: 10px;
   background: #eee;
-  box-shadow: 0 0 1px 1px #bbb, inset 0 0 7px rgba(0,0,0,0.3)
+  box-shadow: 0 0 1px 1px #bbb, inset 0 0 7px rgba(0, 0, 0, 0.3);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(left, #8391A6, #536175);
+  background: linear-gradient(left, #8391a6, #536175);
 }
 
 .deck-numbers {
@@ -506,15 +505,15 @@ export default {
   justify-content: center;
   text-align: center;
   align-items: center;
-  padding:2rem;
+  padding: 2rem;
 }
-ul{
-  list-style:none;
+ul {
+  list-style: none;
 }
 .popUpTitle {
   color: var(--font-color);
   font-size: 2.5rem;
-  margin:0;
+  margin: 0;
   font-family: 'Tomorrow', sans-serif;
   font-weight: var(--heavy-weight);
 }
@@ -523,14 +522,14 @@ ul{
   font-family: 'Tomorrow', sans-serif;
   font-weight: var(--heavy-weight);
   font-size: 1.5rem;
-  margin:0;
+  margin: 0;
 }
-.top{
+.top {
   background-color: var(--secondary-color);
   border-color: var(--third-color);
   color: var(--fourth-color);
 }
-.bottom{
+.bottom {
   background-color: var(--fourth-color);
   border-color: var(--fourth-color);
   color: var(--background-color);
