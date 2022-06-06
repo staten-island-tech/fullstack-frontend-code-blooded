@@ -41,7 +41,7 @@
         <h2 class="logo winTime">{{ winner }}</h2>
       </div>
       <div class="buttons-box">
-        <button class="start1" @click="goGame">rematch</button>
+        <!-- <button class="start1" @click="goGame">rematch</button> -->
         <button class="join1" @click="goGame">start new game</button>
         <Win />
       </div>
