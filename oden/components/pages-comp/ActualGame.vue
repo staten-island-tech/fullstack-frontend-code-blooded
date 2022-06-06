@@ -4,16 +4,21 @@
 
     <!-- selina's pop up :) -->
     <div id="popupInstructions" v-show="popBoolean">
-      <h1 class="popUpTitle">How to Play <h1 class="logo popUpTitle">ODEN</h1></h1>
-      <h3 class="explainHost">only host can click out</h3>
-      <p class="gameExplain">lorem ipsum until we make one</p>
-      <button class="socketSync" @click="popFalse">Let's Play!</button>
+      <span class="socketSync top">WIN</span>
+      <h3 class="explainHost">Click the first card that matches table card in:
+      </h3>
+      <ul>
+        <li class="explainHost">color</li>
+        <li class="explainHost">number</li>
+        <li class="explainHost logo">wild</li>
+      </ul>
+      <h3 class="explainHost">Tip: Think Fast</h3>
+      <button class="socketSync bottom" @click="popFalse">Let's Play!</button>
     </div>
 
     <!-- was working on my stuff this morning, I deleted  :style="{opacity: {{ opacity }};}" from gamePg div-->
     
     <div v-show="gamePg">
-    <div class="opacityDiv" v-show="popBoolean">
       <section class="gamepage">
         <!-- huge section of **selina**'s code i tried to replicate to the 80% of my ability -->
         <div class="player-container">
@@ -57,7 +62,6 @@
           </div>
         </div>
       </section>
-    </div>
     </div>
   </div>
 </template>
@@ -317,11 +321,14 @@ export default {
   border-width: 0.4rem;
   color: var(--font-color);
 }
-.opacityDiv {
+/* .opacityDiv {
   opacity: 0.5;
-  z-index: 3;
+  z-index: 51;
   position:relative;
-}
+  background-color: red;
+  width:100rem;
+  height:100rem;
+} */
 .username {
   width: 10vw;
   padding: 1rem;
@@ -478,38 +485,48 @@ export default {
   border-radius: 25px;
   z-index: 50;
   width: 50vw;
-  height: 65vh;
+  height: 70%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
+  text-align: center;
   align-items: center;
   padding:2rem;
+}
+ul{
+  list-style:none;
 }
 .popUpTitle {
   color: var(--font-color);
   font-size: 2.5rem;
-  margin-bottom: 1rem;
+  margin:0;
   font-family: 'Tomorrow', sans-serif;
   font-weight: var(--heavy-weight);
 }
 .explainHost {
-  color: var(--third-color);
+  color: var(--font-color);
   font-family: 'Tomorrow', sans-serif;
   font-weight: var(--heavy-weight);
   font-size: 1.5rem;
+  margin:0;
 }
-.gameExplain {
+.top{
+  background-color: var(--secondary-color);
+  border-color: var(--third-color);
+  color: var(--fourth-color);
 }
-.socketSync {
+.bottom{
   background-color: var(--fourth-color);
   border-color: var(--fourth-color);
-  color: var(--font-color);
+  color: var(--background-color);
+}
+.socketSync {
   font-family: 'Tomorrow', sans-serif;
   font-weight: var(--heavy-weight);
   padding: 0.5rem;
   width: 85%;
   border-radius: 26px;
   font-size: 2rem;
-  margin-top: 1rem;
+  margin: 1.5rem;
 }
 </style>
