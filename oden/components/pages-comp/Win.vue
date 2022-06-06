@@ -42,7 +42,7 @@
       </div>
       <div class="buttons-box">
         <!-- <button class="start1" @click="goGame">rematch</button> -->
-        <button class="join1" @click="goGame">start new game</button>
+        <!-- <button class="join1" @click="goGame">start new game</button> -->
         <Win />
       </div>
     </div>
