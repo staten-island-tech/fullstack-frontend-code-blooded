@@ -50,6 +50,9 @@
               <p class="friend chat">
                 currently only compatible with 4 players only...
               </p>
+              <p class="friend chat">
+                game syncs only when table is clicked!
+              </p>
               <div class="messages-container">
                 <!-- check this out -->
                 <div

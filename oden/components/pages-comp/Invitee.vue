@@ -51,6 +51,9 @@
               <p class="friend chat">
                 currently only compatible with 4 players only...
               </p>
+               <p class="friend chat">
+                game syncs only when table is clicked!
+              </p>
               <div class="messages-container">
                 <div v-for="message in messages" :key="message.id">
                   <b>{{ message.user }}</b> :{{ message.text }}
